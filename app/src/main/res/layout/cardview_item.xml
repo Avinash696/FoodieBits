@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@color/cloudy_color">
+
+<!--        <ImageView-->
+<!--            android:layout_width="95dp"-->
+<!--            android:layout_height="95dp"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:background="@drawable/star"-->
+<!--            android:backgroundTint="@color/pinkish_red"-->
+<!--            android:elevation="12dp"-->
+<!--            android:id="@+id/ivDiscountPercentage"/>-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="24%"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="45dp"
+            android:elevation="13dp" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp"
+            app:cardMaxElevation="12dp"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/onion"
+                        android:id="@+id/ivItemPic"/>
+
+                    <TextView
+                        android:id="@+id/tvItemName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="Onion"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvItemWeight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="100 - 105 Kg"
+                        android:textColor="@color/brown"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvItemFakeCost"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:foreground="@drawable/rate_cut"
+                        android:text="₹ 24"
+                        android:textColor="@color/black" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tvItemDiscountedCost"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="₹ 24"
+                            android:textColor="@color/black" />
+
+                        <ImageView
+                            android:id="@+id/ivAddBtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="10dp"
+                            android:background="@drawable/add"
+                            android:backgroundTint="@color/pinkish_red" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+</layout>
