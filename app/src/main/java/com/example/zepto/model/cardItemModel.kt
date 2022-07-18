@@ -1,12 +1,13 @@
 package com.example.zepto.model
 
 import android.media.Image
+import java.io.Serializable
 
-class cardItemModel(
-    val discount: Int,
-    val img: Int,
-    val name: String,
-    val discountPrice: Int,
-    val Price: Int,
-) {
+open class cardItemModel(
+    open val discount: Int,
+    open val img: Int,
+    open val name: String,
+    open val discountPrice: Int,
+    open val Price: Int,
+) :Serializable{
 }

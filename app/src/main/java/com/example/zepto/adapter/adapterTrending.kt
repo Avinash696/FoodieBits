@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.zepto.databinding.CardviewItemBinding
 import com.example.zepto.model.cardItemModel
 import com.example.zepto.ui.activity.DetailActivity
+import com.example.zepto.ui.activity.SingleTrendingActivity
+import com.example.zepto.ui.activity.YourOrderActivity
 
 class adapterTrending(
     private val arrayData: ArrayList<cardItemModel>,
@@ -31,19 +33,17 @@ class adapterTrending(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val data = arrayData[position]
         binding.tvItemName.text = data.name
+        binding.ivItemPic.setImageResource(data.img)
 
         //onclick on item
         holder.itemView.setOnClickListener{
-            val bundle = Bundle()
-            val intent = Intent(context,DetailActivity::class.java)
-            bundle.putString("nameKey",data.name)
-            bundle.putString("discountKey",data.discount.toString())
-            bundle.putString("discountPriceKey",data.discountPrice.toString())
-            bundle.putString("priceKey",data.Price.toString())
-            bundle.putString("imgKey",data.img.toString())
-            intent.putExtra("myHomeKey",bundle)
-            Log.d("rawat", "onBindViewHolder: ${data.name}")
+            val intent = Intent(context,SingleTrendingActivity::class.java)
+            Log.d("ttt", "onBindViewHolder:${data.Price} ${data.discount}  ${data.discountPrice}")
+            intent.putExtra("amountKey",data.Price)
+            intent.putExtra("nameKey",data.name)
+            intent.putExtra("imgKey",data.img)
             context.startActivity(intent)
+//            context.startActivity(Intent(context,SingleTrendingActivity::class.java))
         }
     }
 

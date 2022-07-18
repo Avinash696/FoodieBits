@@ -8,88 +8,537 @@
     </data>
 
     <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/dl_home"
+        android:id="@+id/mainDrawable"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:openDrawer="start">
-
-        <include layout="@layout/app_bar_home" />
+        android:layout_height="match_parent">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/white">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
+            <!--        <include layout="@layout/app_bar_home" />-->
+            <RelativeLayout
+                android:id="@+id/rvAppBarHome"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                tools:context=".ui.activity.HomeActivity">
+                android:background="@color/white">
 
-
-                <pl.droidsonroids.gif.GifImageView
-                    android:id="@+id/gif"
+                <com.google.android.material.appbar.AppBarLayout
+                    android:id="@+id/appBarLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="130dp"
-                    android:background="#fff"
-                    android:src="@drawable/splash_gif" />
+                    android:layout_height="wrap_content">
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="25dp"
-                    android:background="@color/black"
-                    app:cardCornerRadius="20dp">
+                    <androidx.appcompat.widget.Toolbar
+                        android:id="@+id/appBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        app:navigationIcon="@drawable/hamberg"
+                        app:title="Home Page" />
+                </com.google.android.material.appbar.AppBarLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="55dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_margin="9dp"
+                    android:layout_marginTop="60dp"
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/search" />
+                        android:src="@drawable/cart" />
 
                     <TextView
+                        android:id="@+id/tvCartCount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:text="Search" />
-                </androidx.cardview.widget.CardView>
+                        android:text="Count"
+                        android:textColor="@color/black" />
+                </LinearLayout>
 
-                <TextView
+                <ScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:text="Kya chal Raha hai"
-                    android:textColor="@color/black"
-                    android:textSize="19sp" />
+                    android:layout_above="@+id/bottomNavigation">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvTrending"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    <LinearLayout
+                        android:id="@+id/llHome"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        tools:context=".ui.activity.HomeActivity">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp"
+                            android:background="#C5E1A5"
+                            app:cardCornerRadius="20dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/search" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="30dp"
+                                android:text="Search" />
+                        </androidx.cardview.widget.CardView>
+                        <!--                        <pl.droidsonroids.gif.GifImageView-->
+                        <!--                            android:id="@+id/gif"-->
+                        <!--                            android:layout_width="match_parent"-->
+                        <!--                            android:layout_height="130dp"-->
+                        <!--                            android:background="#fff"-->
+                        <!--                            android:src="@drawable/splash_gif" />-->
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvBrandFocus"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="4dp"
+                                android:layout_weight="1"
+                                android:text="Kya chal Raha hai"
+                                android:textColor="@color/black"
+                                android:textSize="19sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvTrendingSeeAll"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="4dp"
+                                android:layout_weight="1"
+                                android:gravity="end"
+                                android:text="See All >"
+                                android:textColor="@color/red"
+                                android:textSize="19sp" />
+                        </LinearLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvTrending"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="4dp"
+                                android:layout_weight="1"
+                                android:text="Categories"
+                                android:textColor="@color/black"
+                                android:textSize="19sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvCategoriesSeeAll"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="4dp"
+                                android:layout_weight="1"
+                                android:gravity="end"
+                                android:text="See All >"
+                                android:textColor="@color/red"
+                                android:textSize="19sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:weightSum="4">
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical"
+                                    android:id="@+id/llBeautyProduct">
+
+                                    <ImageView
+
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/beauty" />
+
+                                    <TextView
+                                        android:id="@+id/tvBeauty"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal"
+
+
+                                        android:text="Beauty"
+                                        android:textColor="@color/black" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical"
+                                    android:id="@+id/llInstantFood">
+
+                                    <ImageView
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/instant1" />
+
+                                    <TextView
+                                        android:id="@+id/tvInstanctFood"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal"
+
+
+                                        android:text="Instant Food"
+                                        android:textColor="@color/black" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical"
+                                    android:id="@+id/llColdDrink">
+
+                                    <ImageView
+
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/cd1" />
+
+                                    <TextView
+
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal"
+
+
+                                        android:text="Cold Drink"
+                                        android:textColor="@color/black" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical"
+                                    android:id="@+id/llBiscuit">
+
+                                    <ImageView
+
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/biscut" />
+
+                                    <TextView
+
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal"
+
+
+                                        android:text="Biscuts"
+                                        android:textColor="@color/black" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:weightSum="4">
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical"
+                                    android:id="@+id/llChoco">
+
+                                    <ImageView
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/c1" />
+
+                                    <TextView
+
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal"
+                                        android:text="Choco"
+                                        android:textColor="@color/black" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical"
+                                    android:id="@+id/llMasala">
+
+                                    <ImageView
+
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/m1" />
+
+                                    <TextView
+
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal"
+
+
+                                        android:text="Masala"
+                                        android:textColor="@color/black" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical"
+                                    android:id="@+id/llOil">
+
+                                    <ImageView
+
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/oil1" />
+
+                                    <TextView
+
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal"
+
+
+                                        android:text="Oil"
+                                        android:textColor="@color/black" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical"
+                                    android:id="@+id/llSauce">
+
+                                    <ImageView
+
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/s1" />
+
+                                    <TextView
+
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal"
+                                        android:text="Sauce"
+                                        android:textColor="@color/black" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:weightSum="4">
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical"
+                                    android:id="@+id/llCoffee">
+
+                                    <ImageView
+
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/coffee0" />
+
+                                    <TextView
+
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal"
+
+
+                                        android:text="Coffee"
+                                        android:textColor="@color/black" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical"
+                                    android:id="@+id/llGreenTea">
+
+                                    <ImageView
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/gt1" />
+
+                                    <TextView
+
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal"
+                                        android:text="Green Tea"
+                                        android:textColor="@color/black" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical"
+                                    android:id="@+id/llCleaningEssence">
+
+                                    <ImageView
+
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/clean_item" />
+
+                                    <TextView
+
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal"
+                                        android:text="Cleaning \n Essential"
+                                        android:textColor="@color/black" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical"
+                                    android:id="@+id/llTea">
+
+                                    <ImageView
+
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/tea1" />
+
+                                    <TextView
+
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal"
+
+
+                                        android:text="Tea"
+                                        android:textColor="@color/black" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:layout_weight="1"
+                            android:text="Brand In Focus "
+                            android:textColor="@color/black"
+                            android:textSize="19sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/offer4"
+                            android:layout_gravity="center"/>
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvBrandFocusBottom"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+                </ScrollView>
+
+                <com.google.android.material.bottomnavigation.BottomNavigationView
+                    android:id="@+id/bottomNavigation"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Categories"
-                    android:textColor="@color/black"
-                    android:textSize="17sp" />
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/white"
+                    app:itemTextColor="@color/black"
+                    app:labelVisibilityMode="labeled"
+                    app:menu="@menu/menu_bottom_nav" />
 
-                <!--        <androidx.recyclerview.widget.RecyclerView-->
-                <!--            android:id="@+id/rvCategories"-->
-                <!--            android:layout_width="wrap_content"-->
-                <!--            android:layout_height="wrap_content"-->
-                <!--            android:background="@color/pinkish_red" />-->
-                <GridView
-                    android:id="@+id/simpleView"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:numColumns="3" />
-            </LinearLayout>
+
+            </RelativeLayout>
+
         </RelativeLayout>
 
         <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nvHome"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_gravity="start"
             app:headerLayout="@layout/header_home"
-            app:menu="@menu/home_menu"
-            android:layout_gravity="start"/>
+            app:menu="@menu/home_menu" />
 
     </androidx.drawerlayout.widget.DrawerLayout>
 </layout>

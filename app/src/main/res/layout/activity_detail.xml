@@ -1,39 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.activity.DetailActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <include layout="@layout/app_bar_home" />
+    <data>
 
-    <LinearLayout
+    </data>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="4"
-        android:layout_marginTop="60dp"
-        android:padding="2dp">
+        android:layout_height="match_parent"
+        tools:context=".ui.activity.DetailActivity">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:background="#80DEEA">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="440dp"
-                android:text="android \n startup"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#BF3D3D">
-            <FrameLayout
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:padding="2dp"
+            android:weightSum="4">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/flDetail"/>
+                android:layout_weight="1"
+                android:background="@color/white">
+
+                <FrameLayout
+                    android:id="@+id/flDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:background="#80DEEA">
+
+                <ListView
+                    android:id="@+id/lvCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-</RelativeLayout>
+
+        <include
+            android:id="@+id/botttomNavDetail"
+            layout="@layout/bottom_navigation" />
+    </RelativeLayout>
+</layout>

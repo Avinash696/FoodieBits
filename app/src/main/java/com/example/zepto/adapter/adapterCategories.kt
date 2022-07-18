@@ -1,6 +1,7 @@
 package com.example.zepto.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.example.zepto.R
 import com.example.zepto.model.cardItemModel
+import com.example.zepto.ui.activity.DetailActivity
 
 
 class adapterCategories(
@@ -36,24 +38,21 @@ class adapterCategories(
         if (myView == null) {
             val inflate =
                 context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            myView =  inflate.inflate(R.layout.cardview_item,viewGroup,false)
+            myView =  inflate.inflate(R.layout.catagories_row,viewGroup,false)
         }
         //fields assign
-        val name = myView!!.findViewById<TextView>(R.id.tvItemName)
-        val itemWeight = myView!!.findViewById<TextView>(R.id.tvItemWeight)
-        val itemFakeCost = myView!!.findViewById<TextView>(R.id.tvItemFakeCost)
-        val itemDiscountCost = myView!!.findViewById<TextView>(R.id.tvItemDiscountedCost)
-        val itemPic = myView!!.findViewById<ImageView>(R.id.ivItemPic)
+        val name = myView!!.findViewById<TextView>(R.id.tvCateItemName)
+        val itemPic = myView.findViewById<ImageView>(R.id.ivCateItemPic)
 
         val data = arraydata[position]
 
         //set data
         name.text =data.name
-//        itemWeight.text = data.
-        itemFakeCost.text =data.discount.toString()
-        itemDiscountCost.text = data.discountPrice.toString()
         itemPic.setImageResource(data.img)
 
+        itemPic.setOnClickListener {
+            context.startActivity(Intent(context,DetailActivity::class.java))
+        }
         return myView
     }
 

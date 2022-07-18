@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.activity.SingleTrendingActivity"
+        android:orientation="vertical">
+
+<!--        <include layout="@layout/app_bar_home" />-->
+        <LinearLayout
+            android:id="@+id/llCart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_margin="9dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/cart"
+                app:tint="@color/black" />
+
+            <TextView
+                android:id="@+id/tvCartCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Count"
+                android:textColor="@color/black" />
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/ivIcons"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:src="@drawable/onion"
+            android:layout_below="@+id/singleTrendingAppBar" />
+
+        <TextView
+            android:id="@+id/tvNameSingle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="itemNAme"
+            android:textSize="21sp"
+            android:textColor="@color/black"
+            android:layout_margin="4dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="100-105 Kg"
+            android:layout_margin="4dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="₹ 29 "
+                android:id="@+id/tvItemCostSingleTrending"
+                android:layout_margin="4dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="₹ 29 "
+                android:layout_margin="4dp"
+                android:foreground="@drawable/rate_cut" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/btAddtrending"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginRight="20dp"
+                    android:text="Add"
+                    app:backgroundTint="@color/red" />
+            </RelativeLayout>
+        </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvRecommendedSingle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"/>
+    </LinearLayout>
+</layout>
