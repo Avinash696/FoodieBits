@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/border_layout"
+        android:padding="4dp"
+        android:layout_margin="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Order Status"
+                android:layout_weight="1"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:id="@+id/tvOrderQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="Order Total(1 Item)" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+
+            <TextView
+                android:id="@+id/tvDeliverdDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Delivered,20 Feb"
+                android:layout_weight="1"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:id="@+id/tvDeliverdAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rs 289.00"
+                android:layout_weight="1"
+                android:layout_gravity="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <ImageView
+                    android:id="@+id/ivItemDelivered"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/order"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:id="@+id/tvItemNameDelived"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Chakki Atta 10 kg" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="View Details"
+                android:layout_weight="1"
+                android:layout_margin="20dp"
+                android:layout_gravity="center" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Need Help"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:layout_gravity="center" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

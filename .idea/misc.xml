@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/drawable/border_layout.xml" value="0.222" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout-v23/activity_home.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/activity_admin.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/activity_bottom_banner.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/activity_customer_profile.xml" value="0.17962962962962964" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/activity_detail.xml" value="0.22056159420289856" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/activity_faqs.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/activity_home.xml" value="0.22056159420289856" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/activity_just_test_it.xml" value="0.2857142857142857" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/activity_login.xml" value="0.15555555555555556" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/activity_order_list.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/activity_profile.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/activity_single_trending.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/activity_top_banner.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/activity_user_profile.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/activity_your_order.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/activity_your_order_status.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/add_item_count.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/app_bar_home.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/bottom_navigation.xml" value="0.14285714285714285" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/bottom_total_amount.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/cardview_item.xml" value="0.3828571428571429" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/catagories_row.xml" value="0.18857142857142858" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/detail_row.xml" value="0.3828571428571429" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/dialog_trending_seeall.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_beauty1.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_beauty2.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_beauty3.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_beauty4.xml" value="0.10612244897959183" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_biscuit1.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_biscuit2.xml" value="0.21197916666666666" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_biscuit3.xml" value="0.21197916666666666" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_biscuit4.xml" value="0.21197916666666666" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_biscuit5.xml" value="0.21197916666666666" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_cd_fruit_drink.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_cd_milk_drink.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_cd_soda.xml" value="0.10612244897959183" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_cd_water.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_choco1.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_choco2.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_choco3.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_choco4.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_choco5.xml" value="0.21197916666666666" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_cleaning_essentia2.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_cleaning_essentia3.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_cleaning_essentia4.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_cleaning_essentia5.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_cleaning_essential1.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_coffee1.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_coffee2.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_coffee3.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_coffee4.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_coffee5.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_cold_drink1.xml" value="0.10612244897959183" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_fiirst.xml" value="0.22056159420289856" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_fourth.xml" value="0.17962962962962964" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_green_tea1.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_green_tea2.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_green_tea3.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_green_tea4.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_green_tea5.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_instant_food1.xml" value="0.21197916666666666" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_instant_food2.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_instant_food3.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_instant_food5.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_isntant_food4.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_maps.xml" value="0.17962962962962964" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_masala1.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_masala2.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_masala3.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_masala4.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_masala5.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_oil1.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_oil2.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_oil3.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_oil4.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_oil5.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_sauce1.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_sauce2.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_sauce3.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_sauce4.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_sauce5.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_second.xml" value="0.11353711790393013" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_tea1.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_tea2.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_tea3.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_tea4.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_tea5.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/fragment_third.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/header_home.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/row_banner_brand.xml" value="0.18857142857142858" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/layout/row_order_list.xml" value="0.22604166666666667" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/menu/home_menu.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/zepto2/app/src/main/res/menu/menu_bottom_nav.xml" value="0.22708333333333333" />
+        <entry key="..\:/Users/dell/AndroidStudioProjects/zepto2/app/src/main/res/drawable/add.xml" value="0.1235" />
+        <entry key="..\:/Users/dell/AndroidStudioProjects/zepto2/app/src/main/res/drawable/border_layout.xml" value="0.151" />
+        <entry key="..\:/Users/dell/AndroidStudioProjects/zepto2/app/src/main/res/drawable/rate_cut.xml" value="0.1235" />
+        <entry key="..\:/Users/dell/AndroidStudioProjects/zepto2/app/src/main/res/layout/activity_detail.xml" value="0.165" />
+        <entry key="..\:/Users/dell/AndroidStudioProjects/zepto2/app/src/main/res/layout/activity_home.xml" value="0.11235955056179775" />
+        <entry key="..\:/Users/dell/AndroidStudioProjects/zepto2/app/src/main/res/layout/activity_login.xml" value="0.1796875" />
+        <entry key="..\:/Users/dell/AndroidStudioProjects/zepto2/app/src/main/res/layout/activity_main.xml" value="0.1796875" />
+        <entry key="..\:/Users/dell/AndroidStudioProjects/zepto2/app/src/main/res/layout/activity_registration.xml" value="0.165625" />
+        <entry key="..\:/Users/dell/AndroidStudioProjects/zepto2/app/src/main/res/layout/activity_single_trending.xml" value="0.1796875" />
+        <entry key="..\:/Users/dell/AndroidStudioProjects/zepto2/app/src/main/res/layout/activity_your_order.xml" value="0.1796875" />
+        <entry key="..\:/Users/dell/AndroidStudioProjects/zepto2/app/src/main/res/layout/activity_your_order_status.xml" value="0.1796875" />
+        <entry key="..\:/Users/dell/AndroidStudioProjects/zepto2/app/src/main/res/layout/add_item_count.xml" value="0.1796875" />
+        <entry key="..\:/Users/dell/AndroidStudioProjects/zepto2/app/src/main/res/layout/app_bar_home.xml" value="0.17864583333333334" />
+        <entry key="..\:/Users/dell/AndroidStudioProjects/zepto2/app/src/main/res/layout/bottom_total_amount.xml" value="0.1796875" />
+        <entry key="..\:/Users/dell/AndroidStudioProjects/zepto2/app/src/main/res/layout/cardview_item.xml" value="0.25" />
+        <entry key="..\:/Users/dell/AndroidStudioProjects/zepto2/app/src/main/res/layout/catagories_row.xml" value="0.32701421800947866" />
+        <entry key="..\:/Users/dell/AndroidStudioProjects/zepto2/app/src/main/res/layout/detail_row.xml" value="0.1796875" />
+        <entry key="..\:/Users/dell/AndroidStudioProjects/zepto2/app/src/main/res/layout/header_home.xml" value="0.17864583333333334" />
+        <entry key="..\:/Users/dell/AndroidStudioProjects/zepto2/app/src/main/res/menu/home_menu.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
