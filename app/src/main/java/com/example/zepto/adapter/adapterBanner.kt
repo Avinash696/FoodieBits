@@ -2,7 +2,9 @@ package com.example.zepto.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zepto.databinding.RowBannerBrandBinding
@@ -28,11 +30,18 @@ class adapterBanner(
         return CustomViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int)  {
         val data = arrayData[position]
         //status +date
         binding.tvBrandInFocusRow.setImageResource(data.bannerImg)
+        holder.itemView.setOnClickListener {
 
+        }
+//        when(position){
+//            0 -> Log.d("adapter", "onBindViewHolder: 0")
+//            1 -> Log.d("adapter", "onBindViewHolder: 1")
+//            2 -> Log.d("adapter", "onBindViewHolder: 2")
+//        }
         //onclick on item
         holder.itemView.setOnClickListener{
             context.startActivity(Intent(context, TopBannerActivity::class.java))

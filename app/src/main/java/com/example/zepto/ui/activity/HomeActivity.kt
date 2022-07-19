@@ -1,6 +1,5 @@
 package com.example.zepto.ui.activity
 
-
 import android.Manifest
 import android.app.Dialog
 import android.content.Intent
@@ -10,7 +9,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.MenuItem
-import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.GridView
@@ -32,17 +30,13 @@ import com.example.zepto.adapter.adapterCategories
 import com.example.zepto.adapter.adapterTrending
 import com.example.zepto.databinding.ActivityHomeBinding
 import com.example.zepto.model.bannerBrandModel
-import com.example.zepto.model.beautyItemModel
 import com.example.zepto.model.cardItemModel
-import com.example.zepto.model.listCategory
-import com.example.zepto.ui.fragment.SecondFragment
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import java.util.*
 import kotlin.collections.ArrayList
-
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
@@ -68,8 +62,6 @@ class HomeActivity : AppCompatActivity() {
         init()
         showImg()
         tendingItem()
-        catalogItem()
-//        catalogGridView()
         locationPermission()
         brandFocusBottom()
         brandFocusTop()
@@ -96,89 +88,90 @@ class HomeActivity : AppCompatActivity() {
         //categories on click
         binding.llBeautyProduct.setOnClickListener {
 //            someDummyArray()
-            val intent = Intent(this,DetailActivity::class.java)
+            val intent = Intent(this, DetailActivity::class.java)
 //            val beautyKey = beautyItemModel(R.drawable.b10,"All Item",1, R.drawable.b1, "Beauty1", 197, 120)
-            intent.putExtra("beautyKey",1)
+            intent.putExtra("beautyKey", 1)
             startActivity(intent)
         }
         binding.llInstantFood.setOnClickListener {
 //            someDummyArray()
-            val intent = Intent(this,DetailActivity::class.java)
+            val intent = Intent(this, DetailActivity::class.java)
 //            val beautyKey = beautyItemModel(R.drawable.b10,"All Item",1, R.drawable.b1, "Beauty1", 197, 120)
-            intent.putExtra("beautyKey",2)
+            intent.putExtra("beautyKey", 2)
             startActivity(intent)
         }
         binding.llColdDrink.setOnClickListener {
 //            someDummyArray()
-            val intent = Intent(this,DetailActivity::class.java)
+            val intent = Intent(this, DetailActivity::class.java)
 //            val beautyKey = beautyItemModel(R.drawable.b10,"All Item",1, R.drawable.b1, "Beauty1", 197, 120)
-            intent.putExtra("beautyKey",3)
+            intent.putExtra("beautyKey", 3)
             startActivity(intent)
         }
         binding.llBiscuit.setOnClickListener {
 //            someDummyArray()
-            val intent = Intent(this,DetailActivity::class.java)
+            val intent = Intent(this, DetailActivity::class.java)
 //            val beautyKey = beautyItemModel(R.drawable.b10,"All Item",1, R.drawable.b1, "Beauty1", 197, 120)
-            intent.putExtra("beautyKey",4)
+            intent.putExtra("beautyKey", 4)
             startActivity(intent)
         }
         binding.llChoco.setOnClickListener {
 //            someDummyArray()
-            val intent = Intent(this,DetailActivity::class.java)
+            val intent = Intent(this, DetailActivity::class.java)
 //            val beautyKey = beautyItemModel(R.drawable.b10,"All Item",1, R.drawable.b1, "Beauty1", 197, 120)
-            intent.putExtra("beautyKey",5)
+            intent.putExtra("beautyKey", 5)
             startActivity(intent)
         }
         binding.llMasala.setOnClickListener {
 //            someDummyArray()
-            val intent = Intent(this,DetailActivity::class.java)
+            val intent = Intent(this, DetailActivity::class.java)
 //            val beautyKey = beautyItemModel(R.drawable.b10,"All Item",1, R.drawable.b1, "Beauty1", 197, 120)
-            intent.putExtra("beautyKey",6)
+            intent.putExtra("beautyKey", 6)
             startActivity(intent)
         }
         binding.llOil.setOnClickListener {
 //            someDummyArray()
-            val intent = Intent(this,DetailActivity::class.java)
+            val intent = Intent(this, DetailActivity::class.java)
 //            val beautyKey = beautyItemModel(R.drawable.b10,"All Item",1, R.drawable.b1, "Beauty1", 197, 120)
-            intent.putExtra("beautyKey",7)
+            intent.putExtra("beautyKey", 7)
             startActivity(intent)
         }
         binding.llSauce.setOnClickListener {
 //            someDummyArray()
-            val intent = Intent(this,DetailActivity::class.java)
+            val intent = Intent(this, DetailActivity::class.java)
 //            val beautyKey = beautyItemModel(R.drawable.b10,"All Item",1, R.drawable.b1, "Beauty1", 197, 120)
-            intent.putExtra("beautyKey",8)
+            intent.putExtra("beautyKey", 8)
             startActivity(intent)
         }
         binding.llCoffee.setOnClickListener {
 //            someDummyArray()
-            val intent = Intent(this,DetailActivity::class.java)
+            val intent = Intent(this, DetailActivity::class.java)
 //            val beautyKey = beautyItemModel(R.drawable.b10,"All Item",1, R.drawable.b1, "Beauty1", 197, 120)
-            intent.putExtra("beautyKey",9)
+            intent.putExtra("beautyKey", 9)
             startActivity(intent)
         }
         binding.llGreenTea.setOnClickListener {
 //            someDummyArray()
-            val intent = Intent(this,DetailActivity::class.java)
+            val intent = Intent(this, DetailActivity::class.java)
 //            val beautyKey = beautyItemModel(R.drawable.b10,"All Item",1, R.drawable.b1, "Beauty1", 197, 120)
-            intent.putExtra("beautyKey",10)
+            intent.putExtra("beautyKey", 10)
             startActivity(intent)
         }
         binding.llCleaningEssence.setOnClickListener {
 //            someDummyArray()
-            val intent = Intent(this,DetailActivity::class.java)
+            val intent = Intent(this, DetailActivity::class.java)
 //            val beautyKey = beautyItemModel(R.drawable.b10,"All Item",1, R.drawable.b1, "Beauty1", 197, 120)
-            intent.putExtra("beautyKey",11)
+            intent.putExtra("beautyKey", 11)
             startActivity(intent)
         }
         binding.llTea.setOnClickListener {
 //            someDummyArray()
-            val intent = Intent(this,DetailActivity::class.java)
+            val intent = Intent(this, DetailActivity::class.java)
 //            val beautyKey = beautyItemModel(R.drawable.b10,"All Item",1, R.drawable.b1, "Beauty1", 197, 120)
-            intent.putExtra("beautyKey",12)
+            intent.putExtra("beautyKey", 12)
             startActivity(intent)
         }
     }
+
     private fun changeFragment(fragment: Fragment) {
         val fragmentManager: FragmentManager = supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
@@ -265,7 +258,6 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun tendingItem() {
-
         val arrayList = ArrayList<cardItemModel>()
         arrayList.add(cardItemModel(1, R.drawable.f1, "Maggie", 2, 3))
         arrayList.add(cardItemModel(1, R.drawable.beauty, "Beauty", 2, 3))
@@ -285,43 +277,6 @@ class HomeActivity : AppCompatActivity() {
         rvTrending.adapter = arrayAdapter
     }
 
-    private fun catalogItem() {
-        val arrayList = ArrayList<cardItemModel>()
-        arrayList.add(cardItemModel(1, R.drawable.fruit_vegitable, "Pizza", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.fruit_vegitable, "Pizza", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.fruit_vegitable, "Pizza", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.fruit_vegitable, "Pizza", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.fruit_vegitable, "Pizza", 2, 3))
-
-//        rvCategories.layoutManager = LinearLayoutManager(this)
-//        val arrayAdapter = adapterTrending(arrayList)
-//        rvCategories.adapter = arrayAdapter
-    }
-
-//    private fun catalogGridView() {
-//        val arrayList = ArrayList<cardItemModel>()
-//        arrayList.add(cardItemModel(1, R.drawable.beauty, "Beauty", 2, 3))
-//        arrayList.add(cardItemModel(1, R.drawable.colddrink, "Cold Drink", 2, 3))
-//        arrayList.add(cardItemModel(1, R.drawable.biscut, "Biscuts", 2, 3))
-//        arrayList.add(cardItemModel(1, R.drawable.fruit_vegitable, "Pizza", 2, 3))
-//        arrayList.add(cardItemModel(1, R.drawable.fruit_vegitable, "Pizza", 2, 3))
-//        arrayList.add(cardItemModel(1, R.drawable.fruit_vegitable, "Pizza", 2, 3))
-//        arrayList.add(cardItemModel(1, R.drawable.fruit_vegitable, "Pizza", 2, 3))
-//        arrayList.add(cardItemModel(1, R.drawable.fruit_vegitable, "Pizza", 2, 3))
-//        arrayList.add(cardItemModel(1, R.drawable.fruit_vegitable, "Pizza", 2, 3))
-//        arrayList.add(cardItemModel(1, R.drawable.fruit_vegitable, "Pizza", 2, 3))
-//        arrayList.add(cardItemModel(1, R.drawable.fruit_vegitable, "Pizza", 2, 3))
-//
-//        val adapter = adapterCategories(this, arrayList)
-//        simpleCategories.adapter = adapter
-//    }
-
-    //specific right menu
-//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-//        menuInflater.inflate(R.menu.home_menu, menu)
-//        return super.onCreateOptionsMenu(menu)
-//    }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_order -> startActivity(Intent(this, AdminActivity::class.java))
@@ -333,16 +288,6 @@ class HomeActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
-
-//    override fun onContextItemSelected(item: MenuItem): Boolean {
-//        when (item.itemId) {
-//            R.id.menu_refund -> Toast.makeText(this, "Refund Clicked", Toast.LENGTH_SHORT).show()
-//            R.id.menu_order -> startActivity(Intent(this, AdminActivity::class.java))
-//            R.id.menu_category -> startActivity(Intent(this, AdminActivity::class.java))
-//            R.id.menu_home -> startActivity(Intent(this, AdminActivity::class.java))
-//        }
-//        return true
-//    }
 
 
     private fun locationPermission() {
@@ -393,7 +338,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun dialogHomeScreen() {
-        val dialog = Dialog(this)
+        val dialog = Dialog(this, R.style.full_screen_dialog)
         dialog.window?.setLayout(
             ViewGroup.LayoutParams.MATCH_PARENT,
             ViewGroup.LayoutParams.MATCH_PARENT
@@ -403,26 +348,30 @@ class HomeActivity : AppCompatActivity() {
         val simpleCategories = dialog.findViewById<GridView>(R.id.simpleView)
 
         val arrayList = ArrayList<cardItemModel>()
-        arrayList.add(cardItemModel(1, R.drawable.beauty, "Beauty", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.beauty, "Beauty", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.colddrink, "Cold Drink", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.biscut, "Biscuts", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.fruit_vegitable, "Pizza", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.fruit_vegitable, "Pizza", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.fruit_vegitable, "Pizza", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.fruit_vegitable, "Pizza", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.fruit_vegitable, "Pizza", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.fruit_vegitable, "Pizza", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.fruit_vegitable, "Pizza", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.fruit_vegitable, "Pizza", 2, 3))
+
+        arrayList.add(cardItemModel(12, R.drawable.f1, "Maggie", 2, 3))
+        arrayList.add(cardItemModel(11, R.drawable.beauty, "Beauty", 2, 3))
+        arrayList.add(cardItemModel(21, R.drawable.biscut, "Biscuits", 2, 3))
+        arrayList.add(cardItemModel(31, R.drawable.colddrink, "Drinks", 2, 3))
+        arrayList.add(cardItemModel(41, R.drawable.egg, "Eggs", 2, 3))
+        arrayList.add(cardItemModel(51, R.drawable.fruit_vegitable, "Fruit Vegetable", 2, 3))
+        arrayList.add(cardItemModel(61, R.drawable.munch, "Munch", 2, 3))
+        arrayList.add(cardItemModel(71, R.drawable.surf, "Surf", 2, 3))
+        arrayList.add(cardItemModel(17, R.drawable.beauty, "Beauty", 2, 3))
+        arrayList.add(cardItemModel(15, R.drawable.beauty, "Beauty", 2, 3))
+        arrayList.add(cardItemModel(14, R.drawable.colddrink, "Cold Drink", 2, 3))
+        arrayList.add(cardItemModel(13, R.drawable.biscut, "Biscuts", 2, 3))
+        arrayList.add(cardItemModel(21, R.drawable.fruit_vegitable, "Pizza", 2, 3))
+        arrayList.add(cardItemModel(11, R.drawable.fruit_vegitable, "Pizza", 2, 3))
 
         val adapter = adapterCategories(this, arrayList)
         simpleCategories.adapter = adapter
 
         dialog.show()
     }
+
     private fun dialogCategories() {
-        val dialog = Dialog(this)
+        val dialog = Dialog(this, R.style.full_screen_dialog)
         dialog.window?.setLayout(
             ViewGroup.LayoutParams.MATCH_PARENT,
             ViewGroup.LayoutParams.MATCH_PARENT
@@ -432,31 +381,32 @@ class HomeActivity : AppCompatActivity() {
         val simpleCategories = dialog.findViewById<GridView>(R.id.simpleView)
 
         val arrayList = ArrayList<cardItemModel>()
-        arrayList.add(cardItemModel(1, R.drawable.by1, "Beauty", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.instant1, "Instant Food", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.cd1, "Cold Drink", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.biscut, "Biscuts", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.c1, "Choco", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.m1, "Masala", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.oil1, "Oil", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.s1, "Sauce", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.coffee0, "Coffee", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.gt1, "Green Tea", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.tea1, "Tea ", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.clean_item, "Cleaning Essential", 2, 3))
+        arrayList.add(cardItemModel(12, R.drawable.by1, "Beauty", 2, 3))
+        arrayList.add(cardItemModel(11, R.drawable.instant1, "Instant Food", 2, 3))
+        arrayList.add(cardItemModel(21, R.drawable.cd1, "Cold Drink", 2, 3))
+        arrayList.add(cardItemModel(31, R.drawable.biscut, "Biscuts", 2, 3))
+        arrayList.add(cardItemModel(41, R.drawable.c1, "Choco", 2, 3))
+        arrayList.add(cardItemModel(51, R.drawable.m1, "Masala", 2, 3))
+        arrayList.add(cardItemModel(61, R.drawable.oil1, "Oil", 2, 3))
+        arrayList.add(cardItemModel(71, R.drawable.s1, "Sauce", 2, 3))
+        arrayList.add(cardItemModel(17, R.drawable.coffee0, "Coffee", 2, 3))
+        arrayList.add(cardItemModel(15, R.drawable.gt1, "Green Tea", 2, 3))
+        arrayList.add(cardItemModel(14, R.drawable.tea1, "Tea ", 2, 3))
+        arrayList.add(cardItemModel(13, R.drawable.clean_item, "Cleaning Essential", 2, 3))
 
         val adapter = adapterCategories(this, arrayList)
         simpleCategories.adapter = adapter
 
         dialog.show()
     }
-    private fun brandFocusBottom(){
+
+    private fun brandFocusBottom() {
         val arrayList = ArrayList<bannerBrandModel>()
-        arrayList.add(bannerBrandModel( R.drawable.offer1))
-        arrayList.add(bannerBrandModel( R.drawable.offer2))
-        arrayList.add(bannerBrandModel( R.drawable.offer3))
-        arrayList.add(bannerBrandModel( R.drawable.offer5))
-        arrayList.add(bannerBrandModel( R.drawable.offer6))
+        arrayList.add(bannerBrandModel(R.drawable.cleaning_offer))
+        arrayList.add(bannerBrandModel(R.drawable.choclate_offer))
+
+        arrayList.add(bannerBrandModel(R.drawable.drink_offer))
+        arrayList.add(bannerBrandModel(R.drawable.food_offer))
 
         binding.rvBrandFocusBottom.layoutManager = LinearLayoutManager(
             this,
@@ -464,15 +414,16 @@ class HomeActivity : AppCompatActivity() {
             false
         )
         val arrayAdapter = adapterBanner(arrayList, this)
+
         binding.rvBrandFocusBottom.adapter = arrayAdapter
     }
-    private fun brandFocusTop(){
+    private fun brandFocusTop() {
         val arrayList = ArrayList<bannerBrandModel>()
-        arrayList.add(bannerBrandModel( R.drawable.offer10))
-        arrayList.add(bannerBrandModel( R.drawable.offer6))
-        arrayList.add(bannerBrandModel( R.drawable.offer7))
-        arrayList.add(bannerBrandModel( R.drawable.offer8))
-        arrayList.add(bannerBrandModel( R.drawable.offer9))
+
+        arrayList.add(bannerBrandModel(R.drawable.food_offer))
+        arrayList.add(bannerBrandModel(R.drawable.babycare_offer))
+        arrayList.add(bannerBrandModel(R.drawable.snakes_offer))
+        arrayList.add(bannerBrandModel(R.drawable.healtynuts_offer))
 
         binding.rvBrandFocus.layoutManager = LinearLayoutManager(
             this,
@@ -480,45 +431,8 @@ class HomeActivity : AppCompatActivity() {
             false
         )
         val arrayAdapter = adapterBanner(arrayList, this)
+
         binding.rvBrandFocus.adapter = arrayAdapter
     }
-    private fun someDummyArray(){
-        val beautyArrDemo = arrayListOf<listCategory>()
-//        beautyArrDemo.add(listCategory(R.drawable.b10, "All Item"))
-//        beautyArrDemo.add(listCategory(R.drawable.b1, "Face Cream"))
-//        beautyArrDemo.add(listCategory(R.drawable.b2, "Body Cream"))
-//        beautyArrDemo.add(listCategory(R.drawable.b3, "Hair Cream "))
-//        beautyArrDemo.add(listCategory(R.drawable.b4, "eye Cream"))
-//        beautyArrDemo.add(listCategory(R.drawable.b5, "Nose Cream"))
-//        beautyArrDemo.add(listCategory(R.drawable.b6, "Cream"))
-//
-//        val beautySubList = arrayListOf<cardItemModel>()
-//        beautySubList.add(cardItemModel(1, R.drawable.b1, "Beauty", 197, 120))
-//        beautySubList.add(cardItemModel(1, R.drawable.b2, "Beauty", 197, 120))
-//        beautySubList.add(cardItemModel(1, R.drawable.b3, "Beauty", 197, 120))
-//        beautySubList.add(cardItemModel(1, R.drawable.b4, "Beauty", 197, 120))
-//        beautySubList.add(cardItemModel(1, R.drawable.b5, "Beauty", 197, 120))
-//        beautySubList.add(cardItemModel(1, R.drawable.b6, "Beauty", 197, 120))
-//        beautySubList.add(cardItemModel(1, R.drawable.b7, "Beauty", 197, 120))
-//
-//        val beautyMainList = ArrayList<List<cardItemModel>>()
-//        beautyMainList.add(0,beautySubList)
-//        beautyMainList.add(1,beautySubList)
-//        beautyMainList.add(1,beautySubList)
-//        beautyMainList.add(1,beautySubList)
-//        beautyMainList.add(1,beautySubList)
-//        beautyMainList.add(1,beautySubList)
-//        beautyMainList.add(1,beautySubList)
 
-    val beautyTestData = ArrayList<beautyItemModel>()
-
-        beautyTestData.add(beautyItemModel(R.drawable.b10,"All Item",1, R.drawable.b1, "Beauty1", 197, 120))
-        beautyTestData.add(beautyItemModel(R.drawable.b1,"Face Cream",1, R.drawable.b2, "Beauty2", 197, 120))
-        beautyTestData.add(beautyItemModel(R.drawable.b2,"Body Cream",1, R.drawable.b3, "Beauty3", 197, 120))
-        beautyTestData.add(beautyItemModel(R.drawable.b3,"Hair Cream",1, R.drawable.b4, "Beauty4", 197, 120))
-        beautyTestData.add(beautyItemModel(R.drawable.b4,"eye Cream",1, R.drawable.b5, "Beauty5", 197, 120))
-        beautyTestData.add(beautyItemModel(R.drawable.b5,"Nose Cream",1, R.drawable.b6, "Beauty6", 197, 120))
-
-
-    }
 }

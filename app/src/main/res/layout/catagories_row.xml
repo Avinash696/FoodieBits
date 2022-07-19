@@ -7,9 +7,10 @@
     </data>
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/cloudy_color">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_layout"
+        android:layout_margin="2dp">
 
 
         <androidx.cardview.widget.CardView
