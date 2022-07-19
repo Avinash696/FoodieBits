@@ -28,41 +28,47 @@ class SingleTrendingActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySingleTrendingBinding
     private lateinit var dialogbinding: AddItemCountBinding
     private lateinit var dialogTotalBinding: BottomTotalAmountBinding
-    private lateinit var singleWalletViewModel :SingleTWalletViewModel
+    private lateinit var singleWalletViewModel: SingleTWalletViewModel
     private lateinit var rvBottom: RecyclerView
     private var itemCount: Int = 0
 
-    var amountData :Int = 0
-    lateinit var nameData  :String
-     var imgData  :Int =0
+    var amountData: Int = 0
+    lateinit var nameData: String
+    var imgData: Int = 0
+
     //wallet item count
     var walletItemCount = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_single_trending)
 
-        binding.btAddtrending.setOnClickListener {
-            showMyDialog()
-        }
         tendingItem()
 
         //intent get
         val intentTrending = intent
-         amountData = intentTrending.getIntExtra("amountKey",1)
-         nameData = intentTrending.getStringExtra("nameKey").toString()
-         imgData = intentTrending.getIntExtra("imgKey",0)
+        amountData = intentTrending.getIntExtra("amountKey", 1)
+        nameData = intentTrending.getStringExtra("nameKey").toString()
+        imgData = intentTrending.getIntExtra("imgKey", 0)
         Log.d("ttt", "onCreate: $amountData  $nameData $imgData")
         activityFieldsSet()
         //viewModel
-        singleWalletViewModel = ViewModelProvider(this,SingleWalletFactory(amountData))[SingleTWalletViewModel::class.java]
+        singleWalletViewModel = ViewModelProvider(
+            this,
+            SingleWalletFactory(amountData)
+        )[SingleTWalletViewModel::class.java]
 
+        binding.btAddtrending.setOnClickListener {
+            showMyDialog(imgData)
+        }
     }
-    private fun activityFieldsSet(){
+
+    private fun activityFieldsSet() {
         binding.tvNameSingle.text = nameData
         binding.tvItemCostSingleTrending.text = amountData.toString()
         binding.ivIcons.setImageResource(imgData)
     }
-    private fun showMyDialog() {
+
+    private fun showMyDialog(imgData:Int) {
         val dialog = Dialog(this)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialogbinding = AddItemCountBinding.inflate(layoutInflater)
@@ -75,7 +81,8 @@ class SingleTrendingActivity : AppCompatActivity() {
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.window?.attributes?.windowAnimations = R.style.DialogAnimation
         dialog.window?.setGravity(Gravity.BOTTOM)
-
+        //my img dialog  set
+        dialogbinding.ivDialogSingleItem.setImageResource(imgData)
         //initilize item inside dialog
         dialogbinding.dialogItemName.setOnClickListener {
             Log.d("rawat", "showMyDialog: Works")
@@ -85,7 +92,8 @@ class SingleTrendingActivity : AppCompatActivity() {
             singleWalletViewModel.itemCountDec()
             singleWalletViewModel.totalAmount()
             Log.d("dialogCheck", "showMyDialog: ${singleWalletViewModel.itemCount}")
-            dialogbinding.tvCount.text = (itemCount).toString()
+            dialogbinding.tvCount.text = singleWalletViewModel.itemCount.toString()
+
             dialogbinding.tvAddItemRs.text = (singleWalletViewModel.totalAmount).toString()
         }
         //add item
@@ -97,7 +105,7 @@ class SingleTrendingActivity : AppCompatActivity() {
             singleWalletViewModel.itemCountInc()
             singleWalletViewModel.totalAmount()
             Log.d("dialogCheck", "showMyDialog: ${singleWalletViewModel.itemCount}")
-            dialogbinding.tvCount.text = (itemCount).toString()
+            dialogbinding.tvCount.text = singleWalletViewModel.itemCount.toString()
             dialogbinding.tvAddItemRs.text = (singleWalletViewModel.totalAmount).toString()
         }
 
@@ -120,12 +128,20 @@ class SingleTrendingActivity : AppCompatActivity() {
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.window?.attributes?.windowAnimations = R.style.DialogAnimation
         dialog.window?.setGravity(Gravity.BOTTOM)
-
+        //var set
+        dialogTotalBinding.tvTotalItemAmount.text = singleWalletViewModel.totalAmount.toString()
         dialogTotalBinding.cBottomTotal.setOnClickListener {
-            startActivity(Intent(this, YourOrderActivity::class.java))
+//            startActivity(Intent(this, YourOrderActivity::class.java))
+            val intent = Intent(this,YourOrderActivity::class.java)
+            intent.putExtra("nameKey",nameData)
+            intent.putExtra("itemCountKey",singleWalletViewModel.itemCount)
+            intent.putExtra("amountKey",singleWalletViewModel.totalAmount)
+            Log.d("sunday", "onCreate: ${singleWalletViewModel.itemCount}  ${singleWalletViewModel.totalAmount}")
+            startActivity(intent)
             Log.d("rawat", "showTotalDialog: Works")
         }
     }
+
 
     private fun tendingItem() {
 

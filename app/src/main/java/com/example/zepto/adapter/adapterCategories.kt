@@ -2,6 +2,7 @@ package com.example.zepto.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import android.widget.TextView
 import com.example.zepto.R
 import com.example.zepto.model.cardItemModel
 import com.example.zepto.ui.activity.DetailActivity
+import com.example.zepto.ui.activity.SingleTrendingActivity
 
 
 class adapterCategories(
@@ -38,7 +40,7 @@ class adapterCategories(
         if (myView == null) {
             val inflate =
                 context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            myView =  inflate.inflate(R.layout.catagories_row,viewGroup,false)
+            myView = inflate.inflate(R.layout.catagories_row, viewGroup, false)
         }
         //fields assign
         val name = myView!!.findViewById<TextView>(R.id.tvCateItemName)
@@ -47,11 +49,17 @@ class adapterCategories(
         val data = arraydata[position]
 
         //set data
-        name.text =data.name
+        name.text = data.name
         itemPic.setImageResource(data.img)
 
         itemPic.setOnClickListener {
-            context.startActivity(Intent(context,DetailActivity::class.java))
+//            context.startActivity(Intent(context, DetailActivity::class.java))
+            val intent = Intent(context, SingleTrendingActivity::class.java)
+            Log.d("catAdapter", "AdapterCate:${data.Price} ${data.discount}  ${data.discountPrice}")
+            intent.putExtra("amountKey",data.Price)
+            intent.putExtra("nameKey",data.name)
+            intent.putExtra("imgKey",data.img)
+            context.startActivity(intent)
         }
         return myView
     }
