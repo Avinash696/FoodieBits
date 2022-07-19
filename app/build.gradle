@@ -65,7 +65,12 @@ dependencies {
     //viewModel
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0-alpha01'
-
+   //slider
+//    implementation 'com.github.smarteist:autoimageslider:1.4.0'
+//    implementation 'com.github.smarteist:autoimageslider:1.4.0-appcompat'
+//    implementation 'com.github.jitpack:gradle-simple:1.0'
+//    implementation 'com.github.smarteist:autoimageslider:1.4.0'
+//    implementation 'com.github.smarteist:autoimageslider:1.4.0-appcompat'
     tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
         kotlinOptions {
             freeCompilerArgs += ["-Xjvm-default=all",]

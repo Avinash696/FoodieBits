@@ -44,26 +44,6 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="55dp">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_margin="9dp"
-                    android:layout_marginTop="60dp"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/cart" />
-
-                    <TextView
-                        android:id="@+id/tvCartCount"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Count"
-                        android:textColor="@color/black" />
-                </LinearLayout>
 
                 <ScrollView
                     android:layout_width="match_parent"
@@ -77,31 +57,89 @@
                         android:orientation="vertical"
                         tools:context=".ui.activity.HomeActivity">
 
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="match_parent"
-                            android:layout_height="34dp"
-                            android:background="#C5E1A5"
-                            app:cardCornerRadius="20dp">
+                        <!--                        <androidx.cardview.widget.CardView-->
+                        <!--                            android:layout_width="match_parent"-->
+                        <!--                            android:layout_height="30dp"-->
+                        <!--                            android:background="#C5E1A5"-->
+                        <!--                            app:cardCornerRadius="20dp">-->
 
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:background="@drawable/search" />
+                        <!--                            <ImageView-->
+                        <!--                                android:layout_width="wrap_content"-->
+                        <!--                                android:layout_height="wrap_content"-->
+                        <!--                                android:layout_gravity="center_vertical"-->
+                        <!--                                android:background="@drawable/search" />-->
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="30dp"
-                                android:text="Search Product"
-                                android:textSize="30dp" />
-                        </androidx.cardview.widget.CardView>
+                        <!--                            <TextView-->
+                        <!--                                android:layout_width="wrap_content"-->
+                        <!--                                android:layout_height="wrap_content"-->
+                        <!--                                android:layout_marginStart="30dp"-->
+                        <!--                                android:text="Search Product"-->
+                        <!--                                android:textSize="30sp" />-->
+                        <!--                        </androidx.cardview.widget.CardView>-->
                         <!--                        <pl.droidsonroids.gif.GifImageView-->
                         <!--                            android:id="@+id/gif"-->
                         <!--                            android:layout_width="match_parent"-->
                         <!--                            android:layout_height="130dp"-->
                         <!--                            android:background="#fff"-->
                         <!--                            android:src="@drawable/splash_gif" />-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:background="#EF9A9A"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:id="@+id/llSearchProduct">
+
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_gravity="center_vertical"
+                                    android:src="@drawable/search" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center_vertical"
+                                    android:text="Search Product"
+                                    android:textColor="@color/black"
+                                    android:textSize="17sp" />
+                            </LinearLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginRight="20dp"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/cart" />
+
+                                    <TextView
+                                        android:id="@+id/tvCartCount"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Count"
+                                        android:textColor="@color/black" />
+                                </LinearLayout>
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/rvBrandFocus"
                             android:layout_width="match_parent"
@@ -186,7 +224,8 @@
                                     android:layout_margin="2dp"
                                     android:layout_weight="1"
                                     android:background="@drawable/border_layout"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:padding="4dp">
 
                                     <ImageView
 
@@ -200,8 +239,6 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_gravity="center_horizontal"
-
-
                                         android:text="Beauty"
                                         android:textColor="@color/black" />
 
@@ -214,7 +251,8 @@
                                     android:layout_margin="2dp"
                                     android:layout_weight="1"
                                     android:background="@drawable/border_layout"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:padding="4dp">
 
                                     <ImageView
                                         android:layout_width="50dp"
@@ -241,7 +279,8 @@
                                     android:layout_margin="2dp"
                                     android:layout_weight="1"
                                     android:background="@drawable/border_layout"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:padding="4dp">
 
                                     <ImageView
 
@@ -269,7 +308,8 @@
                                     android:layout_margin="2dp"
                                     android:layout_weight="1"
                                     android:background="@drawable/border_layout"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:padding="4dp">
 
                                     <ImageView
 
@@ -303,7 +343,8 @@
                                     android:layout_margin="2dp"
                                     android:layout_weight="1"
                                     android:background="@drawable/border_layout"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:padding="4dp">
 
                                     <ImageView
                                         android:id="@+id/llChoco"
@@ -330,7 +371,8 @@
                                     android:layout_margin="2dp"
                                     android:layout_weight="1"
                                     android:background="@drawable/border_layout"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:padding="4dp">
 
                                     <ImageView
 
@@ -358,7 +400,8 @@
                                     android:layout_margin="2dp"
                                     android:layout_weight="1"
                                     android:background="@drawable/border_layout"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:padding="4dp">
 
                                     <ImageView
 
@@ -386,7 +429,8 @@
                                     android:layout_margin="2dp"
                                     android:layout_weight="1"
                                     android:background="@drawable/border_layout"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:padding="4dp">
 
                                     <ImageView
 
@@ -400,8 +444,6 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_gravity="center_horizontal"
-
-
                                         android:text="Sauce"
                                         android:textColor="@color/black" />
 
@@ -421,7 +463,8 @@
                                     android:layout_margin="2dp"
                                     android:layout_weight="1"
                                     android:background="@drawable/border_layout"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:padding="4dp">
 
                                     <ImageView
 
@@ -449,7 +492,8 @@
                                     android:layout_margin="2dp"
                                     android:layout_weight="1"
                                     android:background="@drawable/border_layout"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:padding="4dp">
 
                                     <ImageView
                                         android:layout_width="50dp"
@@ -474,7 +518,8 @@
                                     android:layout_margin="2dp"
                                     android:layout_weight="1"
                                     android:background="@drawable/border_layout"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:padding="4dp">
 
                                     <ImageView
 
@@ -488,9 +533,8 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_gravity="center_horizontal"
-                                        android:text="Cleaning \n Essential"
+                                        android:text="Home Clean"
                                         android:textColor="@color/black" />
-
                                 </LinearLayout>
 
                                 <LinearLayout
@@ -500,7 +544,8 @@
                                     android:layout_margin="2dp"
                                     android:layout_weight="1"
                                     android:background="@drawable/border_layout"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:padding="4dp">
 
                                     <ImageView
 
@@ -514,8 +559,6 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_gravity="center_horizontal"
-
-
                                         android:text="Tea"
                                         android:textColor="@color/black" />
 
@@ -535,6 +578,7 @@
                             android:textStyle="bold" />
 
                         <ImageView
+                            android:id="@+id/ivHomeTea"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"

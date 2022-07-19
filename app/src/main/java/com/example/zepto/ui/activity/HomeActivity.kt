@@ -51,9 +51,9 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var navView: NavigationView
 
     //location fused
-    lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
 
-    //cart countt
+    //cart count
     val count = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,6 +65,18 @@ class HomeActivity : AppCompatActivity() {
         locationPermission()
         brandFocusBottom()
         brandFocusTop()
+
+        //for tea banner
+        binding.ivHomeTea.setOnClickListener {
+            val intent = Intent(this, DetailActivity::class.java)
+            intent.putExtra("beautyKey", 10)
+            startActivity(intent)
+        }
+        //for now search without fn
+        binding.llSearchProduct.setOnClickListener {
+            Toast.makeText(this, "Searching Item Plz Wait", Toast.LENGTH_SHORT).show()
+        }
+
 
         //action
         setSupportActionBar(appBar)
@@ -210,9 +222,8 @@ class HomeActivity : AppCompatActivity() {
         appBar = binding.appBar
         drawerLayout = binding.mainDrawable
         rvTrending = binding.rvTrending
-//        simpleCategories = binding.simpleView
+//      simpleCategories = binding.simpleView
         bottomNavHome = binding.bottomNavigation
-
 
         //fused initilized
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
@@ -223,11 +234,13 @@ class HomeActivity : AppCompatActivity() {
         bottomNavHome.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_home -> {
+
                     startActivity(Intent(this, HomeActivity::class.java))
                     true
                 }
                 R.id.menu_category -> {
-                    startActivity(Intent(this, AdminActivity::class.java))
+                    dialogCategories()
+//                    startActivity(Intent(this, AdminActivity::class.java))
                     true
                 }
                 R.id.menu_order -> {
@@ -322,15 +335,16 @@ class HomeActivity : AppCompatActivity() {
             val location = it.result
             if (location != null) {
                 val geoCoder = Geocoder(this, Locale.getDefault())
-                val addressList = geoCoder.getFromLocation(location.latitude, location.longitude, 1)
-                supportActionBar?.title = addressList[0].getAddressLine(0) +
-                        "," + addressList[0].countryName
 
-                Log.d(
-                    "myloc",
-                    "showLocation: ${addressList[0].latitude} \n ${addressList[0].getAddressLine(0)}" +
-                            "\n ${addressList[0].locality}   \n ${addressList[0].countryName}"
-                )
+//                val addressList = geoCoder.getFromLocation(location.latitude, location.longitude, 1)
+//                supportActionBar?.title = addressList[0].getAddressLine(0) +
+//                        "," + addressList[0].countryName
+//                Log.d(
+//                    "myloc",
+//                    "showLocation: ${addressList[0].latitude} \n ${addressList[0].getAddressLine(0)}" +
+//                            "\n ${addressList[0].locality}   \n ${addressList[0].countryName}"
+//                )
+
             } else {
                 Log.d("myloc", "showLocation: Location Null buddy")
             }
@@ -392,7 +406,7 @@ class HomeActivity : AppCompatActivity() {
         arrayList.add(cardItemModel(17, R.drawable.coffee0, "Coffee", 2, 3))
         arrayList.add(cardItemModel(15, R.drawable.gt1, "Green Tea", 2, 3))
         arrayList.add(cardItemModel(14, R.drawable.tea1, "Tea ", 2, 3))
-        arrayList.add(cardItemModel(13, R.drawable.clean_item, "Cleaning Essential", 2, 3))
+        arrayList.add(cardItemModel(13, R.drawable.clean_item, "Home Clean", 2, 3))
 
         val adapter = adapterCategories(this, arrayList)
         simpleCategories.adapter = adapter
@@ -402,11 +416,15 @@ class HomeActivity : AppCompatActivity() {
 
     private fun brandFocusBottom() {
         val arrayList = ArrayList<bannerBrandModel>()
-        arrayList.add(bannerBrandModel(R.drawable.cleaning_offer))
-        arrayList.add(bannerBrandModel(R.drawable.choclate_offer))
+//        arrayList.add(bannerBrandModel(R.drawable.cleaning_offer))
+//        arrayList.add(bannerBrandModel(R.drawable.choclate_offer))
+//        arrayList.add(bannerBrandModel(R.drawable.drink_offer))
+//        arrayList.add(bannerBrandModel(R.drawable.food_offer))
 
-        arrayList.add(bannerBrandModel(R.drawable.drink_offer))
         arrayList.add(bannerBrandModel(R.drawable.food_offer))
+        arrayList.add(bannerBrandModel(R.drawable.babycare_offer))
+        arrayList.add(bannerBrandModel(R.drawable.beauty_banner))
+        arrayList.add(bannerBrandModel(R.drawable.healtynuts_offer))
 
         binding.rvBrandFocusBottom.layoutManager = LinearLayoutManager(
             this,
@@ -417,12 +435,13 @@ class HomeActivity : AppCompatActivity() {
 
         binding.rvBrandFocusBottom.adapter = arrayAdapter
     }
+
     private fun brandFocusTop() {
         val arrayList = ArrayList<bannerBrandModel>()
 
         arrayList.add(bannerBrandModel(R.drawable.food_offer))
         arrayList.add(bannerBrandModel(R.drawable.babycare_offer))
-        arrayList.add(bannerBrandModel(R.drawable.snakes_offer))
+        arrayList.add(bannerBrandModel(R.drawable.beauty_banner))
         arrayList.add(bannerBrandModel(R.drawable.healtynuts_offer))
 
         binding.rvBrandFocus.layoutManager = LinearLayoutManager(
@@ -430,6 +449,7 @@ class HomeActivity : AppCompatActivity() {
             LinearLayoutManager.HORIZONTAL,
             false
         )
+
         val arrayAdapter = adapterBanner(arrayList, this)
 
         binding.rvBrandFocus.adapter = arrayAdapter

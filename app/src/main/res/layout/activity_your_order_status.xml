@@ -5,5 +5,5 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.activity.YourOrderStatusActivity"
-    android:background="@drawable/order_placed_img">
+    android:background="@drawable/order_done">
 </androidx.constraintlayout.widget.ConstraintLayout>
