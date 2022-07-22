@@ -13,7 +13,7 @@
         app:showAsAction="ifRoom"/>
 
     <item android:id="@+id/menu_order"
-        android:title="Order"
+        android:title="Order History"
         android:icon="@drawable/order"
         app:showAsAction="withText"/>
     <item android:id="@+id/menu_profile"

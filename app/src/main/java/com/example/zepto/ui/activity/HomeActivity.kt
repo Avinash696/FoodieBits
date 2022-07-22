@@ -19,11 +19,10 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.zepto.viewModel.ItemCountViewModel
 import com.example.zepto.R
 import com.example.zepto.adapter.adapterBanner
 import com.example.zepto.adapter.adapterCategories
@@ -55,16 +54,65 @@ class HomeActivity : AppCompatActivity() {
 
     //cart count
     val count = 0
+
+    //intent send data 3 var
+    var intentName :ArrayList<String> = ArrayList<String>()
+    var intentAmount :ArrayList<Int> =ArrayList<Int>()
+    var intentImg :ArrayList<Int> =ArrayList<Int>()
+
+    //viewmodel cout
+    private lateinit var countViewModel: ItemCountViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
 
         init()
         showImg()
-        tendingItem()
+
         locationPermission()
         brandFocusBottom()
         brandFocusTop()
+
+        //viewModel
+        countViewModel = ViewModelProvider(this)[ItemCountViewModel::class.java]
+        tendingItem()
+        countViewModel.countMutableLiveData.observe(this) {
+            binding.tvCartCount.text = it.toString()
+
+        }
+        //getttog all values namearray , amount array and arraya key  in viewmdoel
+        //viewmdpel cant be used in 2 aciviies
+        //either create  2 array lost or array list in viewmdoel
+
+        //viewmodel 3 var observe
+
+        countViewModel.arrayName.observe(this){
+            for (i in 0 until it.size){
+                Log.d("buddy", "onCreate: ${it[i]}")
+                intentName.add(it[i])
+            }
+        }
+        countViewModel.imageName.observe(this){
+            for (i in 0 until it.size){
+                Log.d("buddy", "onCreate: ${it[i]}")
+                intentImg.add(it[i])
+            }
+        }
+        countViewModel.amountName.observe(this){
+            for (i in 0 until it.size){
+                Log.d("buddy", "onCreate: ${it[i]}")
+                intentAmount.add(it[i])
+            }
+        }
+        binding.tvCartCount.text = countViewModel.count.toString()
+
+        //counter update
+        binding.tvCartCount.text = countViewModel.toString()
+
+        //cart
+        binding.llCart.setOnClickListener {
+            startActivity(Intent(this, CartActivity::class.java))
+        }
 
         //for tea banner
         binding.ivHomeTea.setOnClickListener {
@@ -74,9 +122,8 @@ class HomeActivity : AppCompatActivity() {
         }
         //for now search without fn
         binding.llSearchProduct.setOnClickListener {
-            Toast.makeText(this, "Searching Item Plz Wait", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Searching Itretem Plz Wait", Toast.LENGTH_SHORT).show()
         }
-
 
         //action
         setSupportActionBar(appBar)
@@ -99,10 +146,13 @@ class HomeActivity : AppCompatActivity() {
 
         //categories on click
         binding.llBeautyProduct.setOnClickListener {
+            Log.d("tares", "onCreate: ")
+            Log.d("tares", "onCreate: $intentName $intentImg $intentAmount")
 //            someDummyArray()
             val intent = Intent(this, DetailActivity::class.java)
 //            val beautyKey = beautyItemModel(R.drawable.b10,"All Item",1, R.drawable.b1, "Beauty1", 197, 120)
             intent.putExtra("beautyKey", 1)
+            intent.putStringArrayListExtra("nameArrayKey",intentName)
             startActivity(intent)
         }
         binding.llInstantFood.setOnClickListener {
@@ -184,29 +234,26 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    private fun changeFragment(fragment: Fragment) {
-        val fragmentManager: FragmentManager = supportFragmentManager
-        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.flDetail, fragment)
-        fragmentTransaction.commit()
-    }
-
     private fun setSideNavBar() {
         navView.setNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.menu_refund -> {
-                    Toast.makeText(this, "Refund", Toast.LENGTH_SHORT).show()
+                R.id.menu_allCategories -> {
+                    dialogCategories()
                     true
                 }
                 R.id.menu_order -> {
                     startActivity(Intent(this, OrderListActivity::class.java))
                     true
                 }
-                R.id.menu_profile -> {
-//                    startActivity(Intent(this,CustomerProfileActivity::class.java))
+                R.id.menu_cart ->{
+                    startActivity(Intent(this,CartActivity::class.java))
                     true
                 }
-                R.id.menu_faq -> {
+                R.id.menu_profile -> {
+                    startActivity(Intent(this,ProfileActivity::class.java))
+                    true
+                }
+                R.id.menu_help -> {
                     startActivity(Intent(this, FaqsActivity::class.java))
                     true
                 }
@@ -224,7 +271,6 @@ class HomeActivity : AppCompatActivity() {
         rvTrending = binding.rvTrending
 //      simpleCategories = binding.simpleView
         bottomNavHome = binding.bottomNavigation
-
         //fused initilized
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
@@ -234,7 +280,6 @@ class HomeActivity : AppCompatActivity() {
         bottomNavHome.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_home -> {
-
                     startActivity(Intent(this, HomeActivity::class.java))
                     true
                 }
@@ -244,7 +289,7 @@ class HomeActivity : AppCompatActivity() {
                     true
                 }
                 R.id.menu_order -> {
-                    startActivity(Intent(this, OrderListActivity::class.java))
+                    startActivity(Intent(this, OrderSummaryActivity::class.java))
                     true
                 }
                 R.id.menu_profile -> {
@@ -286,21 +331,21 @@ class HomeActivity : AppCompatActivity() {
             LinearLayoutManager.HORIZONTAL,
             false
         )
-        val arrayAdapter = adapterTrending(arrayList, this)
+        val arrayAdapter = adapterTrending(arrayList, this, countViewModel)
         rvTrending.adapter = arrayAdapter
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.menu_order -> startActivity(Intent(this, AdminActivity::class.java))
-            R.id.menu_category -> startActivity(Intent(this, AdminActivity::class.java))
-            R.id.menu_home -> startActivity(Intent(this, AdminActivity::class.java))
-        }
-        if (actionBarDrawableToggle.onOptionsItemSelected(item)) {
-            return true
-        }
-        return super.onOptionsItemSelected(item)
-    }
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        when (item.itemId) {
+//            R.id.menu_order -> startActivity(Intent(this, AdminActivity::class.java))
+//            R.id.menu_category -> startActivity(Intent(this, AdminActivity::class.java))
+//            R.id.menu_home -> startActivity(Intent(this, AdminActivity::class.java))
+//        }
+//        if (actionBarDrawableToggle.onOptionsItemSelected(item)) {
+//            return true
+//        }
+//        return super.onOptionsItemSelected(item)
+//    }
 
 
     private fun locationPermission() {
@@ -408,7 +453,7 @@ class HomeActivity : AppCompatActivity() {
         arrayList.add(cardItemModel(14, R.drawable.tea1, "Tea ", 2, 3))
         arrayList.add(cardItemModel(13, R.drawable.clean_item, "Home Clean", 2, 3))
 
-        val adapter = adapterCategories(this, arrayList)
+        val adapter = adapterCategories(this, arrayList,)
         simpleCategories.adapter = adapter
 
         dialog.show()

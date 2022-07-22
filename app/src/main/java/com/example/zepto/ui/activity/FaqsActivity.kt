@@ -59,5 +59,43 @@ class FaqsActivity : AppCompatActivity() {
             else
                 binding.tvPoint5Desc.visibility = View.VISIBLE;
         }
+        //points
+        binding.tvPoint1HeadPay.setOnClickListener {
+            if (binding.tvPoint1DescPay.visibility == View.VISIBLE)
+                binding.tvPoint1DescPay.visibility = View.GONE;
+            else
+                binding.tvPoint1DescPay.visibility = View.VISIBLE;
+        }
+        binding.tvPoint2HeadPay.setOnClickListener {
+            if (binding.tvPoint2DescPay.visibility == View.VISIBLE)
+                binding.tvPoint2DescPay.visibility = View.GONE;
+            else
+                binding.tvPoint2DescPay.visibility = View.VISIBLE;
+        }
+        binding.tvPoint3HeadPay.setOnClickListener {
+            if (binding.tvPoint3DescPay.visibility == View.VISIBLE)
+                binding.tvPoint3DescPay.visibility = View.GONE;
+            else
+                binding.tvPoint3DescPay.visibility = View.VISIBLE;
+        }
+        binding.tvPoint4HeadPay.setOnClickListener {
+            if (binding.tvPoint4DescPay.visibility == View.VISIBLE)
+                binding.tvPoint4DescPay.visibility = View.GONE;
+            else
+                binding.tvPoint4DescPay.visibility = View.VISIBLE;
+        }
+        binding.tvPoint5HeadPay.setOnClickListener {
+            if (binding.tvPoint5DescPay.visibility == View.VISIBLE)
+                binding.tvPoint5DescPay.visibility = View.GONE;
+            else
+                binding.tvPoint5DescPay.visibility = View.VISIBLE;
+        }
+        //customer
+        binding.tvPointCustomerServiceHead.setOnClickListener {
+            if (binding.tvPointCustomerServiceDesc.visibility == View.VISIBLE)
+                binding.tvPointCustomerServiceDesc.visibility = View.GONE;
+            else
+                binding.tvPointCustomerServiceDesc.visibility = View.VISIBLE;
+        }
     }
 }

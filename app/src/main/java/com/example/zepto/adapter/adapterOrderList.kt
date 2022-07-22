@@ -6,9 +6,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zepto.databinding.CardviewItemBinding
+import com.example.zepto.databinding.OrderHistoryBinding
 import com.example.zepto.databinding.RowOrderListBinding
 import com.example.zepto.model.cardItemModel
 import com.example.zepto.model.orderListModel
+import com.example.zepto.ui.activity.FaqsActivity
+import com.example.zepto.ui.activity.OrderSummaryActivity
 import com.example.zepto.ui.activity.SingleTrendingActivity
 
 class adapterOrderList(
@@ -17,13 +20,13 @@ class adapterOrderList(
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    lateinit var binding : RowOrderListBinding
+    lateinit var binding :OrderHistoryBinding
 
-    class CustomViewHolder(binding: RowOrderListBinding) : RecyclerView.ViewHolder(binding.root) {
+    class CustomViewHolder(binding: OrderHistoryBinding) : RecyclerView.ViewHolder(binding.root) {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        binding = RowOrderListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        binding = OrderHistoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return CustomViewHolder(binding)
     }
 
@@ -39,6 +42,13 @@ class adapterOrderList(
         //onclick on item
         holder.itemView.setOnClickListener{
             context.startActivity(Intent(context, SingleTrendingActivity::class.java))
+        }
+        //btn click
+        binding.btNeedHelp.setOnClickListener {
+            context.startActivity(Intent(context,FaqsActivity::class.java))
+        }
+        binding.btViewDetail.setOnClickListener {
+            context.startActivity(Intent(context,OrderSummaryActivity::class.java))
         }
     }
 

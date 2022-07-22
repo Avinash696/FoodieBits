@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.GridView
+import com.example.zepto.viewModel.DetailViewModel
 import com.example.zepto.R
 import com.example.zepto.adapter.adapterSubListCategories
 import com.example.zepto.model.cardItemModel
@@ -23,7 +24,7 @@ private lateinit var simpleCategories: GridView
  * Use the [Choco4Fragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class Choco4Fragment : Fragment() {
+class Choco4Fragment (val detailViewModel: DetailViewModel): Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -62,7 +63,7 @@ class Choco4Fragment : Fragment() {
         arrayList.add(cardItemModel(6, R.drawable.c9, "Marie Gold", 2, 3))
         arrayList.add(cardItemModel(6, R.drawable.c10, "Badam Cookies", 2, 3))
 
-        val adapter = adapterSubListCategories(requireContext(), arrayList)
+       val adapter =adapterSubListCategories(requireContext(), arrayList,detailViewModel)
         simpleCategories.adapter = adapter
     }
 }

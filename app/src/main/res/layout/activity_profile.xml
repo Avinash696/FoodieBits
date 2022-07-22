@@ -1,43 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/profile_back"
     tools:context=".ui.activity.ProfileActivity"
-    android:background="#C18CC8">
+    android:orientation="vertical">
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="250dp"
+        android:src="@drawable/avatar"
+        android:layout_gravity="center"/>
+
     <androidx.cardview.widget.CardView
-        android:layout_width="250dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:elevation="7dp"
-        app:cardUseCompatPadding="true"
+        app:cardBackgroundColor="#ADC88E"
         app:cardCornerRadius="6dp"
         app:cardMaxElevation="9dp"
-        app:cardBackgroundColor="#ADC88E">
+        app:cardUseCompatPadding="true"
+        android:layout_gravity="center">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <EditText
+            android:orientation="vertical"
+            android:layout_gravity="center">
+
+
+            <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Name"/>
-            <EditText
+                android:hint="Name"
+                android:textColorHint="@color/blue" />
+
+
+            <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Email"/>
-            <EditText
+                android:hint="Email" />
+
+            <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Mobile No"
-                android:inputType="number"/>
+                android:inputType="number"
+                android:hint="Mobile No" />
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="subMit"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:text="subMit" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Delivery Address "
+                android:textSize="19sp"
+                android:textColor="@color/green"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-</RelativeLayout>
+</LinearLayout>

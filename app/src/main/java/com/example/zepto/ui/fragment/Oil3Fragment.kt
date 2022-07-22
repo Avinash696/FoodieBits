@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.GridView
+import com.example.zepto.viewModel.DetailViewModel
 import com.example.zepto.R
 import com.example.zepto.adapter.adapterSubListCategories
 import com.example.zepto.model.cardItemModel
@@ -20,7 +21,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [Oil3Fragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class Oil3Fragment : Fragment() {
+class Oil3Fragment (val detailViewModel: DetailViewModel): Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -55,7 +56,7 @@ class Oil3Fragment : Fragment() {
         arrayList.add(cardItemModel(6, R.drawable.oil9, "Green tea 8", 2, 3))
         arrayList.add(cardItemModel(6, R.drawable.oil10, "Green Tea", 2, 3))
 
-        val adapter = adapterSubListCategories(requireContext(), arrayList)
+       val adapter =adapterSubListCategories(requireContext(), arrayList,detailViewModel)
         simpleCategories.adapter = adapter
     }
 }

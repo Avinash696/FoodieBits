@@ -14,27 +14,29 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.viewModel.SingleTWalletViewModel
-import com.example.viewModel.SingleWalletFactory
+import com.example.zepto.viewModel.ItemCountViewModel
+import com.example.zepto.viewModel.SingleTWalletViewModel
+import com.example.zepto.viewModel.SingleWalletFactory
 import com.example.zepto.R
-import com.example.zepto.adapter.adapterTrending
+import com.example.zepto.adapter.deleteTrendingAdapter
 import com.example.zepto.databinding.ActivitySingleTrendingBinding
 import com.example.zepto.databinding.AddItemCountBinding
 import com.example.zepto.databinding.BottomTotalAmountBinding
 import com.example.zepto.model.cardItemModel
-
 
 class SingleTrendingActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySingleTrendingBinding
     private lateinit var dialogbinding: AddItemCountBinding
     private lateinit var dialogTotalBinding: BottomTotalAmountBinding
     private lateinit var singleWalletViewModel: SingleTWalletViewModel
+    private lateinit var countViewModel :ItemCountViewModel
     private lateinit var rvBottom: RecyclerView
     private var itemCount: Int = 0
 
     var amountData: Int = 0
     lateinit var nameData: String
     var imgData: Int = 0
+    private var walletList = ArrayList<String>()
 
     //wallet item count
     var walletItemCount = 0
@@ -42,23 +44,51 @@ class SingleTrendingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_single_trending)
 
-        tendingItem()
-
+//        tendingItem()
+        deleteTendingItem()
+        countViewModel = ViewModelProvider(this)[ItemCountViewModel::class.java]
         //intent get
         val intentTrending = intent
         amountData = intentTrending.getIntExtra("amountKey", 1)
         nameData = intentTrending.getStringExtra("nameKey").toString()
         imgData = intentTrending.getIntExtra("imgKey", 0)
+        val nameArray = intentTrending.getStringArrayListExtra("nameArray")
+        val amountArray = intentTrending.getIntegerArrayListExtra("amountArray")
+        val imageArray = intentTrending.getIntegerArrayListExtra("imageArray")
+
         Log.d("ttt", "onCreate: $amountData  $nameData $imgData")
+        Log.d("mypersonalcount", "onCreate: ${nameArray?.size}")
+        if (nameArray != null) {
+            for (dd in nameArray) {
+                walletList.add(dd)
+            }
+        }
+//        Log.d("mypersonalcount", "onCreate: ${nameArray!!.size}  ${walletList.size}")
         activityFieldsSet()
         //viewModel
         singleWalletViewModel = ViewModelProvider(
             this,
             SingleWalletFactory(amountData)
         )[SingleTWalletViewModel::class.java]
+        //counter update
+//        singleWalletViewModel.itemCount = nameArray!!.size
+        binding.tvCartCount.text = countViewModel.count.toString()
+        //count viewmodel update
+        singleWalletViewModel.itemCount = walletList.size
 
         binding.btAddtrending.setOnClickListener {
+
             showMyDialog(imgData)
+        }
+
+        //cart
+        binding.llCartTrading.setOnClickListener {
+            val intent = Intent(this, CartActivity::class.java)
+            intent.putExtra("nameArray", nameArray)
+            intent.putExtra("amountArray", amountArray)
+            intent.putExtra("imgArray", imageArray)
+            Log.d("nameArra", "onCreate: $nameArray $amountArray $imageArray")
+            startActivity(intent)
         }
     }
 
@@ -68,7 +98,7 @@ class SingleTrendingActivity : AppCompatActivity() {
         binding.ivIcons.setImageResource(imgData)
     }
 
-    private fun showMyDialog(imgData:Int) {
+    private fun showMyDialog(imgData: Int) {
         val dialog = Dialog(this)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialogbinding = AddItemCountBinding.inflate(layoutInflater)
@@ -132,19 +162,39 @@ class SingleTrendingActivity : AppCompatActivity() {
         dialogTotalBinding.tvTotalItemAmount.text = singleWalletViewModel.totalAmount.toString()
         dialogTotalBinding.cBottomTotal.setOnClickListener {
 //            startActivity(Intent(this, YourOrderActivity::class.java))
-            val intent = Intent(this,YourOrderActivity::class.java)
-            intent.putExtra("nameKey",nameData)
-            intent.putExtra("itemCountKey",singleWalletViewModel.itemCount)
-            intent.putExtra("amountKey",singleWalletViewModel.totalAmount)
-            Log.d("sunday", "onCreate: ${singleWalletViewModel.itemCount}  ${singleWalletViewModel.totalAmount}")
+            val intent = Intent(this, YourOrderActivity::class.java)
+            intent.putExtra("nameKey", nameData)
+            intent.putExtra("itemCountKey", singleWalletViewModel.itemCount)
+            intent.putExtra("amountKey", singleWalletViewModel.totalAmount)
+            Log.d(
+                "sunday",
+                "onCreate: ${singleWalletViewModel.itemCount}  ${singleWalletViewModel.totalAmount}"
+            )
             startActivity(intent)
             Log.d("rawat", "showTotalDialog: Works")
         }
     }
 
 
-    private fun tendingItem() {
-
+//    private fun tendingItem() {
+//        val arrayList = ArrayList<cardItemModel>()
+//        arrayList.add(cardItemModel(1, R.drawable.f1, "Maggie", 2, 3))
+//        arrayList.add(cardItemModel(1, R.drawable.beauty, "Beauty", 2, 3))
+//        arrayList.add(cardItemModel(1, R.drawable.biscut, "Biscuits", 2, 3))
+//        arrayList.add(cardItemModel(1, R.drawable.colddrink, "Drinks", 2, 3))
+//        arrayList.add(cardItemModel(1, R.drawable.egg, "Eggs", 2, 3))
+//        arrayList.add(cardItemModel(1, R.drawable.fruit_vegitable, "Fruit Vegetable", 2, 3))
+//        arrayList.add(cardItemModel(1, R.drawable.munch, "Munch", 2, 3))
+//        arrayList.add(cardItemModel(1, R.drawable.surf, "Surf", 2, 3))
+//
+//        binding.rvRecommendedSingle.layoutManager = LinearLayoutManager(
+//            this,
+//            LinearLayoutManager.HORIZONTAL,
+//            false )
+//        val arrayAdapter = adapterTrending(arrayList, this,countViewModel)
+//        binding.rvRecommendedSingle.adapter = arrayAdapter
+//    }
+    private fun deleteTendingItem() {
         val arrayList = ArrayList<cardItemModel>()
         arrayList.add(cardItemModel(1, R.drawable.f1, "Maggie", 2, 3))
         arrayList.add(cardItemModel(1, R.drawable.beauty, "Beauty", 2, 3))
@@ -158,9 +208,8 @@ class SingleTrendingActivity : AppCompatActivity() {
         binding.rvRecommendedSingle.layoutManager = LinearLayoutManager(
             this,
             LinearLayoutManager.HORIZONTAL,
-            false
-        )
-        val arrayAdapter = adapterTrending(arrayList, this)
+            false )
+        val arrayAdapter = deleteTrendingAdapter(arrayList, this)
         binding.rvRecommendedSingle.adapter = arrayAdapter
     }
 }

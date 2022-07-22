@@ -1,19 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/menu_order"
-        android:title="Order" />
+    <!--    <item-->
+    <!--        android:id="@+id/menu_order"-->
+    <!--        android:title="Order" />-->
 
-    <item
-        android:id="@+id/menu_refund"
-        android:title="Refund" />
+    <!--    <item-->
+    <!--        android:id="@+id/menu_refund"-->
+    <!--        android:title="Refund" />-->
 
     <item
         android:id="@+id/menu_profile"
-        android:title="Customer Profile" />
+        android:title=" Profile" />
+
+    <!--    <item-->
+    <!--        android:id="@+id/menu_faq"-->
+    <!--        android:title="FAQs" />-->
 
     <item
-        android:id="@+id/menu_faq"
-        android:title="FAQs" />
-
+        android:id="@+id/menu_allCategories"
+        android:title="All Categories" />
+    <item
+        android:id="@+id/menu_myOrders"
+        android:title="My Orders" />
+    <item
+        android:id="@+id/menu_cart"
+        android:title="Cart" />
+    <item
+        android:id="@+id/menu_help"
+        android:title="Help" />
+    <item
+        android:id="@+id/menu_wallet"
+        android:title="Wallet" />
 </menu>

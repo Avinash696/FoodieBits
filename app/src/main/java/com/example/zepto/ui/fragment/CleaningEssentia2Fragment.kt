@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.GridView
+import com.example.zepto.viewModel.DetailViewModel
 import com.example.zepto.R
 import com.example.zepto.adapter.adapterSubListCategories
 import com.example.zepto.model.cardItemModel
@@ -16,7 +17,7 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 
-class CleaningEssentia2Fragment : Fragment() {
+class CleaningEssentia2Fragment(val detailViewModel: DetailViewModel) : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -43,25 +44,6 @@ class CleaningEssentia2Fragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment CleaningEssentia2Fragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            CleaningEssentia2Fragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
     private fun populatingData(){
         val arrayList = ArrayList<cardItemModel>()
         arrayList.add(cardItemModel(1, R.drawable.c1, "All Biscuit", 2, 3))
@@ -75,7 +57,7 @@ class CleaningEssentia2Fragment : Fragment() {
         arrayList.add(cardItemModel(6, R.drawable.c9, "CE11", 2, 3))
         arrayList.add(cardItemModel(6, R.drawable.c10, "CE10", 2, 3))
 
-        val adapter = adapterSubListCategories(requireContext(), arrayList)
+       val adapter =adapterSubListCategories(requireContext(), arrayList,detailViewModel)
         simpleCategories.adapter = adapter
     }
 }

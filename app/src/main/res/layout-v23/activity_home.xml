@@ -122,7 +122,8 @@
                                     android:layout_alignParentEnd="true"
                                     android:layout_centerVertical="true"
                                     android:layout_marginRight="20dp"
-                                    android:orientation="horizontal">
+                                    android:orientation="horizontal"
+                                    android:id="@+id/llCart">
 
                                     <ImageView
                                         android:layout_width="wrap_content"
@@ -130,7 +131,7 @@
                                         android:src="@drawable/cart" />
 
                                     <TextView
-                                        android:id="@+id/tvCartCount"
+                                            android:id="@+id/tvCartCount"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="Count"

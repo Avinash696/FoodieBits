@@ -11,17 +11,18 @@
         android:layout_centerInParent="true"
         android:background="@drawable/border_layout"
         android:orientation="vertical"
-        android:layout_margin="5dp"
-        android:padding="7dp">
+        android:layout_margin="3dp"
+        android:padding="4dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/ivRowDetail"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
             android:scaleType="centerCrop"
             android:src="@drawable/onion"
             app:civ_border_color="#7780AF"
-            app:civ_border_width="2dp" />
+            app:civ_border_width="2dp"
+            android:padding="4dp"/>
 
         <TextView
             android:id="@+id/tvRowDetail"

@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.GridView
+import com.example.zepto.viewModel.DetailViewModel
 import com.example.zepto.R
-import com.example.zepto.adapter.adapterCategories
 import com.example.zepto.adapter.adapterSubListCategories
 import com.example.zepto.model.cardItemModel
 
@@ -16,7 +16,7 @@ import com.example.zepto.model.cardItemModel
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class SecondFragment : Fragment() {
+class SecondFragment(val detailViewModel: DetailViewModel) : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -52,7 +52,7 @@ class SecondFragment : Fragment() {
         arrayList.add(cardItemModel(1, R.drawable.fruit_vegitable, "Pizza", 2, 3))
         arrayList.add(cardItemModel(1, R.drawable.fruit_vegitable, "Pizza", 2, 3))
 
-        val adapter = adapterSubListCategories(requireContext(), arrayList)
+       val adapter =adapterSubListCategories(requireContext(), arrayList,detailViewModel)
         simpleCategories.adapter = adapter
     }
 }
