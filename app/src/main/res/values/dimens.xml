@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="orderSummary">18sp</dimen>
+    <dimen name="order_status">20dp</dimen>
+    <dimen name="card_trending_admin">5dp</dimen>
+    <dimen name="addUserTextSize">18sp</dimen>
+</resources>

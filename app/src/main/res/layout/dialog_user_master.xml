@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#90CAF9">
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="4dp"
+        android:layout_centerInParent="true"
+        android:background="@color/white">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="ID"
+            android:textColor="@color/black"
+            android:textColorHint="@color/purple_200"
+            android:id="@+id/etIdUserMasterDialog"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name"
+            android:textColor="@color/black"
+            android:textColorHint="@color/purple_200"
+            android:id="@+id/etNameUserMasterDialog"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_layout">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Upload Imgage"
+                android:textSize="19sp"
+                android:textColor="@color/red"
+                android:layout_marginLeft="10dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="3dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/upload" />
+        </LinearLayout>
+
+<!--        <EditText-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="Email"-->
+<!--            android:textColorHint="@color/purple_200"-->
+<!--            android:id="@+id/etEmailUserMasterDialog"/>-->
+<!--        <EditText-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="Mobile"-->
+<!--            android:textColorHint="@color/purple_200"-->
+<!--            android:id="@+id/etMobileUserMasterDialog"/>-->
+<!--        <EditText-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="Date"-->
+<!--            android:textColorHint="@color/purple_200"-->
+<!--            android:id="@+id/etDateUserMasterDialog"/>-->
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            android:id="@+id/btSubmit"
+            android:backgroundTint="@color/blue"
+            android:layout_gravity="right"
+            android:layout_marginRight="10dp"/>
+    </LinearLayout>
+</RelativeLayout>

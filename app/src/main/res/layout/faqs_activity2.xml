@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#EDE7F6"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/dk"
+                    android:text="FAQ's \n Sign up :"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/tvPoint1Head"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/robotobold"
+                    android:text="1 - How do I register?"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/tvPoint1Desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="You can register by clicking on the Sign Up. Please provide the information in the form that appears. You can review the terms and conditions, provide your payment mode details and submit the registration information."
+                    android:textSize="17sp"
+
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tvPoint2Head"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/robotobold"
+                    android:text="2 - Are there any charges for registration?"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/tvPoint2Desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="No, Registration on ourwebsite.com is absolutely free."
+                    android:textSize="17sp"
+
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tvPoint3Head"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/robotobold"
+                    android:text="3 - Do I have to necessarily register to shop on Fraazo?"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/tvPoint3Desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="You can surf and add products to the cart without registration but only registered shoppers will be able to checkout and place orders. Registered members have to be logged in at the time of checking out the cart, they will be prompted to do so if they are not logged in."
+                    android:textSize="17sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tvPoint4Head"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/robotobold"
+                    android:text="4 - Can I add more than one delivery address in an account?"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/tvPoint4Desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="Yes, you can add multiple delivery addresses in your fraazo account. However, remember that all items placed in a single order can only be delivered to one address. If you want different products delivered to different address you need to place them as separate orders."
+                    android:textSize="17sp"
+
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tvPoint5Head"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/robotobold"
+                    android:text="5 - Can I have multiple accounts with same mobile number and email id?"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/tvPoint5Desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="Each email address and phone number can be associated with one Fraazo account only."
+                    android:textSize="17sp"
+
+                    android:visibility="gone" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/robotoitalic"
+                    android:text="Payment :"
+                    android:textColor="@color/red"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tvPoint1HeadPay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/robotobold"
+                    android:text="1. What are the modes of payment?"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/tvPoint1DescPay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="Each email address and phone number can be associated with one Fraazo account only."
+                    android:textSize="17sp"
+
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tvPoint2HeadPay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/robotobold"
+                    android:text="2. Are there any other charges or taxes in addition to the price shown? Is VAT added to the invoice?"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/tvPoint2DescPay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="Each email address and phone number can be associated with one Fraazo account only."
+                    android:textSize="17sp"
+
+                    android:visibility="gone" />
+
+
+                <TextView
+                    android:id="@+id/tvPoint3HeadPay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/robotobold"
+                    android:text="3. Is it safe to use my credit/ debit card on Fraazo?"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/tvPoint3DescPay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="4. What is the meaning of cash on delivery?"
+                    android:textSize="17sp"
+
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tvPoint4HeadPay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/robotobold"
+                    android:text="4. What is the meaning of cash on delivery?"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/tvPoint4DescPay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="Each email address and phone number can be associated with one Fraazo account only."
+                    android:textSize="17sp"
+
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tvPoint5HeadPay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/robotobold"
+                    android:text="5. If I pay by credit card how do I get the amount back for items not delivered?"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/tvPoint5DescPay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Each email address and phone number can be associated with one Fraazo account only."
+                    android:textSize="17sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tvPointCustomerServiceHead"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/robotoitalic"
+                    android:text="Customer Service:"
+                    android:textColor="@color/red"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tvPointCustomerServiceDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1. How do I contact customer service?
+Our customer service team is available throughout the week, all seven days from 9:00 am to 9:00 pm. They can be reached at 9152291522 from 10am to 7pm or via email at support@fraazo.com."
+                    android:textSize="17sp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Order Related:"
+                    android:textColor="@color/red"
+                    android:textSize="18sp" />
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/robotobold"
+                    android:text="1. What are delivery slots?
+Delivery slots are the time slots during which you will receive your order. Fraazo currently offers 6 delivery slots each day. These are:"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+
+                    android:text="
+Slot 1 - 10:00 AM to 12:30 AM. \n
+
+Slot 2 - 12:30 AM to 2:30 PM.  \n
+
+Slot 3 - 3:30 PM to 5:30 PM. \n
+
+Slot 4 - 5:30 PM to 7:30 PM. \n
+
+Slot 5 – 7:30 PM to 9:30 PM. \n
+Also during the time slots of 7 AM to 11 PM, we can deliver you the orders on demand which will be delivered within an hr to you. " />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/robotobold"
+                    android:text="
+2. Can I change my order delivery slot after placing the order?
+The delivery slot can’t be changed for an active order through the App.
+"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+</layout>
