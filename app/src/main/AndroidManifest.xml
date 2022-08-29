@@ -27,13 +27,13 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=""
+            android:name="com.example.test.aviActivity"
             android:exported="false" />
-<!--        <activity-->
-<!--            android:name=".ImgTestActivity"-->
-<!--            android:exported="true">-->
-<!--            -->
-<!--        </activity>-->
+        <activity
+            android:name="com.example.test.ImgTestActivity"
+            android:exported="true">
+
+        </activity>
         <activity
             android:name=".deliveryPartner.ui.activity.SubmitInformationActivity"
             android:exported="true"
