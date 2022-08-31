@@ -12,7 +12,7 @@ import javax.net.ssl.*
 
 object RetrofitHelper {
 
-    private const val BASE_URL = "https://192.168.1.123/"
+    private const val BASE_URL = "http://56testing.club/"
 
     fun getClient(): Retrofit {
 
