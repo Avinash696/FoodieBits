@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/admin_navgraph"
+    app:startDestination="@id/addUserFragment">
+
+    <fragment
+        android:id="@+id/addUserFragment"
+        android:name="com.example.zepto.AddUserFragment"
+        android:label="fragment_add_user"
+        tools:layout="@layout/fragment_add_user" >
+        <action
+            android:id="@+id/action_addUserFragment_to_categroiesFragment"
+            app:destination="@id/categroiesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categroiesFragment"
+        android:name="com.example.zepto.CategroiesFragment"
+        android:label="fragment_categroies"
+        tools:layout="@layout/fragment_categroies" >
+        <action
+            android:id="@+id/action_categroiesFragment_to_trendingFragment"
+            app:destination="@id/trendingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/trendingFragment"
+        android:name="com.example.zepto.TrendingFragment"
+        android:label="fragment_trending"
+        tools:layout="@layout/fragment_trending" >
+        <action
+            android:id="@+id/action_trendingFragment_to_orderMasterFragment"
+            app:destination="@id/orderMasterFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/contactFragment"
+        android:name="com.example.zepto.ContactFragment"
+        android:label="fragment_contact"
+        tools:layout="@layout/fragment_contact" />
+    <fragment
+        android:id="@+id/orderMasterFragment"
+        android:name="com.example.zepto.OrderMasterFragment"
+        android:label="fragment_order_master"
+        tools:layout="@layout/fragment_order_master" >
+        <action
+            android:id="@+id/action_orderMasterFragment_to_userMasterFragment"
+            app:destination="@id/userMasterFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userMasterFragment"
+        android:name="com.example.zepto.UserMasterFragment"
+        android:label="fragment_user_master"
+        tools:layout="@layout/fragment_user_master" >
+        <action
+            android:id="@+id/action_userMasterFragment_to_contactFragment"
+            app:destination="@id/contactFragment" />
+    </fragment>
+</navigation>

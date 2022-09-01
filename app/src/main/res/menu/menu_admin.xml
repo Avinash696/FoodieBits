@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_adminDashboard"
+        android:title="Dashboard"
+        android:icon="@drawable/dashboard"/>
+    <item
+        android:id="@+id/menu_adminAddUser"
+        android:title="Add User"
+        android:icon="@drawable/profile"/>
+    <item
+        android:id="@+id/menu_adminCategories"
+        android:title="Categories"
+        android:icon="@drawable/categories"/>
+    <item
+        android:id="@+id/menu_adminTrending"
+        android:title="Trending"
+        android:icon="@drawable/trending"/>
+    <item
+        android:id="@+id/menu_adminOrderMaster"
+        android:title="Order Master"
+        android:icon="@drawable/order"/>
+    <item
+        android:id="@+id/menu_adminUserMaster"
+        android:title="User Master"
+        android:icon="@drawable/order"/>
+    <item
+        android:id="@+id/menu_adminContact"
+        android:title="Contact"
+        android:icon="@drawable/phone"/>
+    <item
+        android:id="@+id/menu_adminComplainBox"
+        android:title="Complain Box"
+        android:icon="@drawable/complain"/>
+</menu>

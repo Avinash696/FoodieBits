@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_SubadminDashboard"
+        android:title="Dashboard"
+        android:icon="@drawable/dashboard"/>
+    <item
+        android:id="@+id/menu_SubadminAddUser"
+        android:title="Add User"
+        android:icon="@drawable/categories"/>
+    <item
+        android:id="@+id/menu_SubadminCategories"
+        android:title="Categories"
+        android:icon="@drawable/categories"/>
+    <item
+        android:id="@+id/menu_SubadminTrending"
+        android:title="Trending"
+        android:icon="@drawable/trending"/>
+    <item
+        android:id="@+id/menu_SubadminPayout"
+        android:title="Payout"
+        android:icon="@drawable/order"/>
+
+    <item
+        android:id="@+id/menu_SubadminOrderMaster"
+        android:title="Order Master"
+        android:icon="@drawable/order"/>
+    <item
+        android:id="@+id/menu_SubadminUserMaster"
+        android:title="User Master"
+        android:icon="@drawable/payout"/>
+    <item
+        android:id="@+id/menu_SubadminHelp"
+        android:title="Help"
+        android:icon="@drawable/help"/>
+    <item
+        android:id="@+id/menu_SubadminMyProfile"
+        android:title="My Profile"
+        android:icon="@drawable/help"/>
+
+    <item
+        android:id="@+id/menu_SubadminContact"
+        android:title="Contact"
+        android:icon="@drawable/phone"/>
+    <item
+        android:id="@+id/menu_SubadminLogout"
+        android:title="Logout"
+        android:icon="@drawable/help"/>
+
+</menu>

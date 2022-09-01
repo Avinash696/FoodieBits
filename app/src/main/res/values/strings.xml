@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Foodie</string>
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="permission_granted">Permision granted</string>
+    <string name="permission_required">Permisiton required</string>
+    <string name="ok">OK</string>
+</resources>

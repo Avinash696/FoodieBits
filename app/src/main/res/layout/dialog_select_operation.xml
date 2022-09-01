@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="3dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="dialogName"
+                android:layout_gravity="center"
+                android:id="@+id/dialogNameSelect"/>
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="80dp"
+                android:text="dialogImg"
+                android:src="@drawable/biscuit3"
+                android:layout_gravity="center"
+                android:id="@+id/dialogImgSelect"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <Button
+                android:id="@+id/btAddProductSelect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                android:text="Add Product" />
+
+            <Button
+                android:id="@+id/btActivateDeactivate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                android:text="Activate" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

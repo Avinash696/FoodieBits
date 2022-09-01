@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#90CAF9"
+        android:layout_margin="3dp"
+        android:orientation="horizontal"
+        android:padding="2dp"
+        android:weightSum="6">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Id"
+            android:gravity="center"
+            android:id="@+id/tvIdUM"
+            android:layout_weight="1"
+            android:layout_margin="2dp"
+            android:textColor="@color/black"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:gravity="center"
+            android:id="@+id/tvNameUM"
+            android:layout_weight="1"
+            android:layout_margin="2dp"
+            android:textColor="@color/black"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:gravity="center"
+            android:id="@+id/tvEmailUM"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:layout_margin="2dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mobile No"
+            android:gravity="center"
+            android:id="@+id/tvMobileNoUM"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:layout_margin="2dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:gravity="center"
+            android:id="@+id/tvDateUM"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:layout_margin="2dp"/>
+        <Button
+            android:id="@+id/btEditUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Edit"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/blue"
+            android:layout_margin="2dp"/>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradiant_profile_retailer"
+        android:orientation="vertical"
+        android:textSize="@dimen/addUserTextSize"
+        tools:context=".Admin.ui.activity.DisplayRetailerAddUserActivity">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:padding="6dp"
+                android:layout_margin="5dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/profile"
+                    android:id="@+id/ivDisplayPic"/>
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:id="@+id/pb"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="2"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/robotobold"
+                        android:gravity="center_vertical"
+                        android:text="Id"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/addUserTextSize" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:hint="ID"
+                        android:id="@+id/tvDisplayId"
+                        android:textSize="@dimen/addUserTextSize" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="2"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/robotobold"
+                        android:gravity="center_vertical"
+                        android:text="Name"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/addUserTextSize" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:hint="Name"
+                        android:id="@+id/tvDisplayName"
+                        android:textSize="@dimen/addUserTextSize" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/robotobold"
+                        android:gravity="center_vertical"
+                        android:text="Role"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/addUserTextSize" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:hint="Admin"
+                        android:id="@+id/tvDisplayRole"
+                        android:textSize="@dimen/addUserTextSize" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/robotobold"
+                        android:gravity="center_vertical"
+                        android:text="Password"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/addUserTextSize" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:hint="My PAss"
+                        android:id="@+id/tvDisplayPassword"
+                        android:textSize="@dimen/addUserTextSize" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/robotobold"
+                        android:gravity="center_vertical"
+                        android:text="Email"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/addUserTextSize" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:hint="unknows@gmail.com"
+                        android:id="@+id/tvDisplayEmail"
+                        android:textSize="@dimen/addUserTextSize" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/robotobold"
+                        android:gravity="center_vertical"
+                        android:text="MObile no"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/addUserTextSize" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:hint="9999999999"
+                        android:id="@+id/tvDisplayPhone"
+                        android:textSize="@dimen/addUserTextSize" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/robotobold"
+                        android:gravity="center_vertical"
+                        android:text="Address"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/addUserTextSize" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:hint="2/293 Sec-l "
+                        android:id="@+id/tvDisplayAddress"
+                        android:textSize="@dimen/addUserTextSize" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/robotobold"
+                        android:gravity="center_vertical"
+                        android:text="Adhar"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/addUserTextSize" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:hint="SJHHDJS3737"
+                        android:id="@+id/tvDisplayAdhar"
+                        android:textSize="@dimen/addUserTextSize" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/robotobold"
+                        android:gravity="center_vertical"
+                        android:text="Pan Card"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/addUserTextSize" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:hint="326SAJS63"
+                        android:id="@+id/tvDisplayPan"
+                        android:textSize="@dimen/addUserTextSize" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/robotobold"
+                        android:gravity="center_vertical"
+                        android:text="Shop Reg No."
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/addUserTextSize" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:hint="936257326989"
+                        android:id="@+id/tvDisplayShopNo"
+                        android:textSize="@dimen/addUserTextSize" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/robotobold"
+                        android:gravity="center_vertical"
+                        android:text="Created Date"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/addUserTextSize" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:hint="23/09/2020"
+                        android:textSize="@dimen/addUserTextSize" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+</layout>
