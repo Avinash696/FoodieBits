@@ -27,15 +27,21 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name="com.example.test.aviActivity"
-            android:exported="true">
+            android:name=".Admin.ui.activity.CreateAdminActivity"
+            android:exported="true"
+            android:parentActivityName=".Admin.ui.activity.RetailerAdminActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
+            android:name="com.example.test.aviActivity"
+            android:exported="true"></activity>
+        <activity
             android:name="com.example.test.ImgTestActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".deliveryPartner.ui.activity.SubmitInformationActivity"
             android:exported="true"
@@ -47,11 +53,8 @@
         <activity
             android:name=".Admin.ui.activity.RetailerAdminActivity"
             android:exported="true"
-            android:theme="@style/MyAdminCustom" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:theme="@style/MyAdminCustom">
+
         </activity>
         <activity
             android:name=".ui.activity.AddProductFormActivity"
@@ -147,9 +150,7 @@
         <activity
             android:name=".LoginActivity"
             android:exported="true"
-            android:theme="@style/MyAdminCustom">
-
-        </activity>
+            android:theme="@style/MyAdminCustom"></activity>
     </application>
 
 </manifest>

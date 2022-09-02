@@ -34,7 +34,7 @@ class aviActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAvi2Binding
     private lateinit var layout: View
 
-    val requestPermissionLauncher =
+    private val requestPermissionLauncher =
         registerForActivityResult(
             ActivityResultContracts.RequestPermission()
         ) { isGranted: Boolean ->
@@ -69,9 +69,7 @@ class aviActivity : AppCompatActivity() {
         binding.imageView.setImageBitmap(bitmap)
         //show img real
         val selectedImageUri: Uri? = data.data
-        filePath = FileUtil.from(this,  data.data)
-//        val s: String? = getRealPathFromURI(selectedImageUri)
-//        filePath = s.toString()
+        filePath = FileUtil.from(this,data.data)
         hit()
         super.onActivityResult(requestCode, resultCode, data)
     }
@@ -85,7 +83,7 @@ class aviActivity : AppCompatActivity() {
 
         val someData =
             RequestBody.create(MediaType.parse("text/plain"), binding.editTextTags.text.toString())
-
+        Log.d("somedata", "hit:$someData $parts")
         val retrofit = RetrofitHelper.getClient().create(aviInterface::class.java)
 
         GlobalScope.launch(Dispatchers.Main) {
@@ -103,16 +101,8 @@ class aviActivity : AppCompatActivity() {
         }
     }
 
-    private fun getRealPathFromURI(uri: Uri?): String? {
-        val projection = arrayOf(MediaStore.Images.Media.DATA)
-        val cursor = managedQuery(uri, projection, null, null, null)
-        val column_index = cursor
-            .getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
-        cursor.moveToFirst()
-        return cursor.getString(column_index)
-    }
 
-    fun View.showSnackbar(
+    private fun View.showSnackbar(
         view: View,
         msg: String,
         length: Int,
@@ -130,7 +120,7 @@ class aviActivity : AppCompatActivity() {
     }
 
 
-    fun onClickRequestPermission(view: View) {
+    private fun onClickRequestPermission(view: View) {
         when {
             ContextCompat.checkSelfPermission(
                 this,

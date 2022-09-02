@@ -27,9 +27,11 @@ class AdminHomeActivity : AppCompatActivity() {
 
         init()
         changeFragment(CategroiesFragment())
-
+        val intent = intent
+//        val title = intent.getStringExtra()
         //action
         setSupportActionBar(binding.appBar)
+//        binding.appBar.title =
         actionBarDrawableToggle =
             ActionBarDrawerToggle(this, binding.dlAdminHome, R.string.nav_open, R.string.nav_close)
         actionBarDrawableToggle.syncState()

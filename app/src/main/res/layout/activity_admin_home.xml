@@ -35,7 +35,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="13sp"
                         app:navigationIcon="@drawable/hamberg"
-                        app:title="Admin"/>
+                        app:title="Admin(Root)"/>
                 </com.google.android.material.appbar.AppBarLayout>
 
                 <FrameLayout

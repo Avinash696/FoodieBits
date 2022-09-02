@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/editText1"
                 android:layout_centerHorizontal="true"
-                android:text="Add Values to listView" />
+                android:text="Create User to listView" />
 
             <EditText
                 android:id="@+id/editText1"

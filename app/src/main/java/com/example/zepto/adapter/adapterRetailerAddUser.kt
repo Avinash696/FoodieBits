@@ -43,7 +43,6 @@ class adapterRetailerAddUser(
         Log.d("Personaladapter", "onBindViewHolder: ${data.adminImgPic}")
         val imgPath = "https://images.app.goo.gl/iVYAFr3DqthNR7gq5"
         Picasso.get().load("http://56testing.club/imgFolder/uploads/admins/admin1.jpg").into(binding.ivNameRetailerAddUser);
-//        binding.ivNameRetailerAddUser.setImageBitmap(data.pic)
         binding.tvNameRetailerAddUser.text = data.name
         binding.tvNameRetailerId.text = "1"
 

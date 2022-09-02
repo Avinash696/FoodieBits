@@ -20,17 +20,7 @@ class SubAdminActivity : AppCompatActivity() {
     private lateinit var binding:ActivitySubAdminBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_sub_admin)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sub_admin)
-
-//        when (operation) {
-//            '+' -> printf("%.1lf + %.1lf = %.1lf", n1, n2, n1 + n2)
-//            '-' -> printf("%.1lf - %.1lf = %.1lf", n1, n2, n1 - n2)
-//            '*' -> printf("%.1lf * %.1lf = %.1lf", n1, n2, n1 * n2)
-//            '/' -> printf("%.1lf / %.1lf = %.1lf", n1, n2, n1 / n2)
-//            else -> printf("Error! operator is not correct")
-//        }
-
         init()  
         changeFragment(CategroiesFragment())
 
