@@ -59,7 +59,6 @@ class CartActivity : AppCompatActivity() {
 
     private fun populatingIntentData() {
         val arrayList = ArrayList<orderListModel>()
-//        arrayList.add(orderListModel("Delivered","20 Feb","289.00",R.drawable.order,"Chakki Atta",1)
 
         for (nus in 1..(nameArray.size)) {
             Log.d("loopCheck", "populatingIntentData: $nus")

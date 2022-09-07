@@ -21,6 +21,11 @@ import com.example.zepto.R
 import com.example.zepto.databinding.ActivitySubmitInformationBinding
 import com.example.zepto.db.RetrofitHelper
 import com.google.android.material.internal.ContextUtils.getActivity
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.IOException
@@ -116,6 +121,36 @@ class SubmitInformationActivity : AppCompatActivity() {
     ) {
         Log.d("tempCheck", "postDeliveryData: $vechileType $vechileNo $vechileLincense $userName $userEmail $panCard" +
                 " $adharCard $emergencyNo $emergencyName $bankName $accountNo $ifscCode $branchName $filePathAdhar $filePathPan")
+        val requestBodyAdhar = RequestBody.create(MediaType.parse("image/*"), filePathAdhar!!)
+        val partsAdhar = MultipartBody.Part.createFormData("fileAdhar", filePathAdhar!!.name, requestBodyAdhar)
+
+        val requestBodyPan = RequestBody.create(MediaType.parse("image/*"),filePathPan)
+        val partsPan = MultipartBody.Part.createFormData("filePan", filePathAdhar!!.name, requestBodyPan)
+
+        val vechileType = RequestBody.create(MediaType.parse("text/plain"),vechileType)
+        val vechileNo = RequestBody.create(MediaType.parse("text/plain"),vechileNo)
+        val vechileLincense = RequestBody.create(MediaType.parse("text/plain"),vechileLincense)
+        val userName = RequestBody.create(MediaType.parse("text/plain"),userName)
+        val userEmail = RequestBody.create(MediaType.parse("text/plain"),userEmail)
+        val panCard = RequestBody.create(MediaType.parse("text/plain"),panCard)
+        val adharCard = RequestBody.create(MediaType.parse("text/plain"),adharCard)
+        val emergencyNo = RequestBody.create(MediaType.parse("text/plain"),emergencyNo)
+        val emergencyName = RequestBody.create(MediaType.parse("text/plain"),emergencyName)
+        val bankName = RequestBody.create(MediaType.parse("text/plain"),bankName)
+        val accountNo = RequestBody.create(MediaType.parse("text/plain"),accountNo)
+        val branchName = RequestBody.create(MediaType.parse("text/plain"),branchName)
+        val ifscCode = RequestBody.create(MediaType.parse("text/plain"),ifscCode )
+
+        
+        GlobalScope.launch {
+            val call = retro.postDeliveryDocument(vechileType,vechileNo,vechileLincense,userName
+                ,userEmail,panCard,adharCard,emergencyNo,emergencyName,bankName,accountNo,ifscCode,
+                branchName,partsAdhar,partsPan)
+            if(call.isSuccessful)
+                Log.d(TAG, "postDeliveryData: Success ${call.body()}")
+            else
+                Log.d(TAG, "postDeliveryData: Error ${call.errorBody()}")
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

@@ -62,9 +62,9 @@ class HomeActivity : AppCompatActivity() {
     val count = 0
 
     //intent send data 3 var
-    var intentName: ArrayList<String> = ArrayList<String>()
-    var intentAmount: ArrayList<Int> = ArrayList<Int>()
-    var intentImg: ArrayList<String> = ArrayList<String>()
+    var intentName: ArrayList<String> = ArrayList()
+    var intentAmount: ArrayList<Int> = ArrayList()
+    var intentImg: ArrayList<String> = ArrayList()
 
     //viewmodel cout
     private lateinit var countViewModel: ItemCountViewModel
