@@ -34,14 +34,19 @@
         </activity>
         <activity
             android:name="com.example.test.aviActivity"
-            android:exported="true"></activity>
+            android:exported="true"/>
         <activity
             android:name="com.example.test.ImgTestActivity"
-            android:exported="true"></activity>
+            android:exported="true"/>
         <activity
             android:name=".deliveryPartner.ui.activity.SubmitInformationActivity"
             android:exported="true"
-            android:parentActivityName=".LoginActivity" />
+            android:parentActivityName=".LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Admin.ui.activity.DisplayRetailerAddUserActivity"
             android:exported="false"
@@ -147,10 +152,7 @@
             android:name=".ui.activity.HomeActivity"
             android:exported="true"
             android:theme="@style/MyCustomHomeScene" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity
             android:name=".LoginActivity"

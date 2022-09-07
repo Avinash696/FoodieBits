@@ -27,9 +27,10 @@ class CartActivity : AppCompatActivity() {
         intentDataReceive()
         populatingIntentData()
         totalAmount()
+
         //send to payment
         binding.btPayAmount.setOnClickListener {
-            //why u want to add that ordered product and who will see 
+            //why u want to add that ordered product and who will see
             startActivity(Intent(this, YourOrderActivity::class.java))
         }
     }

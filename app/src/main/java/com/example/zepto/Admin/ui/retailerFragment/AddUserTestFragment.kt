@@ -80,7 +80,9 @@ class AddUserTestFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         getAdminApiData()
         binding.button1.setOnClickListener {
-            startActivity(Intent(requireContext(),CreateAdminActivity::class.java))
+            val intent = Intent(requireContext(),CreateAdminActivity::class.java)
+//            intent.putExtra("userId",(AddUserTestFragment))
+            startActivity(intent)
         }
         super.onViewCreated(view, savedInstanceState)
     }
@@ -118,7 +120,7 @@ class AddUserTestFragment : Fragment() {
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, true)
         binding.listView1.layoutManager = layoutManager
         binding.listView1.adapter = adapter
-        adapter!!.notifyDataSetChanged();
+        adapter!!.notifyDataSetChanged()
     }
 
     private fun getAdminApiData() {

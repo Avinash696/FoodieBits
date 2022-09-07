@@ -21,8 +21,9 @@ interface aviInterface {
 
    @Multipart
    @POST("imgFolder/addUserAdmins.php?addAdmin=addAdminPost")
-   suspend fun createRetailer(@Part("id") id:RequestBody ,@Part("role") role:RequestBody ,@Part("name") name:RequestBody ,@Part("password") password:RequestBody ,@Part("email") email:RequestBody ,@Part("mobileNo") mobileNo:RequestBody ,
-                              @Part("address") address:RequestBody ,@Part("adhar") adhar:RequestBody ,@Part("panCard") panCard:RequestBody ,@Part("shopReqNo") shopReqNo:RequestBody , @Part imgFile: MultipartBody.Part) :Response<ImageUpload>
+   suspend fun createRetailer(@Part("id") id:RequestBody ,@Part("role") role:RequestBody ,@Part("myName") myName:RequestBody ,@Part("password") password:RequestBody ,@Part("email") email:RequestBody ,@Part("mobileNo") mobileNo:RequestBody ,
+                              @Part("address") address:RequestBody ,@Part("adhar") adhar:RequestBody ,@Part("panCard") panCard:RequestBody ,@Part("shopReqNo") shopReqNo:RequestBody
+                              , @Part imgFile: MultipartBody.Part,@Part("whoCreated") whoCreated:RequestBody ) :Response<ImageUpload>
 
 
 
@@ -69,6 +70,10 @@ interface aviInterface {
     suspend fun postMainTrending(@Part("idUser") idUser:RequestBody,@Part productImg: MultipartBody.Part,@Part("productName") productName:RequestBody
                                  ,@Part("productQty") productQty:RequestBody,@Part("discountedPrice") discountedPrice:RequestBody,
                                  @Part("priceShow") priceShow:RequestBody):Response<mainCategoryPostModel>
+    //document delivery upload
+    @Multipart
+    @POST("imgFolder/deliveryDocument.php?deliveryDoc=postDeliveryDoc")
+    suspend fun postDeliveryDocument(@Part("vechileType") vechileType:RequestBody,@Part productImg: MultipartBody.Part):Response<mainCategoryPostModel>
 }
 
 data class ImageUpload(val error: Boolean?, val message: String?)

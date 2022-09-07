@@ -79,7 +79,7 @@
                     android:textSize="@dimen/addUserTextSize" />
 
                 <EditText
-                    android:id="@+id/svVechileNo"
+                    android:id="@+id/etVechileNo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -99,7 +99,7 @@
                     android:textSize="@dimen/addUserTextSize" />
 
                 <EditText
-                    android:id="@+id/svVechileLincenseNo"
+                    android:id="@+id/etVechileLincenseNo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -129,10 +129,12 @@
                     android:text="Name"
                     android:textSize="@dimen/addUserTextSize" />
 
-                <ScrollView
+                <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:hint="User Name"
+                    android:id="@+id/etUserNameDelivery"
                     android:textSize="@dimen/addUserTextSize" />
             </LinearLayout>
 
@@ -153,7 +155,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="@dimen/addUserTextSize" />
+                    android:textSize="@dimen/addUserTextSize"
+                    android:id="@+id/etUserEmailDelivery"/>
             </LinearLayout>
 
             <LinearLayout
@@ -179,7 +182,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/addUserTextSize"
-                        android:layout_weight="1"/>
+                        android:layout_weight="1"
+                        android:id="@+id/etUserPanDelivery"/>
 
                     <ImageView
                         android:id="@+id/ivPanUpload"
@@ -192,7 +196,7 @@
 
             </LinearLayout>
             <ImageView
-                android:id="@+id/ivPanCardUpload"
+                android:id="@+id/ivPanCardDelivery"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:src="@drawable/pan"/>
@@ -208,14 +212,32 @@
                     android:text="Adhar Card"
                     android:textSize="@dimen/addUserTextSize" />
 
-                <ScrollView
-                    android:id="@+id/svVechileType"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textSize="@dimen/addUserTextSize" />
-            </LinearLayout>
+                    android:weightSum="2"
+                    android:layout_weight="1">
 
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/addUserTextSize"
+                        android:id="@+id/etAdharCardDelivery"
+                        android:layout_weight="1"/>
+
+                    <ImageView
+                        android:id="@+id/ivAdharUpload"
+                        android:layout_width="20dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/upload"/>
+                </LinearLayout>
+            </LinearLayout>
+            <ImageView
+                android:id="@+id/ivAdharCardDelivery"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="@drawable/adhar"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -238,6 +260,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:hint="Number"
+                        android:maxLength="10"
+                        android:id="@+id/etEmergencyNumberDelivery"
                         android:inputType="number"
                         android:textSize="@dimen/addUserTextSize" />
 
@@ -245,6 +269,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:id="@+id/etGuidanceNameDelivery"
                         android:hint="Snowy"
                         android:textSize="@dimen/addUserTextSize" />
                 </LinearLayout>
@@ -258,7 +283,7 @@
             android:background="#FFF3E0"
             android:orientation="vertical"
             android:textSize="@dimen/addUserTextSize"
-            android:visibility="gone">
+            android:visibility="visible">
 
 
             <LinearLayout
@@ -277,7 +302,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="@dimen/addUserTextSize" />
+                    android:textSize="@dimen/addUserTextSize"
+                    android:id="@+id/etBankNameDelivery"/>
             </LinearLayout>
 
             <LinearLayout
@@ -296,6 +322,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:id="@+id/etAccountNoDelivery"
                     android:textSize="@dimen/addUserTextSize" />
             </LinearLayout>
 
@@ -315,6 +342,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:id="@+id/etIfscCodeDelivery"
                     android:textSize="@dimen/addUserTextSize" />
             </LinearLayout>
 
@@ -335,6 +363,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:id="@+id/etBranchNameDelivery"
                     android:textSize="@dimen/addUserTextSize" />
             </LinearLayout>
         </LinearLayout>
@@ -343,7 +372,7 @@
             android:layout_height="wrap_content"
             android:text="Save"
             android:backgroundTint="@color/blue"
-            android:id="@+id/btSaveSubmitForm"
+            android:id="@+id/btSaveSubmitFormDelivery"
             android:layout_gravity="right"
             android:layout_margin="3dp"/>
     </LinearLayout>

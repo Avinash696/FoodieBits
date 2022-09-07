@@ -23,7 +23,7 @@ import java.io.File
 class CreateAdminActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCreateAdminBinding
     private var filePath: File? = null
-    lateinit var tempName: String
+    lateinit var tempNameStr: String
     lateinit var tempSpRole: String
     lateinit var tempPassword: String
     lateinit var tempEmail: String
@@ -74,7 +74,7 @@ class CreateAdminActivity : AppCompatActivity() {
 
 
     private fun init() {
-         tempName = binding.etNameAdduserDialogRetailer.text.toString()
+         tempNameStr = binding.etNameAdduserDialogRetailer.text.toString()
         val tempImv = binding.ivDialogUploadPic
 
         val spinnerArrayAdapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, spinnerArray)
@@ -160,6 +160,11 @@ class CreateAdminActivity : AppCompatActivity() {
                 MediaType.parse("text/plain"),
                 id
             )
+        val tempWhoCreated =
+            RequestBody.create(
+                MediaType.parse("text/plain"),
+                "admin6205"
+            )
 
         Log.d("customid", "dialogCreateUser: $id")
 
@@ -179,7 +184,8 @@ class CreateAdminActivity : AppCompatActivity() {
                 tempAdhar,
                 tempPanCard,
                 tempShopReg,
-                parts
+                parts,
+                tempWhoCreated
             )
             Log.d("rawat", "dialogCreateUser: ")
             if (call.isSuccessful) {
@@ -190,7 +196,6 @@ class CreateAdminActivity : AppCompatActivity() {
                 makeToast(false)
             }
         }
-
     }
     private fun makeToast(success: Boolean){
         if (success){
