@@ -9,29 +9,41 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.example.test.aviInterface
 import com.example.zepto.*
+import com.example.zepto.Admin.ui.retailerFragment.AddUserTestFragment
+import com.example.zepto.Repositary.CategoryRepo
 import com.example.zepto.databinding.ActivityAdminHomeBinding
+import com.example.zepto.db.RetrofitHelper
+import com.example.zepto.model.mainCategoryModel
 import com.example.zepto.ui.fragment.CoplainBoxFragment
 import com.example.zepto.ui.fragment.DashboardAdminFragment
 import com.example.zepto.ui.fragment.DashboardFragment
 import com.google.android.material.navigation.NavigationView
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class AdminHomeActivity : AppCompatActivity() {
     private lateinit var nvAdminHome: NavigationView
     private lateinit var binding: ActivityAdminHomeBinding
+    lateinit var titleCustom :String
+
     //appbar
     lateinit var actionBarDrawableToggle: ActionBarDrawerToggle
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_admin_home)
-
         init()
         changeFragment(CategroiesFragment())
+
+        //title set
         val intent = intent
-//        val title = intent.getStringExtra()
+        titleCustom = intent.getStringExtra("adminTitle")!!
+        Log.d("adminTitleCheck", "onCreate: $titleCustom")
+        binding.appBar.title = titleCustom
         //action
         setSupportActionBar(binding.appBar)
-//        binding.appBar.title =
+
         actionBarDrawableToggle =
             ActionBarDrawerToggle(this, binding.dlAdminHome, R.string.nav_open, R.string.nav_close)
         actionBarDrawableToggle.syncState()
@@ -44,7 +56,8 @@ class AdminHomeActivity : AppCompatActivity() {
                     return@setNavigationItemSelectedListener true
                 }
                 R.id.menu_adminAddUser -> {
-                    changeFragment(AddUserFragment())
+//                    changeFragment(AddUserFragment())
+                    changeFragment(AddUserTestFragment())
                     Log.d("myAdmin", "clicked Add User")
                     binding.dlAdminHome.close()
                     return@setNavigationItemSelectedListener true

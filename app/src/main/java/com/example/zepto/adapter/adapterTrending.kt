@@ -10,7 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.zepto.viewModel.ItemCountViewModel
 import com.example.zepto.databinding.CardviewItemBinding
 import com.example.zepto.model.cardItemModel
+import com.example.zepto.model.cardItemWithoutId
 import com.example.zepto.ui.activity.SingleTrendingActivity
+import com.squareup.picasso.Picasso
 
 class adapterTrending(
     private val arrayData: ArrayList<cardItemModel>,
@@ -22,7 +24,7 @@ class adapterTrending(
     lateinit var binding: CardviewItemBinding
    private var cartName: ArrayList<String> = ArrayList()
    private var cartAmount: ArrayList<Int> = ArrayList()
-   private var cartImage: ArrayList<Int> = ArrayList()
+   private var cartImage: ArrayList<String> = ArrayList()
 
     class CustomViewHolder(binding: CardviewItemBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -34,11 +36,12 @@ class adapterTrending(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val data = arrayData[position]
         binding.tvItemName.text = data.name
-        binding.ivItemPic.setImageResource(data.img)
+        Picasso.get().load(data.img).into(binding.ivItemPic)
+//        binding.ivItemPic.setImageResource(data.img)
         //onclick on item
         holder.itemView.setOnClickListener {
             val intent = Intent(context, SingleTrendingActivity::class.java)
-            Log.d("ttt", "onBindViewHolder:${data.Price} ${data.discount}  ${data.discountPrice}")
+//            Log.d("ttt", "onBindViewHolder:${data.Price} ${data.discount}  ${data.discountPrice}")
             intent.putExtra("amountKey", data.Price)
             intent.putExtra("nameKey", data.name)
             intent.putExtra("imgKey", data.img)

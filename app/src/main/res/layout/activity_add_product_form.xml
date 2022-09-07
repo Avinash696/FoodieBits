@@ -25,6 +25,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    android:id="@+id/ivImgFormUp"
                     android:src="@drawable/biscuit3" />
 
                 <LinearLayout
@@ -46,7 +47,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:hint="Mango" />
+                        android:hint="Mango"
+                        android:id="@+id/etProductName"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -68,7 +70,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:hint="2" />
+                        android:hint="2"
+                        android:id="@+id/etproductQuantity"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -90,7 +93,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:hint="32" />
+                        android:hint="32"
+                        android:id="@+id/etproductPrice"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -112,7 +116,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:hint="21" />
+                        android:hint="21"
+                        android:id="@+id/etproductAvaibaleQuantity"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -134,7 +139,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:hint="Fruits Aree Good " />
+                        android:hint="Fruits Aree Good "
+                        android:id="@+id/etproductDescription"/>
                 </LinearLayout>
 
                 <Button

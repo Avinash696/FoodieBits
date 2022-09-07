@@ -5,10 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.Toast
+import android.view.View
+import android.widget.*
 import androidx.databinding.DataBindingUtil
 import com.example.test.FileUtil
 import com.example.test.aviInterface
@@ -26,7 +24,7 @@ class CreateAdminActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCreateAdminBinding
     private var filePath: File? = null
     lateinit var tempName: String
-    lateinit var tempRole: String
+    lateinit var tempSpRole: String
     lateinit var tempPassword: String
     lateinit var tempEmail: String
     lateinit var tempMobileNo: String
@@ -35,6 +33,7 @@ class CreateAdminActivity : AppCompatActivity() {
     lateinit var tempPanCard: String
     lateinit var tempShopReg: String
     lateinit var submitBtn: Button
+    var spinnerArray = arrayOf("admin", "wladmin", "retailer")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_create_admin)
@@ -77,7 +76,21 @@ class CreateAdminActivity : AppCompatActivity() {
     private fun init() {
          tempName = binding.etNameAdduserDialogRetailer.text.toString()
         val tempImv = binding.ivDialogUploadPic
-         tempRole = binding.etRoleAdduserDialogRetailer.text.toString()
+
+        val spinnerArrayAdapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, spinnerArray)
+        //selected item will look like a spinner set from XML
+        spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.spRoleAdduserDialogRetailer.adapter = spinnerArrayAdapter
+           binding.spRoleAdduserDialogRetailer.onItemSelectedListener = object :AdapterView.OnItemSelectedListener{
+               override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                   Log.d("spinner test", "onItemSelected: ${p0!!.getItemAtPosition(p2)}")
+               }
+
+               override fun onNothingSelected(p0: AdapterView<*>?) {
+                   TODO("Not yet implemented")
+               }
+
+           }
          tempPassword = binding.etPassAdduserDialogRetailer.text.toString()
          tempEmail = binding.etEmailAdduserDialogRetailer.text.toString()
          tempMobileNo = binding.etMobileAdduserDialogRetailer.text.toString()
@@ -102,7 +115,7 @@ class CreateAdminActivity : AppCompatActivity() {
         val tempRole =
             RequestBody.create(
                 MediaType.parse("text/plain"),
-                binding.etRoleAdduserDialogRetailer.text.toString()
+                binding.spRoleAdduserDialogRetailer.selectedItem.toString()
             )
         val tempPassword =
             RequestBody.create(

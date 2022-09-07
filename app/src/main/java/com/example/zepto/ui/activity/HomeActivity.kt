@@ -22,18 +22,23 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.test.aviInterface
 import com.example.zepto.viewModel.ItemCountViewModel
 import com.example.zepto.R
 import com.example.zepto.adapter.adapterBanner
 import com.example.zepto.adapter.adapterCategories
 import com.example.zepto.adapter.adapterTrending
 import com.example.zepto.databinding.ActivityHomeBinding
-import com.example.zepto.model.bannerBrandModel
-import com.example.zepto.model.cardItemModel
+import com.example.zepto.db.RetrofitHelper
+import com.example.zepto.model.*
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
+import com.google.gson.Gson
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -48,17 +53,18 @@ class HomeActivity : AppCompatActivity() {
     lateinit var appBar: Toolbar
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navView: NavigationView
+    private  var currentUser: String ="avi"
 
     //location fused
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
-
+    val repo = RetrofitHelper.getClient().create(aviInterface::class.java)
     //cart count
     val count = 0
 
     //intent send data 3 var
     var intentName: ArrayList<String> = ArrayList<String>()
     var intentAmount: ArrayList<Int> = ArrayList<Int>()
-    var intentImg: ArrayList<Int> = ArrayList<Int>()
+    var intentImg: ArrayList<String> = ArrayList<String>()
 
     //viewmodel cout
     private lateinit var countViewModel: ItemCountViewModel
@@ -75,7 +81,9 @@ class HomeActivity : AppCompatActivity() {
 
         //viewModel
         countViewModel = ViewModelProvider(this)[ItemCountViewModel::class.java]
-        tendingItem()
+//        tendingItem()
+        getTrendingItem()
+
         countViewModel.countMutableLiveData.observe(this) {
             binding.tvCartCount.text = it.toString()
         }
@@ -95,7 +103,7 @@ class HomeActivity : AppCompatActivity() {
         countViewModel.imageName.observe(this) {
             for (i in 0 until it.size) {
                 Log.d("buddy", "onCreate: ${it[i]}")
-                intentImg.add(it[i])
+                intentImg.add(it[i].toString())
             }
         }
         countViewModel.amountName.observe(this) {
@@ -332,24 +340,32 @@ class HomeActivity : AppCompatActivity() {
         handler.postDelayed(r, 5000)
     }
 
-    private fun tendingItem() {
+    private fun tendingItem(data: trendingResponceModel?) {
         val arrayList = ArrayList<cardItemModel>()
-        arrayList.add(cardItemModel(1, R.drawable.f1, "Maggie", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.beauty, "Beauty", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.biscut, "Biscuits", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.colddrink, "Drinks", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.egg, "Eggs", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.fruit_vegitable, "Fruit Vegetable", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.munch, "Munch", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.surf, "Surf", 2, 3))
-
-        rvTrending.layoutManager = LinearLayoutManager(
-            this,
-            LinearLayoutManager.HORIZONTAL,
-            false
-        )
-        val arrayAdapter = adapterTrending(arrayList, this, countViewModel)
-        rvTrending.adapter = arrayAdapter
+        for (i in 0 until data!!.subCategoryImg.size) {
+            val dumy = data.subCategoryImg[i]
+            arrayList.add(
+                cardItemModel(dumy.id,dumy.productImg,dumy.productName,
+                    Integer.parseInt(dumy.discountedPrice),Integer.parseInt(dumy.priceShow))
+            )
+        }
+//        arrayList.add(cardItemWithoutId(1, R.drawable.f1, "Maggie", 2, 3))
+//        arrayList.add(cardItemWithoutId(1, R.drawable.beauty, "Beauty", 2, 3))
+//        arrayList.add(cardItemWithoutId(1, R.drawable.biscut, "Biscuits", 2, 3))
+//        arrayList.add(cardItemWithoutId(1, R.drawable.colddrink, "Drinks", 2, 3))
+//        arrayList.add(cardItemWithoutId(1, R.drawable.egg, "Eggs", 2, 3))
+//        arrayList.add(cardItemWithoutId(1, R.drawable.fruit_vegitable, "Fruit Vegetable", 2, 3))
+//        arrayList.add(cardItemWithoutId(1, R.drawable.munch, "Munch", 2, 3))
+//        arrayList.add(cardItemWithoutId(1, R.drawable.surf, "Surf", 2, 3))
+        GlobalScope.launch(Dispatchers.Main) {
+            rvTrending.layoutManager = LinearLayoutManager(
+                applicationContext,
+                LinearLayoutManager.HORIZONTAL,
+                false
+            )
+            val arrayAdapter = adapterTrending(arrayList, applicationContext, countViewModel)
+            rvTrending.adapter = arrayAdapter
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -384,31 +400,27 @@ class HomeActivity : AppCompatActivity() {
     private fun showLocation() {
         if (ActivityCompat.checkSelfPermission(
                 this,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
                 this,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
+                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
-            return
-        }
-        fusedLocationProviderClient.lastLocation.addOnCompleteListener {
-            val location = it.result
-            if (location != null) {
-                val geoCoder = Geocoder(this, Locale.getDefault())
+            fusedLocationProviderClient.lastLocation.addOnCompleteListener {
+                val location = it.result
+                if (location != null) {
+                    val geoCoder = Geocoder(this, Locale.getDefault())
 
-//                val addressList = geoCoder.getFromLocation(location.latitude, location.longitude, 1)
-//                supportActionBar?.title = addressList[0].getAddressLine(0) +
-//                        "," + addressList[0].countryName
-//                Log.d(
-//                    "myloc",
-//                    "showLocation: ${addressList[0].latitude} \n ${addressList[0].getAddressLine(0)}" +
-//                            "\n ${addressList[0].locality}   \n ${addressList[0].countryName}"
-//                )
+                    val addressList = geoCoder.getFromLocation(location.latitude, location.longitude, 1)
+                    supportActionBar?.title = addressList[0].getAddressLine(0) +
+                            "," + addressList[0].countryName
+                    Log.d(
+                        "myloc",
+                        "showLocation: ${addressList[0].latitude} \n ${addressList[0].getAddressLine(0)}" +
+                                "\n ${addressList[0].locality}   \n ${addressList[0].countryName}"
+                    )
 
-            } else {
-                Log.d("myloc", "showLocation: Location Null buddy")
+                } else {
+                    Log.d("myloc", "showLocation: Location Null buddy")
+                }
             }
         }
     }
@@ -423,24 +435,24 @@ class HomeActivity : AppCompatActivity() {
         dialog.setContentView(R.layout.dialog_trending_seeall)
         val simpleCategories = dialog.findViewById<GridView>(R.id.simpleView)
 
-        val arrayList = ArrayList<cardItemModel>()
+        val arrayList = ArrayList<cardItemWithoutId>()
 
-        arrayList.add(cardItemModel(12, R.drawable.f1, "Maggie", 2, 3))
-        arrayList.add(cardItemModel(11, R.drawable.beauty, "Beauty", 2, 3))
-        arrayList.add(cardItemModel(21, R.drawable.biscut, "Biscuits", 2, 3))
-        arrayList.add(cardItemModel(31, R.drawable.colddrink, "Drinks", 2, 3))
-        arrayList.add(cardItemModel(41, R.drawable.egg, "Eggs", 2, 3))
-        arrayList.add(cardItemModel(51, R.drawable.fruit_vegitable, "Fruit Vegetable", 2, 3))
-        arrayList.add(cardItemModel(61, R.drawable.munch, "Munch", 2, 3))
-        arrayList.add(cardItemModel(71, R.drawable.surf, "Surf", 2, 3))
-        arrayList.add(cardItemModel(17, R.drawable.beauty, "Beauty", 2, 3))
-        arrayList.add(cardItemModel(15, R.drawable.beauty, "Beauty", 2, 3))
-        arrayList.add(cardItemModel(14, R.drawable.colddrink, "Cold Drink", 2, 3))
-        arrayList.add(cardItemModel(13, R.drawable.biscut, "Biscuts", 2, 3))
-        arrayList.add(cardItemModel(21, R.drawable.fruit_vegitable, "Pizza", 2, 3))
-        arrayList.add(cardItemModel(11, R.drawable.fruit_vegitable, "Pizza", 2, 3))
+        arrayList.add(cardItemWithoutId(12, R.drawable.f1, "Maggie", 2, 3))
+        arrayList.add(cardItemWithoutId(11, R.drawable.beauty, "Beauty", 2, 3))
+        arrayList.add(cardItemWithoutId(21, R.drawable.biscut, "Biscuits", 2, 3))
+        arrayList.add(cardItemWithoutId(31, R.drawable.colddrink, "Drinks", 2, 3))
+        arrayList.add(cardItemWithoutId(41, R.drawable.egg, "Eggs", 2, 3))
+        arrayList.add(cardItemWithoutId(51, R.drawable.fruit_vegitable, "Fruit Vegetable", 2, 3))
+        arrayList.add(cardItemWithoutId(61, R.drawable.munch, "Munch", 2, 3))
+        arrayList.add(cardItemWithoutId(71, R.drawable.surf, "Surf", 2, 3))
+        arrayList.add(cardItemWithoutId(17, R.drawable.beauty, "Beauty", 2, 3))
+        arrayList.add(cardItemWithoutId(15, R.drawable.beauty, "Beauty", 2, 3))
+        arrayList.add(cardItemWithoutId(14, R.drawable.colddrink, "Cold Drink", 2, 3))
+        arrayList.add(cardItemWithoutId(13, R.drawable.biscut, "Biscuts", 2, 3))
+        arrayList.add(cardItemWithoutId(21, R.drawable.fruit_vegitable, "Pizza", 2, 3))
+        arrayList.add(cardItemWithoutId(11, R.drawable.fruit_vegitable, "Pizza", 2, 3))
 
-        val adapter = adapterCategories(this, arrayList,countViewModel)
+        val adapter = adapterCategories(this, arrayList)
         simpleCategories.adapter = adapter
 
         dialog.show()
@@ -456,21 +468,21 @@ class HomeActivity : AppCompatActivity() {
         dialog.setContentView(R.layout.dialog_trending_seeall)
         val simpleCategories = dialog.findViewById<GridView>(R.id.simpleView)
 
-        val arrayList = ArrayList<cardItemModel>()
-        arrayList.add(cardItemModel(12, R.drawable.by1, "Beauty", 2, 3))
-        arrayList.add(cardItemModel(11, R.drawable.instant1, "Instant Food", 2, 3))
-        arrayList.add(cardItemModel(21, R.drawable.cd1, "Cold Drink", 2, 3))
-        arrayList.add(cardItemModel(31, R.drawable.biscut, "Biscuts", 2, 3))
-        arrayList.add(cardItemModel(41, R.drawable.c1, "Choco", 2, 3))
-        arrayList.add(cardItemModel(51, R.drawable.m1, "Masala", 2, 3))
-        arrayList.add(cardItemModel(61, R.drawable.oil1, "Oil", 2, 3))
-        arrayList.add(cardItemModel(71, R.drawable.s1, "Sauce", 2, 3))
-        arrayList.add(cardItemModel(17, R.drawable.coffee0, "Coffee", 2, 3))
-        arrayList.add(cardItemModel(15, R.drawable.gt1, "Green Tea", 2, 3))
-        arrayList.add(cardItemModel(14, R.drawable.tea1, "Tea ", 2, 3))
-        arrayList.add(cardItemModel(13, R.drawable.clean_item, "Home Clean", 2, 3))
+        val arrayList = ArrayList<cardItemWithoutId>()
+        arrayList.add(cardItemWithoutId(12, R.drawable.by1, "Beauty", 2, 3))
+        arrayList.add(cardItemWithoutId(11, R.drawable.instant1, "Instant Food", 2, 3))
+        arrayList.add(cardItemWithoutId(21, R.drawable.cd1, "Cold Drink", 2, 3))
+        arrayList.add(cardItemWithoutId(31, R.drawable.biscut, "Biscuts", 2, 3))
+        arrayList.add(cardItemWithoutId(41, R.drawable.c1, "Choco", 2, 3))
+        arrayList.add(cardItemWithoutId(51, R.drawable.m1, "Masala", 2, 3))
+        arrayList.add(cardItemWithoutId(61, R.drawable.oil1, "Oil", 2, 3))
+        arrayList.add(cardItemWithoutId(71, R.drawable.s1, "Sauce", 2, 3))
+        arrayList.add(cardItemWithoutId(17, R.drawable.coffee0, "Coffee", 2, 3))
+        arrayList.add(cardItemWithoutId(15, R.drawable.gt1, "Green Tea", 2, 3))
+        arrayList.add(cardItemWithoutId(14, R.drawable.tea1, "Tea ", 2, 3))
+        arrayList.add(cardItemWithoutId(13, R.drawable.clean_item, "Home Clean", 2, 3))
 
-        val adapter = adapterCategories(this, arrayList,countViewModel)
+        val adapter = adapterCategories(this, arrayList)
         simpleCategories.adapter = adapter
 
         dialog.show()
@@ -515,6 +527,20 @@ class HomeActivity : AppCompatActivity() {
         val arrayAdapter = adapterBanner(arrayList, this)
 
         binding.rvBrandFocus.adapter = arrayAdapter
+    }
+
+    private fun getTrendingItem() {
+        Log.d("trendingTag", "getTrendingItem: ")
+
+        GlobalScope.launch {
+            val call = repo.getMainTrending()
+            Log.d("trendingTag", "getTrendingItem: $call")
+            if (call.isSuccessful) {
+                Log.d("trendingTag", "getTrendingItem:${Gson().toJson(call.body())} ")
+                tendingItem(call.body())
+            } else
+                Log.d("trendingTag", "getTrendingItem:${call.errorBody()} ")
+        }
     }
 
 }

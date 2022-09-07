@@ -8,11 +8,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zepto.databinding.CardviewItemBinding
-import com.example.zepto.model.cardItemModel
+import com.example.zepto.model.cardItemWithoutId
 import com.example.zepto.ui.activity.SingleTrendingActivity
 
 class deleteTrendingAdapter(
-    private val arrayData: ArrayList<cardItemModel>,
+    private val arrayData: ArrayList<cardItemWithoutId>,
     private val context: Context,
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -36,7 +36,7 @@ class deleteTrendingAdapter(
         //onclick on item
         holder.itemView.setOnClickListener {
             val intent = Intent(context, SingleTrendingActivity::class.java)
-            Log.d("ttt", "onBindViewHolder:${data.Price} ${data.discount}  ${data.discountPrice}")
+            Log.d("ttt", "onBindViewHolder:${data.Price} ${data.discountPrice}  ${data.discountPrice}")
             intent.putExtra("amountKey", data.Price)
             intent.putExtra("nameKey", data.name)
             intent.putExtra("imgKey", data.img)

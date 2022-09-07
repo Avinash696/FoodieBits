@@ -2,7 +2,6 @@ package com.example.zepto.adapter
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,16 +9,14 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.zepto.R
-import com.example.zepto.model.cardItemModel
-import com.example.zepto.ui.activity.DetailActivity
+import com.example.zepto.model.cardItemWithoutId
 import com.example.zepto.ui.activity.SingleTrendingActivity
 import com.example.zepto.viewModel.ItemCountViewModel
 
 
 class adapterCategories(
     private val context: Context,
-    private val arraydata: ArrayList<cardItemModel>,
-    private var countViewMode: ItemCountViewModel
+    private val arraydata: ArrayList<cardItemWithoutId>
 ) :
     BaseAdapter() {
     private var cartName: ArrayList<String> = ArrayList()
@@ -58,7 +55,7 @@ class adapterCategories(
         itemPic.setOnClickListener {
 //            context.startActivity(Intent(context, DetailActivity::class.java))
             val intent = Intent(context, SingleTrendingActivity::class.java)
-            Log.d("catAdapter", "AdapterCate:${data.Price} ${data.discount}  ${data.discountPrice}")
+//            Log.d("catAdapter", "AdapterCate:${data.Price} ${data.discount}  ${data.discountPrice}")
             intent.putExtra("amountKey",data.Price)
             intent.putExtra("nameKey",data.name)
             intent.putExtra("imgKey",data.img)
@@ -67,13 +64,6 @@ class adapterCategories(
             cartAmount.add(data.Price)
             cartImage.add(data.img)
 
-            //viewmodel data set
-            countViewMode.arrayName.value = cartName
-            countViewMode.amountName.value = cartAmount
-            countViewMode.imageName.value = cartImage
-            //count update
-            countViewMode.count = cartName.size
-            countViewMode.setCount()
 
             context.startActivity(intent)
         }

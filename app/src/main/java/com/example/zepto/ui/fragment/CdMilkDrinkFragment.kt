@@ -9,7 +9,7 @@ import android.widget.GridView
 import com.example.zepto.viewModel.DetailViewModel
 import com.example.zepto.R
 import com.example.zepto.adapter.adapterSubListCategories
-import com.example.zepto.model.cardItemModel
+import com.example.zepto.model.cardItemWithoutId
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -50,15 +50,15 @@ class CdMilkDrinkFragment(val detailViewModel: DetailViewModel) : Fragment() {
 
 
     private fun populatingData(){
-        val arrayList = ArrayList<cardItemModel>()
-        arrayList.add(cardItemModel(1, R.drawable.colddrink, "All Drink", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.cd1, "Pepsi", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.cd2, "Pepsi Can", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.cd3, "Sprite", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.cd4, "KingFisher", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.cd7, "Bavaria", 2, 3))
+        val arrayList = ArrayList<cardItemWithoutId>()
+        arrayList.add(cardItemWithoutId(1, R.drawable.colddrink, "All Drink", 2, 3))
+        arrayList.add(cardItemWithoutId(1, R.drawable.cd1, "Pepsi", 2, 3))
+        arrayList.add(cardItemWithoutId(1, R.drawable.cd2, "Pepsi Can", 2, 3))
+        arrayList.add(cardItemWithoutId(1, R.drawable.cd3, "Sprite", 2, 3))
+        arrayList.add(cardItemWithoutId(1, R.drawable.cd4, "KingFisher", 2, 3))
+        arrayList.add(cardItemWithoutId(1, R.drawable.cd7, "Bavaria", 2, 3))
 
-       val adapter =adapterSubListCategories(requireContext(), arrayList,detailViewModel)
+       val adapter =adapterSubListCategories(requireContext(), arrayList)
         simpleCategories.adapter = adapter
     }
 }

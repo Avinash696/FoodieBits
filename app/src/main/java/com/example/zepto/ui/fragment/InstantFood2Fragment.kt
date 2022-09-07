@@ -9,7 +9,7 @@ import android.widget.GridView
 import com.example.zepto.viewModel.DetailViewModel
 import com.example.zepto.R
 import com.example.zepto.adapter.adapterSubListCategories
-import com.example.zepto.model.cardItemModel
+import com.example.zepto.model.cardItemWithoutId
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -48,19 +48,19 @@ class InstantFood2Fragment(val detailViewModel: DetailViewModel) : Fragment() {
         super.onViewCreated(view, savedInstanceState)
     }
     private fun populatingData(){
-        val arrayList = ArrayList<cardItemModel>()
-        arrayList.add(cardItemModel(11, R.drawable.instant1, "Beauty", 2, 3))
-        arrayList.add(cardItemModel(22, R.drawable.instant2, "Cold Drink", 2, 3))
-        arrayList.add(cardItemModel(33, R.drawable.instant4, "Biscuts", 2, 3))
-        arrayList.add(cardItemModel(44, R.drawable.instant2, "Pizza", 2, 3))
-        arrayList.add(cardItemModel(55, R.drawable.instant1, "Pizza", 2, 3))
-        arrayList.add(cardItemModel(56, R.drawable.instant5, "Pizza", 2, 3))
-        arrayList.add(cardItemModel(66, R.drawable.instant7, "Pizza", 2, 3))
-        arrayList.add(cardItemModel(36, R.drawable.instant3, "Pizza", 2, 3))
-        arrayList.add(cardItemModel(26, R.drawable.instant2, "Pizza", 2, 3))
-        arrayList.add(cardItemModel(36, R.drawable.instant4, "Pizza", 2, 3))
-        arrayList.add(cardItemModel(36, R.drawable.instant8, "Pizza", 2, 3))
-       val adapter =adapterSubListCategories(requireContext(), arrayList,detailViewModel)
+        val arrayList = ArrayList<cardItemWithoutId>()
+        arrayList.add(cardItemWithoutId(11, R.drawable.instant1, "Beauty", 2, 3))
+        arrayList.add(cardItemWithoutId(22, R.drawable.instant2, "Cold Drink", 2, 3))
+        arrayList.add(cardItemWithoutId(33, R.drawable.instant4, "Biscuts", 2, 3))
+        arrayList.add(cardItemWithoutId(44, R.drawable.instant2, "Pizza", 2, 3))
+        arrayList.add(cardItemWithoutId(55, R.drawable.instant1, "Pizza", 2, 3))
+        arrayList.add(cardItemWithoutId(56, R.drawable.instant5, "Pizza", 2, 3))
+        arrayList.add(cardItemWithoutId(66, R.drawable.instant7, "Pizza", 2, 3))
+        arrayList.add(cardItemWithoutId(36, R.drawable.instant3, "Pizza", 2, 3))
+        arrayList.add(cardItemWithoutId(26, R.drawable.instant2, "Pizza", 2, 3))
+        arrayList.add(cardItemWithoutId(36, R.drawable.instant4, "Pizza", 2, 3))
+        arrayList.add(cardItemWithoutId(36, R.drawable.instant8, "Pizza", 2, 3))
+       val adapter =adapterSubListCategories(requireContext(), arrayList)
         simpleCategories.adapter = adapter
     }
 }

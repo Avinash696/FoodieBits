@@ -8,8 +8,7 @@ import android.view.ViewGroup
 import android.widget.GridView
 import com.example.zepto.R
 import com.example.zepto.adapter.adapterDashboard
-import com.example.zepto.adapter.adapterSubListCategories
-import com.example.zepto.model.cardItemModel
+import com.example.zepto.model.cardItemWithoutId
 
 
 private const val ARG_PARAM1 = "param1"
@@ -44,13 +43,13 @@ class DashboardFragment : Fragment() {
     }
 
     private fun populatingData() {
-        val arrayList = ArrayList<cardItemModel>()
-        arrayList.add(cardItemModel(100, R.drawable.profile, "Total User", 2, 3))
-        arrayList.add(cardItemModel(50, R.drawable.total_product, "Total Product", 2, 3))
-        arrayList.add(cardItemModel(50, R.drawable.total_sale, "Total Sale Qty", 2, 3))
-        arrayList.add(cardItemModel(200, R.drawable.sale_amount, "Total Sale Amount", 2, 3))
-        arrayList.add(cardItemModel(50, R.drawable.ic_baseline_supervised_user_circle_24, "Total SubUser ", 2, 3))
-        arrayList.add(cardItemModel(150, R.drawable.profile, "User /SubUser ", 2, 3))
+        val arrayList = ArrayList<cardItemWithoutId>()
+        arrayList.add(cardItemWithoutId(100, R.drawable.profile, "Total User", 2, 3))
+        arrayList.add(cardItemWithoutId(50, R.drawable.total_product, "Total Product", 2, 3))
+        arrayList.add(cardItemWithoutId(50, R.drawable.total_sale, "Total Sale Qty", 2, 3))
+        arrayList.add(cardItemWithoutId(200, R.drawable.sale_amount, "Total Sale Amount", 2, 3))
+        arrayList.add(cardItemWithoutId(50, R.drawable.ic_baseline_supervised_user_circle_24, "Total SubUser ", 2, 3))
+        arrayList.add(cardItemWithoutId(150, R.drawable.profile, "User /SubUser ", 2, 3))
 
         val adapter = adapterDashboard(requireContext(), arrayList)
 

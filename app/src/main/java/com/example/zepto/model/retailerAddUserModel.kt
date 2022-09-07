@@ -1,7 +1,8 @@
 package com.example.zepto.module
 
 class retailerAddUserModel(
-    val id: String, val role:String, override val name:String, pic: String,
+    val id: String, val role:String,
+    override val name:String, pic: String,
     pass:String,
     email:String,
     mobile:String,

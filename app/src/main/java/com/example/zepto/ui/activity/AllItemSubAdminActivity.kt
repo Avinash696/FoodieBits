@@ -7,24 +7,40 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.example.test.aviInterface
 import com.example.zepto.R
 import com.example.zepto.adapter.adapterItemSubAdmin
 import com.example.zepto.databinding.ActivityAllItemSubAdminBinding
+import com.example.zepto.db.RetrofitHelper
 import com.example.zepto.model.cardItemModel
+import com.example.zepto.model.cardItemWithoutId
+import com.example.zepto.model.mainSubProductResponceModel
+import com.google.gson.Gson
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import java.io.File
 
 
 class AllItemSubAdminActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAllItemSubAdminBinding
-    val arrayList = ArrayList<cardItemModel>()
-    lateinit var data: cardItemModel
+    val arrayList = ArrayList<cardItemWithoutId>()
+    lateinit var data: cardItemWithoutId
     private val PICK_FROM_CAMERA = 1
     private val PICK_FROM_GALLARY = 2
-    lateinit var dialog :Dialog
+    val PICK_IMAGE = 113
+
+
+    //    lateinit var dialog :Dialog
     override fun onCreate(savedInstanceState: Bundle?) {
         val mobileArray = arrayOf(
             "Android", "IPhone", "WindowsMobile", "Blackberry",
@@ -33,91 +49,57 @@ class AllItemSubAdminActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(
             this,
-            com.example.zepto.R.layout.activity_all_item_sub_admin
+            R.layout.activity_all_item_sub_admin
         )
-        supportActionBar!!.title = "Add Product"
-        listData(mobileArray)
 
+        val intent = intent
+        val title = intent.getStringExtra("SubProductIdKey")
+        supportActionBar!!.title = title
+        //populating
+
+//        hitMainCategoryApi()
         binding.ivAddAdminUSer.setOnClickListener {
             //add
             startActivity(Intent(Intent(this, AddProductFormActivity::class.java)))
         }
-         dialog = Dialog(this)
-        dialog.setContentView(R.layout.dialog_show_form)
-        val name = dialog.findViewById<EditText>(R.id.etShowName).text
-        val price = dialog.findViewById<EditText>(R.id.etShowPrice).text
-        val quantity = dialog.findViewById<EditText>(R.id.etShowQunatity).text
-        binding.lvAddUserItem.setOnItemClickListener { adapterView, view, i, l ->
-            dialog.show()
-            //specfic data take out
-            data = arrayList[i]
-//            dialog.findViewById<ImageView>(R.id.ivEditShowName).setOnClickListener {
-//                dialog.findViewById<TextView>(R.id.dialogNameSelect).text =
-//            }
-            dialog.findViewById<Button>(R.id.btSubmitAddProduct).setOnClickListener {
-                //model class changed
-                data.name = name.toString()
-                data.discount = Integer.parseInt(price.toString())
-                data.Price = Integer.parseInt(quantity.toString())
-                dialog.dismiss()
-            }
-            val btState = dialog.findViewById<Button>(R.id.btActivateDeactivateForm)
-            btState.setOnClickListener {
-                if (btState.text.equals("Deactivate"))
-                    btState.text = "Activate"
-                else
-                    btState.text = "Deactivate"
-            }
-            dialog.findViewById<ImageView>(R.id.ivAddImageForm).setOnClickListener {
 
-                val galleryIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-                startActivityForResult(galleryIntent, PICK_FROM_GALLARY);
-            }
-        }
+        hitMainCategoryApi()
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        var bitmap: Bitmap? = null
-        when(requestCode){
-            PICK_FROM_GALLARY -> {
-                if (resultCode == Activity.RESULT_OK) {
-                    //pick image from gallery
-                    val selectedImage = data!!.data
-                    val  filePathColumn = arrayOf( MediaStore.Images.Media.DATA)
-
-                    // Get the cursor
-                    val cursor = contentResolver
-                        .query(selectedImage!!, filePathColumn, null, null, null);
-                    // Move to first row
-                    cursor!!.moveToFirst();
-
-                    val  columnIndex = cursor . getColumnIndex (filePathColumn[0]);
-                    val imgDecodableString = cursor . getString (columnIndex);
-                    cursor.close();
-                    bitmap = BitmapFactory.decodeFile(imgDecodableString)
-                    dialog.findViewById<ImageView>(R.id.ivAddImageForm).setImageBitmap(bitmap)
-                }
-            }
+    private fun populatingData(data: mainSubProductResponceModel) {
+        val arrayList = ArrayList<cardItemModel>()
+        for (i in 0 until data.subProductImg.size) {
+            val dumy = data.subProductImg[i]
+            arrayList.add(
+                cardItemModel(
+                    title.toString(),
+                    dumy.addProductImg,
+                    dumy.addProductName,
+                    dumy.addProductQuantity,
+                    Integer.parseInt(dumy.addProductPrice)
+                )
+            )
         }
-        super.onActivityResult(requestCode, resultCode, data)
+        GlobalScope.launch(Dispatchers.Main) {
+            val adapterItemSubAdmin = adapterItemSubAdmin(applicationContext, arrayList)
+            val listView = binding.lvAddUserItem
+            listView.adapter = adapterItemSubAdmin
+        }
+
     }
 
-    private fun listData(mobileArray: Array<String>) {
-
-        arrayList.add(cardItemModel(12, R.drawable.by1, "Beauty", 2, 3))
-        arrayList.add(cardItemModel(11, R.drawable.instant1, "Instant Food", 2, 3))
-        arrayList.add(cardItemModel(21, R.drawable.cd1, "Cold Drink", 2, 3))
-        arrayList.add(cardItemModel(31, R.drawable.biscut, "Biscuts", 2, 3))
-        arrayList.add(cardItemModel(41, R.drawable.c1, "Choco", 2, 3))
-        arrayList.add(cardItemModel(51, R.drawable.m1, "Masala", 2, 3))
-        arrayList.add(cardItemModel(61, R.drawable.oil1, "Oil", 2, 3))
-        arrayList.add(cardItemModel(71, R.drawable.s1, "Sauce", 2, 3))
-        arrayList.add(cardItemModel(17, R.drawable.coffee0, "Coffee", 2, 3))
-        arrayList.add(cardItemModel(15, R.drawable.gt1, "Green Tea", 2, 3))
-        arrayList.add(cardItemModel(14, R.drawable.tea1, "Tea ", 2, 3))
-        arrayList.add(cardItemModel(13, R.drawable.clean_item, "Home Clean", 2, 3))
-        val adapterItemSubAdmin = adapterItemSubAdmin(this, arrayList)
-        val listView = binding.lvAddUserItem
-        listView.adapter = adapterItemSubAdmin
+    private fun hitMainCategoryApi() {
+        Log.d("myFun", "hitMainCategoryApi: ")
+         val repo = RetrofitHelper.getClient().create(aviInterface::class.java)
+        GlobalScope.launch {
+            val call = repo.getMainSubProduct()
+            Log.d("myFun", "hitMainCategoryApi: inside $call")
+            if (call.isSuccessful) {
+                val gson = Gson()
+                Log.d("myFun", "hitMainCategoryApi:  Success${gson.toJson(call.body()!!)}")
+                populatingData(call.body()!!)
+            } else
+                Log.d("myFun", "hitMainCategoryApi: error ${call.errorBody()}")
+        }
     }
 }

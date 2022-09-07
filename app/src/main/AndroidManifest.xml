@@ -30,11 +30,7 @@
             android:name=".Admin.ui.activity.CreateAdminActivity"
             android:exported="true"
             android:parentActivityName=".Admin.ui.activity.RetailerAdminActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.example.test.aviActivity"
@@ -76,7 +72,9 @@
         <activity
             android:name=".Admin.ui.activity.AdminHomeActivity"
             android:exported="true"
-            android:theme="@style/MyAdminCustom" />
+            android:theme="@style/MyAdminCustom" >
+
+        </activity>
         <activity
             android:name=".ui.activity.OrderSummaryActivity"
             android:exported="true"
@@ -138,7 +136,9 @@
         <activity
             android:name=".ui.activity.SingleTrendingActivity"
             android:exported="true"
-            android:parentActivityName=".ui.activity.HomeActivity" />
+            android:parentActivityName=".ui.activity.HomeActivity">
+
+        </activity>
         <activity
             android:name=".ui.activity.DetailActivity"
             android:exported="true"
@@ -146,11 +146,18 @@
         <activity
             android:name=".ui.activity.HomeActivity"
             android:exported="true"
-            android:theme="@style/MyCustomHomeScene" />
+            android:theme="@style/MyCustomHomeScene" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".LoginActivity"
             android:exported="true"
-            android:theme="@style/MyAdminCustom"></activity>
+            android:theme="@style/MyAdminCustom">
+
+        </activity>
     </application>
 
 </manifest>

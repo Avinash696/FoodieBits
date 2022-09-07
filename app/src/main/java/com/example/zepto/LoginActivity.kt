@@ -40,51 +40,6 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun authenticateUser(id: String, serverId: String, password: Int) {
-         stName = binding.etName.text.toString()
-         stPass = binding.etPassword.text.toString()
-        Log.d("rawat", "authenticateUser: $stName  $stPass   ")
-        Log.d("rawat", "authenticateUser: $id  $password $serverId")
-
-//        if (stName.isNotEmpty() && stPass.isNotEmpty()) {
-//            if ((stName == "admin") && (stPass == "admin")) {
-//                startActivity(Intent(this, AdminHomeActivity::class.java))
-//            } else if (stName == "avi" && stPass == "avi") {
-//                //client add (later)
-//                startActivity(Intent(this, HomeActivity::class.java))
-//            } else if (stName == "subadmin" && stPass == "subadmin") {
-//                startActivity(Intent(this, SubAdminActivity::class.java))
-//            } else if (stName == "retailer" && stPass == "retailer") {
-//                startActivity(Intent(this, RetailerAdminActivity::class.java))
-//            } else if (stName == "delivery" && stPass == "delivery") {
-//                startActivity(Intent(this, SubmitInformationActivity::class.java))
-//            }
-//        }
-        if (stName.isNotEmpty() && stPass.isNotEmpty()) {
-            Log.d("myCheck", "fileds $stName $serverId $stPass $password $id ")
-            if ((stName == serverId) && (stPass.equals(password)) && (id == "admin")) {
-                Log.d("rawat", "authenticateUser:  Success")
-                startActivity(Intent(this, AdminHomeActivity::class.java))
-            } else if (stName == serverId && stPass.equals(password)) {
-                //client add (later)
-                Log.d("rawat", "authenticateUser:  Success")
-                startActivity(Intent(this, HomeActivity::class.java))
-            } else if (stName == serverId && stPass.equals(password)) {
-                Log.d("rawat", "authenticateUser:  Success")
-                startActivity(Intent(this, SubAdminActivity::class.java))
-            } else if (stName == serverId && stPass.equals(password)) {
-                Log.d("rawat", "authenticateUser:  Success")
-                startActivity(Intent(this, RetailerAdminActivity::class.java))
-            } else if (stName == serverId && stPass.equals(password)) {
-                Log.d("rawat", "authenticateUser:  Success")
-                startActivity(Intent(this, SubmitInformationActivity::class.java))
-            }
-        } else {
-            Log.d("rawat", " Enter all fields  ")
-        }
-
-    }
-
     private fun authenticate() {
         val client = RetrofitHelper.getClient().create(aviInterface::class.java)
         GlobalScope.launch(Dispatchers.Main) {
@@ -109,13 +64,11 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
        else if ((stName.equals(id)) && (stPass.equals(password)) && (result == "wladmin")){
-//           startActivity(Intent(this, SubAdminActivity::class.java))
            val intent = Intent(this, SubAdminActivity::class.java)
            intent.putExtra("wladminTitle",id)
            startActivity(intent)
        }
        else if ((stName.equals(id)) && (stPass.equals(password)) && (result == "retailer")){
-//           startActivity(Intent(this, RetailerAdminActivity::class.java))
            val intent = Intent(this, RetailerAdminActivity::class.java)
            intent.putExtra("retailerTitle",id)
            startActivity(intent)

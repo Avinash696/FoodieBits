@@ -9,6 +9,7 @@ import com.example.zepto.databinding.OrderHistoryBinding
 import com.example.zepto.model.orderListModel
 import com.example.zepto.ui.activity.FaqsActivity
 import com.example.zepto.ui.activity.SingleTrendingActivity
+import com.squareup.picasso.Picasso
 
 class OrderSummaryAdapter (
     private val arrayData: ArrayList<orderListModel>,
@@ -32,7 +33,8 @@ class OrderSummaryAdapter (
         binding.tvDeliverdDate.text = data.itemStatus+","+data.itemDate
         binding.tvDeliverdAmount.text = data.itemAmount
         binding.tvItemNameDelived.text = data.itemName
-        binding.ivItemDelivered.setImageResource(data.itemImage)
+        Picasso.get().load(data.itemImage).into(binding.ivItemDelivered)
+//        binding.ivItemDelivered.setImageResource(data.itemImage)
         binding.tvOrderQuantity.text = "Order Total" +"("+data.itemQuantity+")"
 
         //onclick on item

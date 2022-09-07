@@ -8,11 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.zepto.databinding.CardviewItemBinding
 import com.example.zepto.databinding.OrderHistoryBinding
 import com.example.zepto.databinding.RowOrderListBinding
-import com.example.zepto.model.cardItemModel
+import com.example.zepto.model.cardItemWithoutId
 import com.example.zepto.model.orderListModel
 import com.example.zepto.ui.activity.FaqsActivity
 import com.example.zepto.ui.activity.OrderSummaryActivity
 import com.example.zepto.ui.activity.SingleTrendingActivity
+import com.squareup.picasso.Picasso
 
 class adapterOrderList(
     private val arrayData: ArrayList<orderListModel>,
@@ -37,7 +38,8 @@ class adapterOrderList(
         binding.tvDeliverdDate.text = data.itemStatus+","+data.itemDate
         binding.tvDeliverdAmount.text = data.itemAmount
         binding.tvItemNameDelived.text = data.itemName
-        binding.ivItemDelivered.setImageResource(data.itemImage)
+        Picasso.get().load(data.itemImage).into(binding.ivItemDelivered)
+//        binding.ivItemDelivered.setImageResource(data.itemImage)
         binding.tvOrderQuantity.text = "Order Total" +"("+data.itemQuantity+")"
 
         //onclick on item

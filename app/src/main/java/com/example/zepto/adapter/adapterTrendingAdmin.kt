@@ -5,12 +5,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zepto.databinding.CardTrendingAdminBinding
-import com.example.zepto.databinding.CardviewItemBinding
-import com.example.zepto.model.cardItemModel
+import com.example.zepto.model.SubCategoryImgX
+import com.example.zepto.model.cardItemWithoutId
+import com.squareup.picasso.Picasso
 
 class adapterTrendingAdmin(
 
-    private val arrayData: ArrayList<cardItemModel>,
+    private val arrayData: ArrayList<SubCategoryImgX>,
     private val context: Context,
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -27,11 +28,12 @@ class adapterTrendingAdmin(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val data = arrayData[position]
-       binding.tvItemName.text = data.name
-        binding.ivItemPic.setImageResource(data.img)
-        binding.tvItemDiscountedCost.text = data.discount.toString()
-        binding.tvItemWeight.text = data.discount.toString()
-        binding.tvItemFakeCost.text = data.discountPrice.toString()
+       binding.tvItemName.text = data.productName
+        Picasso.get().load(data.productImg).into(binding.ivItemPic)
+//        binding.ivItemPic.setImageResource(data)
+        binding.tvItemDiscountedCost.text = data.discountedPrice
+        binding.tvItemWeight.text = data.discountedPrice
+        binding.tvItemFakeCost.text = data.priceShow
 
         //
     }

@@ -4,7 +4,7 @@ data class orderListModel(
     val itemStatus: String,
     val itemDate: String,
     val itemAmount: String,
-    val itemImage: Int,
+    val itemImage: String,
     val itemName: String,
     val itemQuantity: Int
 )

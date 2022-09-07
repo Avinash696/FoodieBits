@@ -9,7 +9,7 @@ import android.widget.GridView
 import com.example.zepto.viewModel.DetailViewModel
 import com.example.zepto.R
 import com.example.zepto.adapter.adapterSubListCategories
-import com.example.zepto.model.cardItemModel
+import com.example.zepto.model.cardItemWithoutId
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -49,19 +49,19 @@ class Biscuit5Fragment(val detailViewModel: DetailViewModel) : Fragment() {
         super.onViewCreated(view, savedInstanceState)
     }
     private fun populatingData(){
-        val arrayList = ArrayList<cardItemModel>()
-        arrayList.add(cardItemModel(1, R.drawable.biscuit1, "All Biscuit", 2, 3))
-        arrayList.add(cardItemModel(2, R.drawable.biscuit2, "50 -50", 2, 3))
-        arrayList.add(cardItemModel(3, R.drawable.biscuit3, "Bounce", 2, 3))
-        arrayList.add(cardItemModel(4, R.drawable.biscuit4, "Parle G", 2, 3))
-        arrayList.add(cardItemModel(5, R.drawable.biscuit5, "Dark Fantasy", 2, 3))
-        arrayList.add(cardItemModel(6, R.drawable.biscuit6, "Cookies", 2, 3))
-        arrayList.add(cardItemModel(6, R.drawable.biscuit7, "Choco Files", 2, 3))
-        arrayList.add(cardItemModel(6, R.drawable.biscuit8, "Little Hearts", 2, 3))
-        arrayList.add(cardItemModel(6, R.drawable.biscuit10, "Marie Gold", 2, 3))
-        arrayList.add(cardItemModel(6, R.drawable.biscuit9, "Badam Cookies", 2, 3))
+        val arrayList = ArrayList<cardItemWithoutId>()
+        arrayList.add(cardItemWithoutId(1, R.drawable.biscuit1, "All Biscuit", 2, 3))
+        arrayList.add(cardItemWithoutId(2, R.drawable.biscuit2, "50 -50", 2, 3))
+        arrayList.add(cardItemWithoutId(3, R.drawable.biscuit3, "Bounce", 2, 3))
+        arrayList.add(cardItemWithoutId(4, R.drawable.biscuit4, "Parle G", 2, 3))
+        arrayList.add(cardItemWithoutId(5, R.drawable.biscuit5, "Dark Fantasy", 2, 3))
+        arrayList.add(cardItemWithoutId(6, R.drawable.biscuit6, "Cookies", 2, 3))
+        arrayList.add(cardItemWithoutId(6, R.drawable.biscuit7, "Choco Files", 2, 3))
+        arrayList.add(cardItemWithoutId(6, R.drawable.biscuit8, "Little Hearts", 2, 3))
+        arrayList.add(cardItemWithoutId(6, R.drawable.biscuit10, "Marie Gold", 2, 3))
+        arrayList.add(cardItemWithoutId(6, R.drawable.biscuit9, "Badam Cookies", 2, 3))
 
-       val adapter =adapterSubListCategories(requireContext(), arrayList,detailViewModel)
+       val adapter =adapterSubListCategories(requireContext(), arrayList)
         simpleCategories.adapter = adapter
     }
 }

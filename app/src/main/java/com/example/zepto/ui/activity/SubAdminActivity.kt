@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.zepto.*
+import com.example.zepto.Admin.ui.retailerFragment.AddUserTestFragment
 import com.example.zepto.databinding.ActivitySubAdminBinding
 import com.example.zepto.ui.fragment.DashboardFragment
 import com.google.android.material.navigation.NavigationView
@@ -23,7 +24,11 @@ class SubAdminActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sub_admin)
         init()  
         changeFragment(CategroiesFragment())
-
+        //title set
+        val intent = intent
+        val title = intent.getStringExtra("wladminTitle")
+        Log.d("adminTitleCheck", "onCreate: $title")
+        binding.appBar.title = title
         //action
         setSupportActionBar(binding.appBar)
         actionBarDrawableToggle =
@@ -38,7 +43,8 @@ class SubAdminActivity : AppCompatActivity() {
                     return@setNavigationItemSelectedListener true
                 }
                 R.id.menu_SubadminAddUser -> {
-                    changeFragment(AddUserFragment())
+//                    changeFragment(AddUserFragment())
+                    changeFragment(AddUserTestFragment())
                     Log.d("myAdmin", "clicked Add User")
                     binding.dlAdminHome.close()
                     return@setNavigationItemSelectedListener true

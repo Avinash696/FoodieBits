@@ -25,7 +25,11 @@ class RetailerAdminActivity : AppCompatActivity() {
         binding= DataBindingUtil.setContentView(this,R.layout.activity_retailer_admin)
         init()
         changeFragment(RetailerDashboardFragment())
-
+        //set title
+        val intent = intent
+        val title = intent.getStringExtra("retailerTitle")
+        Log.d("adminTitleCheck", "onCreate: $title")
+        binding.appBar.title = title
         //action
         setSupportActionBar(binding.appBar)
         actionBarDrawableToggle =

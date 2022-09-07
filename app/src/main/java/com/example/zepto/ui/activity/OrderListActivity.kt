@@ -9,7 +9,7 @@ import com.example.zepto.adapter.adapterOrderList
 import com.example.zepto.adapter.adapterTrending
 import com.example.zepto.databinding.ActivityOrderListBinding
 import com.example.zepto.databinding.RowOrderListBinding
-import com.example.zepto.model.cardItemModel
+import com.example.zepto.model.cardItemWithoutId
 import com.example.zepto.model.orderListModel
 
 class OrderListActivity : AppCompatActivity() {
@@ -30,7 +30,7 @@ class OrderListActivity : AppCompatActivity() {
                 "Delivered",
                 "20 Feb",
                 "289.00",
-                R.drawable.order,
+                R.drawable.order.toString(),
                 "Chakki Atta",
                 1
             )
@@ -40,28 +40,8 @@ class OrderListActivity : AppCompatActivity() {
                 "Pending",
                 "17 Feb",
                 "200.00",
-                R.drawable.order,
+                R.drawable.order.toString(),
                 "Maggi",
-                2
-            )
-        )
-        arrayList.add(
-            orderListModel(
-                "Delivered",
-                "20 MAy",
-                "189.00",
-                R.drawable.order,
-                "Momos",
-                4
-            )
-        )
-        arrayList.add(
-            orderListModel(
-                "Pending",
-                "30 Feb",
-                "50.00",
-                R.drawable.hamberg,
-                "Pizza",
                 2
             )
         )

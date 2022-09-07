@@ -12,39 +12,44 @@
         android:background="@color/white">
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:hint="ID"
             android:src="@drawable/b2"
             android:textColorHint="@color/purple_200"
-            android:id="@+id/etIdUserMasterDialog"/>
+            android:id="@+id/ivTrendingImage"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Item Name"
+            android:textColor="@color/black"
             android:textColorHint="@color/purple_200"
-            android:id="@+id/etNameUserMasterDialog"/>
+            android:id="@+id/etTrendingName"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Price"
+            android:textColor="@color/black"
             android:textColorHint="@color/purple_200"
-            android:id="@+id/etEmailUserMasterDialog"/>
+            android:id="@+id/etTrendingPrice"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Discounted Price"
+            android:textColor="@color/black"
             android:textColorHint="@color/purple_200"
-            android:id="@+id/etMobileUserMasterDialog"/>
+            android:id="@+id/etTrendingDiscount"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint=" Qty"
+            android:textColor="@color/black"
             android:textColorHint="@color/purple_200"
-            android:id="@+id/etQty"/>
+            android:id="@+id/etTrendingQunatity"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Submit"
+            android:id="@+id/btSubmitTrending"
             android:backgroundTint="@color/blue"
             android:layout_gravity="right"
             android:layout_marginRight="10dp"/>

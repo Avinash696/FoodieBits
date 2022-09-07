@@ -15,7 +15,7 @@ class CartActivity : AppCompatActivity() {
     lateinit var intentTrending: Intent
     private lateinit var nameArray: ArrayList<String>
     private lateinit var amountArray: ArrayList<Int>
-    private lateinit var imageArray: ArrayList<Int>
+    private lateinit var imageArray: ArrayList<String>
     private lateinit var binding: ActivityCartBinding
     private var totalAmount: Int = 0
 
@@ -29,6 +29,7 @@ class CartActivity : AppCompatActivity() {
         totalAmount()
         //send to payment
         binding.btPayAmount.setOnClickListener {
+            //why u want to add that ordered product and who will see 
             startActivity(Intent(this, YourOrderActivity::class.java))
         }
     }
@@ -46,9 +47,13 @@ class CartActivity : AppCompatActivity() {
         //cart data
         nameArray = intentTrending.getStringArrayListExtra("nameArray")!!
         amountArray = intentTrending.getIntegerArrayListExtra("amountArray")!!
-        imageArray = intentTrending.getIntegerArrayListExtra("imgArray")!!
+        imageArray = intentTrending.getStringArrayListExtra("imgArray")!!
 
         Log.d("cartArr", "onCreate: $nameArray ${nameArray.size} $amountArray $imageArray")
+
+        for(i in 0 until imageArray.size){
+            Log.d("onetime", "intentDataReceive: ${imageArray[i]}")
+        }
     }
 
     private fun populatingIntentData() {

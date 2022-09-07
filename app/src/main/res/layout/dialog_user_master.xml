@@ -17,24 +17,28 @@
             android:textColor="@color/black"
             android:textColorHint="@color/purple_200"
             android:id="@+id/etIdUserMasterDialog"/>
+
         <EditText
+            android:id="@+id/etNameUserMasterDialog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Name"
             android:textColor="@color/black"
-            android:textColorHint="@color/purple_200"
-            android:id="@+id/etNameUserMasterDialog"/>
+            android:textColorHint="@color/purple_200" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/llUploadImgMainCategory"
             android:background="@drawable/border_layout">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
                 android:text="Upload Imgage"
-                android:textSize="19sp"
                 android:textColor="@color/red"
-                android:layout_marginLeft="10dp"/>
+                android:textSize="19sp" />
 
             <ImageView
                 android:layout_width="wrap_content"

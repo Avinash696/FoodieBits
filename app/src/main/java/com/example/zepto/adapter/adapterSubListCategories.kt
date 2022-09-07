@@ -9,13 +9,13 @@ import android.view.ViewGroup
 import android.widget.*
 import com.example.zepto.viewModel.DetailViewModel
 import com.example.zepto.R
-import com.example.zepto.model.cardItemModel
+import com.example.zepto.model.cardItemWithoutId
 import com.example.zepto.ui.activity.SingleTrendingActivity
+import com.squareup.picasso.Picasso
 
 class adapterSubListCategories(
     private val context: Context,
-    private val arraydata: ArrayList<cardItemModel>,
-    private var countViewMode: DetailViewModel
+    private val arraydata: ArrayList<cardItemWithoutId>
 ) :
     BaseAdapter() {
     var cartName: ArrayList<String> = ArrayList()
@@ -45,21 +45,21 @@ class adapterSubListCategories(
         }
         //fields assign
         val name = myView!!.findViewById<TextView>(R.id.tvItemDetailName)
-        val discount = myView!!.findViewById<TextView>(R.id.tvItemDiscountedDetailCost)
-        val btnAdd = myView!!.findViewById<ImageView>(R.id.ivAddBtnDetail)
+        val discount = myView.findViewById<TextView>(R.id.tvItemDiscountedDetailCost)
+        val btnAdd = myView.findViewById<ImageView>(R.id.ivAddBtnDetail)
         val itemPic = myView.findViewById<ImageView>(R.id.ivItemDetailPic)
 
         val data = arraydata[position]
 
         //set data
         name.text =data.name
-        discount.text =data.discount.toString()
-        itemPic.setImageResource(data.img)
+        discount.text =data.discountPrice.toString()
+        Picasso.get().load(data.img).into(itemPic)
+//        itemPic.setImageResource()
 
         //temp icon click screen forward move
         myView.setOnClickListener {
             val intent = Intent(context, SingleTrendingActivity::class.java)
-            Log.d("ttt", "onBindViewHolder:${data.Price} ${data.discount}  ${data.discountPrice}")
             intent.putExtra("amountKey", data.Price)
             intent.putExtra("nameKey", data.name)
             intent.putExtra("imgKey", data.img)
@@ -67,8 +67,8 @@ class adapterSubListCategories(
             intent.putExtra("nameArray", cartName)
             intent.putExtra("amountArray", cartAmount)
             intent.putExtra("imageArray", cartImage)
-            Log.d("adapterCountCheck", "getView:${countViewMode.count} ")
-            intent.putExtra("singleCountTrend", countViewMode.count)
+//            Log.d("adapterCountCheck", "getView:${countViewMode.count} ")
+//            intent.putExtra("singleCountTrend", countViewMode.count)
 
             //count send
             context.startActivity(intent)
@@ -83,18 +83,6 @@ class adapterSubListCategories(
             cartName.add(data.name)
             cartAmount.add(data.Price)
             cartImage.add(data.img)
-
-            //viewmodel data set
-            countViewMode.arrayNameDetail.value = cartName
-            countViewMode.arrayAmountDetail.value = cartAmount
-            countViewMode.arrayImageDetail.value = cartImage
-            //count update
-//            countViewMode.count = cartName.size
-//            countViewMode.setCount()
-            //mutable count update
-            countViewMode.count = countViewMode.countMutableLiveData.value!! +1
-            countViewMode.setCount()
-            Log.d("justdd", "onBindViewHolder:${countViewMode.count} ")
         }
         return myView
     }

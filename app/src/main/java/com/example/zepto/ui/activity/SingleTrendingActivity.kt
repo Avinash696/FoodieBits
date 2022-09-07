@@ -22,7 +22,7 @@ import com.example.zepto.adapter.deleteTrendingAdapter
 import com.example.zepto.databinding.ActivitySingleTrendingBinding
 import com.example.zepto.databinding.AddItemCountBinding
 import com.example.zepto.databinding.BottomTotalAmountBinding
-import com.example.zepto.model.cardItemModel
+import com.example.zepto.model.cardItemWithoutId
 
 class SingleTrendingActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySingleTrendingBinding
@@ -60,7 +60,7 @@ class SingleTrendingActivity : AppCompatActivity() {
         //counter
         val countAll = intentTrending.getIntExtra("singleCountTrend", 0)
 
-        Log.d("ttt", "onCreate: $amountData  $nameData $imgData ${nameArray!!.size}")
+//        Log.d("ttt", "onCreate: $amountData  $nameData $imgData ${nameArray!!.size}")
         Log.d("mypersonalcount", "onCreate: $countAll")
 
         //viewodel All value update
@@ -181,15 +181,15 @@ class SingleTrendingActivity : AppCompatActivity() {
 
 
     //    private fun tendingItem() {
-//        val arrayList = ArrayList<cardItemModel>()
-//        arrayList.add(cardItemModel(1, R.drawable.f1, "Maggie", 2, 3))
-//        arrayList.add(cardItemModel(1, R.drawable.beauty, "Beauty", 2, 3))
-//        arrayList.add(cardItemModel(1, R.drawable.biscut, "Biscuits", 2, 3))
-//        arrayList.add(cardItemModel(1, R.drawable.colddrink, "Drinks", 2, 3))
-//        arrayList.add(cardItemModel(1, R.drawable.egg, "Eggs", 2, 3))
-//        arrayList.add(cardItemModel(1, R.drawable.fruit_vegitable, "Fruit Vegetable", 2, 3))
-//        arrayList.add(cardItemModel(1, R.drawable.munch, "Munch", 2, 3))
-//        arrayList.add(cardItemModel(1, R.drawable.surf, "Surf", 2, 3))
+//        val arrayList = ArrayList<cardItemWithoutId>()
+//        arrayList.add(cardItemWithoutId(1, R.drawable.f1, "Maggie", 2, 3))
+//        arrayList.add(cardItemWithoutId(1, R.drawable.beauty, "Beauty", 2, 3))
+//        arrayList.add(cardItemWithoutId(1, R.drawable.biscut, "Biscuits", 2, 3))
+//        arrayList.add(cardItemWithoutId(1, R.drawable.colddrink, "Drinks", 2, 3))
+//        arrayList.add(cardItemWithoutId(1, R.drawable.egg, "Eggs", 2, 3))
+//        arrayList.add(cardItemWithoutId(1, R.drawable.fruit_vegitable, "Fruit Vegetable", 2, 3))
+//        arrayList.add(cardItemWithoutId(1, R.drawable.munch, "Munch", 2, 3))
+//        arrayList.add(cardItemWithoutId(1, R.drawable.surf, "Surf", 2, 3))
 //
 //        binding.rvRecommendedSingle.layoutManager = LinearLayoutManager(
 //            this,
@@ -199,15 +199,15 @@ class SingleTrendingActivity : AppCompatActivity() {
 //        binding.rvRecommendedSingle.adapter = arrayAdapter
 //    }
     private fun deleteTendingItem() {
-        val arrayList = ArrayList<cardItemModel>()
-        arrayList.add(cardItemModel(1, R.drawable.f1, "Maggie", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.beauty, "Beauty", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.biscut, "Biscuits", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.colddrink, "Drinks", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.egg, "Eggs", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.fruit_vegitable, "Fruit Vegetable", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.munch, "Munch", 2, 3))
-        arrayList.add(cardItemModel(1, R.drawable.surf, "Surf", 2, 3))
+        val arrayList = ArrayList<cardItemWithoutId>()
+        arrayList.add(cardItemWithoutId(1, R.drawable.f1, "Maggie", 2, 3))
+        arrayList.add(cardItemWithoutId(1, R.drawable.beauty, "Beauty", 2, 3))
+        arrayList.add(cardItemWithoutId(1, R.drawable.biscut, "Biscuits", 2, 3))
+        arrayList.add(cardItemWithoutId(1, R.drawable.colddrink, "Drinks", 2, 3))
+        arrayList.add(cardItemWithoutId(1, R.drawable.egg, "Eggs", 2, 3))
+        arrayList.add(cardItemWithoutId(1, R.drawable.fruit_vegitable, "Fruit Vegetable", 2, 3))
+        arrayList.add(cardItemWithoutId(1, R.drawable.munch, "Munch", 2, 3))
+        arrayList.add(cardItemWithoutId(1, R.drawable.surf, "Surf", 2, 3))
 
         binding.rvRecommendedSingle.layoutManager = LinearLayoutManager(
             this,

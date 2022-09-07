@@ -1,21 +1,16 @@
 package com.example.zepto.adapter
 
-import android.app.Dialog
 import android.content.Context
-import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import com.example.zepto.R
 import com.example.zepto.model.cardItemModel
-import com.example.zepto.ui.activity.AddProductFormActivity
-import com.example.zepto.ui.activity.SingleTrendingActivity
-import com.example.zepto.viewModel.DetailViewModel
+import com.example.zepto.model.cardItemWithoutId
+import com.squareup.picasso.Picasso
 
 class adapterItemSubAdmin(
     private val context: Context,
@@ -54,8 +49,11 @@ class adapterItemSubAdmin(
 
         //set data
         name.text = data.name
-        discount.text = data.discount.toString()
-        itemPic.setImageResource(data.img)
+        discount.text = data.discountPrice.toString()
+        Picasso.get()
+            .load(data.img)
+            .into(itemPic)
+//        itemPic.setImageResource(data.img)
 
 //        val dialog = Dialog(context)
 //        dialog.setContentView(R.layout.dialog_show_form)

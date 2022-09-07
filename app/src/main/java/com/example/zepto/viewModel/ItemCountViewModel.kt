@@ -7,7 +7,7 @@ class ItemCountViewModel : ViewModel() {
     var countMutableLiveData = MutableLiveData<Int>(0)
     var arrayName = MutableLiveData<ArrayList<String>>()
     var amountName = MutableLiveData<ArrayList<Int>>()
-    var imageName = MutableLiveData<ArrayList<Int>>()
+    var imageName = MutableLiveData<ArrayList<String>>()
     var count: Int = 0
 
 

@@ -77,8 +77,8 @@
                         android:text="Role"
                         android:textColor="@color/black" />
 
-                    <EditText
-                        android:id="@+id/etRoleAdduserDialogRetailer"
+                    <Spinner
+                        android:id="@+id/spRoleAdduserDialogRetailer"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
