@@ -73,6 +73,16 @@ class LoginActivity : AppCompatActivity() {
            intent.putExtra("retailerTitle",id)
            startActivity(intent)
        }
+       else if ((stName.equals("avi")) && (stPass.equals("avi")) || (result == "home")){
+           val intent = Intent(this, HomeActivity::class.java)
+           intent.putExtra("retailerTitle",id)
+           startActivity(intent)
+       }
+       else if ((stName.equals("delivery")) && (stPass.equals("delivery")) || (result == "delivery")){
+           val intent = Intent(this, SubmitInformationActivity::class.java)
+           intent.putExtra("retailerTitle",id)
+           startActivity(intent)
+       }
 
         else {
            Toast.makeText(this, "plz check ur id and pass ", Toast.LENGTH_SHORT).show()

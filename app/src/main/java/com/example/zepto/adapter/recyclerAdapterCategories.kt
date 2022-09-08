@@ -2,9 +2,12 @@ package com.example.zepto.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zepto.R
 import com.example.zepto.databinding.OrderHistoryBinding
@@ -25,16 +28,25 @@ class recyclerAdapterCategories(
 
     lateinit var binding: RowCategoriesAdminBinding
 
-    class CustomViewHolder(binding: RowCategoriesAdminBinding) : RecyclerView.ViewHolder(binding.root) {
+    class CustomViewHolder(binding: RowCategoriesAdminBinding) :
+        RecyclerView.ViewHolder(binding.root) {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        binding = RowCategoriesAdminBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        binding =
+            RowCategoriesAdminBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return CustomViewHolder(binding)
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val data = arrayData[position]
+        if(data.categoryStatus == 1 ){
+            binding.btCardMainCategoryActive.setBackgroundColor(context.getColor(R.color.green))
+        }
+        else {
+            binding.btCardMainCategoryActive.setBackgroundColor(context.getColor(R.color.red))
+        }
         //status +date
         Log.d("flow", "onBindViewHolder: $data")
         binding.tvAdminId.text = data.id.toString()
@@ -50,20 +62,22 @@ class recyclerAdapterCategories(
         }
         //item  with id will added
         binding.btSubAdminSubCat.setOnClickListener {
-            val intent = Intent(context,SubListSubAdminActivity::class.java)
-            intent.putExtra("SubCatKey",data.categoryName)
-            intent.putExtra("SubCatIdKey",data.id)
+            val intent = Intent(context, SubListSubAdminActivity::class.java)
+            intent.putExtra("SubCatKey", data.categoryName)
+            intent.putExtra("SubCatIdKey", data.id)
             Log.d("flow", "onBindViewHolder: ${data.categoryName} ${data.id}")
             context.startActivity(intent)
         }
         //active set
         binding.btCardMainCategoryActive.setOnClickListener {
-            if(data.categoryStatus  == 1){
-                binding.btCardMainCategoryActive.resources.getColor(R.color.green)
+
+            if (data.categoryStatus == 0) {
+                binding.btCardMainCategoryActive.setBackgroundColor(context.getColor(R.color.green))
                 binding.btCardMainCategoryActive.text = "Active"
-            }
-            else{
-                binding.btCardMainCategoryActive.resources.getColor(R.color.red)
+                //update status id
+
+            } else {
+                binding.btCardMainCategoryActive.setBackgroundColor(context.getColor(R.color.red))
                 binding.btCardMainCategoryActive.text = "Deactivate"
             }
         }

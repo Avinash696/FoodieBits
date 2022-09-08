@@ -42,6 +42,11 @@ class Oil1Fragment(val detailViewModel: DetailViewModel) : Fragment() {
         return inflater.inflate(R.layout.fragment_oil1, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        populatingData()
+        super.onViewCreated(view, savedInstanceState)
+    }
+
     private fun populatingData(){
         val arrayList = ArrayList<cardItemWithoutId>()
         arrayList.add(cardItemWithoutId(1, R.drawable.oil1, "All Green", 2, 3))

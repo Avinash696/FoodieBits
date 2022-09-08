@@ -25,9 +25,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.test.aviInterface
 import com.example.zepto.viewModel.ItemCountViewModel
 import com.example.zepto.R
-import com.example.zepto.adapter.adapterBanner
-import com.example.zepto.adapter.adapterCategories
-import com.example.zepto.adapter.adapterTrending
+import com.example.zepto.adapter.*
 import com.example.zepto.databinding.ActivityHomeBinding
 import com.example.zepto.db.RetrofitHelper
 import com.example.zepto.model.*
@@ -74,7 +72,7 @@ class HomeActivity : AppCompatActivity() {
 
         init()
         showImg()
-
+        hitMainCategoryApi()
         locationPermission()
         brandFocusBottom()
         brandFocusTop()
@@ -162,97 +160,97 @@ class HomeActivity : AppCompatActivity() {
         }
 
         //categories on click
-        binding.llBeautyProduct.setOnClickListener {
-            countViewModel.setCounter()
-            Log.d("tares", "onCreate: $intentName $intentImg $intentAmount ")
-//            someDummyArray()
-//            Log.d("hhhh", "onCreate: ${countViewModel.count}")
-            val intent = Intent(this, DetailActivity::class.java)
-            intent.putExtra("counterKey", countViewModel.count)////
-            intent.putExtra("beautyKey", 1)
-            intent.putExtra("nameArrayKey",intentName)
-            intent.putExtra("amountArrayKey",intentAmount)
-            intent.putExtra("imgArrayKey",intentImg)
-            intent.putStringArrayListExtra("nameArrayKey", intentName)
-            startActivity(intent)
-        }
-        binding.llInstantFood.setOnClickListener {
-//            someDummyArray()
-            val intent = Intent(this, DetailActivity::class.java)
-            intent.putExtra("counterKey", countViewModel.count)
-            intent.putExtra("beautyKey", 2)
-            startActivity(intent)
-        }
-        binding.llColdDrink.setOnClickListener {
-//            someDummyArray()
-            val intent = Intent(this, DetailActivity::class.java)
-            intent.putExtra("counterKey", countViewModel.count)
-            intent.putExtra("beautyKey", 3)
-            startActivity(intent)
-        }
-        binding.llBiscuit.setOnClickListener {
-//            someDummyArray()
-            val intent = Intent(this, DetailActivity::class.java)
-            intent.putExtra("counterKey", countViewModel.count)
-            intent.putExtra("beautyKey", 4)
-            startActivity(intent)
-        }
-        binding.llChoco.setOnClickListener {
-//            someDummyArray()
-            val intent = Intent(this, DetailActivity::class.java)
-            intent.putExtra("counterKey", countViewModel.count)
-            intent.putExtra("beautyKey", 5)
-            startActivity(intent)
-        }
-        binding.llMasala.setOnClickListener {
-//            someDummyArray()
-            val intent = Intent(this, DetailActivity::class.java)
-            intent.putExtra("counterKey", countViewModel.count)
-            intent.putExtra("beautyKey", 6)
-            startActivity(intent)
-        }
-        binding.llOil.setOnClickListener {
-//            someDummyArray()
-            val intent = Intent(this, DetailActivity::class.java)
-            intent.putExtra("counterKey", countViewModel.count)
-            intent.putExtra("beautyKey", 7)
-            startActivity(intent)
-        }
-        binding.llSauce.setOnClickListener {
-//            someDummyArray()
-            val intent = Intent(this, DetailActivity::class.java)
-            intent.putExtra("counterKey", countViewModel.count)
-            intent.putExtra("beautyKey", 8)
-            startActivity(intent)
-        }
-        binding.llCoffee.setOnClickListener {
-//            someDummyArray()
-            val intent = Intent(this, DetailActivity::class.java)
-            intent.putExtra("counterKey", countViewModel.count)
-            intent.putExtra("beautyKey", 9)
-            startActivity(intent)
-        }
-        binding.llGreenTea.setOnClickListener {
-//            someDummyArray()
-            val intent = Intent(this, DetailActivity::class.java)
-            intent.putExtra("counterKey", countViewModel.count)
-            intent.putExtra("beautyKey", 10)
-            startActivity(intent)
-        }
-        binding.llCleaningEssence.setOnClickListener {
-//            someDummyArray()
-            val intent = Intent(this, DetailActivity::class.java)
-            intent.putExtra("counterKey", countViewModel.count)
-            intent.putExtra("beautyKey", 11)
-            startActivity(intent)
-        }
-        binding.llTea.setOnClickListener {
-//            someDummyArray()
-            val intent = Intent(this, DetailActivity::class.java)
-            intent.putExtra("counterKey", countViewModel.count)
-            intent.putExtra("beautyKey", 12)
-            startActivity(intent)
-        }
+//        binding.llBeautyProduct.setOnClickListener {
+//            countViewModel.setCounter()
+//            Log.d("tares", "onCreate: $intentName $intentImg $intentAmount ")
+////            someDummyArray()
+////            Log.d("hhhh", "onCreate: ${countViewModel.count}")
+//            val intent = Intent(this, DetailActivity::class.java)
+//            intent.putExtra("counterKey", countViewModel.count)////
+//            intent.putExtra("beautyKey", 1)
+//            intent.putExtra("nameArrayKey",intentName)
+//            intent.putExtra("amountArrayKey",intentAmount)
+//            intent.putExtra("imgArrayKey",intentImg)
+//            intent.putStringArrayListExtra("nameArrayKey", intentName)
+//            startActivity(intent)
+//        }
+//        binding.llInstantFood.setOnClickListener {
+////            someDummyArray()
+//            val intent = Intent(this, DetailActivity::class.java)
+//            intent.putExtra("counterKey", countViewModel.count)
+//            intent.putExtra("beautyKey", 2)
+//            startActivity(intent)
+//        }
+//        binding.llColdDrink.setOnClickListener {
+////            someDummyArray()
+//            val intent = Intent(this, DetailActivity::class.java)
+//            intent.putExtra("counterKey", countViewModel.count)
+//            intent.putExtra("beautyKey", 3)
+//            startActivity(intent)
+//        }
+//        binding.llBiscuit.setOnClickListener {
+////            someDummyArray()
+//            val intent = Intent(this, DetailActivity::class.java)
+//            intent.putExtra("counterKey", countViewModel.count)
+//            intent.putExtra("beautyKey", 4)
+//            startActivity(intent)
+//        }
+//        binding.llChoco.setOnClickListener {
+////            someDummyArray()
+//            val intent = Intent(this, DetailActivity::class.java)
+//            intent.putExtra("counterKey", countViewModel.count)
+//            intent.putExtra("beautyKey", 5)
+//            startActivity(intent)
+//        }
+//        binding.llMasala.setOnClickListener {
+////            someDummyArray()
+//            val intent = Intent(this, DetailActivity::class.java)
+//            intent.putExtra("counterKey", countViewModel.count)
+//            intent.putExtra("beautyKey", 6)
+//            startActivity(intent)
+//        }
+//        binding.llOil.setOnClickListener {
+////            someDummyArray()
+//            val intent = Intent(this, DetailActivity::class.java)
+//            intent.putExtra("counterKey", countViewModel.count)
+//            intent.putExtra("beautyKey", 7)
+//            startActivity(intent)
+//        }
+//        binding.llSauce.setOnClickListener {
+////            someDummyArray()
+//            val intent = Intent(this, DetailActivity::class.java)
+//            intent.putExtra("counterKey", countViewModel.count)
+//            intent.putExtra("beautyKey", 8)
+//            startActivity(intent)
+//        }
+//        binding.llCoffee.setOnClickListener {
+////            someDummyArray()
+//            val intent = Intent(this, DetailActivity::class.java)
+//            intent.putExtra("counterKey", countViewModel.count)
+//            intent.putExtra("beautyKey", 9)
+//            startActivity(intent)
+//        }
+//        binding.llGreenTea.setOnClickListener {
+////            someDummyArray()
+//            val intent = Intent(this, DetailActivity::class.java)
+//            intent.putExtra("counterKey", countViewModel.count)
+//            intent.putExtra("beautyKey", 10)
+//            startActivity(intent)
+//        }
+//        binding.llCleaningEssence.setOnClickListener {
+////            someDummyArray()
+//            val intent = Intent(this, DetailActivity::class.java)
+//            intent.putExtra("counterKey", countViewModel.count)
+//            intent.putExtra("beautyKey", 11)
+//            startActivity(intent)
+//        }
+//        binding.llTea.setOnClickListener {
+////            someDummyArray()
+//            val intent = Intent(this, DetailActivity::class.java)
+//            intent.putExtra("counterKey", countViewModel.count)
+//            intent.putExtra("beautyKey", 12)
+//            startActivity(intent)
+//        }
     }
 
     private fun setSideNavBar() {
@@ -542,5 +540,32 @@ class HomeActivity : AppCompatActivity() {
                 Log.d("trendingTag", "getTrendingItem:${call.errorBody()} ")
         }
     }
+    private fun hitMainCategoryApi() {
+        GlobalScope.launch {
+            val call = repo.getMainCategory()
+            if (call.isSuccessful) {
+                val gson = Gson()
+                Log.d("apiData", "hitMainCategoryApi:  Success${gson.toJson(call.body()!!)}")
+                populatingData(call.body()!!)
+            } else
+                Log.d("apiData", "hitMainCategoryApi: error ${call.errorBody()}")
+        }
+    }
+    private fun populatingData(data: mainCategoryModel) {
+        val arrayData = ArrayList<CategoryImg>()
+        for (i in 0 until data.categoryImg.size){
+            val dumy = data.categoryImg[i]
+            arrayData.add(CategoryImg(dumy.categoryImg,dumy.categoryName,dumy.categoryStatus,dumy.id))
+        }
 
+        runOnUiThread {
+            val adapter = adapterCategoryHome(this,arrayData)
+//            binding.rvCategoryHome!!.layoutManager = LinearLayoutManager(
+//                applicationContext,
+//                LinearLayoutManager.VERTICAL,
+//                false)
+
+            binding.rvCategoryHome!!.adapter = adapter
+        }
+    }
 }

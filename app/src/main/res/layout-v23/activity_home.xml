@@ -11,7 +11,7 @@
         android:id="@+id/mainDrawable"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:openDrawer="start">
+        tools:openDrawer="end">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -58,31 +58,6 @@
                         android:orientation="vertical"
                         tools:context=".ui.activity.HomeActivity">
 
-                        <!--                        <androidx.cardview.widget.CardView-->
-                        <!--                            android:layout_width="match_parent"-->
-                        <!--                            android:layout_height="30dp"-->
-                        <!--                            android:background="#C5E1A5"-->
-                        <!--                            app:cardCornerRadius="20dp">-->
-
-                        <!--                            <ImageView-->
-                        <!--                                android:layout_width="wrap_content"-->
-                        <!--                                android:layout_height="wrap_content"-->
-                        <!--                                android:layout_gravity="center_vertical"-->
-                        <!--                                android:background="@drawable/search" />-->
-
-                        <!--                            <TextView-->
-                        <!--                                android:layout_width="wrap_content"-->
-                        <!--                                android:layout_height="wrap_content"-->
-                        <!--                                android:layout_marginStart="30dp"-->
-                        <!--                                android:text="Search Product"-->
-                        <!--                                android:textSize="30sp" />-->
-                        <!--                        </androidx.cardview.widget.CardView>-->
-                        <!--                        <pl.droidsonroids.gif.GifImageView-->
-                        <!--                            android:id="@+id/gif"-->
-                        <!--                            android:layout_width="match_parent"-->
-                        <!--                            android:layout_height="130dp"-->
-                        <!--                            android:background="#fff"-->
-                        <!--                            android:src="@drawable/splash_gif" />-->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="60dp"
@@ -208,366 +183,373 @@
                                 android:textSize="19sp" />
                         </LinearLayout>
 
-                        <LinearLayout
+
+                        <GridView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:weightSum="4">
-
-
-                                <LinearLayout
-                                    android:id="@+id/llBeautyProduct"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_margin="2dp"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/border_layout"
-                                    android:orientation="vertical"
-                                    android:padding="4dp">
-
-                                    <ImageView
-
-                                        android:layout_width="50dp"
-                                        android:layout_height="50dp"
-                                        android:layout_gravity="center"
-                                        android:src="@drawable/beauty" />
-
-                                    <TextView
-                                        android:id="@+id/tvBeauty"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="center_horizontal"
-                                        android:text="Beauty"
-                                        android:textColor="@color/black" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:id="@+id/llInstantFood"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_margin="2dp"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/border_layout"
-                                    android:orientation="vertical"
-                                    android:padding="4dp">
-
-                                    <ImageView
-                                        android:layout_width="50dp"
-                                        android:layout_height="50dp"
-                                        android:layout_gravity="center"
-                                        android:src="@drawable/instant1" />
-
-                                    <TextView
-                                        android:id="@+id/tvInstanctFood"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="center_horizontal"
-
-
-                                        android:text="Instant Food"
-                                        android:textColor="@color/black" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:id="@+id/llColdDrink"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_margin="2dp"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/border_layout"
-                                    android:orientation="vertical"
-                                    android:padding="4dp">
-
-                                    <ImageView
-
-                                        android:layout_width="50dp"
-                                        android:layout_height="50dp"
-                                        android:layout_gravity="center"
-                                        android:src="@drawable/cd1" />
-
-                                    <TextView
-
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="center_horizontal"
-
-
-                                        android:text="Cold Drink"
-                                        android:textColor="@color/black" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:id="@+id/llBiscuit"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_margin="2dp"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/border_layout"
-                                    android:orientation="vertical"
-                                    android:padding="4dp">
+                            android:layout_height="350dp"
+                            android:id="@+id/rvCategoryHome"
+                            android:numColumns="4"
+                            android:scrollbars="horizontal"/>
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:orientation="vertical">-->
+
+<!--                            <LinearLayout-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:weightSum="4">-->
+
+
+<!--                                <LinearLayout-->
+<!--                                    android:id="@+id/llBeautyProduct"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_margin="2dp"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:background="@drawable/border_layout"-->
+<!--                                    android:orientation="vertical"-->
+<!--                                    android:padding="4dp">-->
+
+<!--                                    <ImageView-->
+
+<!--                                        android:layout_width="50dp"-->
+<!--                                        android:layout_height="50dp"-->
+<!--                                        android:layout_gravity="center"-->
+<!--                                        android:src="@drawable/beauty" />-->
+
+<!--                                    <TextView-->
+<!--                                        android:id="@+id/tvBeauty"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:layout_gravity="center_horizontal"-->
+<!--                                        android:text="Beauty"-->
+<!--                                        android:textColor="@color/black" />-->
+
+<!--                                </LinearLayout>-->
+
+<!--                                <LinearLayout-->
+<!--                                    android:id="@+id/llInstantFood"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_margin="2dp"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:background="@drawable/border_layout"-->
+<!--                                    android:orientation="vertical"-->
+<!--                                    android:padding="4dp">-->
+
+<!--                                    <ImageView-->
+<!--                                        android:layout_width="50dp"-->
+<!--                                        android:layout_height="50dp"-->
+<!--                                        android:layout_gravity="center"-->
+<!--                                        android:src="@drawable/instant1" />-->
+
+<!--                                    <TextView-->
+<!--                                        android:id="@+id/tvInstanctFood"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:layout_gravity="center_horizontal"-->
+
+
+<!--                                        android:text="Instant Food"-->
+<!--                                        android:textColor="@color/black" />-->
+
+<!--                                </LinearLayout>-->
+
+<!--                                <LinearLayout-->
+<!--                                    android:id="@+id/llColdDrink"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_margin="2dp"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:background="@drawable/border_layout"-->
+<!--                                    android:orientation="vertical"-->
+<!--                                    android:padding="4dp">-->
+
+<!--                                    <ImageView-->
+
+<!--                                        android:layout_width="50dp"-->
+<!--                                        android:layout_height="50dp"-->
+<!--                                        android:layout_gravity="center"-->
+<!--                                        android:src="@drawable/cd1" />-->
+
+<!--                                    <TextView-->
+
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:layout_gravity="center_horizontal"-->
+
+
+<!--                                        android:text="Cold Drink"-->
+<!--                                        android:textColor="@color/black" />-->
+
+<!--                                </LinearLayout>-->
+
+<!--                                <LinearLayout-->
+<!--                                    android:id="@+id/llBiscuit"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_margin="2dp"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:background="@drawable/border_layout"-->
+<!--                                    android:orientation="vertical"-->
+<!--                                    android:padding="4dp">-->
 
-                                    <ImageView
+<!--                                    <ImageView-->
 
-                                        android:layout_width="50dp"
-                                        android:layout_height="50dp"
-                                        android:layout_gravity="center"
-                                        android:src="@drawable/biscut" />
+<!--                                        android:layout_width="50dp"-->
+<!--                                        android:layout_height="50dp"-->
+<!--                                        android:layout_gravity="center"-->
+<!--                                        android:src="@drawable/biscut" />-->
 
-                                    <TextView
+<!--                                    <TextView-->
 
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="center_horizontal"
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:layout_gravity="center_horizontal"-->
 
 
-                                        android:text="Biscuts"
-                                        android:textColor="@color/black" />
+<!--                                        android:text="Biscuts"-->
+<!--                                        android:textColor="@color/black" />-->
 
-                                </LinearLayout>
-                            </LinearLayout>
+<!--                                </LinearLayout>-->
+<!--                            </LinearLayout>-->
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:weightSum="4">
+<!--                            <LinearLayout-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:weightSum="4">-->
 
 
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_margin="2dp"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/border_layout"
-                                    android:orientation="vertical"
-                                    android:padding="4dp">
+<!--                                <LinearLayout-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_margin="2dp"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:background="@drawable/border_layout"-->
+<!--                                    android:orientation="vertical"-->
+<!--                                    android:padding="4dp">-->
 
-                                    <ImageView
-                                        android:id="@+id/llChoco"
-                                        android:layout_width="50dp"
-                                        android:layout_height="50dp"
-                                        android:layout_gravity="center"
-                                        android:src="@drawable/c1" />
+<!--                                    <ImageView-->
+<!--                                        android:id="@+id/llChoco"-->
+<!--                                        android:layout_width="50dp"-->
+<!--                                        android:layout_height="50dp"-->
+<!--                                        android:layout_gravity="center"-->
+<!--                                        android:src="@drawable/c1" />-->
 
-                                    <TextView
+<!--                                    <TextView-->
 
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="center_horizontal"
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:layout_gravity="center_horizontal"-->
 
-                                        android:text="Choco"
-                                        android:textColor="@color/black" />
+<!--                                        android:text="Choco"-->
+<!--                                        android:textColor="@color/black" />-->
 
-                                </LinearLayout>
+<!--                                </LinearLayout>-->
+
+<!--                                <LinearLayout-->
+<!--                                    android:id="@+id/llMasala"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_margin="2dp"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:background="@drawable/border_layout"-->
+<!--                                    android:orientation="vertical"-->
+<!--                                    android:padding="4dp">-->
 
-                                <LinearLayout
-                                    android:id="@+id/llMasala"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_margin="2dp"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/border_layout"
-                                    android:orientation="vertical"
-                                    android:padding="4dp">
+<!--                                    <ImageView-->
 
-                                    <ImageView
+<!--                                        android:layout_width="50dp"-->
+<!--                                        android:layout_height="50dp"-->
+<!--                                        android:layout_gravity="center"-->
+<!--                                        android:src="@drawable/m1" />-->
 
-                                        android:layout_width="50dp"
-                                        android:layout_height="50dp"
-                                        android:layout_gravity="center"
-                                        android:src="@drawable/m1" />
+<!--                                    <TextView-->
 
-                                    <TextView
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:layout_gravity="center_horizontal"-->
 
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="center_horizontal"
 
+<!--                                        android:text="Masala"-->
+<!--                                        android:textColor="@color/black" />-->
 
-                                        android:text="Masala"
-                                        android:textColor="@color/black" />
+<!--                                </LinearLayout>-->
 
-                                </LinearLayout>
+<!--                                <LinearLayout-->
+<!--                                    android:id="@+id/llOil"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_margin="2dp"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:background="@drawable/border_layout"-->
+<!--                                    android:orientation="vertical"-->
+<!--                                    android:padding="4dp">-->
 
-                                <LinearLayout
-                                    android:id="@+id/llOil"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_margin="2dp"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/border_layout"
-                                    android:orientation="vertical"
-                                    android:padding="4dp">
+<!--                                    <ImageView-->
 
-                                    <ImageView
+<!--                                        android:layout_width="50dp"-->
+<!--                                        android:layout_height="50dp"-->
+<!--                                        android:layout_gravity="center"-->
+<!--                                        android:src="@drawable/oil1" />-->
 
-                                        android:layout_width="50dp"
-                                        android:layout_height="50dp"
-                                        android:layout_gravity="center"
-                                        android:src="@drawable/oil1" />
+<!--                                    <TextView-->
 
-                                    <TextView
-
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="center_horizontal"
-
-
-                                        android:text="Oil"
-                                        android:textColor="@color/black" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:id="@+id/llSauce"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_margin="2dp"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/border_layout"
-                                    android:orientation="vertical"
-                                    android:padding="4dp">
-
-                                    <ImageView
-
-                                        android:layout_width="50dp"
-                                        android:layout_height="50dp"
-                                        android:layout_gravity="center"
-                                        android:src="@drawable/s1" />
-
-                                    <TextView
-
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="center_horizontal"
-                                        android:text="Sauce"
-                                        android:textColor="@color/black" />
-
-                                </LinearLayout>
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:weightSum="4">
-
-
-                                <LinearLayout
-                                    android:id="@+id/llCoffee"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_margin="2dp"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/border_layout"
-                                    android:orientation="vertical"
-                                    android:padding="4dp">
-
-                                    <ImageView
-
-                                        android:layout_width="50dp"
-                                        android:layout_height="50dp"
-                                        android:layout_gravity="center"
-                                        android:src="@drawable/coffee0" />
-
-                                    <TextView
-
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="center_horizontal"
-
-
-                                        android:text="Coffee"
-                                        android:textColor="@color/black" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:id="@+id/llGreenTea"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_margin="2dp"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/border_layout"
-                                    android:orientation="vertical"
-                                    android:padding="4dp">
-
-                                    <ImageView
-                                        android:layout_width="50dp"
-                                        android:layout_height="50dp"
-                                        android:layout_gravity="center"
-                                        android:src="@drawable/gt1" />
-
-                                    <TextView
-
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="center_horizontal"
-                                        android:text="Green Tea"
-                                        android:textColor="@color/black" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:id="@+id/llCleaningEssence"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_margin="2dp"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/border_layout"
-                                    android:orientation="vertical"
-                                    android:padding="4dp">
-
-                                    <ImageView
-
-                                        android:layout_width="50dp"
-                                        android:layout_height="50dp"
-                                        android:layout_gravity="center"
-                                        android:src="@drawable/clean_item" />
-
-                                    <TextView
-
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="center_horizontal"
-                                        android:text="Home Clean"
-                                        android:textColor="@color/black" />
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:id="@+id/llTea"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_margin="2dp"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/border_layout"
-                                    android:orientation="vertical"
-                                    android:padding="4dp">
-
-                                    <ImageView
-
-                                        android:layout_width="50dp"
-                                        android:layout_height="50dp"
-                                        android:layout_gravity="center"
-                                        android:src="@drawable/tea1" />
-
-                                    <TextView
-
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="center_horizontal"
-                                        android:text="Tea"
-                                        android:textColor="@color/black" />
-
-                                </LinearLayout>
-                            </LinearLayout>
-
-                        </LinearLayout>
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:layout_gravity="center_horizontal"-->
+
+
+<!--                                        android:text="Oil"-->
+<!--                                        android:textColor="@color/black" />-->
+
+<!--                                </LinearLayout>-->
+
+<!--                                <LinearLayout-->
+<!--                                    android:id="@+id/llSauce"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_margin="2dp"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:background="@drawable/border_layout"-->
+<!--                                    android:orientation="vertical"-->
+<!--                                    android:padding="4dp">-->
+
+<!--                                    <ImageView-->
+
+<!--                                        android:layout_width="50dp"-->
+<!--                                        android:layout_height="50dp"-->
+<!--                                        android:layout_gravity="center"-->
+<!--                                        android:src="@drawable/s1" />-->
+
+<!--                                    <TextView-->
+
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:layout_gravity="center_horizontal"-->
+<!--                                        android:text="Sauce"-->
+<!--                                        android:textColor="@color/black" />-->
+
+<!--                                </LinearLayout>-->
+<!--                            </LinearLayout>-->
+
+<!--                            <LinearLayout-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:weightSum="4">-->
+
+
+<!--                                <LinearLayout-->
+<!--                                    android:id="@+id/llCoffee"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_margin="2dp"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:background="@drawable/border_layout"-->
+<!--                                    android:orientation="vertical"-->
+<!--                                    android:padding="4dp">-->
+
+<!--                                    <ImageView-->
+
+<!--                                        android:layout_width="50dp"-->
+<!--                                        android:layout_height="50dp"-->
+<!--                                        android:layout_gravity="center"-->
+<!--                                        android:src="@drawable/coffee0" />-->
+
+<!--                                    <TextView-->
+
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:layout_gravity="center_horizontal"-->
+
+
+<!--                                        android:text="Coffee"-->
+<!--                                        android:textColor="@color/black" />-->
+
+<!--                                </LinearLayout>-->
+
+<!--                                <LinearLayout-->
+<!--                                    android:id="@+id/llGreenTea"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_margin="2dp"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:background="@drawable/border_layout"-->
+<!--                                    android:orientation="vertical"-->
+<!--                                    android:padding="4dp">-->
+
+<!--                                    <ImageView-->
+<!--                                        android:layout_width="50dp"-->
+<!--                                        android:layout_height="50dp"-->
+<!--                                        android:layout_gravity="center"-->
+<!--                                        android:src="@drawable/gt1" />-->
+
+<!--                                    <TextView-->
+
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:layout_gravity="center_horizontal"-->
+<!--                                        android:text="Green Tea"-->
+<!--                                        android:textColor="@color/black" />-->
+
+<!--                                </LinearLayout>-->
+
+<!--                                <LinearLayout-->
+<!--                                    android:id="@+id/llCleaningEssence"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_margin="2dp"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:background="@drawable/border_layout"-->
+<!--                                    android:orientation="vertical"-->
+<!--                                    android:padding="4dp">-->
+
+<!--                                    <ImageView-->
+
+<!--                                        android:layout_width="50dp"-->
+<!--                                        android:layout_height="50dp"-->
+<!--                                        android:layout_gravity="center"-->
+<!--                                        android:src="@drawable/clean_item" />-->
+
+<!--                                    <TextView-->
+
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:layout_gravity="center_horizontal"-->
+<!--                                        android:text="Home Clean"-->
+<!--                                        android:textColor="@color/black" />-->
+<!--                                </LinearLayout>-->
+
+<!--                                <LinearLayout-->
+<!--                                    android:id="@+id/llTea"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_margin="2dp"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:background="@drawable/border_layout"-->
+<!--                                    android:orientation="vertical"-->
+<!--                                    android:padding="4dp">-->
+
+<!--                                    <ImageView-->
+
+<!--                                        android:layout_width="50dp"-->
+<!--                                        android:layout_height="50dp"-->
+<!--                                        android:layout_gravity="center"-->
+<!--                                        android:src="@drawable/tea1" />-->
+
+<!--                                    <TextView-->
+
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:layout_gravity="center_horizontal"-->
+<!--                                        android:text="Tea"-->
+<!--                                        android:textColor="@color/black" />-->
+
+<!--                                </LinearLayout>-->
+<!--                            </LinearLayout>-->
+
+<!--                        </LinearLayout>-->
 
                         <TextView
                             android:layout_width="wrap_content"

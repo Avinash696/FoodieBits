@@ -30,7 +30,6 @@
             android:name=".Admin.ui.activity.CreateAdminActivity"
             android:exported="true"
             android:parentActivityName=".Admin.ui.activity.RetailerAdminActivity">
-
         </activity>
         <activity
             android:name="com.example.test.aviActivity"

@@ -100,18 +100,6 @@ class CategroiesFragment() : Fragment() {
             val dumy = data.categoryImg[i]
             arrayData.add(CategoryImg(dumy.categoryImg,dumy.categoryName,dumy.categoryStatus,dumy.id))
         }
-//        arrayData.add(AdminCategoriesModel(1, R.drawable.beauty, "Beauty"))
-//        arrayData.add(AdminCategoriesModel(2, R.drawable.instant9, "Instant Food"))
-//        arrayData.add(AdminCategoriesModel(3, R.drawable.cd1, "Cold Drink"))
-//        arrayData.add(AdminCategoriesModel(4, R.drawable.biscuit10, "Biscuts"))
-//        arrayData.add(AdminCategoriesModel(5, R.drawable.c3, "Choco"))
-//        arrayData.add(AdminCategoriesModel(6, R.drawable.maggi, "Masala"))
-//        arrayData.add(AdminCategoriesModel(7, R.drawable.oil1, "Oil"))
-//        arrayData.add(AdminCategoriesModel(8, R.drawable.biscuit9, "Sauce"))
-//        arrayData.add(AdminCategoriesModel(9, R.drawable.coffee0, "Coffee"))
-//        arrayData.add(AdminCategoriesModel(10, R.drawable.gt1, "Green Tea"))
-//        arrayData.add(AdminCategoriesModel(11, R.drawable.clean_item, "Home Clean"))
-//        arrayData.add(AdminCategoriesModel(12, R.drawable.tea1, "Tea"))
 
         requireActivity().runOnUiThread {
             val adapter = recyclerAdapterCategories(arrayData,requireContext())
