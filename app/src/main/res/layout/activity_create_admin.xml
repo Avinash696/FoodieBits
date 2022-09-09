@@ -8,7 +8,9 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp">
+        android:layout_margin="5dp"
+        android:background="@drawable/regi_bg"
+        android:padding="10dp">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -36,7 +38,7 @@
                     <ImageView
                         android:id="@+id/ivDialogUploadPic"
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"
+                        android:layout_height="50dp"
                         android:layout_weight="1"
                         android:hint="Name"
                         android:src="@drawable/upload" />
@@ -63,6 +65,13 @@
                         android:layout_weight="1"
                         android:hint="Name" />
                 </LinearLayout>
+
+
+
+
+
+
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -236,7 +245,7 @@
                     android:id="@+id/btSubmitAddUserRetailer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end"
+                    android:layout_gravity="center"
                     android:text="Submit" />
             </LinearLayout>
         </ScrollView>

@@ -7,6 +7,7 @@ import android.os.Handler
 import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -15,6 +16,7 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.test.FileUtil
 import com.example.test.aviInterface
 import com.example.zepto.adapter.recyclerAdapterCategories
@@ -63,6 +65,21 @@ class CategroiesFragment() : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         hitMainCategoryApi()
 
+        //onclick rv item
+        binding.rvCategoriesAdmin.addOnItemTouchListener(object :RecyclerView.OnItemTouchListener{
+            override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
+                Toast.makeText(requireContext(), "ok", Toast.LENGTH_SHORT).show()
+                return true
+            }
+
+            override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {
+                Toast.makeText(requireContext(), "on Touch Req", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {
+                Toast.makeText(requireContext(), "on Request ", Toast.LENGTH_SHORT).show()
+            }
+        })
         val dialog = Dialog(requireContext())
         binding.ivAddCategoriesAdmin.setOnClickListener {
             Toast.makeText(requireContext(), "Added ", Toast.LENGTH_SHORT).show()

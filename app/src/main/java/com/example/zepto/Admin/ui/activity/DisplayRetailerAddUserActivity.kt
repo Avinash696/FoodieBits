@@ -13,7 +13,6 @@ import com.squareup.picasso.Picasso
 
 class DisplayRetailerAddUserActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDisplayRetailerAddUserBinding
-//    val imgPath = "https://www.google.com/search?q=images&rlz=1C1JJTC_enIN1013IN1013&source=lnms&tbm=isch&sa=X&ved=2ahUKEwj5_ujTjPT5AhWrZWwGHXo0B_oQ_AUoAnoECAEQBA&biw=1463&bih=672&dpr=1.75#imgrc=hZhe5urtcqVCNM"
 
     val imgPath = "http://56testing.club/imgFolder/uploads/admins/admin1.jpg"
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,11 +54,10 @@ class DisplayRetailerAddUserActivity : AppCompatActivity() {
 
     private fun loadLogo(url: String?) {
         val fullUrl = "http://56testing.club/imgFolder/uploads/admins/$url".trim()
-        Log.d("urlcheck", "full url : $fullUrl ")
 
 
         Picasso.get()
-            .load(url)
+            .load(fullUrl)
             .into(binding.ivDisplayPic, object : Callback {
                 override fun onSuccess() {
                     binding.pb.visibility = View.GONE

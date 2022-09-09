@@ -69,18 +69,18 @@ class recyclerAdapterCategories(
             context.startActivity(intent)
         }
         //active set
-        binding.btCardMainCategoryActive.setOnClickListener {
-
-            if (data.categoryStatus == 0) {
-                binding.btCardMainCategoryActive.setBackgroundColor(context.getColor(R.color.green))
-                binding.btCardMainCategoryActive.text = "Active"
-                //update status id
-
-            } else {
-                binding.btCardMainCategoryActive.setBackgroundColor(context.getColor(R.color.red))
-                binding.btCardMainCategoryActive.text = "Deactivate"
-            }
-        }
+//        binding.btCardMainCategoryActive.setOnClickListener {
+//
+//            if (data.categoryStatus == 0) {
+//                binding.btCardMainCategoryActive.setBackgroundColor(context.getColor(R.color.green))
+//                binding.btCardMainCategoryActive.text = "Active"
+//                //update status id
+//
+//            } else {
+//                binding.btCardMainCategoryActive.setBackgroundColor(context.getColor(R.color.red))
+//                binding.btCardMainCategoryActive.text = "Deactivate"
+//            }
+//        }
     }
 
     override fun getItemCount(): Int {

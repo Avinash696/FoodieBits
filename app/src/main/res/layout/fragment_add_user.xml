@@ -15,34 +15,46 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".MainActivity" >
+            android:layout_marginTop="10dp"
+            tools:context=".MainActivity">
 
-            <Button
-                android:id="@+id/button1"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/editText1"
-                android:layout_centerHorizontal="true"
-                android:text="Create User to listView" />
-
-            <EditText
-                android:id="@+id/editText1"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvAddUser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="26dp"
-                android:ems="10"
-                android:hint="Add elements listView"
-                android:textColor="@color/black" />
+                app:cardBackgroundColor="#90CAF9"
+                app:cardCornerRadius="10dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                app:cardPreventCornerOverlap="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/button1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/purple_200"
+                        android:padding="5dp"
+                        android:text="Create User" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
 
             <androidx.recyclerview.widget.RecyclerView
-                android:background="@color/grey"
                 android:id="@+id/listView1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/button1"
-                android:layout_centerHorizontal="true"/>
+                android:layout_below="@+id/cvAddUser"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:padding="10dp" />
         </RelativeLayout>
     </FrameLayout>
 </layout>
