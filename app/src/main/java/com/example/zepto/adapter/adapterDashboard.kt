@@ -9,7 +9,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.example.zepto.R
+import com.example.zepto.model.cardItemModel
 import com.example.zepto.model.cardItemWithoutId
+import com.squareup.picasso.Picasso
 
 class adapterDashboard(
     private val context: Context,
@@ -36,6 +38,7 @@ class adapterDashboard(
 //
 //        var name :String= view.findViewById(R.id.na)
         var myView = convertView
+
         if (myView == null) {
             val inflate =
                 context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -53,7 +56,7 @@ class adapterDashboard(
         name.text =data.name
         discount.text =data.discountPrice.toString()
         itemPic.setImageResource(data.img)
-
+//        Picasso.get().load("http://56testing.club//imgFolder/uploads/admins/${data.img}").into(itemPic)
         //temp icon click screen forward move
         myView.setOnClickListener {
 //            val intent = Intent(context, SingleTrendingActivity::class.java)

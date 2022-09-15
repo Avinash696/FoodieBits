@@ -27,22 +27,22 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".Admin.ui.activity.CreateRetailerActivity"
+            android:exported="false" />
+        <activity
             android:name=".Admin.ui.activity.CreateAdminActivity"
             android:exported="true"
-            android:parentActivityName=".Admin.ui.activity.RetailerAdminActivity">
-        </activity>
+            android:parentActivityName=".Admin.ui.activity.RetailerAdminActivity" />
         <activity
             android:name="com.example.test.aviActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name="com.example.test.ImgTestActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".deliveryPartner.ui.activity.SubmitInformationActivity"
             android:exported="true"
-            android:parentActivityName=".LoginActivity">
-
-        </activity>
+            android:parentActivityName=".LoginActivity"></activity>
         <activity
             android:name=".Admin.ui.activity.DisplayRetailerAddUserActivity"
             android:exported="false"
@@ -50,9 +50,7 @@
         <activity
             android:name=".Admin.ui.activity.RetailerAdminActivity"
             android:exported="true"
-            android:theme="@style/MyAdminCustom">
-
-        </activity>
+            android:theme="@style/MyAdminCustom" />
         <activity
             android:name=".ui.activity.AddProductFormActivity"
             android:exported="false"
@@ -73,9 +71,7 @@
         <activity
             android:name=".Admin.ui.activity.AdminHomeActivity"
             android:exported="true"
-            android:theme="@style/MyAdminCustom" >
-
-        </activity>
+            android:theme="@style/MyAdminCustom" />
         <activity
             android:name=".ui.activity.OrderSummaryActivity"
             android:exported="true"
@@ -137,9 +133,7 @@
         <activity
             android:name=".ui.activity.SingleTrendingActivity"
             android:exported="true"
-            android:parentActivityName=".ui.activity.HomeActivity">
-
-        </activity>
+            android:parentActivityName=".ui.activity.HomeActivity" />
         <activity
             android:name=".ui.activity.DetailActivity"
             android:exported="true"
@@ -147,15 +141,14 @@
         <activity
             android:name=".ui.activity.HomeActivity"
             android:exported="true"
-            android:theme="@style/MyCustomHomeScene" >
-
-        </activity>
+            android:theme="@style/MyCustomHomeScene" />
         <activity
             android:name=".LoginActivity"
             android:exported="true"
             android:theme="@style/MyAdminCustom">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

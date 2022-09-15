@@ -7,9 +7,9 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_margin="5dp"
-        android:background="@drawable/regi_bg"
+        android:background="@drawable/retailer_bg"
         android:orientation="vertical"
         android:padding="10dp">
 
@@ -39,7 +39,7 @@
                         android:textColor="@color/black" />
 
                     <ImageView
-                        android:id="@+id/ivDialogUploadPic"
+                        android:id="@+id/ivDialogUploadPicRetailer"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_weight="1"
@@ -64,7 +64,7 @@
                         android:textColor="@color/black" />
 
                     <EditText
-                        android:id="@+id/etNameAdduserDialogRetailer"
+                        android:id="@+id/etNameAddRtailerDialogRetailer"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -72,29 +72,29 @@
                 </LinearLayout>
 
 
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:background="@drawable/border_layout">-->
+                <!--                <LinearLayout-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:orientation="vertical"-->
+                <!--                    android:background="@drawable/border_layout">-->
 
-<!--                    <TextView-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:layout_weight="1"-->
-<!--                        android:fontFamily="@font/robotobold"-->
-<!--                        android:gravity="center_vertical"-->
-<!--                        android:text="Role"-->
-<!--                        android:textColor="@color/black" />-->
+                <!--                    <TextView-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="match_parent"-->
+                <!--                        android:layout_weight="1"-->
+                <!--                        android:fontFamily="@font/robotobold"-->
+                <!--                        android:gravity="center_vertical"-->
+                <!--                        android:text="Role"-->
+                <!--                        android:textColor="@color/black" />-->
 
-<!--                    <Spinner-->
-<!--                        android:id="@+id/spRoleAdduserDialogRetailer"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:layout_weight="1"-->
-<!--                        android:hint="Admin"-->
-<!--                       />-->
-<!--                </LinearLayout>-->
+                <!--                    <Spinner-->
+                <!--                        android:id="@+id/spRoleAddRtailerDialogRetailer"-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="match_parent"-->
+                <!--                        android:layout_weight="1"-->
+                <!--                        android:hint="Admin"-->
+                <!--                       />-->
+                <!--                </LinearLayout>-->
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -111,7 +111,7 @@
                         android:textColor="@color/black" />
 
                     <EditText
-                        android:id="@+id/etPassAdduserDialogRetailer"
+                        android:id="@+id/etPassAddRtailerDialogRetailer"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -133,7 +133,7 @@
                         android:textColor="@color/black" />
 
                     <EditText
-                        android:id="@+id/etEmailAdduserDialogRetailer"
+                        android:id="@+id/etEmailAddRtailerDialogRetailer"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -155,7 +155,7 @@
                         android:textColor="@color/black" />
 
                     <EditText
-                        android:id="@+id/etMobileAdduserDialogRetailer"
+                        android:id="@+id/etMobileAddRtailerDialogRetailer"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -177,7 +177,7 @@
                         android:textColor="@color/black" />
 
                     <EditText
-                        android:id="@+id/etAddressAdduserDialogRetailer"
+                        android:id="@+id/etAddressAddRtailerDialogRetailer"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -199,7 +199,7 @@
                         android:textColor="@color/black" />
 
                     <EditText
-                        android:id="@+id/etAdharAdduserDialogRetailer"
+                        android:id="@+id/etAdharAddRtailerDialogRetailer"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -221,7 +221,7 @@
                         android:textColor="@color/black" />
 
                     <EditText
-                        android:id="@+id/etPanAdduserDialogRetailer"
+                        android:id="@+id/etPanAddRtailerDialogRetailer"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -243,7 +243,7 @@
                         android:textColor="@color/black" />
 
                     <EditText
-                        android:id="@+id/etShopAdduserDialogRetailer"
+                        android:id="@+id/etShopAddRtailerDialogRetailer"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -251,7 +251,7 @@
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/btSubmitAddUserRetailer"
+                    android:id="@+id/btSubmitAddRtailerRetailer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"

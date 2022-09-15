@@ -15,22 +15,28 @@ import com.example.zepto.Admin.ui.retailerFragment.AddUserTestFragment
 import com.example.zepto.Admin.ui.retailerFragment.RetailerDashboardFragment
 import com.example.zepto.databinding.ActivityRetailerAdminBinding
 import com.google.android.material.navigation.NavigationView
+import com.squareup.picasso.Picasso
 
 class RetailerAdminActivity : AppCompatActivity() {
     private lateinit var nvAdminHome: NavigationView
     lateinit var actionBarDrawableToggle: ActionBarDrawerToggle
-    private lateinit var binding:ActivityRetailerAdminBinding
+    private lateinit var binding: ActivityRetailerAdminBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= DataBindingUtil.setContentView(this,R.layout.activity_retailer_admin)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_retailer_admin)
         init()
         changeFragment(RetailerDashboardFragment())
+
         //set title
         val intent = intent
         val title = intent.getStringExtra("retailerTitle")
-        Log.d("adminTitleCheck", "onCreate: $title")
+        val titleImg = intent.getStringExtra("adminImg")!!
+
+        val customCreatedUrl = "http://56testing.club/imgFolder/uploads/wlAdmin/$titleImg"
+        Log.d("adminTitleCheck", "onCreate: $customCreatedUrl")
         binding.appBar.title = title
         //action
+        Picasso.get().load(customCreatedUrl).into(binding.ivTitleLogoRetailer)
         setSupportActionBar(binding.appBar)
         actionBarDrawableToggle =
             ActionBarDrawerToggle(this, binding.dlAdminHome, R.string.nav_open, R.string.nav_close)
@@ -39,7 +45,7 @@ class RetailerAdminActivity : AppCompatActivity() {
         //onclick
         nvAdminHome.setNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.menu_SubadminDashboard ->{
+                R.id.menu_SubadminDashboard -> {
                     changeFragment(RetailerDashboardFragment())
                     return@setNavigationItemSelectedListener true
                 }
@@ -51,7 +57,7 @@ class RetailerAdminActivity : AppCompatActivity() {
                 }
                 R.id.menu_SubadminCategories -> {
                     Log.d("myAdmin", "clicked Cat")
-                    changeFragment(CategroiesFragment())
+                    changeFragment(CategroiesFragment(title!!))
                     binding.dlAdminHome.close()
                     return@setNavigationItemSelectedListener true
                 }
@@ -79,7 +85,7 @@ class RetailerAdminActivity : AppCompatActivity() {
                     return@setNavigationItemSelectedListener true
                 }
                 R.id.menu_SubadminLogout -> {
-                    startActivity(Intent(this,LoginActivity::class.java))
+                    startActivity(Intent(this, LoginActivity::class.java))
                     finish()
                     return@setNavigationItemSelectedListener true
                 }

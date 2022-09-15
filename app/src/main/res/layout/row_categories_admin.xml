@@ -28,7 +28,7 @@
 
                 <TextView
                     android:id="@+id/tvAdminId"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="5dp"
@@ -39,8 +39,8 @@
                     android:textSize="20sp" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:weightSum="2"
                     android:layout_weight="1"
@@ -66,13 +66,11 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:layout_margin="3dp"
-                    android:weightSum="2"
-
-                    >
+                    android:weightSum="2">
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
@@ -88,6 +86,7 @@
 <!--                            android:textSize="12sp" />-->
 
                         <Button
+                            android:id="@+id/btCardMainCategoryActive"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
@@ -96,7 +95,6 @@
                             android:layout_marginEnd="2dp"
                             android:layout_marginBottom="2dp"
                             android:text="Activate"
-                            android:id="@+id/btCardMainCategoryActive"
                             android:textSize="12sp" />
                     </RelativeLayout>
                     <RelativeLayout

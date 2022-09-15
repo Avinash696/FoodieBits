@@ -555,7 +555,12 @@ class HomeActivity : AppCompatActivity() {
         val arrayData = ArrayList<CategoryImg>()
         for (i in 0 until data.categoryImg.size){
             val dumy = data.categoryImg[i]
-            arrayData.add(CategoryImg(dumy.categoryImg,dumy.categoryName,dumy.categoryStatus,dumy.id))
+            if(dumy.categoryStatus == 1){
+                arrayData.add(CategoryImg(dumy.categoryImg,dumy.categoryName,dumy.categoryStatus,dumy.id))
+            }
+            else {
+                Log.d("rawt", "populatingData:${dumy.categoryStatus}  ")
+            }
         }
 
         runOnUiThread {

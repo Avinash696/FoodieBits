@@ -218,4 +218,5 @@
     <color name="timestamp">#858585</color>
     <color name="new_btn_color">#1482AC</color>
     <color name="colorFab">#2196F3</color>
+    <color name="back_blue_create">#8AD0F3</color>
 </resources>

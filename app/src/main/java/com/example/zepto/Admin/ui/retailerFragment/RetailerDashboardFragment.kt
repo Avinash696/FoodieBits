@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.GridView
 import com.example.zepto.R
 import com.example.zepto.adapter.adapterDashboard
+import com.example.zepto.model.cardItemModel
 import com.example.zepto.model.cardItemWithoutId
 
 // TODO: Rename parameter arguments, choose names that match

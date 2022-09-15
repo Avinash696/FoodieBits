@@ -48,7 +48,7 @@ class LoginActivity : AppCompatActivity() {
                 for (i in 0 until call.body()!!.size) {
                     val tempData = call.body()!![i]
                     val result = (tempData.id).filter { it.isLetter() }
-                    fnwork((tempData.id),(tempData.password),result)
+                    fnwork((tempData.id),(tempData.password),result,tempData.adminImgPic)
                 }
             } else {
                 Log.d("login", "error: ")
@@ -56,31 +56,36 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun fnwork(id:String,password:String,result:String) {
+    private fun fnwork(id:String,password:String,result:String,imgPath:String) {
         Log.d("fnwork", "fileds  $password $id")
        if ((stName.equals(id)) && (stPass.equals(password)) && (result == "admin")){
            val intent = Intent(this, AdminHomeActivity::class.java)
            intent.putExtra("adminTitle",id)
+           intent.putExtra("adminImg",imgPath)
             startActivity(intent)
         }
        else if ((stName.equals(id)) && (stPass.equals(password)) && (result == "wladmin")){
            val intent = Intent(this, SubAdminActivity::class.java)
            intent.putExtra("wladminTitle",id)
+           intent.putExtra("adminImg",imgPath)
            startActivity(intent)
        }
        else if ((stName.equals(id)) && (stPass.equals(password)) && (result == "retailer")){
            val intent = Intent(this, RetailerAdminActivity::class.java)
            intent.putExtra("retailerTitle",id)
+           intent.putExtra("adminImg",imgPath)
            startActivity(intent)
        }
        else if ((stName.equals("avi")) && (stPass.equals("avi")) || (result == "home")){
            val intent = Intent(this, HomeActivity::class.java)
            intent.putExtra("retailerTitle",id)
+           intent.putExtra("adminImg",imgPath)
            startActivity(intent)
        }
        else if ((stName.equals("delivery")) && (stPass.equals("delivery")) || (result == "delivery")){
            val intent = Intent(this, SubmitInformationActivity::class.java)
            intent.putExtra("retailerTitle",id)
+           intent.putExtra("adminImg",imgPath)
            startActivity(intent)
        }
 

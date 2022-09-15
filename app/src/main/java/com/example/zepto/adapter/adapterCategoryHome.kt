@@ -50,16 +50,19 @@ BaseAdapter() {
         val name = myView!!.findViewById<TextView>(R.id.ivClientFoodNameCategory)
         val itemPic = myView.findViewById<ImageView>(R.id.ivClientFoodImageCategory)
 
-        val data = arraydata[position]
-        if(data.categoryStatus == 0){
-            //set data
-            name.text =data.categoryName
-            Picasso.get().load(data.categoryImg).into(itemPic)
-        }
-        else {
-            myView.visibility = View.GONE
-        }
 
+        val data = arraydata[position]
+        //set data
+        name.text =data.categoryName
+        Picasso.get().load(data.categoryImg).into(itemPic)
+//        if(data.categoryStatus == 0){
+//            //set data
+//            name.text =data.categoryName
+//            Picasso.get().load(data.categoryImg).into(itemPic)
+//        }
+//        else {
+//            myView.visibility = View.GONE
+//        }
 
         //temp icon click screen forward move
         myView.setOnClickListener {

@@ -23,6 +23,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.test.FileUtil
 import com.example.test.aviInterface
+import com.example.zepto.Admin.ui.activity.AdminHomeActivity
 import com.example.zepto.Admin.ui.activity.CreateAdminActivity
 import com.example.zepto.R
 import com.example.zepto.adapter.adapterRetailerAddUser
@@ -44,9 +45,6 @@ import java.io.InputStream
 
 
 class AddUserTestFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
     private var filePath: File? = null
     private lateinit var layout: View
     private lateinit var binding: FragmentAddUserBinding
@@ -61,6 +59,7 @@ class AddUserTestFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         val rnds = (0..1000).random()
         Log.d("tsadgas", "onCreate:$rnds ")
         arguments?.let {
@@ -148,12 +147,7 @@ class AddUserTestFragment : Fragment() {
                 requireContext(),
                 Manifest.permission.READ_EXTERNAL_STORAGE
             ) == PackageManager.PERMISSION_GRANTED -> {
-//                layout.showSnackbar(
-//                    view,
-//                    getString(R.string.permission_granted),
-//                    Snackbar.LENGTH_INDEFINITE,
-//                    null
-//                ) {}
+
                 Log.d("permiss", "granted: ")
             }
 

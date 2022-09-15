@@ -44,6 +44,10 @@ interface aviInterface {
     @GET("imgFolder/showAdmin.php")
     suspend fun authenticateAdmin(): Response<retailerResponceAddUserModel>
 
+    //admin dashboard
+    @GET("imgFolder/adminDashboard.php")
+    suspend fun getDashboard():Response<adminDashboardUpdated>
+
     //MainCategory
     @GET("imgFolder/mainCategory.php?mainCategoryAdd=getMainCategory")
     suspend fun getMainCategory(): Response<mainCategoryModel>
@@ -56,6 +60,12 @@ interface aviInterface {
         @Part("categoryName") categoryName: RequestBody,
         @Part("categoryStatus") categoryStatus: RequestBody
     ): Response<mainCategoryPostModel>
+
+    //status Main Category
+    @Multipart
+    @POST("imgFolder/mainCategory.php?mainCategoryAdd=updateStatus")
+    suspend fun updateMainStatusCategory(@Part("id") id:RequestBody ,@Part("categoryStatus") categoryStatus: RequestBody)
+    :Response<statusMainCategoryModel>
 
     //MainSubCategory
     @GET("imgFolder/mainSubCategory.php?mainSubCategoryAdd=getMainSubCategory")
@@ -132,6 +142,8 @@ interface aviInterface {
 
     @GET("imgFolder/orderPlaced.php?orderPlaced=getOrderPlaced")
     suspend fun getPlacedOrder():Response<orderPlacedResponceModel>
+
+
 }
 
 data class ImageUpload(val error: Boolean?, val message: String?)

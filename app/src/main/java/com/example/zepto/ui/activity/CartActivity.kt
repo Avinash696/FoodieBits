@@ -1,15 +1,16 @@
 package com.example.zepto.ui.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.zepto.R
 import com.example.zepto.adapter.adapterOrderList
 import com.example.zepto.databinding.ActivityCartBinding
 import com.example.zepto.model.orderListModel
+import com.example.zepto.module.cartItemLib
 
 class CartActivity : AppCompatActivity() {
     lateinit var intentTrending: Intent
@@ -23,7 +24,9 @@ class CartActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_cart)
-
+        val cartItemLib : cartItemLib? = null
+        Log.d("amountCheckModule", "getCartDataFromModule: $cartItemLib")
+//        getCartDataFromModule(cartItemModule!!)
         intentDataReceive()
         populatingIntentData()
         totalAmount()
@@ -52,7 +55,7 @@ class CartActivity : AppCompatActivity() {
 
         Log.d("cartArr", "onCreate: $nameArray ${nameArray.size} $amountArray $imageArray")
 
-        for(i in 0 until imageArray.size){
+        for (i in 0 until imageArray.size) {
             Log.d("onetime", "intentDataReceive: ${imageArray[i]}")
         }
     }
@@ -81,5 +84,9 @@ class CartActivity : AppCompatActivity() {
         )
         val arrayAdapter = adapterOrderList(arrayList, this)
         binding.rvOrderedList.adapter = arrayAdapter
+    }
+
+    private fun getCartDataFromModule(cartItemModule: cartItemLib) {
+        Log.d("amountCheckModule", "getCartDataFromModule: ${cartItemModule.name}")
     }
 }

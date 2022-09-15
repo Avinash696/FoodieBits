@@ -7,17 +7,17 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.zepto.viewModel.ItemCountViewModel
 import com.example.zepto.databinding.CardviewItemBinding
 import com.example.zepto.model.cardItemModel
-import com.example.zepto.model.cardItemWithoutId
+import com.example.zepto.module.cartItemLib
 import com.example.zepto.ui.activity.SingleTrendingActivity
+import com.example.zepto.viewModel.ItemCountViewModel
 import com.squareup.picasso.Picasso
 
 class adapterTrending(
     private val arrayData: ArrayList<cardItemModel>,
     private val context: Context,
-    private var countViewMode: ItemCountViewModel
+    private var countViewModel: ItemCountViewModel
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -61,14 +61,11 @@ class adapterTrending(
             cartName.add(data.name)
             cartAmount.add(data.Price)
             cartImage.add(data.img)
-            //viewmodel data set
-            countViewMode.arrayName.value = cartName
-            countViewMode.amountName.value = cartAmount
-            countViewMode.imageName.value = cartImage
-            //count update
-            countViewMode.count = cartName.size
-            countViewMode.setCount()
-            Log.d("justdd", "onBindViewHolder:${countViewMode.count} ")
+
+//            Log.d("justdd", "onBindViewHolder:${countViewMode.count} ")
+            Log.d("amountCheckModule", "onBindViewHolder:${cartName}  $cartAmount $cartImage")
+            cartItemLib(cartName,cartAmount,cartImage)
+//            cartItemModule(cartName,cartAmount,cartImage)
         }
     }
 

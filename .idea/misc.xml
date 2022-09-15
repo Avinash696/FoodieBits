@@ -122,9 +122,12 @@
         <entry key="..\:/myBoard/FoodieBits-master (1)/FoodieBits-master/app/src/main/res/layout/activity_all_item_sub_admin.xml" value="0.22708333333333333" />
         <entry key="..\:/myBoard/FoodieBits-master (1)/FoodieBits-master/app/src/main/res/layout/activity_cart.xml" value="0.22708333333333333" />
         <entry key="..\:/myBoard/FoodieBits-master (1)/FoodieBits-master/app/src/main/res/layout/activity_create_admin.xml" value="0.2857142857142857" />
+        <entry key="..\:/myBoard/FoodieBits-master (1)/FoodieBits-master/app/src/main/res/layout/activity_create_retailer.xml" value="0.22708333333333333" />
         <entry key="..\:/myBoard/FoodieBits-master (1)/FoodieBits-master/app/src/main/res/layout/activity_detail.xml" value="0.22708333333333333" />
         <entry key="..\:/myBoard/FoodieBits-master (1)/FoodieBits-master/app/src/main/res/layout/activity_display_retailer_add_user.xml" value="0.2234375" />
+        <entry key="..\:/myBoard/FoodieBits-master (1)/FoodieBits-master/app/src/main/res/layout/activity_login.xml" value="0.22708333333333333" />
         <entry key="..\:/myBoard/FoodieBits-master (1)/FoodieBits-master/app/src/main/res/layout/activity_order_list.xml" value="0.22708333333333333" />
+        <entry key="..\:/myBoard/FoodieBits-master (1)/FoodieBits-master/app/src/main/res/layout/activity_retailer_admin.xml" value="0.22708333333333333" />
         <entry key="..\:/myBoard/FoodieBits-master (1)/FoodieBits-master/app/src/main/res/layout/activity_single_trending.xml" value="0.22708333333333333" />
         <entry key="..\:/myBoard/FoodieBits-master (1)/FoodieBits-master/app/src/main/res/layout/activity_sub_admin.xml" value="0.22708333333333333" />
         <entry key="..\:/myBoard/FoodieBits-master (1)/FoodieBits-master/app/src/main/res/layout/activity_sub_list_sub_admin.xml" value="0.22708333333333333" />
@@ -137,13 +140,15 @@
         <entry key="..\:/myBoard/FoodieBits-master (1)/FoodieBits-master/app/src/main/res/layout/dialog_show_form.xml" value="0.22708333333333333" />
         <entry key="..\:/myBoard/FoodieBits-master (1)/FoodieBits-master/app/src/main/res/layout/dialog_subcategory.xml" value="0.22708333333333333" />
         <entry key="..\:/myBoard/FoodieBits-master (1)/FoodieBits-master/app/src/main/res/layout/dialog_user_master.xml" value="0.22708333333333333" />
-        <entry key="..\:/myBoard/FoodieBits-master (1)/FoodieBits-master/app/src/main/res/layout/fragment_add_user.xml" value="0.3792372881355932" />
+        <entry key="..\:/myBoard/FoodieBits-master (1)/FoodieBits-master/app/src/main/res/layout/fragment_add_user.xml" value="0.2857142857142857" />
         <entry key="..\:/myBoard/FoodieBits-master (1)/FoodieBits-master/app/src/main/res/layout/fragment_categroies.xml" value="0.22708333333333333" />
+        <entry key="..\:/myBoard/FoodieBits-master (1)/FoodieBits-master/app/src/main/res/layout/fragment_dashboard_admin.xml" value="0.22708333333333333" />
         <entry key="..\:/myBoard/FoodieBits-master (1)/FoodieBits-master/app/src/main/res/layout/fragment_trending.xml" value="0.22708333333333333" />
         <entry key="..\:/myBoard/FoodieBits-master (1)/FoodieBits-master/app/src/main/res/layout/row_categories_admin.xml" value="0.22708333333333333" />
         <entry key="..\:/myBoard/FoodieBits-master (1)/FoodieBits-master/app/src/main/res/layout/row_category_cart.xml" value="0.22708333333333333" />
         <entry key="..\:/myBoard/FoodieBits-master (1)/FoodieBits-master/app/src/main/res/layout/row_retailer_adduser.xml" value="0.2857142857142857" />
         <entry key="..\:/myBoard/FoodieBits-master (1)/FoodieBits-master/app/src/main/res/layout/row_sub_list_admin.xml" value="0.22708333333333333" />
+        <entry key="..\:/myBoard/FoodieBits-master (1)/FoodieBits-master/app/src/main/res/menu/menu_admin.xml" value="0.22708333333333333" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.3182291666666667" />
       </map>
     </option>

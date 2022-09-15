@@ -13,6 +13,14 @@
         android:title="Categories"
         android:icon="@drawable/categories"/>
     <item
+        android:id="@+id/menu_adminCreateUser"
+        android:title="Create Wl Admin"
+        android:icon="@drawable/categories"/>
+    <item
+        android:id="@+id/menu_adminCreateRetailer"
+        android:title="Create Retailer"
+        android:icon="@drawable/categories"/>
+    <item
         android:id="@+id/menu_adminTrending"
         android:title="Trending"
         android:icon="@drawable/trending"/>

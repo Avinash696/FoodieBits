@@ -5,13 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
-import android.view.View
-import android.widget.*
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.example.test.FileUtil
 import com.example.test.aviInterface
 import com.example.zepto.R
-import com.example.zepto.databinding.ActivityCreateAdminBinding
+import com.example.zepto.databinding.ActivityCreateRetailerBinding
 import com.example.zepto.db.RetrofitHelper
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -20,41 +19,27 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
 
-class CreateAdminActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityCreateAdminBinding
+class CreateRetailerActivity : AppCompatActivity() {
+    private lateinit var binding:ActivityCreateRetailerBinding
     private var filePath: File? = null
-    lateinit var tempNameStr: String
-    lateinit var tempSpRole: String
-    lateinit var tempPassword: String
-    lateinit var tempEmail: String
-    lateinit var tempMobileNo: String
-    lateinit var tempAddress: String
-    lateinit var tempAdhar: String
-    lateinit var tempPanCard: String
-    lateinit var tempShopReg: String
-    lateinit var submitBtn: Button
-//    var spinnerArray = arrayOf("admin", "wladmin", "retailer")
-    var spinnerArray = arrayOf( "wladmin", "retailer")
-    lateinit var titleLoginUser:String
+    private lateinit var titleLoginUser:String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_create_admin)
-
+        binding=DataBindingUtil.setContentView(this,R.layout.activity_create_retailer)
 
         //get intent
         val intentTitle = intent
-         titleLoginUser = intentTitle.getStringExtra("adminTitleCheck")!!
+        titleLoginUser = intentTitle.getStringExtra("adminTitleCheck")!!
 
-        Log.d("curentUSer", "onCreate Adin : $titleLoginUser")
+
+        Log.d("curentUSer", "onCreate:Retailer  $titleLoginUser")
 
         //action bar
-        supportActionBar!!.title = "Create WlAdmin"
+        supportActionBar!!.title = "Create Retailer "
         supportActionBar!!.setBackgroundDrawable(resources.getDrawable(R.color.blue))
 
-        init()
-
         //intent to select img
-        binding.ivDialogUploadPic.setOnClickListener {
+        binding.ivDialogUploadPicRetailer.setOnClickListener {
             val galleryIntent =
                 Intent(
                     Intent.ACTION_PICK,
@@ -62,13 +47,11 @@ class CreateAdminActivity : AppCompatActivity() {
                 )
             startActivityForResult(galleryIntent, 100)
         }
+        binding.btSubmitAddRtailerRetailer.setOnClickListener {
 
-        submitBtn.setOnClickListener {
-
-            createUser()
+            createRtailer()
         }
     }
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == 100 && (data != null)) {
             filePath = FileUtil.from(this, data.data)
@@ -78,50 +61,20 @@ class CreateAdminActivity : AppCompatActivity() {
             val uri = data.data
             val bitmap =
                 MediaStore.Images.Media.getBitmap(contentResolver, uri)
-            binding.ivDialogUploadPic.setImageBitmap(bitmap)
+            binding.ivDialogUploadPicRetailer.setImageBitmap(bitmap)
         }
         super.onActivityResult(requestCode, resultCode, data)
     }
-
-
-    private fun init() {
-         tempNameStr = binding.etNameAdduserDialogRetailer.text.toString()
-        val tempImv = binding.ivDialogUploadPic
-
-        val spinnerArrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, spinnerArray)
-        //selected item will look like a spinner set from XML
-        spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-//        binding.spRoleAdduserDialogRetailer.adapter = spinnerArrayAdapter
-//           binding.spRoleAdduserDialogRetailer.onItemSelectedListener = object :AdapterView.OnItemSelectedListener{
-//               override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-//                   Log.d("spinner test", "onItemSelected: ${p0!!.getItemAtPosition(p2)}")
-//               }
-//
-//               override fun onNothingSelected(p0: AdapterView<*>?) {
-//                   TODO("Not yet implemented")
-//               }
-//
-//           }
-         tempPassword = binding.etPassAdduserDialogRetailer.text.toString()
-         tempEmail = binding.etEmailAdduserDialogRetailer.text.toString()
-         tempMobileNo = binding.etMobileAdduserDialogRetailer.text.toString()
-         tempAddress = binding.etAddressAdduserDialogRetailer.text.toString()
-         tempAdhar = binding.etAdharAdduserDialogRetailer.text.toString()
-         tempPanCard = binding.etPanAdduserDialogRetailer.text.toString()
-         tempShopReg = binding.etShopAdduserDialogRetailer.text.toString()
-         submitBtn = findViewById(R.id.btSubmitAddUserRetailer)
-    }
-
-    private fun createUser() {
-        Log.d("url", "dialogCreateUser above:$filePath ")
+    private fun createRtailer() {
+        Log.d("url", "dialogCreateRtailer above:$filePath ")
         val requestBody = RequestBody.create(MediaType.parse("image/*"), filePath!!)
         val parts = MultipartBody.Part.createFormData("imgFile", filePath!!.name, requestBody)
-        Log.d("rawat", "dialogCreateUser: $parts")
-        Log.d("url", "dialogCreateUser below:$filePath  ${parts.body()}")
+        Log.d("rawat", "dialogCreateRtailer: $parts")
+        Log.d("url", "dialogCreateRtailer below:$filePath  ${parts.body()}")
         val tempName =
             RequestBody.create(
                 MediaType.parse("text/plain"),
-                binding.etNameAdduserDialogRetailer.text.toString()
+                binding.etNameAddRtailerDialogRetailer.text.toString()
             )
         val tempRole =
             RequestBody.create(
@@ -131,37 +84,37 @@ class CreateAdminActivity : AppCompatActivity() {
         val tempPassword =
             RequestBody.create(
                 MediaType.parse("text/plain"),
-                binding.etPassAdduserDialogRetailer.text.toString()
+                binding.etPassAddRtailerDialogRetailer.text.toString()
             )
         val tempEmail =
             RequestBody.create(
                 MediaType.parse("text/plain"),
-                binding.etEmailAdduserDialogRetailer.text.toString()
+                binding.etEmailAddRtailerDialogRetailer.text.toString()
             )
         val tempMobileNo =
             RequestBody.create(
                 MediaType.parse("text/plain"),
-                binding.etMobileAdduserDialogRetailer.text.toString()
+                binding.etMobileAddRtailerDialogRetailer.text.toString()
             )
         val tempAddress =
             RequestBody.create(
                 MediaType.parse("text/plain"),
-                binding.etAddressAdduserDialogRetailer.text.toString()
+                binding.etAddressAddRtailerDialogRetailer.text.toString()
             )
         val tempAdhar =
             RequestBody.create(
                 MediaType.parse("text/plain"),
-                binding.etAdharAdduserDialogRetailer.text.toString()
+                binding.etAdharAddRtailerDialogRetailer.text.toString()
             )
         val tempPanCard =
             RequestBody.create(
                 MediaType.parse("text/plain"),
-                binding.etPanAdduserDialogRetailer.text.toString()
+                binding.etPanAddRtailerDialogRetailer.text.toString()
             )
         val tempShopReg =
             RequestBody.create(
                 MediaType.parse("text/plain"),
-                binding.etShopAdduserDialogRetailer.text.toString()
+                binding.etShopAddRtailerDialogRetailer.text.toString()
             )
         //generic id
         val rnds = (0..1000).random()
@@ -177,11 +130,11 @@ class CreateAdminActivity : AppCompatActivity() {
                 titleLoginUser
             )
 
-        Log.d("customid", "dialogCreateUser: $id")
+        Log.d("customid", "dialogCreateRtailer: $id")
 
         //hit api now
         val client = RetrofitHelper.getClient().create(aviInterface::class.java)
-        Log.d("postdialog", "createUser: $tempId $tempRole $tempName $tempPassword $tempEmail $tempMobileNo $tempAddress " +
+        Log.d("postdialog", "createRtailer: $tempId $tempRole $tempName $tempPassword $tempEmail $tempMobileNo $tempAddress " +
                 "$tempAdhar $tempPanCard $tempShopReg")
         GlobalScope.launch {
             val call = client.createRetailer(
@@ -198,12 +151,12 @@ class CreateAdminActivity : AppCompatActivity() {
                 parts,
                 tempWhoCreated
             )
-            Log.d("rawat", "dialogCreateUser: ")
+            Log.d("rawat", "dialogCreateRtailer: ")
             if (call.isSuccessful) {
-                Log.d("postdialog", "dialogCreateUser: Success ${call.body()!!.message}")
+                Log.d("postdialog", "dialogCreateRtailer: Success ${call.body()!!.message}")
                 makeToast(true)
             } else {
-                Log.d("postdialog", "dialogCreateUser: Error  ${call.body()!!.error}")
+                Log.d("postdialog", "dialogCreateRtailer: Error  ${call.body()!!.error}")
                 makeToast(false)
             }
         }
@@ -215,5 +168,4 @@ class CreateAdminActivity : AppCompatActivity() {
         else
             Toast.makeText(this, "Failed User ", Toast.LENGTH_SHORT).show()
     }
-
 }

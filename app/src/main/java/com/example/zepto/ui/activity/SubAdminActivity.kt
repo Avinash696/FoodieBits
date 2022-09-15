@@ -14,6 +14,7 @@ import com.example.zepto.Admin.ui.retailerFragment.AddUserTestFragment
 import com.example.zepto.databinding.ActivitySubAdminBinding
 import com.example.zepto.ui.fragment.DashboardFragment
 import com.google.android.material.navigation.NavigationView
+import com.squareup.picasso.Picasso
 
 class SubAdminActivity : AppCompatActivity() {
     private lateinit var nvAdminHome: NavigationView
@@ -23,11 +24,14 @@ class SubAdminActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sub_admin)
         init()  
-        changeFragment(CategroiesFragment())
+        changeFragment(DashboardFragment())
         //title set
         val intent = intent
         val title = intent.getStringExtra("wladminTitle")
+        val titleImg = intent.getStringExtra("adminImg")!!
+        val customCreatedUrl = "http://56testing.club/imgFolder/uploads/wlAdmin/$titleImg"
         Log.d("adminTitleCheck", "onCreate: $title")
+        Picasso.get().load(customCreatedUrl).into(binding.ivTitleLogoWlAdmin)
         binding.appBar.title = title
         //action
         setSupportActionBar(binding.appBar)
@@ -51,7 +55,7 @@ class SubAdminActivity : AppCompatActivity() {
                 }
                 R.id.menu_SubadminCategories -> {
                     Log.d("myAdmin", "clicked Cat")
-                    changeFragment(CategroiesFragment())
+//                    changeFragment(CategroiesFragment())
                     binding.dlAdminHome.close()
                     return@setNavigationItemSelectedListener true
                 }

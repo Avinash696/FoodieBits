@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.zepto.model.cardItemModel
 
-class ItemCountViewModel : ViewModel() {
+class  ItemCountViewModel : ViewModel() {
     var countMutableLiveData = MutableLiveData<Int>(0)
     var arrayName = MutableLiveData<ArrayList<String>>()
     var amountName = MutableLiveData<ArrayList<Int>>()
