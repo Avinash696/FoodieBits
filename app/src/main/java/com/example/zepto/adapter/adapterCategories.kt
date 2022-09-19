@@ -2,6 +2,7 @@ package com.example.zepto.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,14 +10,16 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.zepto.R
+import com.example.zepto.model.cardItemModel
 import com.example.zepto.model.cardItemWithoutId
 import com.example.zepto.ui.activity.SingleTrendingActivity
 import com.example.zepto.viewModel.ItemCountViewModel
+import com.squareup.picasso.Picasso
 
 
 class adapterCategories(
     private val context: Context,
-    private val arraydata: ArrayList<cardItemWithoutId>
+    private val arraydata: ArrayList<cardItemModel>
 ) :
     BaseAdapter() {
     private var cartName: ArrayList<String> = ArrayList()
@@ -47,10 +50,13 @@ class adapterCategories(
         val itemPic = myView.findViewById<ImageView>(R.id.ivCateItemPic)
 
         val data = arraydata[position]
-
+        Log.d("instantDelete", "getView: ")
+        Log.d("instantDelete", "getView: ${data.img}")
         //set data
         name.text = data.name
-        itemPic.setImageResource(data.img)
+        Picasso.get().load(data.img).into(itemPic)
+//        itemPic.setImageResource(data.img)
+
 
         itemPic.setOnClickListener {
 //            context.startActivity(Intent(context, DetailActivity::class.java))
@@ -62,7 +68,8 @@ class adapterCategories(
 //            intent.putExtra("counterKey",)
             cartName.add(data.name)
             cartAmount.add(data.Price)
-            cartImage.add(data.img)
+//            cartImage.add(data.img)
+
 
 
             context.startActivity(intent)

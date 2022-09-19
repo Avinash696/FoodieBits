@@ -7,4 +7,9 @@
     <string name="permission_granted">Permision granted</string>
     <string name="permission_required">Permisiton required</string>
     <string name="ok">OK</string>
+    <string name="location_permission_not_granted">887</string>
+    <string name="enable_gps">666</string>
+    <string name="required_for_this_app">667</string>
+    <string name="enable_now">668</string>
+    <string name="label_name">Full Name (Required)*</string>
 </resources>

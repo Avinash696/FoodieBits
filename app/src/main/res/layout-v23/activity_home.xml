@@ -66,11 +66,11 @@
                             android:weightSum="2">
 
                             <LinearLayout
+                                android:id="@+id/llSearchProduct"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="10dp"
-                                android:layout_weight="1"
-                                android:id="@+id/llSearchProduct">
+                                android:layout_weight="1">
 
                                 <ImageView
                                     android:layout_width="30dp"
@@ -93,13 +93,13 @@
                                 android:layout_weight="1">
 
                                 <LinearLayout
+                                    android:id="@+id/llCart"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentEnd="true"
                                     android:layout_centerVertical="true"
                                     android:layout_marginRight="20dp"
-                                    android:orientation="horizontal"
-                                    android:id="@+id/llCart">
+                                    android:orientation="horizontal">
 
                                     <ImageView
                                         android:layout_width="wrap_content"
@@ -107,7 +107,7 @@
                                         android:src="@drawable/cart" />
 
                                     <TextView
-                                            android:id="@+id/tvCartCount"
+                                        android:id="@+id/tvCartCount"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="Count"
@@ -183,373 +183,23 @@
                                 android:textSize="19sp" />
                         </LinearLayout>
 
-
-                        <GridView
+                        <androidx.core.widget.NestedScrollView
                             android:layout_width="match_parent"
-                            android:layout_height="350dp"
-                            android:id="@+id/rvCategoryHome"
-                            android:numColumns="4"
-                            android:scrollbars="horizontal"/>
-<!--                        <LinearLayout-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:orientation="vertical">-->
-
-<!--                            <LinearLayout-->
-<!--                                android:layout_width="match_parent"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:weightSum="4">-->
-
-
-<!--                                <LinearLayout-->
-<!--                                    android:id="@+id/llBeautyProduct"-->
-<!--                                    android:layout_width="match_parent"-->
-<!--                                    android:layout_height="wrap_content"-->
-<!--                                    android:layout_margin="2dp"-->
-<!--                                    android:layout_weight="1"-->
-<!--                                    android:background="@drawable/border_layout"-->
-<!--                                    android:orientation="vertical"-->
-<!--                                    android:padding="4dp">-->
-
-<!--                                    <ImageView-->
-
-<!--                                        android:layout_width="50dp"-->
-<!--                                        android:layout_height="50dp"-->
-<!--                                        android:layout_gravity="center"-->
-<!--                                        android:src="@drawable/beauty" />-->
-
-<!--                                    <TextView-->
-<!--                                        android:id="@+id/tvBeauty"-->
-<!--                                        android:layout_width="wrap_content"-->
-<!--                                        android:layout_height="wrap_content"-->
-<!--                                        android:layout_gravity="center_horizontal"-->
-<!--                                        android:text="Beauty"-->
-<!--                                        android:textColor="@color/black" />-->
-
-<!--                                </LinearLayout>-->
-
-<!--                                <LinearLayout-->
-<!--                                    android:id="@+id/llInstantFood"-->
-<!--                                    android:layout_width="match_parent"-->
-<!--                                    android:layout_height="wrap_content"-->
-<!--                                    android:layout_margin="2dp"-->
-<!--                                    android:layout_weight="1"-->
-<!--                                    android:background="@drawable/border_layout"-->
-<!--                                    android:orientation="vertical"-->
-<!--                                    android:padding="4dp">-->
-
-<!--                                    <ImageView-->
-<!--                                        android:layout_width="50dp"-->
-<!--                                        android:layout_height="50dp"-->
-<!--                                        android:layout_gravity="center"-->
-<!--                                        android:src="@drawable/instant1" />-->
-
-<!--                                    <TextView-->
-<!--                                        android:id="@+id/tvInstanctFood"-->
-<!--                                        android:layout_width="wrap_content"-->
-<!--                                        android:layout_height="wrap_content"-->
-<!--                                        android:layout_gravity="center_horizontal"-->
-
-
-<!--                                        android:text="Instant Food"-->
-<!--                                        android:textColor="@color/black" />-->
-
-<!--                                </LinearLayout>-->
-
-<!--                                <LinearLayout-->
-<!--                                    android:id="@+id/llColdDrink"-->
-<!--                                    android:layout_width="match_parent"-->
-<!--                                    android:layout_height="wrap_content"-->
-<!--                                    android:layout_margin="2dp"-->
-<!--                                    android:layout_weight="1"-->
-<!--                                    android:background="@drawable/border_layout"-->
-<!--                                    android:orientation="vertical"-->
-<!--                                    android:padding="4dp">-->
-
-<!--                                    <ImageView-->
-
-<!--                                        android:layout_width="50dp"-->
-<!--                                        android:layout_height="50dp"-->
-<!--                                        android:layout_gravity="center"-->
-<!--                                        android:src="@drawable/cd1" />-->
-
-<!--                                    <TextView-->
-
-<!--                                        android:layout_width="wrap_content"-->
-<!--                                        android:layout_height="wrap_content"-->
-<!--                                        android:layout_gravity="center_horizontal"-->
-
-
-<!--                                        android:text="Cold Drink"-->
-<!--                                        android:textColor="@color/black" />-->
-
-<!--                                </LinearLayout>-->
-
-<!--                                <LinearLayout-->
-<!--                                    android:id="@+id/llBiscuit"-->
-<!--                                    android:layout_width="match_parent"-->
-<!--                                    android:layout_height="wrap_content"-->
-<!--                                    android:layout_margin="2dp"-->
-<!--                                    android:layout_weight="1"-->
-<!--                                    android:background="@drawable/border_layout"-->
-<!--                                    android:orientation="vertical"-->
-<!--                                    android:padding="4dp">-->
-
-<!--                                    <ImageView-->
-
-<!--                                        android:layout_width="50dp"-->
-<!--                                        android:layout_height="50dp"-->
-<!--                                        android:layout_gravity="center"-->
-<!--                                        android:src="@drawable/biscut" />-->
-
-<!--                                    <TextView-->
-
-<!--                                        android:layout_width="wrap_content"-->
-<!--                                        android:layout_height="wrap_content"-->
-<!--                                        android:layout_gravity="center_horizontal"-->
-
-
-<!--                                        android:text="Biscuts"-->
-<!--                                        android:textColor="@color/black" />-->
-
-<!--                                </LinearLayout>-->
-<!--                            </LinearLayout>-->
-
-<!--                            <LinearLayout-->
-<!--                                android:layout_width="match_parent"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:weightSum="4">-->
-
-
-<!--                                <LinearLayout-->
-<!--                                    android:layout_width="match_parent"-->
-<!--                                    android:layout_height="wrap_content"-->
-<!--                                    android:layout_margin="2dp"-->
-<!--                                    android:layout_weight="1"-->
-<!--                                    android:background="@drawable/border_layout"-->
-<!--                                    android:orientation="vertical"-->
-<!--                                    android:padding="4dp">-->
-
-<!--                                    <ImageView-->
-<!--                                        android:id="@+id/llChoco"-->
-<!--                                        android:layout_width="50dp"-->
-<!--                                        android:layout_height="50dp"-->
-<!--                                        android:layout_gravity="center"-->
-<!--                                        android:src="@drawable/c1" />-->
-
-<!--                                    <TextView-->
-
-<!--                                        android:layout_width="wrap_content"-->
-<!--                                        android:layout_height="wrap_content"-->
-<!--                                        android:layout_gravity="center_horizontal"-->
-
-<!--                                        android:text="Choco"-->
-<!--                                        android:textColor="@color/black" />-->
-
-<!--                                </LinearLayout>-->
-
-<!--                                <LinearLayout-->
-<!--                                    android:id="@+id/llMasala"-->
-<!--                                    android:layout_width="match_parent"-->
-<!--                                    android:layout_height="wrap_content"-->
-<!--                                    android:layout_margin="2dp"-->
-<!--                                    android:layout_weight="1"-->
-<!--                                    android:background="@drawable/border_layout"-->
-<!--                                    android:orientation="vertical"-->
-<!--                                    android:padding="4dp">-->
-
-<!--                                    <ImageView-->
-
-<!--                                        android:layout_width="50dp"-->
-<!--                                        android:layout_height="50dp"-->
-<!--                                        android:layout_gravity="center"-->
-<!--                                        android:src="@drawable/m1" />-->
-
-<!--                                    <TextView-->
-
-<!--                                        android:layout_width="wrap_content"-->
-<!--                                        android:layout_height="wrap_content"-->
-<!--                                        android:layout_gravity="center_horizontal"-->
-
-
-<!--                                        android:text="Masala"-->
-<!--                                        android:textColor="@color/black" />-->
-
-<!--                                </LinearLayout>-->
-
-<!--                                <LinearLayout-->
-<!--                                    android:id="@+id/llOil"-->
-<!--                                    android:layout_width="match_parent"-->
-<!--                                    android:layout_height="wrap_content"-->
-<!--                                    android:layout_margin="2dp"-->
-<!--                                    android:layout_weight="1"-->
-<!--                                    android:background="@drawable/border_layout"-->
-<!--                                    android:orientation="vertical"-->
-<!--                                    android:padding="4dp">-->
-
-<!--                                    <ImageView-->
-
-<!--                                        android:layout_width="50dp"-->
-<!--                                        android:layout_height="50dp"-->
-<!--                                        android:layout_gravity="center"-->
-<!--                                        android:src="@drawable/oil1" />-->
-
-<!--                                    <TextView-->
-
-<!--                                        android:layout_width="wrap_content"-->
-<!--                                        android:layout_height="wrap_content"-->
-<!--                                        android:layout_gravity="center_horizontal"-->
-
-
-<!--                                        android:text="Oil"-->
-<!--                                        android:textColor="@color/black" />-->
-
-<!--                                </LinearLayout>-->
-
-<!--                                <LinearLayout-->
-<!--                                    android:id="@+id/llSauce"-->
-<!--                                    android:layout_width="match_parent"-->
-<!--                                    android:layout_height="wrap_content"-->
-<!--                                    android:layout_margin="2dp"-->
-<!--                                    android:layout_weight="1"-->
-<!--                                    android:background="@drawable/border_layout"-->
-<!--                                    android:orientation="vertical"-->
-<!--                                    android:padding="4dp">-->
-
-<!--                                    <ImageView-->
-
-<!--                                        android:layout_width="50dp"-->
-<!--                                        android:layout_height="50dp"-->
-<!--                                        android:layout_gravity="center"-->
-<!--                                        android:src="@drawable/s1" />-->
-
-<!--                                    <TextView-->
-
-<!--                                        android:layout_width="wrap_content"-->
-<!--                                        android:layout_height="wrap_content"-->
-<!--                                        android:layout_gravity="center_horizontal"-->
-<!--                                        android:text="Sauce"-->
-<!--                                        android:textColor="@color/black" />-->
-
-<!--                                </LinearLayout>-->
-<!--                            </LinearLayout>-->
-
-<!--                            <LinearLayout-->
-<!--                                android:layout_width="match_parent"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:weightSum="4">-->
-
-
-<!--                                <LinearLayout-->
-<!--                                    android:id="@+id/llCoffee"-->
-<!--                                    android:layout_width="match_parent"-->
-<!--                                    android:layout_height="wrap_content"-->
-<!--                                    android:layout_margin="2dp"-->
-<!--                                    android:layout_weight="1"-->
-<!--                                    android:background="@drawable/border_layout"-->
-<!--                                    android:orientation="vertical"-->
-<!--                                    android:padding="4dp">-->
-
-<!--                                    <ImageView-->
-
-<!--                                        android:layout_width="50dp"-->
-<!--                                        android:layout_height="50dp"-->
-<!--                                        android:layout_gravity="center"-->
-<!--                                        android:src="@drawable/coffee0" />-->
-
-<!--                                    <TextView-->
-
-<!--                                        android:layout_width="wrap_content"-->
-<!--                                        android:layout_height="wrap_content"-->
-<!--                                        android:layout_gravity="center_horizontal"-->
-
-
-<!--                                        android:text="Coffee"-->
-<!--                                        android:textColor="@color/black" />-->
-
-<!--                                </LinearLayout>-->
-
-<!--                                <LinearLayout-->
-<!--                                    android:id="@+id/llGreenTea"-->
-<!--                                    android:layout_width="match_parent"-->
-<!--                                    android:layout_height="wrap_content"-->
-<!--                                    android:layout_margin="2dp"-->
-<!--                                    android:layout_weight="1"-->
-<!--                                    android:background="@drawable/border_layout"-->
-<!--                                    android:orientation="vertical"-->
-<!--                                    android:padding="4dp">-->
-
-<!--                                    <ImageView-->
-<!--                                        android:layout_width="50dp"-->
-<!--                                        android:layout_height="50dp"-->
-<!--                                        android:layout_gravity="center"-->
-<!--                                        android:src="@drawable/gt1" />-->
-
-<!--                                    <TextView-->
-
-<!--                                        android:layout_width="wrap_content"-->
-<!--                                        android:layout_height="wrap_content"-->
-<!--                                        android:layout_gravity="center_horizontal"-->
-<!--                                        android:text="Green Tea"-->
-<!--                                        android:textColor="@color/black" />-->
-
-<!--                                </LinearLayout>-->
-
-<!--                                <LinearLayout-->
-<!--                                    android:id="@+id/llCleaningEssence"-->
-<!--                                    android:layout_width="match_parent"-->
-<!--                                    android:layout_height="wrap_content"-->
-<!--                                    android:layout_margin="2dp"-->
-<!--                                    android:layout_weight="1"-->
-<!--                                    android:background="@drawable/border_layout"-->
-<!--                                    android:orientation="vertical"-->
-<!--                                    android:padding="4dp">-->
-
-<!--                                    <ImageView-->
-
-<!--                                        android:layout_width="50dp"-->
-<!--                                        android:layout_height="50dp"-->
-<!--                                        android:layout_gravity="center"-->
-<!--                                        android:src="@drawable/clean_item" />-->
-
-<!--                                    <TextView-->
-
-<!--                                        android:layout_width="wrap_content"-->
-<!--                                        android:layout_height="wrap_content"-->
-<!--                                        android:layout_gravity="center_horizontal"-->
-<!--                                        android:text="Home Clean"-->
-<!--                                        android:textColor="@color/black" />-->
-<!--                                </LinearLayout>-->
-
-<!--                                <LinearLayout-->
-<!--                                    android:id="@+id/llTea"-->
-<!--                                    android:layout_width="match_parent"-->
-<!--                                    android:layout_height="wrap_content"-->
-<!--                                    android:layout_margin="2dp"-->
-<!--                                    android:layout_weight="1"-->
-<!--                                    android:background="@drawable/border_layout"-->
-<!--                                    android:orientation="vertical"-->
-<!--                                    android:padding="4dp">-->
-
-<!--                                    <ImageView-->
-
-<!--                                        android:layout_width="50dp"-->
-<!--                                        android:layout_height="50dp"-->
-<!--                                        android:layout_gravity="center"-->
-<!--                                        android:src="@drawable/tea1" />-->
-
-<!--                                    <TextView-->
-
-<!--                                        android:layout_width="wrap_content"-->
-<!--                                        android:layout_height="wrap_content"-->
-<!--                                        android:layout_gravity="center_horizontal"-->
-<!--                                        android:text="Tea"-->
-<!--                                        android:textColor="@color/black" />-->
-
-<!--                                </LinearLayout>-->
-<!--                            </LinearLayout>-->
-
-<!--                        </LinearLayout>-->
+                            android:layout_height="200dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="200dp">
+
+                                <GridView
+                                    android:id="@+id/rvCategoryHome"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="200dp"
+                                    android:nestedScrollingEnabled="true"
+                                    android:numColumns="4"
+                                    android:scrollbars="horizontal" />
+                            </RelativeLayout>
+                        </androidx.core.widget.NestedScrollView>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -582,8 +232,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:background="@color/white"
-                    app:itemTextColor="@color/black"
                     app:itemIconTint="@color/red"
+                    app:itemTextColor="@color/black"
                     app:labelVisibilityMode="labeled"
                     app:menu="@menu/menu_bottom_nav" />
 
@@ -597,9 +247,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="start"
+            android:background="#FFEF5350"
             app:headerLayout="@layout/header_home"
-            app:menu="@menu/home_menu"
-            android:background="#FFEF5350"/>
+            app:menu="@menu/home_menu" />
 
     </androidx.drawerlayout.widget.DrawerLayout>
 </layout>

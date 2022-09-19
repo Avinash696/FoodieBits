@@ -89,22 +89,22 @@ class ProfileActivity : AppCompatActivity() {
         dialog.setContentView(R.layout.dialog_trending_seeall)
         val simpleCategories = dialog.findViewById<GridView>(R.id.simpleView)
 
-        val arrayList = ArrayList<cardItemWithoutId>()
-        arrayList.add(cardItemWithoutId(12, R.drawable.by1, "Beauty", 2, 3))
-        arrayList.add(cardItemWithoutId(11, R.drawable.instant1, "Instant Food", 2, 3))
-        arrayList.add(cardItemWithoutId(21, R.drawable.cd1, "Cold Drink", 2, 3))
-        arrayList.add(cardItemWithoutId(31, R.drawable.biscut, "Biscuts", 2, 3))
-        arrayList.add(cardItemWithoutId(41, R.drawable.c1, "Choco", 2, 3))
-        arrayList.add(cardItemWithoutId(51, R.drawable.m1, "Masala", 2, 3))
-        arrayList.add(cardItemWithoutId(61, R.drawable.oil1, "Oil", 2, 3))
-        arrayList.add(cardItemWithoutId(71, R.drawable.s1, "Sauce", 2, 3))
-        arrayList.add(cardItemWithoutId(17, R.drawable.coffee0, "Coffee", 2, 3))
-        arrayList.add(cardItemWithoutId(15, R.drawable.gt1, "Green Tea", 2, 3))
-        arrayList.add(cardItemWithoutId(14, R.drawable.tea1, "Tea ", 2, 3))
-        arrayList.add(cardItemWithoutId(13, R.drawable.clean_item, "Home Clean", 2, 3))
-
-        val adapter = adapterCategories(this, arrayList)
-        simpleCategories.adapter = adapter
+//        val arrayList = ArrayList<cardItemWithoutId>()
+//        arrayList.add(cardItemWithoutId(12, R.drawable.by1, "Beauty", 2, 3))
+//        arrayList.add(cardItemWithoutId(11, R.drawable.instant1, "Instant Food", 2, 3))
+//        arrayList.add(cardItemWithoutId(21, R.drawable.cd1, "Cold Drink", 2, 3))
+//        arrayList.add(cardItemWithoutId(31, R.drawable.biscut, "Biscuts", 2, 3))
+//        arrayList.add(cardItemWithoutId(41, R.drawable.c1, "Choco", 2, 3))
+//        arrayList.add(cardItemWithoutId(51, R.drawable.m1, "Masala", 2, 3))
+//        arrayList.add(cardItemWithoutId(61, R.drawable.oil1, "Oil", 2, 3))
+//        arrayList.add(cardItemWithoutId(71, R.drawable.s1, "Sauce", 2, 3))
+//        arrayList.add(cardItemWithoutId(17, R.drawable.coffee0, "Coffee", 2, 3))
+//        arrayList.add(cardItemWithoutId(15, R.drawable.gt1, "Green Tea", 2, 3))
+//        arrayList.add(cardItemWithoutId(14, R.drawable.tea1, "Tea ", 2, 3))
+//        arrayList.add(cardItemWithoutId(13, R.drawable.clean_item, "Home Clean", 2, 3))
+//
+//        val adapter = adapterCategories(this, arrayList)
+//        simpleCategories.adapter = adapter
 
         dialog.show()
     }

@@ -27,6 +27,15 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ui.activity.AddDeliveryAddressActivity"
+            android:exported="true"
+            android:parentActivityName=".ui.activity.HomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".Admin.ui.activity.CreateRetailerActivity"
             android:exported="false" />
         <activity
@@ -42,7 +51,7 @@
         <activity
             android:name=".deliveryPartner.ui.activity.SubmitInformationActivity"
             android:exported="true"
-            android:parentActivityName=".LoginActivity"></activity>
+            android:parentActivityName=".LoginActivity" />
         <activity
             android:name=".Admin.ui.activity.DisplayRetailerAddUserActivity"
             android:exported="false"
@@ -146,11 +155,7 @@
             android:name=".LoginActivity"
             android:exported="true"
             android:theme="@style/MyAdminCustom">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
