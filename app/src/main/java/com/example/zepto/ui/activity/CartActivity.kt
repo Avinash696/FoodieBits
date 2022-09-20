@@ -26,7 +26,6 @@ class CartActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_cart)
         val cartItemLib : cartItemLib? = null
         Log.d("amountCheckModule", "getCartDataFromModule: $cartItemLib")
-//        getCartDataFromModule(cartItemModule!!)
         intentDataReceive()
         populatingIntentData()
         totalAmount()

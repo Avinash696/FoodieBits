@@ -144,6 +144,10 @@ interface aviInterface {
     suspend fun getPlacedOrder():Response<orderPlacedResponceModel>
 
 
+    //address
+    @GET("imgFolder/deliveryAddress.php?deliveryAddressAdd=getUserProfile")
+    suspend fun getUserAddress():Response<addressUserResponceModel>
+
 }
 
 data class ImageUpload(val error: Boolean?, val message: String?)

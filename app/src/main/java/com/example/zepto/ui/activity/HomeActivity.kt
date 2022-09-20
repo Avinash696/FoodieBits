@@ -24,6 +24,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.test.aviInterface
+import com.example.zepto.LoginActivity
 import com.example.zepto.R
 import com.example.zepto.adapter.adapterBanner
 import com.example.zepto.adapter.adapterCategories
@@ -48,7 +49,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
-class HomeActivity : AppCompatActivity(){
+ class HomeActivity : AppCompatActivity(){
     private lateinit var binding: ActivityHomeBinding
     private lateinit var rvTrending: RecyclerView
     private lateinit var simpleCategories: GridView
@@ -367,14 +368,6 @@ class HomeActivity : AppCompatActivity(){
                 )
             )
         }
-//        arrayList.add(cardItemWithoutId(1, R.drawable.f1, "Maggie", 2, 3))
-//        arrayList.add(cardItemWithoutId(1, R.drawable.beauty, "Beauty", 2, 3))
-//        arrayList.add(cardItemWithoutId(1, R.drawable.biscut, "Biscuits", 2, 3))
-//        arrayList.add(cardItemWithoutId(1, R.drawable.colddrink, "Drinks", 2, 3))
-//        arrayList.add(cardItemWithoutId(1, R.drawable.egg, "Eggs", 2, 3))
-//        arrayList.add(cardItemWithoutId(1, R.drawable.fruit_vegitable, "Fruit Vegetable", 2, 3))
-//        arrayList.add(cardItemWithoutId(1, R.drawable.munch, "Munch", 2, 3))
-//        arrayList.add(cardItemWithoutId(1, R.drawable.surf, "Surf", 2, 3))
         GlobalScope.launch(Dispatchers.Main) {
             rvTrending.layoutManager = LinearLayoutManager(
                 applicationContext,
@@ -422,27 +415,12 @@ class HomeActivity : AppCompatActivity(){
                 )
             )
         }
-//        arrayList.add(cardItemWithoutId(1, R.drawable.f1, "Maggie", 2, 3))
-//        arrayList.add(cardItemWithoutId(1, R.drawable.beauty, "Beauty", 2, 3))
-//        arrayList.add(cardItemWithoutId(1, R.drawable.biscut, "Biscuits", 2, 3))
-//        arrayList.add(cardItemWithoutId(1, R.drawable.colddrink, "Drinks", 2, 3))
-//        arrayList.add(cardItemWithoutId(1, R.drawable.egg, "Eggs", 2, 3))
-//        arrayList.add(cardItemWithoutId(1, R.drawable.fruit_vegitable, "Fruit Vegetable", 2, 3))
-//        arrayList.add(cardItemWithoutId(1, R.drawable.munch, "Munch", 2, 3))
-//        arrayList.add(cardItemWithoutId(1, R.drawable.surf, "Surf", 2, 3))
+
         GlobalScope.launch(Dispatchers.Main) {
-//                rvTrending.layoutManager = LinearLayoutManager(
-//                    applicationContext,
-//                    LinearLayoutManager.HORIZONTAL,
-//                    false
-//                )
-//                val arrayAdapter = adapterTrending(arrayList, applicationContext, countViewModel)
-//                rvTrending.adapter = arrayAdapter
+
             val adapter = adapterCategories(applicationContext, arrayList)
             simpleCategories.adapter = adapter
 
-//                val arrayAdapter = adapterTrending(arrayList, applicationContext, countViewModel)
-//                simpleCategories.adapter = adapter
         }
 
         dialog.show()
@@ -459,52 +437,18 @@ class HomeActivity : AppCompatActivity(){
         dialog.setContentView(R.layout.dialog_trending_seeall)
         val simpleCategories = dialog.findViewById<GridView>(R.id.simpleView)
 
-//            val arrayList = ArrayList<cardItemWithoutId>()
-//            arrayList.add(cardItemWithoutId(12, R.drawable.by1, "Beauty", 2, 3))
-//            arrayList.add(cardItemWithoutId(11, R.drawable.instant1, "Instant Food", 2, 3))
-//            arrayList.add(cardItemWithoutId(21, R.drawable.cd1, "Cold Drink", 2, 3))
-//            arrayList.add(cardItemWithoutId(31, R.drawable.biscut, "Biscuts", 2, 3))
-//            arrayList.add(cardItemWithoutId(41, R.drawable.c1, "Choco", 2, 3))
-//            arrayList.add(cardItemWithoutId(51, R.drawable.m1, "Masala", 2, 3))
-//            arrayList.add(cardItemWithoutId(61, R.drawable.oil1, "Oil", 2, 3))
-//            arrayList.add(cardItemWithoutId(71, R.drawable.s1, "Sauce", 2, 3))
-//            arrayList.add(cardItemWithoutId(17, R.drawable.coffee0, "Coffee", 2, 3))
-//            arrayList.add(cardItemWithoutId(15, R.drawable.gt1, "Green Tea", 2, 3))
-//            arrayList.add(cardItemWithoutId(14, R.drawable.tea1, "Tea ", 2, 3))
-//            arrayList.add(cardItemWithoutId(13, R.drawable.clean_item, "Home Clean", 2, 3))
-//
-//            val adapter = adapterCategories(this, arrayList)
-//            simpleCategories.adapter = adapter
-
-
         val arrayList = ArrayList<CategoryImg>()
         for (i in 0 until data!!.categoryImg.size) {
             val dumy = data.categoryImg[i]
             Log.d("instantDelete", "getView: ${dumy.categoryImg}")
             arrayList.add(
-//                    CategoryImg(
-//                        dumy.id, dumy.categoryImg, dumy.categoryName,
-//                        Integer.parseInt("23"),Integer.parseInt( "12")
-//                    )
+
                 CategoryImg(dumy.categoryImg, dumy.categoryName, dumy.categoryStatus, dumy.id)
             )
         }
-//        arrayList.add(cardItemWithoutId(1, R.drawable.f1, "Maggie", 2, 3))
-//        arrayList.add(cardItemWithoutId(1, R.drawable.beauty, "Beauty", 2, 3))
-//        arrayList.add(cardItemWithoutId(1, R.drawable.biscut, "Biscuits", 2, 3))
-//        arrayList.add(cardItemWithoutId(1, R.drawable.colddrink, "Drinks", 2, 3))
-//        arrayList.add(cardItemWithoutId(1, R.drawable.egg, "Eggs", 2, 3))
-//        arrayList.add(cardItemWithoutId(1, R.drawable.fruit_vegitable, "Fruit Vegetable", 2, 3))
-//        arrayList.add(cardItemWithoutId(1, R.drawable.munch, "Munch", 2, 3))
-//        arrayList.add(cardItemWithoutId(1, R.drawable.surf, "Surf", 2, 3))
+
         GlobalScope.launch(Dispatchers.Main) {
-//                rvTrending.layoutManager = LinearLayoutManager(
-//                    applicationContext,
-//                    LinearLayoutManager.HORIZONTAL,
-//                    false
-//                )
-//                val arrayAdapter = adapterTrending(arrayList, applicationContext, countViewModel)
-//                rvTrending.adapter = arrayAdapter
+
             val adapter = adapterCategoryHome(applicationContext, arrayList)
             simpleCategories.adapter = adapter
         }
@@ -514,10 +458,6 @@ class HomeActivity : AppCompatActivity(){
 
     private fun brandFocusBottom() {
         val arrayList = ArrayList<bannerBrandModel>()
-//        arrayList.add(bannerBrandModel(R.drawable.cleaning_offer))
-//        arrayList.add(bannerBrandModel(R.drawable.choclate_offer))
-//        arrayList.add(bannerBrandModel(R.drawable.drink_offer))
-//        arrayList.add(bannerBrandModel(R.drawable.food_offer))
 
         arrayList.add(bannerBrandModel(R.drawable.food_offer))
         arrayList.add(bannerBrandModel(R.drawable.babycare_offer))
@@ -665,8 +605,6 @@ class HomeActivity : AppCompatActivity(){
                         Log.d("kk", "onLocationResult: ${addressList[0].getAddressLine(0)} +\n" +
                                 "                                \",\" +${ addressList[0].countryName}")
                     }
-                    // Few more things we can do here:
-                    // For example: Update the location of user on server
                 }
             },
             Looper.myLooper()
@@ -699,5 +637,10 @@ class HomeActivity : AppCompatActivity(){
                 }
             }
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(Intent(this,LoginActivity::class.java))
     }
 }

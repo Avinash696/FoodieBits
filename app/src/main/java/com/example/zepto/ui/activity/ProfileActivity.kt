@@ -2,53 +2,89 @@ package com.example.zepto.ui.activity
 
 import android.app.Dialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.ViewGroup
 import android.view.Window
-import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.EditText
 import android.widget.GridView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.test.FileUtil
+import com.example.test.aviInterface
 import com.example.zepto.R
-import com.example.zepto.adapter.adapterCategories
+import com.example.zepto.adapter.profileAddAddressAdapter
 import com.example.zepto.databinding.ActivityProfileBinding
-import com.example.zepto.model.cardItemWithoutId
+import com.example.zepto.db.RetrofitHelper
+import com.example.zepto.model.addressUserResponceModel
+import com.example.zepto.model.profileSavedAddressModel
 import com.example.zepto.viewModel.ItemCountViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import java.io.File
 
 class ProfileActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProfileBinding
-    private val addressArr = ArrayList<String>()
+    private var dd: String = "Default Location"
+    private lateinit var filepath: File
     private lateinit var bottomNavHome: BottomNavigationView
+    private val TAG = "profileActivity"
     private lateinit var countViewModel: ItemCountViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_profile)
         countViewModel = ViewModelProvider(this)[ItemCountViewModel::class.java]
         init()
-        binding.ivAddAddress.setOnClickListener {
-            addAddress()
-        }
-        binding.lvAddAdress.setOnItemLongClickListener { adapterView, view, i, l ->
-          val toRemove = addressArr[i-1]
-            addressArr.remove(toRemove)
-//            addressArr.removeAt(i)
-            Log.d("capacitor", "onCreate: ${ addressArr[i-1]}")
-            true
+        val profileData = intent
+        dd = if ((profileData.getStringExtra("ProfileData")) == null) {
+            "Default Location"
+        } else ({
+            profileData.getStringExtra("ProfileData")
+        }).toString()
+        Log.d("urProfileScreendata", "onCreate: ${profileData.getStringExtra("ProfileData")}")
+//        dd= profileData.getStringExtra("ProfileData")!!
+
+
+        binding.ivAddprofileAddress.setOnClickListener {
+            startActivity(Intent(this, AddDeliveryAddressActivity::class.java))
         }
         bottomNav()
+        binding.ivProfileEditUpdate.setOnClickListener {
+            editUpdateProfile()
+        }
+
+
+        //img Picker
+        binding.ivProfileUploadPic.setOnClickListener {
+//            val i = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+//            startActivityForResult(i, 44)
+
+
+            val i = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+            startActivityForResult(i, 100)
+        }
     }
-    fun init(){
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        val uri = data!!.data
+
+        val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, uri)
+        binding.ivProfileImg.setImageBitmap(bitmap)
+
+        filepath = FileUtil.from(this, data.data)
+        super.onActivityResult(requestCode, resultCode, data)
+    }
+
+    fun init() {
         bottomNavHome = binding.bottomNavigation
     }
-    private fun addAddress() {
-        addressArr.add(binding.etaddAddress.text.toString())
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, addressArr)
-        binding.lvAddAdress.adapter = adapter
-        adapter.notifyDataSetChanged()
-    }
+
     private fun bottomNav() {
         bottomNavHome.setOnItemSelectedListener {
             when (it.itemId) {
@@ -79,6 +115,7 @@ class ProfileActivity : AppCompatActivity() {
             }
         }
     }
+
     private fun dialogCategories() {
         val dialog = Dialog(this, R.style.full_screen_dialog)
         dialog.window?.setLayout(
@@ -89,23 +126,62 @@ class ProfileActivity : AppCompatActivity() {
         dialog.setContentView(R.layout.dialog_trending_seeall)
         val simpleCategories = dialog.findViewById<GridView>(R.id.simpleView)
 
-//        val arrayList = ArrayList<cardItemWithoutId>()
-//        arrayList.add(cardItemWithoutId(12, R.drawable.by1, "Beauty", 2, 3))
-//        arrayList.add(cardItemWithoutId(11, R.drawable.instant1, "Instant Food", 2, 3))
-//        arrayList.add(cardItemWithoutId(21, R.drawable.cd1, "Cold Drink", 2, 3))
-//        arrayList.add(cardItemWithoutId(31, R.drawable.biscut, "Biscuts", 2, 3))
-//        arrayList.add(cardItemWithoutId(41, R.drawable.c1, "Choco", 2, 3))
-//        arrayList.add(cardItemWithoutId(51, R.drawable.m1, "Masala", 2, 3))
-//        arrayList.add(cardItemWithoutId(61, R.drawable.oil1, "Oil", 2, 3))
-//        arrayList.add(cardItemWithoutId(71, R.drawable.s1, "Sauce", 2, 3))
-//        arrayList.add(cardItemWithoutId(17, R.drawable.coffee0, "Coffee", 2, 3))
-//        arrayList.add(cardItemWithoutId(15, R.drawable.gt1, "Green Tea", 2, 3))
-//        arrayList.add(cardItemWithoutId(14, R.drawable.tea1, "Tea ", 2, 3))
-//        arrayList.add(cardItemWithoutId(13, R.drawable.clean_item, "Home Clean", 2, 3))
-//
-//        val adapter = adapterCategories(this, arrayList)
-//        simpleCategories.adapter = adapter
-
         dialog.show()
+    }
+
+    private fun setProfile(data: addressUserResponceModel?) {
+        val arrayList = ArrayList<profileSavedAddressModel>()
+        for(i in 0 until data!!.categoryImg.size){
+            val dd = data.categoryImg[i]
+            arrayList.add(profileSavedAddressModel("work", dd.address))
+        }
+//        arrayList.add(profileSavedAddressModel("work", dd))
+//        arrayList.add(profileSavedAddressModel("Home", dd))
+        GlobalScope.launch(Dispatchers.Main) {
+            binding.rvProfileAddress.layoutManager = LinearLayoutManager(
+                applicationContext,
+                LinearLayoutManager.HORIZONTAL,
+                false
+            )
+            val arrayAdapter = profileAddAddressAdapter(applicationContext, arrayList)
+            binding.rvProfileAddress.adapter = arrayAdapter
+        }
+    }
+
+    private fun editUpdateProfile() {
+        val dialog = Dialog(this)
+        dialog.setContentView(R.layout.dialog_update_profile)
+        dialog.show()
+
+        //
+        val name = dialog.findViewById<EditText>(R.id.etNameProfileDialog)
+        val mobile = dialog.findViewById<EditText>(R.id.etMobileProfileDialog)
+        val btnSubmit = dialog.findViewById<Button>(R.id.btSubmitProfile)
+
+        btnSubmit.setOnClickListener {
+            binding.tvProfileName.text = name.text.toString()
+            binding.tvProfilePhone.text = mobile.text.toString()
+            dialog.dismiss()
+        }
+    }
+
+    override fun onStart() {
+        getSavedAddress()
+        super.onStart()
+    }
+
+    private fun getSavedAddress() {
+        val repo = RetrofitHelper.getClient().create(aviInterface::class.java)
+        GlobalScope.launch {
+            val call = repo.getUserAddress()
+            if (call.isSuccessful)
+                setProfile(call.body())
+            else
+                Log.d(TAG, "getSavedAddress: ${call.errorBody()}")
+        }
+    }
+
+    private fun postSavedAddress() {
+
     }
 }

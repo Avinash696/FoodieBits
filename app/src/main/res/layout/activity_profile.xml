@@ -6,102 +6,154 @@
     <data>
 
     </data>
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <LinearLayout
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/profile_back"
-        android:orientation="vertical"
-        tools:context=".ui.activity.ProfileActivity">
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:layout_width="150dp"
-            android:layout_height="250dp"
-            android:layout_gravity="center"
-            android:src="@drawable/avatar" />
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="300dp"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:elevation="7dp"
-            app:cardBackgroundColor="#BBC0DF"
-            app:cardCornerRadius="6dp"
-            app:cardMaxElevation="9dp"
-            app:cardUseCompatPadding="true">
+            android:background="#90CAF9">
 
-            <LinearLayout
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/cvTop"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_margin="4dp">
+
+                    <ImageView
+                        android:id="@+id/ivProfileImg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/js" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/cvTop"
+                    android:layout_marginTop="-40dp"
+                    android:orientation="vertical">
+
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:elevation="10dp"
+                                app:cardCornerRadius="5dp"
+                                app:cardMaxElevation="10dp"
+                                app:cardUseCompatPadding="true">
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/border_red"
+                                    android:padding="8dp">
+
+                                    <TextView
+                                        android:id="@+id/tvHeaderName"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Personal Detail"
+                                        android:textColor="@color/black"
+                                        android:textSize="17sp"
+                                        android:textStyle="bold" />
+
+                                    <ImageView
+                                        android:id="@+id/ivProfileUploadPic"
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+                                        android:layout_alignParentEnd="true"
+                                        android:src="@drawable/upload" />
+
+                                    <ImageView
+                                        android:id="@+id/ivProfileEditUpdate"
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_toLeftOf="@+id/ivProfileUploadPic"
+                                        android:src="@drawable/edit" />
+
+                                    <TextView
+                                        android:id="@+id/tvProfileName"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@+id/tvHeaderName"
+                                        android:text="Snowy" />
+
+                                    <TextView
+                                        android:id="@+id/tvProfilePhone"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@+id/tvProfileName"
+                                        android:text="87878787" />
+                                </RelativeLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Saved Address"
+                                    android:textSize="17sp"
+                                    android:textColor="@color/black"
+                                    android:layout_weight="1"
+                                    android:gravity="center"/>
+                                <ImageView
+                                    android:id="@+id/ivAddprofileAddress"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="30dp"
+                                    android:layout_gravity="end"
+                                    android:src="@drawable/add"
+                                    android:layout_weight="1"/>
+                            </LinearLayout>
+
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rvProfileAddress"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="4dp"
+                                android:background="@drawable/border_red"
+                                android:padding="8dp" />
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="500dp" />
+                        </LinearLayout>
+                    </ScrollView>
+                </RelativeLayout>
+            </RelativeLayout>
+
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottomNavigation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="vertical">
-
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Name"
-                    android:textColorHint="@color/blue" />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Email" />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Mobile No"
-                    android:inputType="number" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="subMit" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Delivery Address "
-                    android:textColor="@color/red"
-                    android:textSize="19sp" />
-
-                <EditText
-                    android:id="@+id/etaddAddress"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="571 /56 ,B-Block -122011" />
-
-                <ImageView
-                    android:id="@+id/ivAddAddress"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/add"
-                    android:layout_gravity="right"
-                    app:tint="@color/red"/>
-
-                <ListView
-                    android:id="@+id/lvAddAdress"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-    </LinearLayout>
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@color/white"
-        app:itemTextColor="@color/black"
-        app:itemIconTint="@color/red"
-        app:labelVisibilityMode="labeled"
-        app:menu="@menu/menu_bottom_nav" />
-</RelativeLayout>
-
+                android:layout_alignParentBottom="true"
+                android:background="@color/white"
+                app:itemIconTint="@color/red"
+                app:itemTextColor="@color/black"
+                app:labelVisibilityMode="labeled"
+                app:menu="@menu/menu_bottom_nav" />
+        </RelativeLayout>
+    </ScrollView>
 </layout>

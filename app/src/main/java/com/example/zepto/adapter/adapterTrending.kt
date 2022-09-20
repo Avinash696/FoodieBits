@@ -65,7 +65,6 @@ class adapterTrending(
 //            Log.d("justdd", "onBindViewHolder:${countViewMode.count} ")
             Log.d("amountCheckModule", "onBindViewHolder:${cartName}  $cartAmount $cartImage")
             cartItemLib(cartName,cartAmount,cartImage)
-//            cartItemModule(cartName,cartAmount,cartImage)
         }
     }
 

@@ -2,8 +2,10 @@ package com.example.zepto.ui.activity
 
 import android.Manifest
 import android.R
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Geocoder
+import android.location.Location
 import android.os.Bundle
 import android.os.Looper
 import android.util.Log
@@ -18,11 +20,15 @@ import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
 import com.google.gson.Gson
+import okhttp3.Address
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class AddDeliveryAddressActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddDeliveryAddressBinding
+    private lateinit var addressData: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(
@@ -66,12 +72,19 @@ class AddDeliveryAddressActivity : AppCompatActivity() {
         textRoadNameFirst.isErrorEnabled = true
         textRoadNameFirst.error = "Please enter NearBy"
 
+        // if fields not empty
+
+        val intent = Intent(this, ProfileActivity::class.java)
+        intent.putExtra("ProfileData", binding.etHouseNoFirst.text.toString())
+        startActivity(intent)
     }
+
     private fun setUpLocationListener() {
         val fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
         // for getting the current location update after every 2 seconds with high accuracy
-        val locationRequest = LocationRequest().setInterval(2000).setFastestInterval(2000)
-            .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
+//        val locationRequest = LocationRequest().setInterval(10000).setFastestInterval(10000)
+//            .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
+        val locationRequest = LocationRequest().setWaitForAccurateLocation(false)
         if (ActivityCompat.checkSelfPermission(
                 this,
                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -90,14 +103,18 @@ class AddDeliveryAddressActivity : AppCompatActivity() {
                     for (location in locationResult.locations) {
                         Log.d("mm", "onLocationResult:${location.latitude} ${location.longitude} ")
 
-                        val geoCoder = Geocoder(this@AddDeliveryAddressActivity, Locale.getDefault())
-                        val addressList = geoCoder.getFromLocation(location.latitude, location.longitude, 1)
+                        val geoCoder =
+                            Geocoder(this@AddDeliveryAddressActivity, Locale.getDefault())
+                        val addressList =
+                            geoCoder.getFromLocation(location.latitude, location.longitude, 1)
                         //address
                         Log.d("rawat", "onLocationResult: $addressList")
                         binding.etPincodeFirst.setText(addressList[0].postalCode)
                         binding.etStateFirst.setText(addressList[0].subAdminArea)
                         binding.etCityFirst.setText(addressList[0].locality)
                         binding.etHouseNoFirst.setText(addressList[0].getAddressLine(0))
+                        //
+                        addressData = "${addressList[0].getAddressLine(0)}"
                     }
                 }
             },
