@@ -18,6 +18,7 @@ import com.example.test.FileUtil
 import com.example.test.aviInterface
 import com.example.zepto.R
 import com.example.zepto.adapter.profileAddAddressAdapter
+import com.example.zepto.constant.constants.choiceInsertProfileFlag
 import com.example.zepto.databinding.ActivityProfileBinding
 import com.example.zepto.db.RetrofitHelper
 import com.example.zepto.model.addressUserResponceModel
@@ -52,7 +53,9 @@ class ProfileActivity : AppCompatActivity() {
 
 
         binding.ivAddprofileAddress.setOnClickListener {
-            startActivity(Intent(this, AddDeliveryAddressActivity::class.java))
+            val intent = Intent(this, AddDeliveryAddressActivity::class.java)
+            intent.putExtra("choiceKey", choiceInsertProfileFlag)
+            startActivity(intent)
         }
         bottomNav()
         binding.ivProfileEditUpdate.setOnClickListener {
@@ -62,9 +65,6 @@ class ProfileActivity : AppCompatActivity() {
 
         //img Picker
         binding.ivProfileUploadPic.setOnClickListener {
-//            val i = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-//            startActivityForResult(i, 44)
-
 
             val i = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             startActivityForResult(i, 100)
@@ -131,12 +131,10 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun setProfile(data: addressUserResponceModel?) {
         val arrayList = ArrayList<profileSavedAddressModel>()
-        for(i in 0 until data!!.categoryImg.size){
+        for (i in 0 until data!!.categoryImg.size) {
             val dd = data.categoryImg[i]
-            arrayList.add(profileSavedAddressModel("work", dd.address))
+            arrayList.add(profileSavedAddressModel(dd.id,"work", dd.address))
         }
-//        arrayList.add(profileSavedAddressModel("work", dd))
-//        arrayList.add(profileSavedAddressModel("Home", dd))
         GlobalScope.launch(Dispatchers.Main) {
             binding.rvProfileAddress.layoutManager = LinearLayoutManager(
                 applicationContext,
@@ -153,7 +151,6 @@ class ProfileActivity : AppCompatActivity() {
         dialog.setContentView(R.layout.dialog_update_profile)
         dialog.show()
 
-        //
         val name = dialog.findViewById<EditText>(R.id.etNameProfileDialog)
         val mobile = dialog.findViewById<EditText>(R.id.etMobileProfileDialog)
         val btnSubmit = dialog.findViewById<Button>(R.id.btSubmitProfile)
@@ -179,9 +176,5 @@ class ProfileActivity : AppCompatActivity() {
             else
                 Log.d(TAG, "getSavedAddress: ${call.errorBody()}")
         }
-    }
-
-    private fun postSavedAddress() {
-
     }
 }

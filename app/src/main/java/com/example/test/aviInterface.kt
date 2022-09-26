@@ -74,7 +74,8 @@ interface aviInterface {
     @Multipart
     @POST("imgFolder/mainSubCategory.php?mainSubCategoryAdd=postMainSubCategory")
     suspend fun postMainSubCategory(
-        @Part("categoryId") categoryId: RequestBody, @Part subCategoryImg: MultipartBody.Part,
+        @Part("categoryId") categoryId: RequestBody,
+        @Part subCategoryImg: MultipartBody.Part,
         @Part("subCategoryName") subCategoryName: RequestBody,
         @Part("subCategoryStatus") subCategoryStatus: RequestBody
     ): Response<mainCategoryPostModel>
@@ -148,6 +149,17 @@ interface aviInterface {
     @GET("imgFolder/deliveryAddress.php?deliveryAddressAdd=getUserProfile")
     suspend fun getUserAddress():Response<addressUserResponceModel>
 
+    @Multipart
+    @POST("imgFolder/deliveryAddress.php?deliveryAddressAdd=postUserProfile")
+    suspend fun postUserAddress(@Part("name") name: RequestBody, @Part("phone") phone: RequestBody, @Part("address") address: RequestBody,
+                                @Part("currentUser") currentUser: RequestBody ):Response<userProfileReqModel>
+
+    //update delivery  Adddress
+    @Multipart
+    @POST("imgFolder/deliveryAddress.php?deliveryAddressAdd=updateStatus")
+    suspend fun updateUserAddress(@Part("id") id:RequestBody ,@Part("name") name: RequestBody,
+                                  @Part("address") address: RequestBody)
+            :Response<statusMainCategoryModel>
 }
 
 data class ImageUpload(val error: Boolean?, val message: String?)

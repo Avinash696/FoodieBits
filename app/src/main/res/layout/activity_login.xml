@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".LoginActivity"
-        android:background="#B2DFDB">
+        android:background="@drawable/login_back">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -31,31 +31,38 @@
                 android:id="@+id/etName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:foreground="@drawable/border_red"
                 android:hint="Username"
-                android:textColor="#000"/>
+                android:textColorHint="@color/blue"
+                android:textColor="#000" />
 
             <EditText
+                android:layout_marginTop="10dp"
                 android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password" />
+                android:foreground="@drawable/border_red"
+                android:hint="Password"
+                android:textColorHint="@color/blue"
+                android:textColor="#000" />
 
             <Button
+                android:id="@+id/btlogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Login"
-                android:id="@+id/btlogin"
+                android:layout_marginTop="40dp"
                 android:backgroundTint="@color/blue"
-                android:layout_marginTop="40dp"/>
+                android:text="Login" />
 
             <TextView
-                android:layout_marginTop="40dp"
                 android:id="@+id/tvSignUp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="Don't Have Account Sign Up ?" />
+                android:layout_marginTop="40dp"
+                android:text="Don't Have Account Sign Up ?"
+                android:textColor="@color/red" />
         </LinearLayout>
     </RelativeLayout>
 </layout>

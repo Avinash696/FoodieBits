@@ -35,17 +35,11 @@ class AllItemSubAdminActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAllItemSubAdminBinding
     val arrayList = ArrayList<cardItemWithoutId>()
     lateinit var data: cardItemWithoutId
-    private val PICK_FROM_CAMERA = 1
-    private val PICK_FROM_GALLARY = 2
-    val PICK_IMAGE = 113
+
 
 
     //    lateinit var dialog :Dialog
     override fun onCreate(savedInstanceState: Bundle?) {
-        val mobileArray = arrayOf(
-            "Android", "IPhone", "WindowsMobile", "Blackberry",
-            "WebOS", "Ubuntu", "Windows7", "Max OS X"
-        )
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(
             this,
@@ -53,14 +47,16 @@ class AllItemSubAdminActivity : AppCompatActivity() {
         )
 
         val intent = intent
-        val title = intent.getStringExtra("SubProductIdKey")
-        supportActionBar!!.title = title
+        val title_data = intent.getStringExtra("SubProductIdKey")
+        supportActionBar!!.title = title_data
         //populating
 
 //        hitMainCategoryApi()
         binding.ivAddAdminUSer.setOnClickListener {
             //add
-            startActivity(Intent(Intent(this, AddProductFormActivity::class.java)))
+            val intent = Intent(Intent(this, AddProductFormActivity::class.java))
+//            intent.putExtra("SubProductIdKey",title_data)
+            startActivity(intent)
         }
 
         hitMainCategoryApi()
@@ -89,7 +85,6 @@ class AllItemSubAdminActivity : AppCompatActivity() {
     }
 
     private fun hitMainCategoryApi() {
-        Log.d("myFun", "hitMainCategoryApi: ")
          val repo = RetrofitHelper.getClient().create(aviInterface::class.java)
         GlobalScope.launch {
             val call = repo.getMainSubProduct()

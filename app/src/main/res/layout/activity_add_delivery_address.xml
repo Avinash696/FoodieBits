@@ -45,7 +45,8 @@
                             android:layout_height="wrap_content"
                             android:background="@drawable/delivery_boder_et"
                             android:hint="@string/label_name"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:id="@+id/etNameProfile"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -68,7 +69,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/delivery_boder_et"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:id="@+id/etPhoneNo"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
                 </RelativeLayout>

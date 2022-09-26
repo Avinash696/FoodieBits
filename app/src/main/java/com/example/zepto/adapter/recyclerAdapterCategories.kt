@@ -82,83 +82,15 @@ class recyclerAdapterCategories(
             }
         }
 
-        holder.itemView.setOnClickListener {
-
-//            val status = RequestBody.create(MediaType.parse("text/plain"), counter.toString())
-//            val id = RequestBody.create(MediaType.parse("text/plain"), data.id)
-//            GlobalScope.launch {
-//                val call = client.updateMainStatusCategory(id, status)
-//                if (call.isSuccessful) {
-//                    Log.d("adapterStatus", "onBindViewHolder: Success")
-//                    binding.btCardMainCategoryActive.setBackgroundColor(context.getColor(R.color.red))
-//                } else {
-//                    Log.d("adapterStatus", "onBindViewHolder: failed")
-//                    binding.btCardMainCategoryActive.setBackgroundColor(context.getColor(R.color.green))
-//
-//                }
-//
-////                val status = RequestBody.create(MediaType.parse("text/plain"), "0")
-////                val id = RequestBody.create(MediaType.parse("text/plain"), data.id)
-////                GlobalScope.launch {
-////                    val call = client.updateMainStatusCategory(id, status)
-////                    if(call.isSuccessful)
-////                    {
-////                        Log.d("adapterStatus", "onBindViewHolder: Success")
-////                        binding.btCardMainCategoryActive.setBackgroundColor(context.getColor(R.color.red))
-////                    }
-////                    else {
-////                        Log.d("adapterStatus", "onBindViewHolder: failed")
-////                        binding.btCardMainCategoryActive.setBackgroundColor(context.getColor(R.color.green))
-////
-////                    }
-////                }
-////            }
-////            else {
-////                val status = RequestBody.create(MediaType.parse("text/plain"), "1")
-////                val id = RequestBody.create(MediaType.parse("text/plain"), data.id)
-////                GlobalScope.launch {
-////                    val call = client.updateMainStatusCategory(id, status)
-////                    if(call.isSuccessful)
-////                        Log.d("adapterStatus", "onBindViewHolder: Success")
-////                    else
-////                        Log.d("adapterStatus", "onBindViewHolder: failed")
-////                }
-////            }
-//            }
-            //item  with id will added
-            binding.btSubAdminSubCat.setOnClickListener {
-                val intent = Intent(context, SubListSubAdminActivity::class.java)
-                intent.putExtra("SubCatKey", data.categoryName)
-                intent.putExtra("SubCatIdKey", data.id)
-                Log.d("flow", "onBindViewHolder: ${data.categoryName} ${data.id}")
-                context.startActivity(intent)
-            }
+        //item  with id will added
+        binding.btSubAdminSubCat.setOnClickListener {
+//            Log.d("subClicked", "onBindViewHolder: u clicked that sublist ")
+            val intent = Intent(context, SubListSubAdminActivity::class.java)
+            intent.putExtra("SubCatKey", data.categoryName)
+            intent.putExtra("SubCatIdKey", data.id)
+            Log.d("flow", "onBindViewHolder: ${data.categoryName} ${data.id}")
+            context.startActivity(intent)
         }
-//        binding.btCardMainCategoryActive.setOnClickListener {
-//
-//            val client = RetrofitHelper.getClient().create(aviInterface::class.java)
-//            if (data.categoryStatus == 1) {
-//                val status = RequestBody.create(MediaType.parse("text/plain"), "0")
-//                val call = client.updateMainStatusCategory(data.id, status)
-//            } else {
-//                val status = RequestBody.create(MediaType.parse("text/plain"), "0")
-//            }
-//
-//
-//        }
-        //active set
-//        binding.btCardMainCategoryActive.setOnClickListener {
-//
-//            if (data.categoryStatus == 0) {
-//                binding.btCardMainCategoryActive.setBackgroundColor(context.getColor(R.color.green))
-//                binding.btCardMainCategoryActive.text = "Active"
-//                //update status id
-//
-//            } else {
-//                binding.btCardMainCategoryActive.setBackgroundColor(context.getColor(R.color.red))
-//                binding.btCardMainCategoryActive.text = "Deactivate"
-//            }
-//        }
     }
 
     override fun getItemCount(): Int {

@@ -57,7 +57,7 @@ class RetailerAdminActivity : AppCompatActivity() {
                 }
                 R.id.menu_SubadminCategories -> {
                     Log.d("myAdmin", "clicked Cat")
-                    changeFragment(CategroiesFragment(title!!))
+                    changeFragment(CategroiesFragment())
                     binding.dlAdminHome.close()
                     return@setNavigationItemSelectedListener true
                 }

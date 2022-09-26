@@ -23,6 +23,7 @@ import com.example.zepto.db.RetrofitHelper
 import com.example.zepto.model.CategoryImg
 import com.example.zepto.model.mainCategoryModel
 import com.google.gson.Gson
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import okhttp3.MediaType
@@ -35,7 +36,7 @@ import java.util.*
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class CategroiesFragment(private val titleCustom: String) : Fragment() {
+class CategroiesFragment : Fragment() {
     private lateinit var binding: FragmentCategroiesBinding
     private var param1: String? = null
     private var param2: String? = null
@@ -115,8 +116,8 @@ class CategroiesFragment(private val titleCustom: String) : Fragment() {
             )
         }
 
-        requireActivity().runOnUiThread {
-            val adapter = recyclerAdapterCategories(arrayData, requireContext())
+       GlobalScope.launch(Dispatchers.Main) {
+            val adapter = recyclerAdapterCategories(arrayData,requireContext() )
             binding.rvCategoriesAdmin.layoutManager = LinearLayoutManager(
                 requireContext(),
                 LinearLayoutManager.VERTICAL,

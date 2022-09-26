@@ -1,33 +1,36 @@
 package com.example.zepto.ui.activity
 
 import android.Manifest
-import android.R
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Geocoder
-import android.location.Location
 import android.os.Bundle
 import android.os.Looper
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
+import com.example.test.aviInterface
+import com.example.zepto.constant.constants
 import com.example.zepto.databinding.ActivityAddDeliveryAddressBinding
+import com.example.zepto.db.RetrofitHelper
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
-import com.google.gson.Gson
-import okhttp3.Address
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import okhttp3.MediaType
+import okhttp3.RequestBody
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class AddDeliveryAddressActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddDeliveryAddressBinding
     private lateinit var addressData: String
+    private var choiceKey: Int = 0
+    private  var  profileHolderId  :Int= 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,8 +38,16 @@ class AddDeliveryAddressActivity : AppCompatActivity() {
             this,
             com.example.zepto.R.layout.activity_add_delivery_address
         )
-        supportActionBar!!.title = "Add delivery address"
+        supportActionBar!!.title = "Add Your address"
 
+        //get intent data
+
+        val intentData = intent
+        val fullAddress = intentData.getStringExtra("profileEditKey")
+        profileHolderId = intentData.getIntExtra("profileHolderIdKey", 3)
+        choiceKey = intentData.getIntExtra("choiceKey", 3)
+        binding.etHouseNoFirst.setText(fullAddress)
+        Log.d("urFullAddress", "onCreate: $fullAddress  $choiceKey $profileHolderId")
 
         binding.btUseCurrentLocation.setOnClickListener {
             setUpLocationListener()
@@ -73,10 +84,17 @@ class AddDeliveryAddressActivity : AppCompatActivity() {
         textRoadNameFirst.error = "Please enter NearBy"
 
         // if fields not empty
-
+        if (choiceKey == constants.choiceUpdateProfileFlag) {
+            postUpdateStatus()
+        } else if (choiceKey == constants.choiceInsertProfileFlag) {
+            postSavedAddress()
+        }
+        Log.d("samos", "fnSubmit:")
         val intent = Intent(this, ProfileActivity::class.java)
         intent.putExtra("ProfileData", binding.etHouseNoFirst.text.toString())
         startActivity(intent)
+
+
     }
 
     private fun setUpLocationListener() {
@@ -114,11 +132,62 @@ class AddDeliveryAddressActivity : AppCompatActivity() {
                         binding.etCityFirst.setText(addressList[0].locality)
                         binding.etHouseNoFirst.setText(addressList[0].getAddressLine(0))
                         //
-                        addressData = "${addressList[0].getAddressLine(0)}"
+                        addressData = addressList[0].getAddressLine(0)
                     }
                 }
             },
             Looper.myLooper()
         )
+    }
+
+    private fun postSavedAddress() {
+
+        val name =
+            RequestBody.create(MediaType.parse("text/plain"), binding.etNameProfile.text.toString())
+        val phoneNo =
+            RequestBody.create(MediaType.parse("text/plain"), binding.etPhoneNo.text.toString())
+        val houseNo = RequestBody.create(
+            MediaType.parse("text/plain"),
+            binding.etHouseNoFirst.text.toString()
+        )
+        val owner = RequestBody.create(MediaType.parse("text/plain"), "avi")
+
+        Log.d(
+            "samos", "postSavedAddress: ${binding.etNameProfile.text} " +
+                    "${binding.etPhoneNo.text} ${binding.etHouseNoFirst.text} "
+        )
+        val repo = RetrofitHelper.getClient().create(aviInterface::class.java)
+
+        GlobalScope.launch {
+            val call = repo.postUserAddress(name, phoneNo, houseNo, owner)
+            if (call.isSuccessful)
+                Log.d("samos", "postSavedAddress: Success${call.body()}")
+            else
+                Log.d("samos", "getSavedAddress: ${call.errorBody()}")
+        }
+    }
+
+    private fun postUpdateStatus() {
+        val name =
+            RequestBody.create(MediaType.parse("text/plain"), binding.etNameProfile.text.toString())
+        val houseNo = RequestBody.create(
+            MediaType.parse("text/plain"),
+            binding.etHouseNoFirst.text.toString()
+        )
+        val id = RequestBody.create(MediaType.parse("text/plain"), "237")
+
+        Log.d(
+            "samos", "postSavedAddress: ${binding.etNameProfile.text} " +
+                    "$profileHolderId ${binding.etHouseNoFirst.text} "
+        )
+        val repo = RetrofitHelper.getClient().create(aviInterface::class.java)
+
+        GlobalScope.launch {
+            val call = repo.updateUserAddress(id, name, houseNo)
+            if (call.isSuccessful)
+                Log.d("samos", "postSavedAddress: Success${call.body()}")
+            else
+                Log.d("samos", "getSavedAddress: ${call.errorBody()}")
+        }
     }
 }

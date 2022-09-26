@@ -31,7 +31,7 @@ import java.io.File
 class SubListSubAdminActivity : AppCompatActivity() {
     lateinit var binding: ActivitySubListSubAdminBinding
     private lateinit var simpleCategories: GridView
-    val PICK_IMAGE = 112
+    private val PICK_IMAGE = 112
     private var filePath : File? = null
     lateinit var subCatIdKey :String
     private lateinit var  dialogUpload:Dialog
@@ -50,7 +50,7 @@ class SubListSubAdminActivity : AppCompatActivity() {
         hitMainSubCategoryApi()
         //intent
         val intent = intent
-        val subCatKey = intent.getStringExtra("SubCatKey")
+        val subCatKey = intent.getStringExtra("SubCatKey")    //name
         subCatIdKey = intent.getStringExtra("SubCatIdKey")!!
         Log.d("flow", "onCreate: $subCatKey $subCatIdKey")
         supportActionBar?.title = subCatKey
@@ -81,8 +81,7 @@ class SubListSubAdminActivity : AppCompatActivity() {
     }
 
     override fun onStart() {
-
-        simpleCategories.setOnItemClickListener { adapterView, view, i, l ->
+        simpleCategories.setOnItemClickListener { _, _, i, l ->
             dialog.show()
             Picasso.get().load(arrayList[i].img).into(dialog.findViewById<ImageView>(R.id.dialogImgSelect))
             dialog.findViewById<TextView>(R.id.dialogNameSelect).text = (arrayList[i].name)
@@ -100,24 +99,13 @@ class SubListSubAdminActivity : AppCompatActivity() {
     }
 
     fun populatingData(data: mainSubCategoryModel) {
-         arrayList = ArrayList<cardItemModel>()
+         arrayList = ArrayList()
         for (i in 0 until data.subCategoryImg.size){
             val dumy = data.subCategoryImg[i]
             val gs = Gson()
             Log.d("dummy", "populatingData: ${gs.toJson(dumy)}")
             arrayList.add(cardItemModel(dumy.categoryId,dumy.subCategoryImg, dumy.subCategoryName ,2,3))
-//            arrayList.add(cardItemWithoutId(Integer.parseInt(dumy.categoryId),Integer.parseInt(dumy.subCategoryImg), dumy.subCategoryName ,2,3))
         }
-//        arrayList.add(cardItemWithoutId(1, R.drawable.c1, "All Biscuit", 2, 3))
-//        arrayList.add(cardItemWithoutId(2, R.drawable.c2, "CE11", 2, 3))
-//        arrayList.add(cardItemWithoutId(3, R.drawable.c3, "CE71", 2, 3))
-//        arrayList.add(cardItemWithoutId(4, R.drawable.c4, "CE61", 2, 3))
-//        arrayList.add(cardItemWithoutId(5, R.drawable.c5, "CE15", 2, 3))
-//        arrayList.add(cardItemWithoutId(6, R.drawable.c6, "CE14", 2, 3))
-//        arrayList.add(cardItemWithoutId(6, R.drawable.c7, "CE13", 2, 3))
-//        arrayList.add(cardItemWithoutId(6, R.drawable.c8, "CE12", 2, 3))
-//        arrayList.add(cardItemWithoutId(6, R.drawable.c9, "CE11", 2, 3))
-//        arrayList.add(cardItemWithoutId(6, R.drawable.c10, "CE10", 2, 3))
         GlobalScope.launch(Dispatchers.Main) {
             val adapter = adapterSubListSubAdmin(applicationContext , arrayList)
             simpleCategories.adapter = adapter
@@ -135,17 +123,18 @@ class SubListSubAdminActivity : AppCompatActivity() {
         }
     }
     private fun postMainSubCategory(name:String){
-        Log.d("checkUrNmae", "postMainSubCategory: ${name}")
+        Log.d("fileDataRepo", "postMainSubCategory: ")
         val filePath = filePath
         val statusTemp = "1"
         val requestBody = RequestBody.create(MediaType.parse("image/*"), filePath!!)
         val parts = MultipartBody.Part.createFormData("subCategoryImg", filePath.name, requestBody)
+
         val categoryId = RequestBody.create(MediaType.parse("text/plain"), subCatIdKey)
         val subCategoryName = RequestBody.create(MediaType.parse("text/plain"), name)
         val status = RequestBody.create(MediaType.parse("text/plain"), statusTemp)
-        Log.d("beforePost", "postMainCategory: ${parts.body()} $status $subCategoryName")
+        Log.d("beforePost", "postMainCategory: ${parts.body()} $status $subCategoryName $subCatIdKey")
 
-        GlobalScope.launch {
+        GlobalScope.launch(Dispatchers.IO) {
             val call = repo.postMainSubCategory(categoryId,parts,subCategoryName,status)
             Log.d("respo", "postMainCategory: $call")
             if(call.isSuccessful)

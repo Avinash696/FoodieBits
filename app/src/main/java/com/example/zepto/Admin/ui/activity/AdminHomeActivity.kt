@@ -33,6 +33,7 @@ class AdminHomeActivity : AppCompatActivity() {
     lateinit var titleImg :String
 
 
+
     //appbar
     lateinit var actionBarDrawableToggle: ActionBarDrawerToggle
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,7 +46,7 @@ class AdminHomeActivity : AppCompatActivity() {
         val intent = intent
         titleCustom = intent.getStringExtra("adminTitle")!!
         titleImg = intent.getStringExtra("adminImg")!!
-        constants.currentUserLogin = titleCustom
+//        constants.currentUserLogin = titleCustom
 
 
 
@@ -90,7 +91,7 @@ class AdminHomeActivity : AppCompatActivity() {
                 }
                 R.id.menu_adminCategories -> {
                     Log.d("myAdmin", "clicked Cat")
-                    changeFragment(CategroiesFragment(titleCustom))
+                    changeFragment(CategroiesFragment())
                     binding.dlAdminHome.close()
                     return@setNavigationItemSelectedListener true
                 }
