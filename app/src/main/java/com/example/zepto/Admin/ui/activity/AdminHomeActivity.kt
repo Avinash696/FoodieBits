@@ -48,8 +48,6 @@ class AdminHomeActivity : AppCompatActivity() {
         titleImg = intent.getStringExtra("adminImg")!!
 //        constants.currentUserLogin = titleCustom
 
-
-
         val customCreatedUrl = "http://56testing.club/imgFolder/uploads/admins/$titleImg"
         Log.d("adminTitleCheck", "onCreate: $titleCustom ${constants.currentUserLogin}")
         binding.appBar.title = titleCustom

@@ -27,33 +27,37 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name="com.example.test.WindowWebActivity"
+            android:name="com.example.test.CustomFilterActivity"
             android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity
-            android:name="com.example.test.JustTestItActivity"
-            android:exported="true"
-            android:parentActivityName=".ui.activity.HomeActivity">
-
-        </activity>
+<!--        <activity-->
+<!--            android:name=".WindowWebActivity"-->
+<!--            android:exported="true"></activity>-->
+<!--        <activity-->
+<!--            android:name=".JustTestItActivity"-->
+<!--            android:exported="true"-->
+<!--            android:parentActivityName=".ui.activity.HomeActivity"></activity>-->
         <activity
             android:name=".ui.activity.AddDeliveryAddressActivity"
             android:exported="true"
-            android:parentActivityName=".ui.activity.HomeActivity"/>
+            android:parentActivityName=".ui.activity.HomeActivity" />
         <activity
             android:name=".Admin.ui.activity.CreateRetailerActivity"
             android:exported="false" />
         <activity
             android:name=".Admin.ui.activity.CreateAdminActivity"
             android:exported="true"
-            android:parentActivityName=".Admin.ui.activity.RetailerAdminActivity" />
-<!--        <activity-->
-<!--            android:name=".aviActivity"-->
-<!--            android:exported="true" />-->
-<!--        <activity-->
-<!--            android:name=".ImgTestActivity"-->
-<!--            android:exported="true" />-->
+            android:parentActivityName=".Admin.ui.activity.RetailerAdminActivity" /> <!-- <activity -->
+        <!-- android:name=".aviActivity" -->
+        <!-- android:exported="true" /> -->
+        <!-- <activity -->
+        <!-- android:name=".ImgTestActivity" -->
+        <!-- android:exported="true" /> -->
         <activity
             android:name=".deliveryPartner.ui.activity.SubmitInformationActivity"
             android:exported="true"
@@ -130,7 +134,7 @@
             android:name=".ui.activity.ProfileActivity"
             android:exported="true"
             android:parentActivityName=".ui.activity.HomeActivity"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ui.activity.AdminActivity"
             android:exported="false" />
@@ -162,11 +166,7 @@
             android:name=".LoginActivity"
             android:exported="true"
             android:theme="@style/MyAdminCustom">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

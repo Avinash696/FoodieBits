@@ -60,7 +60,7 @@ class recyclerAdapterCategories(
 
         //status +date
         Log.d("flow", "onBindViewHolder: $data")
-        binding.tvAdminId.text = data.id
+//        binding.tvAdminId.text = data.id
         binding.tvAdminCatName.text = data.categoryName
 //        binding.ivAdminCategory.setImageResource(data.img)
         Picasso.get()

@@ -20,14 +20,33 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_red"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp">
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_margin="5dp"
-                    android:id="@+id/ivImgFormUp"
-                    android:src="@drawable/upload" />
+                    <ImageView
+                        android:id="@+id/ivImgFormUp"
+                        android:layout_width="200dp"
+                        android:layout_height="100dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:src="@drawable/upload"
+                        app:tint="@color/grey"
+                        android:layout_centerHorizontal="true"/>
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ivImgFormUp"
+                        android:text="Click Above icon to upload Image"
+                        android:textColor="@color/red"
+                        android:layout_margin="20dp"/>
+                </RelativeLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

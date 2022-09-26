@@ -59,13 +59,13 @@ class LoginActivity : AppCompatActivity() {
     private fun fnwork(id:String,password:String,result:String,imgPath:String) {
         Log.d("fnwork", "fileds  $password $id")
         when {
-            (stName.equals(id)) && (stPass.equals(password)) && (result == "admin") -> {
+            (stName == id) && (stPass == password) && (result == "admin") -> {
                 val intent = Intent(this, AdminHomeActivity::class.java)
                 intent.putExtra("adminTitle",id)
                 intent.putExtra("adminImg",imgPath)
                 startActivity(intent)
             }
-            (stName.equals(id)) && (stPass.equals(password)) && (result == "wladmin") -> {
+            (stName == id) && (stPass == password) && (result == "wladmin") -> {
                 val intent = Intent(this, SubAdminActivity::class.java)
                 intent.putExtra("wladminTitle",id)
                 intent.putExtra("adminImg",imgPath)
