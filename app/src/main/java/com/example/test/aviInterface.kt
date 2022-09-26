@@ -46,7 +46,7 @@ interface aviInterface {
 
     //admin dashboard
     @GET("imgFolder/adminDashboard.php")
-    suspend fun getDashboard():Response<adminDashboardUpdated>
+    suspend fun getDashboard(): Response<adminDashboardUpdated>
 
     //MainCategory
     @GET("imgFolder/mainCategory.php?mainCategoryAdd=getMainCategory")
@@ -64,8 +64,11 @@ interface aviInterface {
     //status Main Category
     @Multipart
     @POST("imgFolder/mainCategory.php?mainCategoryAdd=updateStatus")
-    suspend fun updateMainStatusCategory(@Part("id") id:RequestBody ,@Part("categoryStatus") categoryStatus: RequestBody)
-    :Response<statusMainCategoryModel>
+    suspend fun updateMainStatusCategory(
+        @Part("id") id: RequestBody,
+        @Part("categoryStatus") categoryStatus: RequestBody
+    )
+            : Response<statusMainCategoryModel>
 
     //MainSubCategory
     @GET("imgFolder/mainSubCategory.php?mainSubCategoryAdd=getMainSubCategory")
@@ -86,16 +89,18 @@ interface aviInterface {
     suspend fun getMainSubProduct(): Response<mainSubProductResponceModel>
 
     @Multipart
-    @POST("imgFolder/mainSubCategory.php?mainSubCategoryAdd=postMainSubCategory")
+    @POST("imgFolder/mainSubProduct.php?mainSubProductAdd=postMainSubProduct")
     suspend fun postMainSubProduct(
-        @Part("mainSubCategoryId") mainSubCategoryId: RequestBody,
-        @Part subProductImg: MultipartBody.Part,
-        @Part("subProductName") subProductName: RequestBody,
-        @Part("subProductStatus") subProductStatus: RequestBody,
+        @Part addProductImg: MultipartBody.Part,
+        @Part("addProductName") addProductName: RequestBody,
+        @Part("subCategoryId") subCategoryId: RequestBody,
+        @Part("addProductId") addProductId: RequestBody,
+        @Part("addProductStatus") addProductStatus: RequestBody,
         @Part("addProductQuantity") addProductQuantity: RequestBody,
         @Part("addProductPrice") addProductPrice: RequestBody,
         @Part("addProductDescription") addProductDescription: RequestBody
     ): Response<mainCategoryPostModel>
+
 
     //trending
     @GET("imgFolder/mainTrending.php?mainTrending=getMainTrending")
@@ -142,24 +147,30 @@ interface aviInterface {
     ): Response<mainCategoryPostModel>
 
     @GET("imgFolder/orderPlaced.php?orderPlaced=getOrderPlaced")
-    suspend fun getPlacedOrder():Response<orderPlacedResponceModel>
+    suspend fun getPlacedOrder(): Response<orderPlacedResponceModel>
 
 
     //address
     @GET("imgFolder/deliveryAddress.php?deliveryAddressAdd=getUserProfile")
-    suspend fun getUserAddress():Response<addressUserResponceModel>
+    suspend fun getUserAddress(): Response<addressUserResponceModel>
 
     @Multipart
     @POST("imgFolder/deliveryAddress.php?deliveryAddressAdd=postUserProfile")
-    suspend fun postUserAddress(@Part("name") name: RequestBody, @Part("phone") phone: RequestBody, @Part("address") address: RequestBody,
-                                @Part("currentUser") currentUser: RequestBody ):Response<userProfileReqModel>
+    suspend fun postUserAddress(
+        @Part("name") name: RequestBody,
+        @Part("phone") phone: RequestBody,
+        @Part("address") address: RequestBody,
+        @Part("currentUser") currentUser: RequestBody
+    ): Response<userProfileReqModel>
 
     //update delivery  Adddress
     @Multipart
     @POST("imgFolder/deliveryAddress.php?deliveryAddressAdd=updateStatus")
-    suspend fun updateUserAddress(@Part("id") id:RequestBody ,@Part("name") name: RequestBody,
-                                  @Part("address") address: RequestBody)
-            :Response<statusMainCategoryModel>
+    suspend fun updateUserAddress(
+        @Part("id") id: RequestBody, @Part("name") name: RequestBody,
+        @Part("address") address: RequestBody
+    )
+            : Response<statusMainCategoryModel>
 }
 
 data class ImageUpload(val error: Boolean?, val message: String?)

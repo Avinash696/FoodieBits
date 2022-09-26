@@ -47,15 +47,19 @@ class AllItemSubAdminActivity : AppCompatActivity() {
         )
 
         val intent = intent
-        val title_data = intent.getStringExtra("SubProductIdKey")
-        supportActionBar!!.title = title_data
+        val id_data = intent.getStringExtra("SubProductIdKey")
+        val name_data = intent.getStringExtra("SubProductNameKey")
+        supportActionBar!!.title = name_data
+        Log.d("flowListWala", "onCreate: $id_data $name_data")
         //populating
 
 //        hitMainCategoryApi()
         binding.ivAddAdminUSer.setOnClickListener {
             //add
             val intent = Intent(Intent(this, AddProductFormActivity::class.java))
-//            intent.putExtra("SubProductIdKey",title_data)
+            intent.putExtra("SubFormIdKey",id_data)
+            intent.putExtra("SubFormNameKey",name_data)
+            Log.d("flowListWala", "ivAdd: $id_data $name_data")
             startActivity(intent)
         }
 

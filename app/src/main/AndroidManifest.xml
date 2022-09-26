@@ -32,9 +32,15 @@
 
         </activity>
         <activity
+            android:name="com.example.test.JustTestItActivity"
+            android:exported="true"
+            android:parentActivityName=".ui.activity.HomeActivity">
+
+        </activity>
+        <activity
             android:name=".ui.activity.AddDeliveryAddressActivity"
             android:exported="true"
-            android:parentActivityName=".ui.activity.HomeActivity"></activity>
+            android:parentActivityName=".ui.activity.HomeActivity"/>
         <activity
             android:name=".Admin.ui.activity.CreateRetailerActivity"
             android:exported="false" />

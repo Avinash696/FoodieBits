@@ -6,5 +6,7 @@ data class SubProductImg(
     val addProductName: String,
     val addProductPrice: String,
     val addProductQuantity: Int,
-    val subCategoryStatus: Int
+    val addProductStatus: Int,
+    val addProductId: Int,
+    val subCategoryId: Int,
 )

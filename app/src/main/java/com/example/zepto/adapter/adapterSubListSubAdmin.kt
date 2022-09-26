@@ -61,8 +61,10 @@ class adapterSubListSubAdmin(
 
         //temp icon click screen forward move
         myView.setOnClickListener {
+            Log.d("flowListWala", "getView:${data} ")
             val intent = Intent(context,AllItemSubAdminActivity::class.java)
-            intent.putExtra("SubProductIdKey",data.name)
+            intent.putExtra("SubProducNameKey",data.name)
+            intent.putExtra("SubProductIdKey",data.id)
             intent.flags = FLAG_ACTIVITY_NEW_TASK
             context.startActivity(intent)
 //            dialog.show()

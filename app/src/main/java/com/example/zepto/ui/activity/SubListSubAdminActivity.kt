@@ -88,6 +88,7 @@ class SubListSubAdminActivity : AppCompatActivity() {
             dialog.findViewById<Button>(R.id.btAddProductSelect).setOnClickListener {
                 val intent = Intent(this,AllItemSubAdminActivity::class.java)
                 intent.putExtra("SubProductIdKey",arrayList[i].id)
+                Log.d("dummy", "populatingData: ${arrayList[i].id}")
                 startActivity(intent)
             }
         }
@@ -103,8 +104,8 @@ class SubListSubAdminActivity : AppCompatActivity() {
         for (i in 0 until data.subCategoryImg.size){
             val dumy = data.subCategoryImg[i]
             val gs = Gson()
-            Log.d("dummy", "populatingData: ${gs.toJson(dumy)}")
-            arrayList.add(cardItemModel(dumy.categoryId,dumy.subCategoryImg, dumy.subCategoryName ,2,3))
+
+            arrayList.add(cardItemModel(dumy.subCategoryId,dumy.subCategoryImg, dumy.subCategoryName ,2,3))
         }
         GlobalScope.launch(Dispatchers.Main) {
             val adapter = adapterSubListSubAdmin(applicationContext , arrayList)
