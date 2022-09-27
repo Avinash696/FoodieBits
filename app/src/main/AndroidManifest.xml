@@ -29,11 +29,7 @@
         <activity
             android:name="com.example.test.CustomFilterActivity"
             android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 <!--        <activity-->
 <!--            android:name=".WindowWebActivity"-->
@@ -166,7 +162,11 @@
             android:name=".LoginActivity"
             android:exported="true"
             android:theme="@style/MyAdminCustom">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

@@ -83,6 +83,9 @@ interface aviInterface {
         @Part("subCategoryStatus") subCategoryStatus: RequestBody
     ): Response<mainCategoryPostModel>
 
+    @GET("imgFolder/mainSubCategory.php")
+    suspend fun getMainSubCategoryFiltered(@Query("mainSubCategoryAdd") id:Int):Response<mainSubCategoryModel>
+
 
     //Sub Product
     @GET("imgFolder/mainSubProduct.php?mainSubProductAdd=getMainSubProduct")
@@ -101,6 +104,8 @@ interface aviInterface {
         @Part("addProductDescription") addProductDescription: RequestBody
     ): Response<mainCategoryPostModel>
 
+    @GET("imgFolder/mainSubProduct.php")
+    suspend fun getMainProductFiltered(@Query("mainSubProductAdd") id:Int):Response<mainSubProductResponceModel>
 
     //trending
     @GET("imgFolder/mainTrending.php?mainTrending=getMainTrending")
@@ -171,6 +176,7 @@ interface aviInterface {
         @Part("address") address: RequestBody
     )
             : Response<statusMainCategoryModel>
+
 }
 
 data class ImageUpload(val error: Boolean?, val message: String?)

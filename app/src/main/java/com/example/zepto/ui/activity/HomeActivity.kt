@@ -509,7 +509,7 @@ import kotlin.collections.ArrayList
     }
 
     private fun hitMainCategoryApi() {
-        GlobalScope.launch {
+        GlobalScope.launch{
             val call = repo.getMainCategory()
             if (call.isSuccessful) {
                 mainCateDialogData = call.body()!!

@@ -9,13 +9,14 @@ import android.view.ViewGroup
 import android.widget.*
 import com.example.zepto.viewModel.DetailViewModel
 import com.example.zepto.R
+import com.example.zepto.model.cardItemModel
 import com.example.zepto.model.cardItemWithoutId
 import com.example.zepto.ui.activity.SingleTrendingActivity
 import com.squareup.picasso.Picasso
 
 class adapterSubListCategories(
     private val context: Context,
-    private val arraydata: ArrayList<cardItemWithoutId>
+    private val arraydata: ArrayList<cardItemModel>
 ) :
     BaseAdapter() {
     var cartName: ArrayList<String> = ArrayList()
@@ -54,8 +55,8 @@ class adapterSubListCategories(
         //set data
         name.text =data.name
         discount.text =data.discountPrice.toString()
-        Picasso.get().load(data.img).into(itemPic)
-//        itemPic.setImageResource()
+        Log.d("tiger", "getView: ${data.img}")
+//        Picasso.get().load(data.img).into(itemPic)
 
         //temp icon click screen forward move
         myView.setOnClickListener {
@@ -82,7 +83,7 @@ class adapterSubListCategories(
 
             cartName.add(data.name)
             cartAmount.add(data.Price)
-            cartImage.add(data.img)
+//            cartImage.add(data.img)
         }
         return myView
     }

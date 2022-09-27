@@ -52,6 +52,7 @@ BaseAdapter() {
 
 
         val data = arraydata[position]
+        Log.d("adapterCati", "getView: ${data}")
         //set data
         name.text =data.categoryName
         Picasso.get().load(data.categoryImg).into(itemPic)
@@ -66,8 +67,10 @@ BaseAdapter() {
 
         //temp icon click screen forward move
         myView.setOnClickListener {
-            Toast.makeText(context, "${data.categoryName}", Toast.LENGTH_SHORT).show()
-            context.startActivity(Intent(context,DetailActivity::class.java))
+            Toast.makeText(context, data.id , Toast.LENGTH_SHORT).show()
+            val intent = Intent(context,DetailActivity::class.java)
+            intent.putExtra("categoryIdFlowKey",data.id)
+            context.startActivity(intent)
         }
         return myView
     }
