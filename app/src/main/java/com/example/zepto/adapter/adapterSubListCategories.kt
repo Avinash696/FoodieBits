@@ -55,8 +55,8 @@ class adapterSubListCategories(
         //set data
         name.text =data.name
         discount.text =data.discountPrice.toString()
-        Log.d("tiger", "getView: ${data.img}")
-//        Picasso.get().load(data.img).into(itemPic)
+        Log.d("tiger", "getView: $data")
+        Picasso.get().load(data.img).into(itemPic)
 
         //temp icon click screen forward move
         myView.setOnClickListener {
@@ -68,8 +68,6 @@ class adapterSubListCategories(
             intent.putExtra("nameArray", cartName)
             intent.putExtra("amountArray", cartAmount)
             intent.putExtra("imageArray", cartImage)
-//            Log.d("adapterCountCheck", "getView:${countViewMode.count} ")
-//            intent.putExtra("singleCountTrend", countViewMode.count)
 
             //count send
             context.startActivity(intent)
