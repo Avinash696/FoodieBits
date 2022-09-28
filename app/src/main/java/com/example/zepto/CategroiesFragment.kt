@@ -125,6 +125,7 @@ class CategroiesFragment : Fragment() {
             )
 
             binding.rvCategoriesAdmin.adapter = adapter
+           adapter.notifyDataSetChanged()
         }
     }
 
@@ -144,7 +145,7 @@ class CategroiesFragment : Fragment() {
     private fun postMainCategory(id: String, name: String) {
         val filePath = filePath
         val r = Random()
-        Log.d("mine_id ", "postMainCategory: ${id}r")
+        Log.d("mine_id ", "postMainCategory: $id")
         val requestBody = RequestBody.create(MediaType.parse("image/*"), filePath!!)
         val parts = MultipartBody.Part.createFormData("categoryImg", filePath.name, requestBody)
         val id = RequestBody.create(MediaType.parse("text/plain"), id)

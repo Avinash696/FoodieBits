@@ -177,99 +177,6 @@ import kotlin.collections.ArrayList
 //            Log.d("dialogItem", "clicked MAinCat")
             dialogCategories(mainCateDialogData)
         }
-
-        //categories on click
-//        binding.llBeautyProduct.setOnClickListener {
-//            countViewModel.setCounter()
-//            Log.d("tares", "onCreate: $intentName $intentImg $intentAmount ")
-////            someDummyArray()
-////            Log.d("hhhh", "onCreate: ${countViewModel.count}")
-//            val intent = Intent(this, DetailActivity::class.java)
-//            intent.putExtra("counterKey", countViewModel.count)////
-//            intent.putExtra("beautyKey", 1)
-//            intent.putExtra("nameArrayKey",intentName)
-//            intent.putExtra("amountArrayKey",intentAmount)
-//            intent.putExtra("imgArrayKey",intentImg)
-//            intent.putStringArrayListExtra("nameArrayKey", intentName)
-//            startActivity(intent)
-//        }
-//        binding.llInstantFood.setOnClickListener {
-////            someDummyArray()
-//            val intent = Intent(this, DetailActivity::class.java)
-//            intent.putExtra("counterKey", countViewModel.count)
-//            intent.putExtra("beautyKey", 2)
-//            startActivity(intent)
-//        }
-//        binding.llColdDrink.setOnClickListener {
-////            someDummyArray()
-//            val intent = Intent(this, DetailActivity::class.java)
-//            intent.putExtra("counterKey", countViewModel.count)
-//            intent.putExtra("beautyKey", 3)
-//            startActivity(intent)
-//        }
-//        binding.llBiscuit.setOnClickListener {
-////            someDummyArray()
-//            val intent = Intent(this, DetailActivity::class.java)
-//            intent.putExtra("counterKey", countViewModel.count)
-//            intent.putExtra("beautyKey", 4)
-//            startActivity(intent)
-//        }
-//        binding.llChoco.setOnClickListener {
-////            someDummyArray()
-//            val intent = Intent(this, DetailActivity::class.java)
-//            intent.putExtra("counterKey", countViewModel.count)
-//            intent.putExtra("beautyKey", 5)
-//            startActivity(intent)
-//        }
-//        binding.llMasala.setOnClickListener {
-////            someDummyArray()
-//            val intent = Intent(this, DetailActivity::class.java)
-//            intent.putExtra("counterKey", countViewModel.count)
-//            intent.putExtra("beautyKey", 6)
-//            startActivity(intent)
-//        }
-//        binding.llOil.setOnClickListener {
-////            someDummyArray()
-//            val intent = Intent(this, DetailActivity::class.java)
-//            intent.putExtra("counterKey", countViewModel.count)
-//            intent.putExtra("beautyKey", 7)
-//            startActivity(intent)
-//        }
-//        binding.llSauce.setOnClickListener {
-////            someDummyArray()
-//            val intent = Intent(this, DetailActivity::class.java)
-//            intent.putExtra("counterKey", countViewModel.count)
-//            intent.putExtra("beautyKey", 8)
-//            startActivity(intent)
-//        }
-//        binding.llCoffee.setOnClickListener {
-////            someDummyArray()
-//            val intent = Intent(this, DetailActivity::class.java)
-//            intent.putExtra("counterKey", countViewModel.count)
-//            intent.putExtra("beautyKey", 9)
-//            startActivity(intent)
-//        }
-//        binding.llGreenTea.setOnClickListener {
-////            someDummyArray()
-//            val intent = Intent(this, DetailActivity::class.java)
-//            intent.putExtra("counterKey", countViewModel.count)
-//            intent.putExtra("beautyKey", 10)
-//            startActivity(intent)
-//        }
-//        binding.llCleaningEssence.setOnClickListener {
-////            someDummyArray()
-//            val intent = Intent(this, DetailActivity::class.java)
-//            intent.putExtra("counterKey", countViewModel.count)
-//            intent.putExtra("beautyKey", 11)
-//            startActivity(intent)
-//        }
-//        binding.llTea.setOnClickListener {
-////            someDummyArray()
-//            val intent = Intent(this, DetailActivity::class.java)
-//            intent.putExtra("counterKey", countViewModel.count)
-//            intent.putExtra("beautyKey", 12)
-//            startActivity(intent)
-//        }
     }
 
     private fun setSideNavBar() {
@@ -438,7 +345,7 @@ import kotlin.collections.ArrayList
         val simpleCategories = dialog.findViewById<GridView>(R.id.simpleView)
 
         val arrayList = ArrayList<CategoryImg>()
-        for (i in 0 until data!!.categoryImg.size) {
+        for (i in 0 until data.categoryImg.size) {
             val dumy = data.categoryImg[i]
             Log.d("instantDelete", "getView: ${dumy.categoryImg}")
             arrayList.add(
