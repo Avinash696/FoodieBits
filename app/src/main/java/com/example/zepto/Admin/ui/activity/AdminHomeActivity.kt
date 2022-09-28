@@ -25,8 +25,6 @@ class AdminHomeActivity : AppCompatActivity() {
     lateinit var titleCustom :String
     lateinit var titleImg :String
 
-
-
     //appbar
     lateinit var actionBarDrawableToggle: ActionBarDrawerToggle
     override fun onCreate(savedInstanceState: Bundle?) {

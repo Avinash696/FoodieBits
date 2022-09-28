@@ -58,7 +58,6 @@ class adapterSubListSubAdmin(
         val operation = dialog.findViewById<Button>(R.id.btActivateDeactivate)
         val addProduvt = dialog.findViewById<Button>(R.id.btAddProductSelect)
 
-
         //temp icon click screen forward move
         myView.setOnClickListener {
             Log.d("flowListWala", "getView:${data} ")
@@ -67,13 +66,6 @@ class adapterSubListSubAdmin(
             intent.putExtra("SubProductIdKey",data.id)
             intent.flags = FLAG_ACTIVITY_NEW_TASK
             context.startActivity(intent)
-//            dialog.show()
-//            addProduvt.setOnClickListener {
-//
-//            }
-//            operation.setOnClickListener {
-//                operation.text = "Deactivate"
-//            }
         }
         return myView
     }

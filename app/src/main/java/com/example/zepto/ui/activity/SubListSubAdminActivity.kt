@@ -45,8 +45,7 @@ class SubListSubAdminActivity : AppCompatActivity() {
         simpleCategories = binding.gvSubListAdmin
         //sub cat
 
-
-         dialogUpload = Dialog(this)
+        dialogUpload = Dialog(this)
         hitMainSubCategoryApi()
         //intent
         val intent = intent
@@ -60,7 +59,6 @@ class SubListSubAdminActivity : AppCompatActivity() {
 
         binding.ivAddSubCategory.setOnClickListener {
             Toast.makeText(this, "Added ", Toast.LENGTH_SHORT).show()
-
             dialogUpload.setContentView(R.layout.dialog_subcategory)
             val dialogName = dialogUpload.findViewById<EditText>(R.id.etNameSubCategoryDialog)
             val dialogLL = dialogUpload.findViewById<LinearLayout>(R.id.llUploadImgMainSubCategoryDialog)
@@ -103,7 +101,6 @@ class SubListSubAdminActivity : AppCompatActivity() {
          arrayList = ArrayList()
         for (i in 0 until data.subCategoryImg.size){
             val dumy = data.subCategoryImg[i]
-            val gs = Gson()
 
             arrayList.add(cardItemModel(dumy.subCategoryId,dumy.subCategoryImg, dumy.subCategoryName ,2,3))
         }
@@ -114,7 +111,9 @@ class SubListSubAdminActivity : AppCompatActivity() {
     }
     private fun hitMainSubCategoryApi() {
         GlobalScope.launch {
-            val call = repo.getMainSubCategory()
+//            val call = repo.getMainSubCategory()             subCatIdKey
+            val call = repo.getMainSubCategoryFiltered(Integer.parseInt(subCatIdKey))
+//            getMainSubCategoryFiltered
             if (call.isSuccessful) {
                 val gson = Gson()
                 Log.d("subListResponce", "hitMainCategoryApi:  Success${gson.toJson(call.body()!!)}")

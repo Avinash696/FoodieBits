@@ -35,6 +35,7 @@ class AllItemSubAdminActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAllItemSubAdminBinding
     val arrayList = ArrayList<cardItemWithoutId>()
     lateinit var data: cardItemWithoutId
+    lateinit var  id_data:String
 
 
 
@@ -47,7 +48,7 @@ class AllItemSubAdminActivity : AppCompatActivity() {
         )
 
         val intent = intent
-        val id_data = intent.getStringExtra("SubProductIdKey")
+         id_data = intent.getStringExtra("SubProductIdKey").toString()
         val name_data = intent.getStringExtra("SubProductNameKey")
         supportActionBar!!.title = name_data
         Log.d("flowListWala", "onCreate: $id_data $name_data")
@@ -91,7 +92,8 @@ class AllItemSubAdminActivity : AppCompatActivity() {
     private fun hitMainCategoryApi() {
          val repo = RetrofitHelper.getClient().create(aviInterface::class.java)
         GlobalScope.launch {
-            val call = repo.getMainSubProduct()
+//            val call = repo.getMainSubProduct()
+            val call = repo.getMainProductFiltered(Integer.parseInt(id_data))
             Log.d("myFun", "hitMainCategoryApi: inside $call")
             if (call.isSuccessful) {
                 val gson = Gson()
