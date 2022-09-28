@@ -1,30 +1,23 @@
 package com.example.zepto.Admin.ui.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-import com.example.test.aviInterface
 import com.example.zepto.*
 import com.example.zepto.Admin.ui.retailerFragment.AddUserTestFragment
-import com.example.zepto.Repositary.CategoryRepo
 import com.example.zepto.constant.constants
 import com.example.zepto.databinding.ActivityAdminHomeBinding
-import com.example.zepto.db.RetrofitHelper
-import com.example.zepto.model.mainCategoryModel
 import com.example.zepto.ui.fragment.CoplainBoxFragment
 import com.example.zepto.ui.fragment.DashboardAdminFragment
-import com.example.zepto.ui.fragment.DashboardFragment
 import com.google.android.material.navigation.NavigationView
 import com.squareup.picasso.Picasso
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class AdminHomeActivity : AppCompatActivity() {
     private lateinit var nvAdminHome: NavigationView

@@ -157,16 +157,18 @@
         <activity
             android:name=".ui.activity.HomeActivity"
             android:exported="true"
-            android:theme="@style/MyCustomHomeScene" />
-        <activity
-            android:name=".LoginActivity"
-            android:exported="true"
-            android:theme="@style/MyAdminCustom">
+            android:theme="@style/MyCustomHomeScene" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true"
+            android:theme="@style/MyAdminCustom">
+
         </activity>
     </application>
 
