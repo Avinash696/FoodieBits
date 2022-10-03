@@ -40,31 +40,33 @@ class adapterTrending(
 //        binding.ivItemPic.setImageResource(data.img)
         //onclick on item
         holder.itemView.setOnClickListener {
-            val intent = Intent(context, SingleTrendingActivity::class.java)
-//            Log.d("ttt", "onBindViewHolder:${data.Price} ${data.discount}  ${data.discountPrice}")
-            intent.putExtra("amountKey", data.Price)
-            intent.putExtra("nameKey", data.name)
-            intent.putExtra("imgKey", data.img)
-            //testing onclick itemView
-            intent.putExtra("nameArray", cartName)
-            intent.putExtra("amountArray", cartAmount)
-            intent.putExtra("imageArray", cartImage)
-            context.startActivity(intent)
+            Toast.makeText(context, "${data.name}", Toast.LENGTH_SHORT).show()
+//            val intent = Intent(context, SingleTrendingActivity::class.java)
+////            Log.d("ttt", "onBindViewHolder:${data.Price} ${data.discount}  ${data.discountPrice}")
+//            intent.putExtra("amountKey", data.Price)
+//            intent.putExtra("nameKey", data.name)
+//            intent.putExtra("imgKey", data.img)
+//            //testing onclick itemView
+//            intent.putExtra("nameArray", cartName)
+//            intent.putExtra("amountArray", cartAmount)
+//            intent.putExtra("imageArray", cartImage)
+//            context.startActivity(intent)
 //            context.startActivity(Intent(context,SingleTrendingActivity::class.java))
         }
 
         //add item
         binding.ivAddBtn.setOnClickListener {
-            Log.d("nameArra", "onBindViewHolder:${data.img}")
-            Toast.makeText(context, "Item Added" + data.img, Toast.LENGTH_SHORT).show()
+            countViewModel.setTrendingItem(data)
+//            Log.d("nameArra", "onBindViewHolder:${data.img}")
+//            Toast.makeText(context, "Item Added" + data.img, Toast.LENGTH_SHORT).show()
 
-            cartName.add(data.name)
-            cartAmount.add(data.Price)
-            cartImage.add(data.img)
-
-//            Log.d("justdd", "onBindViewHolder:${countViewMode.count} ")
-            Log.d("amountCheckModule", "onBindViewHolder:${cartName}  $cartAmount $cartImage")
-            cartItemLib(cartName,cartAmount,cartImage)
+//            cartName.add(data.name)
+//            cartAmount.add(data.Price)
+//            cartImage.add(data.img)
+//
+////            Log.d("justdd", "onBindViewHolder:${countViewMode.count} ")
+//            Log.d("amountCheckModule", "onBindViewHolder:${cartName}  $cartAmount $cartImage")
+//            cartItemLib(cartName,cartAmount,cartImage)
         }
     }
 

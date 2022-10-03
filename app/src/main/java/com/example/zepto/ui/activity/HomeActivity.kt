@@ -49,14 +49,14 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
- class HomeActivity : AppCompatActivity(){
+class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
     private lateinit var rvTrending: RecyclerView
     private lateinit var simpleCategories: GridView
     private lateinit var bottomNavHome: BottomNavigationView
     private lateinit var mainCateDialogData: mainCategoryModel
     private lateinit var trendingCateDialogData: trendingResponceModel
-    val LOCATION_PERMISSION_REQUEST_CODE = 888
+    private val LOCATION_PERMISSION_REQUEST_CODE = 888
 
     //appbar
     lateinit var actionBarDrawableToggle: ActionBarDrawerToggle
@@ -95,39 +95,16 @@ import kotlin.collections.ArrayList
 
         getTrendingItem()
 
-        countViewModel.countMutableLiveData.observe(this) {
-            binding.tvCartCount.text = it.toString()
-        }
-        //getttog all values namearray , amount array and arraya key  in viewmdoel
-        //viewmdpel cant be used in 2 aciviies
-        //either create  2 array lost or array list in viewmdoel
-
-        //viewmodel 3 var observe
-
-        countViewModel.arrayName.observe(this) {
-            for (i in 0 until it.size) {
-                Log.d("buddy", "onCreate: ${it[i]}")
-                intentName.add(it[i])
+        countViewModel.itemTrendingLiveData.observe(this){
+            for(item in it){
+                intentName.add(item.name)
+                intentName.add(item.Price.toString())
+                intentName.add(item.img)
+                Log.d("goblin", "inside liveData : ${item.name}")
             }
+//            Log.d("goblin", "inside liveData : $it")
+            binding.tvCartCount.text = it.size.toString()
         }
-
-        countViewModel.imageName.observe(this) {
-            for (i in 0 until it.size) {
-                Log.d("buddy", "onCreate: ${it[i]}")
-                intentImg.add(it[i].toString())
-            }
-        }
-        countViewModel.amountName.observe(this) {
-            for (i in 0 until it.size) {
-                Log.d("buddy", "onCreate: ${it[i]}")
-                intentAmount.add(it[i])
-            }
-        }
-        binding.tvCartCount.text = countViewModel.count.toString()
-
-        //counter update
-        binding.tvCartCount.text = countViewModel.toString()
-
         //cart
         binding.llCart.setOnClickListener {
             Log.d("goblin", "onCreate:$intentName $intentAmount $intentImg ")
@@ -263,7 +240,6 @@ import kotlin.collections.ArrayList
     private fun showImg() {
         val handler = Handler()
         val r = Runnable {
-//            startActivity(Intent(this, HomeActivity::class.java))
         }
         handler.postDelayed(r, 5000)
     }
@@ -302,8 +278,6 @@ import kotlin.collections.ArrayList
         }
         return super.onOptionsItemSelected(item)
     }
-
-
 
 
     private fun dialogHomeScreen(data: trendingResponceModel) {
@@ -421,7 +395,7 @@ import kotlin.collections.ArrayList
     }
 
     private fun hitMainCategoryApi() {
-        GlobalScope.launch{
+        GlobalScope.launch {
             val call = repo.getMainCategory()
             if (call.isSuccessful) {
                 mainCateDialogData = call.body()!!
@@ -478,6 +452,7 @@ import kotlin.collections.ArrayList
             }
         }
     }
+
     private fun setUpLocationListener() {
         val fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
         // for getting the current location update after every 2 seconds with high accuracy
@@ -511,11 +486,14 @@ import kotlin.collections.ArrayList
                         Log.d("kk", "onLocationResult:${location.latitude} ${location.longitude} ")
 
                         val geoCoder = Geocoder(this@HomeActivity, Locale.getDefault())
-                        val addressList = geoCoder.getFromLocation(location.latitude, location.longitude, 1)
+                        val addressList =
+                            geoCoder.getFromLocation(location.latitude, location.longitude, 1)
                         supportActionBar?.title = addressList[0].getAddressLine(0) +
                                 "," + addressList[0].countryName
-                        Log.d("kk", "onLocationResult: ${addressList[0].getAddressLine(0)} +\n" +
-                                "                                \",\" +${ addressList[0].countryName}")
+                        Log.d(
+                            "kk", "onLocationResult: ${addressList[0].getAddressLine(0)} +\n" +
+                                    "                                \",\" +${addressList[0].countryName}"
+                        )
                     }
                 }
             },
@@ -552,7 +530,7 @@ import kotlin.collections.ArrayList
     }
 
     override fun onBackPressed() {
-        startActivity(Intent(this,LoginActivity::class.java))
+        startActivity(Intent(this, LoginActivity::class.java))
         finish()
         super.onBackPressed()
     }
