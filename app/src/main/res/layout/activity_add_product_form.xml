@@ -21,7 +21,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <RelativeLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/border_red"
                     android:layout_gravity="center"
@@ -29,23 +29,20 @@
 
                     <ImageView
                         android:id="@+id/ivImgFormUp"
-                        android:layout_width="200dp"
-                        android:layout_height="100dp"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginEnd="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:src="@drawable/upload"
-                        app:tint="@color/grey"
-                        android:layout_centerHorizontal="true"/>
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="10dp"
+                        android:contentDescription="Upload Img"
+                        android:src="@drawable/upload" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/ivImgFormUp"
+                        android:layout_centerHorizontal="true"
                         android:text="Click Above icon to upload Image"
-                        android:textColor="@color/red"
-                        android:layout_margin="20dp"/>
+                        android:textColor="@color/red" />
                 </RelativeLayout>
                 <LinearLayout
                     android:layout_width="match_parent"

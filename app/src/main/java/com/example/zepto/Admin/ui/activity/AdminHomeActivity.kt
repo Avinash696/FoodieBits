@@ -113,6 +113,14 @@ class AdminHomeActivity : AppCompatActivity() {
                     Log.d("myAdmin", "clicked Contact")
                     return@setNavigationItemSelectedListener true
                 }
+                R.id.menu_adminLogout -> {
+//                    changeFragment(CoplainBoxFragment())
+//                    binding.dlAdminHome.close()
+//                    Log.d("myAdmin", "clicked Contact")
+                    startActivity(Intent(this,LoginActivity::class.java))
+                    finish()
+                    return@setNavigationItemSelectedListener true
+                }
                 else -> {
                     false
                 }

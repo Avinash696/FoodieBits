@@ -41,6 +41,7 @@ class JustTestItActivity : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+
         filePath = FileUtil.from(this, data!!.data)
         Log.d("Reqmaina", "onActivityResult:${data.data} ")
         val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, data.data)

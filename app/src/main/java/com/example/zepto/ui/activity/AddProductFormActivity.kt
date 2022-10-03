@@ -28,7 +28,8 @@ class AddProductFormActivity : AppCompatActivity() {
     private var filePath: File? = null
     private val PICK_IMAGE = 155
     lateinit var id_form: String
-//    lateinit var name_form: String
+
+    //    lateinit var name_form: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -69,15 +70,15 @@ class AddProductFormActivity : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        filePath = FileUtil.from(this, data!!.data)
-        Log.d("Reqmaina", "onActivityResult:${data.data} ")
-        val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, data.data)
-        binding.ivImgFormUp.setImageBitmap(bitmap)
-
+        if (requestCode == PICK_IMAGE && resultCode == RESULT_OK && data != null) {
+            filePath = FileUtil.from(this, data!!.data)
+            val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, data.data)
+            binding.ivImgFormUp.setImageBitmap(bitmap)
+        }
         super.onActivityResult(requestCode, resultCode, data)
     }
 
-    private fun postMainProduct( id_form:String) {
+    private fun postMainProduct(id_form: String) {
         val filePath = filePath
         Log.d("Reqmaina", "postMainProduct: $filePath")
         val subCategoryId = 1278

@@ -19,20 +19,21 @@ import kotlin.random.Random
 class YourOrderActivity : AppCompatActivity() {
     private lateinit var binding: ActivityYourOrderBinding
     private var count: Int = 0
+    lateinit var intentOrder:Intent
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_your_order)
 
         //intent get data
-        val intent = intent
-        val nameIntent = intent.getStringExtra("nameKey")
-        val countIntent = intent.getIntExtra("itemCountKey", 0)
-        val amountIntent = intent.getIntExtra("amountKey", 0)
-        Log.d("yourOrder", "onCreate: $nameIntent $countIntent $amountIntent")
-        if (nameIntent != null) {
-            setIntentData(nameIntent, countIntent, amountIntent)
-        }
-        Log.d("sunday", "onCreate: $nameIntent  $countIntent $amountIntent")
+         intentOrder = intent
+
+      val  nameArray = intentOrder.getStringArrayListExtra("nameArray")!!
+      val  amountArray = intentOrder.getIntegerArrayListExtra("amountArray")!!
+      val  imageArray = intentOrder.getStringArrayListExtra("imgArray")
+
+        Log.d("yourOrder", "onCreate: $nameArray $amountArray $imageArray")
+
+
         binding.btPlaceOrder.setOnClickListener {
             postPaymentSlip()
             startActivity(Intent(this, YourOrderStatusActivity::class.java))

@@ -3,12 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="8dp"
-    android:background="#E3F2FD">
+    android:padding="8dp">
 
     <GridView
         android:id="@+id/gvFirstFrag"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:numColumns="4"/>
+        android:numColumns="2"/>
 </FrameLayout>

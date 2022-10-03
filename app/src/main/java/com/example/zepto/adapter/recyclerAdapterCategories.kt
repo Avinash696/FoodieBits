@@ -34,7 +34,7 @@ class recyclerAdapterCategories(
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     lateinit var binding: RowCategoriesAdminBinding
-    var counter: Int = 0
+//    var counter: Int = 0
 
     class CustomViewHolder(binding: RowCategoriesAdminBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -52,10 +52,10 @@ class recyclerAdapterCategories(
 
         if (data.categoryStatus == 1) {
             binding.btCardMainCategoryActive.setBackgroundColor(context.getColor(R.color.green))
-
-        } else {
+            binding.btCardMainCategoryActive.text = "Activate"
+        } else if(data.categoryStatus == 0) {
             binding.btCardMainCategoryActive.setBackgroundColor(context.getColor(R.color.red))
-
+            binding.btCardMainCategoryActive.text = "Deactivate"
         }
 
         //status +date
@@ -70,16 +70,17 @@ class recyclerAdapterCategories(
 //        onclick on item
         binding.btCardMainCategoryActive.setOnClickListener {
              if (data.categoryStatus == 1) {
-                counter = 0
-                updateStatus(data,counter)
-                 binding.btCardMainCategoryActive.setBackgroundColor(context.getColor(R.color.red))
-                 binding.btCardMainCategoryActive.text = "Deactivate"
+//                counter = 0
+                updateStatus(data,0)
+//                 binding.btCardMainCategoryActive.setBackgroundColor(context.getColor(R.color.red))
+//                 binding.btCardMainCategoryActive.text = "Deactivate"
             } else {
-                 counter=  1
-                 updateStatus(data,counter)
-                 binding.btCardMainCategoryActive.setBackgroundColor(context.getColor(R.color.green))
-                 binding.btCardMainCategoryActive.text = "Activate"
+//                 counter=  1
+                 updateStatus(data,1)
+//                 binding.btCardMainCategoryActive.setBackgroundColor(context.getColor(R.color.green))
+//                 binding.btCardMainCategoryActive.text = "Activate"
             }
+            notifyItemChanged(position)
         }
 
         //item  with id will added

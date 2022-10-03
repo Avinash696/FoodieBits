@@ -40,4 +40,8 @@
         android:id="@+id/menu_adminComplainBox"
         android:title="Complain Box"
         android:icon="@drawable/complain"/>
+    <item
+        android:id="@+id/menu_adminLogout"
+        android:title="Logout"
+        android:icon="@drawable/admin1"/>
 </menu>

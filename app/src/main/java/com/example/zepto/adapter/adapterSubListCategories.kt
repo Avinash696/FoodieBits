@@ -16,12 +16,15 @@ import com.squareup.picasso.Picasso
 
 class adapterSubListCategories(
     private val context: Context,
-    private val arraydata: ArrayList<cardItemModel>
+    private val arraydata: ArrayList<cardItemModel>,
+    private val detailViewModel: DetailViewModel
 ) :
     BaseAdapter() {
     var cartName: ArrayList<String> = ArrayList()
     var cartAmount: ArrayList<Int> = ArrayList()
     var cartImage: ArrayList<Int> = ArrayList()
+
+    //    var cartItem :ArrayList<cardItemModel> = ArrayList()
     override fun getCount(): Int {
         return arraydata.size
     }
@@ -42,7 +45,7 @@ class adapterSubListCategories(
         if (myView == null) {
             val inflate =
                 context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            myView =  inflate.inflate(R.layout.row_sublist,viewGroup,false)
+            myView = inflate.inflate(R.layout.row_sublist, viewGroup, false)
         }
         //fields assign
         val name = myView!!.findViewById<TextView>(R.id.tvItemDetailName)
@@ -53,8 +56,8 @@ class adapterSubListCategories(
         val data = arraydata[position]
 
         //set data
-        name.text =data.name
-        discount.text =data.discountPrice.toString()
+        name.text = data.name
+        discount.text = data.discountPrice.toString()
         Log.d("tiger", "getView: $data")
         Picasso.get().load(data.img).into(itemPic)
 
@@ -76,9 +79,10 @@ class adapterSubListCategories(
         btnAdd.setOnClickListener {
             //data send also
 
+            detailViewModel.updateCat(data)
+            Log.d("cartCheck", "getView: ${detailViewModel.arrayCategoryLiveData.value}")
             Log.d("nameArr", "onBindViewHolder:${data.img}")
             Toast.makeText(context, "Item Added" + data.img, Toast.LENGTH_SHORT).show()
-
             cartName.add(data.name)
             cartAmount.add(data.Price)
 //            cartImage.add(data.img)

@@ -79,6 +79,7 @@ class LoginActivity : AppCompatActivity() {
             }
             (stName == "avi") && (stPass == "avi") || result == "home" -> {
                 val intent = Intent(this, HomeActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                 intent.putExtra("retailerTitle",id)
                 intent.putExtra("adminImg",imgPath)
                 startActivity(intent)
@@ -93,5 +94,10 @@ class LoginActivity : AppCompatActivity() {
 //                Toast.makeText(this, "plz check ur id and pass ", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    override fun onBackPressed() {
+        finish()
+        super.onBackPressed()
     }
 }

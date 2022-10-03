@@ -20,6 +20,7 @@ import com.example.zepto.R
 import com.example.zepto.adapter.adapterListDetail
 import com.example.zepto.databinding.ActivityDetailBinding
 import com.example.zepto.db.RetrofitHelper
+import com.example.zepto.model.cardItemModel
 import com.example.zepto.model.listCategory
 import com.example.zepto.model.mainSubCategoryModel
 import com.example.zepto.ui.fragment.FiirstFragment
@@ -31,16 +32,16 @@ import kotlinx.coroutines.launch
 class DetailActivity : AppCompatActivity() {
     lateinit var binding: ActivityDetailBinding
 
-    private lateinit var listAdapter: ArrayAdapter<listCategory>
-    private lateinit var listDetailAdapter: adapterListDetail
     private lateinit var bottomNavHome: BottomNavigationView
     private lateinit var detailViewModel: DetailViewModel
     var categoryIdFlowKey: Int = 0
+    var tempCatArrayIntent  = ArrayList<cardItemModel>()
 
     //intent send data 3 var
     var intentName: ArrayList<String> = ArrayList<String>()
     var intentAmount: ArrayList<Int> = ArrayList<Int>()
-    var intentImg: ArrayList<Int> = ArrayList<Int>()
+    var intentImg: ArrayList<String> = ArrayList<String>()
+//    var detailItem: ArrayList<cardItemModel> = ArrayList<cardItemModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +49,21 @@ class DetailActivity : AppCompatActivity() {
 //        changeFragment(SecondFragment(detailViewModel))
 //        changeFragment(MapsFragment(detailViewModel))
         detailViewModel = ViewModelProvider(this)[DetailViewModel::class.java]
+
+        // count update
+        detailViewModel.arrayCategoryLiveData.observe(this) {
+            tempCatArrayIntent.addAll(it)
+
+            for (item in it) {
+//                detailItem.add(item)
+                intentName.add(item.name)
+                intentAmount.add(item.Price)
+                intentImg.add(item.img)
+                Log.d("cartArrDetail", "onCreate:Detail ${item.name} ${tempCatArrayIntent.size}")
+            }
+            binding.tvCartCountDetail.text = tempCatArrayIntent.size.toString()
+        }
+
         val receiveIntent = intent
         val beautyIntent = receiveIntent.getIntExtra("beautyKey", 0)
         val counterIntent = receiveIntent.getIntExtra("counterKey", 0)
@@ -60,8 +76,8 @@ class DetailActivity : AppCompatActivity() {
 //        Log.d("pen", "onCreate: $homeAmount $homeName $homeImg ${homeName!!.size}")
 
         Log.d("detailCount", "onCreate: $categoryIdFlowKey")
-        //counter set
-        detailViewModel.countMutableLiveData.value = counterIntent
+
+
 
         Log.d("myrules", "onCreate: $beautyIntent")
 //        listViewCategory()
@@ -70,79 +86,26 @@ class DetailActivity : AppCompatActivity() {
         bottomNavHome = binding.bottomNavigation
         bottomNav()
 
-        //viewmodel 3 var observe
-
-        detailViewModel.arrayNameDetail.observe(this) {
-            for (i in 0 until it.size) {
-                Log.d("buddy", "onCreate: ${it[i]}")
-                intentName.add(it[i])
-            }
-        }
-
-        detailViewModel.arrayImageDetail.observe(this) {
-            for (i in 0 until it.size) {
-                Log.d("buddy", "onCreate: ${it[i]}")
-                intentImg.add(it[i])
-            }
-        }
-        detailViewModel.arrayAmountDetail.observe(this) {
-            for (i in 0 until it.size) {
-                Log.d("buddy", "onCreate: ${it[i]}")
-                intentAmount.add(it[i])
-            }
-        }
-        detailViewModel.countMutableLiveData.observe(this) {
-            binding.tvCartCountDetail.text = it.toString()
-        }
 
         //count on click
         binding.llCartDetail.setOnClickListener {
             val intent = Intent(this, CartActivity::class.java)
+            Log.d("detailActivityIntent", "onCreate: $intentName $intentAmount $intentImg")
             intent.putExtra("nameArray", intentName)
             intent.putExtra("amountArray", intentAmount)
             intent.putExtra("imgArray", intentImg)
+//            intent.putExtra("ArrayDataCat", detailItem)
             startActivity(intent)
         }
     }
 
     private fun changeFragment(fragment: Fragment) {
-        detailViewModel.updatingCount()
         val fragmentManager: FragmentManager = supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.flDetail, fragment)
         fragmentTransaction.commit()
     }
 
-    //    private fun listViewCategory() {
-//        val arr = ArrayList<listCategory>()
-//        arr.add(listCategory(R.drawable.f1, "All Item"))
-//        arr.add(listCategory(R.drawable.f2, "Watermelon"))
-//        arr.add(listCategory(R.drawable.f3, "Fruits"))
-//        arr.add(listCategory(R.drawable.f4, "Spinach "))
-//        arr.add(listCategory(R.drawable.f5, "Tomato"))
-//
-////        listAdapter = ArrayAdapter(this ,R.layout.detail_row,arr)
-//        listDetailAdapter = adapterListDetail(this, arr)
-//        binding.lvCategory.adapter = listDetailAdapter
-//
-//        binding.lvCategory.setOnItemClickListener { adapterView, view, position, l ->
-//            when (position) {
-//                0 -> {
-//                    changeFragment(FiirstFragment(detailViewModel))
-//                }
-//                1 -> {
-//                    changeFragment(SecondFragment(detailViewModel))
-//                }
-//                2 -> {
-//                    changeFragment(ThirdFragment(detailViewModel))
-//                }
-//                3 -> {
-//                    changeFragment(FourthFragment(detailViewModel))
-//                }
-//            }
-//            Log.d("apitest", "listViewCategory:$position ${adapterView[position]}")
-//        }
-//    }
     //bottom nav dialog
     private fun dialogCategories() {
         val dialog = Dialog(this, R.style.full_screen_dialog)
@@ -163,7 +126,7 @@ class DetailActivity : AppCompatActivity() {
             val adapter = adapterListDetail(applicationContext, body)
             binding.lvCategory.adapter = adapter
         }
-        binding.lvCategory.setOnItemClickListener { adapterView, view, position, l ->
+        binding.lvCategory.setOnItemClickListener { _, _, position, _ ->
             Log.d("lvAdapterCheck", "subCategoryItem: ${body!!.subCategoryImg[position].subCategoryId}")
             hitGetProduct(Integer.parseInt(body!!.subCategoryImg[position].subCategoryId))
         }

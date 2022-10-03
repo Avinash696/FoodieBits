@@ -28,4 +28,8 @@
         android:id="@+id/menu_wallet"
         android:title="Wallet"
         android:icon="@drawable/wallet"/>
+    <item
+        android:id="@+id/menu_homeLogout"
+        android:title="Logout"
+        android:icon="@drawable/login"/>
 </menu>

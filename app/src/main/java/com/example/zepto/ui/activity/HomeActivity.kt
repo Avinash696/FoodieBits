@@ -75,8 +75,6 @@ import kotlin.collections.ArrayList
     var intentAmount: ArrayList<Int> = ArrayList()
     var intentImg: ArrayList<String> = ArrayList()
 
-
-
     //viewmodel cout
     private lateinit var countViewModel: ItemCountViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -205,6 +203,13 @@ import kotlin.collections.ArrayList
                 R.id.menu_myOrders -> {
                     startActivity(Intent(this, FaqsActivity::class.java))
                     true
+                }
+                R.id.menu_homeLogout -> {
+                    val intnet = Intent(this, LoginActivity::class.java)
+                    intnet.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                    startActivity(intnet)
+                    finish()
+                    return@setNavigationItemSelectedListener true
                 }
 
                 else -> {
@@ -547,7 +552,8 @@ import kotlin.collections.ArrayList
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
         startActivity(Intent(this,LoginActivity::class.java))
+        finish()
+        super.onBackPressed()
     }
 }

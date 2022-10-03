@@ -1,6 +1,7 @@
 package com.example.test
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,12 +11,16 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zepto.R
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.w3c.dom.Text
 
 class adapterCustomRv(val context: Context, val arrayData: ArrayList<customFilterModel>) :
     RecyclerView.Adapter<adapterCustomRv.CustomViewHolder>(), Filterable {
 
     val arrayDataFull = ArrayList(arrayData)
+    val arrayDataFirst = ArrayList<customFilterModel>()
 
     class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val img = itemView.findViewById<ImageView>(R.id.image_view)
@@ -51,20 +56,53 @@ class adapterCustomRv(val context: Context, val arrayData: ArrayList<customFilte
                     for (item in arrayData) {
                         if (item.name.lowercase().contains(pattern)) {
                             filteredList.add(item)
+                            arrayDataFirst.add(item)
                         }
                     }
+                }
+
+                for (i in 0 until filteredList.size) {
+                    Log.d(
+                        "firstFilter",
+                        "performFiltering: ${filteredList[i].name} ${filteredList[i].desc}"
+                    )
                 }
                 val result = FilterResults()
                 result.values = filteredList
                 return result
             }
 
-            override fun publishResults(constrain: CharSequence?, result: FilterResults?) {   //main
-                //main list empty
+            override fun publishResults(constrain: CharSequence?, result: FilterResults?) {
                 arrayData.clear()
                 arrayData.addAll(result!!.values as Collection<customFilterModel>)
                 notifyDataSetChanged()
             }
         }
+//             class secondFiter(): Filter {
+//                return object : Filter() {
+////                    val inputString = "Sixteen"
+//                    val secondFilteredList = arrayListOf<customFilterModel>()
+//                    override fun performFiltering(constrain2: CharSequence?): FilterResults {
+//                        if (constrain2 == null || constrain2.isEmpty()) {
+//                            secondFilteredList.addAll(arrayDataFirst)
+//                        } else {
+//                            val pattern2 = constrain2.toString().trim().lowercase()
+//                            for (item in secondFilteredList) {
+//                                if (item.desc.trim().lowercase().contains(pattern2))
+//                                    secondFilteredList.add(item)
+//                            }
+//                        }
+//                        val secondFilterResult = FilterResults()
+//                        secondFilterResult.values = secondFilterResult
+//                        return secondFilterResult
+//                    }
+//
+//                    override fun publishResults(constrain: CharSequence?, result: FilterResults?) {
+//                        arrayData.clear()
+//                        arrayData.addAll(result!!.values as Collection<customFilterModel>)
+//                        notifyDataSetChanged()
+//                    }
+//                }
+//            }
+        }
     }
-}

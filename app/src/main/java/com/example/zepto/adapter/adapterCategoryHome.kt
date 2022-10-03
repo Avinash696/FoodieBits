@@ -22,10 +22,10 @@ import com.example.zepto.ui.activity.SubListSubAdminActivity
 import com.squareup.picasso.Picasso
 
 class adapterCategoryHome(
-private val context: Context,
-private val arraydata: ArrayList<CategoryImg>
+    private val context: Context,
+    private val arraydata: ArrayList<CategoryImg>
 ) :
-BaseAdapter() {
+    BaseAdapter() {
 
     override fun getCount(): Int {
         return arraydata.size
@@ -44,7 +44,7 @@ BaseAdapter() {
         if (myView == null) {
             val inflate =
                 context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            myView =  inflate.inflate(R.layout.row_category_cart,viewGroup,false)
+            myView = inflate.inflate(R.layout.row_category_cart, viewGroup, false)
         }
         //fields assign
         val name = myView!!.findViewById<TextView>(R.id.ivClientFoodNameCategory)
@@ -52,9 +52,9 @@ BaseAdapter() {
 
 
         val data = arraydata[position]
-        Log.d("adapterCati", "getView: ${data}")
+        Log.d("adapterCati", "getView: $data")
         //set data
-        name.text =data.categoryName
+        name.text = data.categoryName
         Picasso.get().load(data.categoryImg).into(itemPic)
 //        if(data.categoryStatus == 0){
 //            //set data
@@ -67,9 +67,9 @@ BaseAdapter() {
 
         //temp icon click screen forward move
         myView.setOnClickListener {
-            Toast.makeText(context, data.id , Toast.LENGTH_SHORT).show()
-            val intent = Intent(context,DetailActivity::class.java)
-            intent.putExtra("categoryIdFlowKey",data.id)
+            Toast.makeText(context, data.id, Toast.LENGTH_SHORT).show()
+            val intent = Intent(context, DetailActivity::class.java)
+            intent.putExtra("categoryIdFlowKey", data.id)
             context.startActivity(intent)
         }
         return myView
