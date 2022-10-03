@@ -74,6 +74,10 @@ class HomeActivity : AppCompatActivity() {
     var intentName: ArrayList<String> = ArrayList()
     var intentAmount: ArrayList<Int> = ArrayList()
     var intentImg: ArrayList<String> = ArrayList()
+        //for trending
+    val tempName = ArrayList<String>()
+    val tempAmount = ArrayList<Int>()
+    val tempImg = ArrayList<String>()
 
     //viewmodel cout
     private lateinit var countViewModel: ItemCountViewModel
@@ -97,26 +101,26 @@ class HomeActivity : AppCompatActivity() {
 
         countViewModel.itemTrendingLiveData.observe(this){
             for(item in it){
-                intentName.add(item.name)
-                intentName.add(item.Price.toString())
-                intentName.add(item.img)
-                Log.d("goblin", "inside liveData : ${item.name}")
+                tempName.add(item.name)
+                tempAmount.add(item.Price)
+                tempImg.add(item.img)
+
             }
-//            Log.d("goblin", "inside liveData : $it")
-            binding.tvCartCount.text = it.size.toString()
+//            Log.d("goblin", "onCreate: new Array  $tempName")
+//            intentName.addAll(tempName)
+//            Log.d("goblin", "now IntentName $intentName")
+            binding.tvCartCount.text = tempName.size.toString()
         }
         //cart
         binding.llCart.setOnClickListener {
-            Log.d("goblin", "onCreate:$intentName $intentAmount $intentImg ")
-            if (intentName != null) {
-                val intent = Intent(this, CartActivity::class.java)
-                intent.putExtra("nameArray", intentName)
-                intent.putExtra("amountArray", intentAmount)
-                intent.putExtra("imgArray", intentImg)
-                startActivity(intent)
-            } else {
-                Toast.makeText(this, "No Item in Cart", Toast.LENGTH_SHORT).show()
-            }
+
+            val intent = Intent(this, CartActivity::class.java)
+            intent.putExtra("nameArray", tempName)
+            intent.putExtra("amountArray", tempAmount)
+            intent.putExtra("imgArray", tempImg)
+            Log.d("goblin", "onCreate Cart Selected:$intentName $intentAmount $intentImg ")
+            Log.d("goblin", "onCreate Cart Selected:$tempName $tempAmount $tempImg ")
+            startActivity(intent)
         }
 
         //for tea banner

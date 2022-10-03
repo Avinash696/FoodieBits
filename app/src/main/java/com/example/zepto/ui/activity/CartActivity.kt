@@ -40,7 +40,7 @@ class CartActivity : AppCompatActivity() {
         amountArray = intentTrending.getIntegerArrayListExtra("amountArray")!!
         imageArray = intentTrending.getStringArrayListExtra("imgArray")!!
         cardViewModel.setArray(nameArray, amountArray, imageArray)
-        Log.d("cartArr", "onCreate: $nameArray ${nameArray.size} $amountArray $imageArray")
+        Log.d("goblin", "onCreate:Cart $nameArray ${nameArray.size} $amountArray $imageArray")
         populatingIntentData()
         totalAmount()
 
