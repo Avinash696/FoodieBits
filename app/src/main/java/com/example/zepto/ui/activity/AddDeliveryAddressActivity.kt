@@ -11,7 +11,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
-import com.example.test.aviInterface
+import com.example.test.AviInterface
 import com.example.zepto.constant.constants
 import com.example.zepto.databinding.ActivityAddDeliveryAddressBinding
 import com.example.zepto.db.RetrofitHelper
@@ -150,13 +150,20 @@ class AddDeliveryAddressActivity : AppCompatActivity() {
             MediaType.parse("text/plain"),
             binding.etHouseNoFirst.text.toString()
         )
+
+
+
+
+
+
+
         val owner = RequestBody.create(MediaType.parse("text/plain"), "avi")
 
         Log.d(
             "samos", "postSavedAddress: ${binding.etNameProfile.text} " +
                     "${binding.etPhoneNo.text} ${binding.etHouseNoFirst.text} "
         )
-        val repo = RetrofitHelper.getClient().create(aviInterface::class.java)
+        val repo = RetrofitHelper.getClient().create(AviInterface::class.java)
 
         GlobalScope.launch {
             val call = repo.postUserAddress(name, phoneNo, houseNo, owner)
@@ -180,7 +187,7 @@ class AddDeliveryAddressActivity : AppCompatActivity() {
             "samos", "postSavedAddress: ${binding.etNameProfile.text} " +
                     "$profileHolderId ${binding.etHouseNoFirst.text} "
         )
-        val repo = RetrofitHelper.getClient().create(aviInterface::class.java)
+        val repo = RetrofitHelper.getClient().create(AviInterface::class.java)
 
         GlobalScope.launch {
             val call = repo.updateUserAddress(id, name, houseNo)

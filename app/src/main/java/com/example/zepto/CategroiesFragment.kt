@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.test.FileUtil
-import com.example.test.aviInterface
+import com.example.test.AviInterface
 import com.example.zepto.Admin.ui.activity.AdminHomeActivity
 import com.example.zepto.adapter.recyclerAdapterCategories
 import com.example.zepto.databinding.FragmentCategroiesBinding
@@ -22,9 +22,7 @@ import com.example.zepto.db.RetrofitHelper
 import com.example.zepto.model.CategoryImg
 import com.example.zepto.model.mainCategoryModel
 import com.example.zepto.module.Toasty
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -42,7 +40,7 @@ class  CategroiesFragment : Fragment() {
     val categoryStatus = 1
     private var filePath: File? = null
     lateinit var myDataFromActivity: String
-    private val repo = RetrofitHelper.getClient().create(aviInterface::class.java)
+    private val repo = RetrofitHelper.getClient().create(AviInterface::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -114,17 +112,20 @@ class  CategroiesFragment : Fragment() {
         val arrayData = ArrayList<CategoryImg>()
         for (i in 0 until data.categoryImg.size) {
             val dumy = data.categoryImg[i]
+            Log.d("justMineAdapter", "populatingData: $data")
             arrayData.add(
                 CategoryImg(
                     dumy.categoryImg,
                     dumy.categoryName,
                     dumy.categoryStatus,
-                    dumy.id
+                    dumy.id,
+                    dumy.discountPrice,
+                    dumy.price
                 )
             )
         }
 
-       GlobalScope.launch(Dispatchers.Main) {
+       CoroutineScope(Dispatchers.Main).async{
              adapter = recyclerAdapterCategories(arrayData,requireContext() )
             binding.rvCategoriesAdmin.layoutManager = LinearLayoutManager(
                 requireContext(),
@@ -137,7 +138,7 @@ class  CategroiesFragment : Fragment() {
     private fun hitMainCategoryApi() {
         binding.categoryProgressbar.visibility = View.VISIBLE
 
-        GlobalScope.launch(Dispatchers.Main) {
+       CoroutineScope(Dispatchers.IO).async {
             val call = repo.getMainCategory()
             if (call.isSuccessful) {
                 binding.categoryProgressbar.visibility = View.GONE

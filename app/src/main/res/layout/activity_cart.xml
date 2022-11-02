@@ -36,16 +36,23 @@
                     <TextView
                         android:id="@+id/tvTotalAmount"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="tvTotalAmount" />
-
-                    <Button
-                        android:id="@+id/btPayAmount"
+                        android:text="tvTotalAmount"
+                        android:gravity="center"/>
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="btPay" />
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <Button
+                            android:id="@+id/btPayAmount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="btPay"
+                            android:layout_centerInParent="true"/>
+                    </RelativeLayout>
+
                 </LinearLayout>
             </RelativeLayout>
         </ScrollView>

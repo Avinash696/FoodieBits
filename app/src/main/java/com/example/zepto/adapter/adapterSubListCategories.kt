@@ -11,6 +11,7 @@ import com.example.zepto.viewModel.DetailViewModel
 import com.example.zepto.R
 import com.example.zepto.model.cardItemModel
 import com.example.zepto.model.cardItemWithoutId
+import com.example.zepto.module.Toasty
 import com.example.zepto.ui.activity.SingleTrendingActivity
 import com.squareup.picasso.Picasso
 
@@ -24,7 +25,7 @@ class adapterSubListCategories(
     var cartAmount: ArrayList<Int> = ArrayList()
     var cartImage: ArrayList<Int> = ArrayList()
 
-    //    var cartItem :ArrayList<cardItemModel> = ArrayList()
+        var cartItem :ArrayList<cardItemModel> = ArrayList()
     override fun getCount(): Int {
         return arraydata.size
     }
@@ -57,7 +58,7 @@ class adapterSubListCategories(
 
         //set data
         name.text = data.name
-        discount.text = data.discountPrice.toString()
+        discount.text = data.itemCount.toString()
         Log.d("tiger", "getView: $data")
         Picasso.get().load(data.img).into(itemPic)
 
@@ -78,14 +79,15 @@ class adapterSubListCategories(
 
         btnAdd.setOnClickListener {
             //data send also
-
-            detailViewModel.updateCat(data)
-            Log.d("cartCheck", "getView: ${detailViewModel.arrayCategoryLiveData.value}")
-            Log.d("nameArr", "onBindViewHolder:${data.img}")
-            Toast.makeText(context, "Item Added" + data.img, Toast.LENGTH_SHORT).show()
-            cartName.add(data.name)
-            cartAmount.add(data.Price)
+                Toasty.getToasty(context,"added")
+//            detailViewModel.updateCat(data)
+//            Log.d("cartCheck", "getView: ${detailViewModel.arrayCategoryLiveData.value}")
+//            Log.d("nameArr", "onBindViewHolder:${data.img}")
+//            Toast.makeText(context, "Item Added" + data.img, Toast.LENGTH_SHORT).show()
+//            cartName.add(data.name)
+//            cartAmount.add(data.Price)
 //            cartImage.add(data.img)
+            detailViewModel.setCatItem(data)
         }
         return myView
     }

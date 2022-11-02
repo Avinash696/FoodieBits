@@ -18,40 +18,40 @@ class OrderListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_order_list)
-        populatingOrdersList()
+//        populatingOrdersList()
     }
 
-    private fun populatingOrdersList() {
-
-        val arrayList = ArrayList<orderListModel>()
-//        arrayList.add(orderListModel("Delivered","20 Feb","289.00",R.drawable.order,"Chakki Atta",1)
-        arrayList.add(
-            orderListModel(
-                "Delivered",
-                "20 Feb",
-                "289.00",
-                R.drawable.order.toString(),
-                "Chakki Atta",
-                1
-            )
-        )
-        arrayList.add(
-            orderListModel(
-                "Pending",
-                "17 Feb",
-                "200.00",
-                R.drawable.order.toString(),
-                "Maggi",
-                2
-            )
-        )
-
-        binding.rvOrderedList.layoutManager = LinearLayoutManager(
-            this,
-            LinearLayoutManager.VERTICAL,
-            false
-        )
-        val arrayAdapter = adapterOrderList(arrayList, this)
-        binding.rvOrderedList.adapter = arrayAdapter
-    }
+//    private fun populatingOrdersList() {
+//
+//        val arrayList = ArrayList<orderListModel>()
+////        arrayList.add(orderListModel("Delivered","20 Feb","289.00",R.drawable.order,"Chakki Atta",1)
+//        arrayList.add(
+//            orderListModel(
+//                "Delivered",
+//                "20 Feb",
+//                "289.00",
+//                R.drawable.order.toString(),
+//                "Chakki Atta",
+//                1
+//            )
+//        )
+//        arrayList.add(
+//            orderListModel(
+//                "Pending",
+//                "17 Feb",
+//                "200.00",
+//                R.drawable.order.toString(),
+//                "Maggi",
+//                2
+//            )
+//        )
+//
+//        binding.rvOrderedList.layoutManager = LinearLayoutManager(
+//            this,
+//            LinearLayoutManager.VERTICAL,
+//            false
+//        )
+//        val arrayAdapter = adapterOrderList(arrayList, this)
+//        binding.rvOrderedList.adapter = arrayAdapter
+//    }
 }

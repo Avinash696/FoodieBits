@@ -22,7 +22,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.test.FileUtil
-import com.example.test.aviInterface
+import com.example.test.AviInterface
 import com.example.zepto.Admin.ui.activity.AdminHomeActivity
 import com.example.zepto.Admin.ui.activity.CreateAdminActivity
 import com.example.zepto.R
@@ -123,7 +123,7 @@ class AddUserTestFragment : Fragment() {
     }
 
     private fun getAdminApiData() {
-        val clinet = RetrofitHelper.getClient().create(aviInterface::class.java)
+        val clinet = RetrofitHelper.getClient().create(AviInterface::class.java)
         GlobalScope.launch(Dispatchers.Main) {
             val call = clinet.getRetailerAddUser()
             if (call.isSuccessful)

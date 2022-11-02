@@ -13,7 +13,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.example.test.aviInterface
+import com.example.test.AviInterface
 import com.example.zepto.R
 import com.example.zepto.adapter.adapterItemSubAdmin
 import com.example.zepto.constant.constants
@@ -94,7 +94,7 @@ class AllItemSubAdminActivity : AppCompatActivity() {
     }
 
     private fun hitMainCategoryApi() {
-         val repo = RetrofitHelper.getClient().create(aviInterface::class.java)
+         val repo = RetrofitHelper.getClient().create(AviInterface::class.java)
         GlobalScope.launch {
 //            val call = repo.getMainSubProduct()
             Log.d("var check", "hitMainCategoryApi:${constants.subPRoductId} ")

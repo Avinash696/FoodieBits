@@ -16,9 +16,9 @@ import com.example.zepto.model.mainSubProductResponceModel
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class FiirstFragment(val detailViewModel: DetailViewModel, val body: mainSubProductResponceModel?) :
+class FiirstFragment(val detailViewModel: DetailViewModel,
+                     val body: mainSubProductResponceModel?) :
     Fragment() {
-    // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
     private lateinit var simpleCategories: GridView
@@ -51,8 +51,8 @@ class FiirstFragment(val detailViewModel: DetailViewModel, val body: mainSubProd
         if (body == null) {
 
         } else {
-            for (i in 0 until body!!.subProductImg.size) {
-                val data = body!!.subProductImg[i]
+            for (i in 0 until body.subProductImg.size) {
+                val data = body.subProductImg[i]
                 Log.d("firstFragTest", "populatingData: $data")
                 arrayList.add(
                     cardItemModel(
@@ -66,7 +66,7 @@ class FiirstFragment(val detailViewModel: DetailViewModel, val body: mainSubProd
             }
         }
 
-        val adapter = adapterSubListCategories(requireContext(), arrayList,detailViewModel)
+        val adapter = adapterSubListCategories(requireContext(), arrayList, detailViewModel)
         simpleCategories.adapter = adapter
     }
 }

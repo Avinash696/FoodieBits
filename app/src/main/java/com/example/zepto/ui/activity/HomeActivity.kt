@@ -23,7 +23,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.test.aviInterface
+import com.example.test.AviInterface
 import com.example.zepto.LoginActivity
 import com.example.zepto.R
 import com.example.zepto.adapter.adapterBanner
@@ -34,6 +34,7 @@ import com.example.zepto.constant.PermissionUtils
 import com.example.zepto.databinding.ActivityHomeBinding
 import com.example.zepto.db.RetrofitHelper
 import com.example.zepto.model.*
+import com.example.zepto.module.Toasty
 import com.example.zepto.viewModel.ItemCountViewModel
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
@@ -45,6 +46,8 @@ import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import okhttp3.MediaType
+import okhttp3.RequestBody
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -52,7 +55,6 @@ import kotlin.collections.ArrayList
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
     private lateinit var rvTrending: RecyclerView
-    private lateinit var simpleCategories: GridView
     private lateinit var bottomNavHome: BottomNavigationView
     private lateinit var mainCateDialogData: mainCategoryModel
     private lateinit var trendingCateDialogData: trendingResponceModel
@@ -63,9 +65,11 @@ class HomeActivity : AppCompatActivity() {
     lateinit var appBar: Toolbar
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navView: NavigationView
-    private var currentUser: String = "avi"
 
-    val repo = RetrofitHelper.getClient().create(aviInterface::class.java)
+    //    private var currentUser: String = "avi"
+    private lateinit var currentUserLogin: String
+
+    val repo = RetrofitHelper.getClient().create(AviInterface::class.java)
 
     //cart count
     val count = 0
@@ -74,7 +78,10 @@ class HomeActivity : AppCompatActivity() {
     var intentName: ArrayList<String> = ArrayList()
     var intentAmount: ArrayList<Int> = ArrayList()
     var intentImg: ArrayList<String> = ArrayList()
-        //for trending
+    //send parsable trending item
+    var intentItemTrending = ArrayList<SubCategoryImgX>()
+
+    //for trending
     val tempName = ArrayList<String>()
     val tempAmount = ArrayList<Int>()
     val tempImg = ArrayList<String>()
@@ -84,8 +91,12 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
-
+        binding.shimmerViewContainer?.startShimmer()
         init()
+        val homeName = intent
+        currentUserLogin = homeName.getStringExtra("homeName").toString()
+        Log.d("tempCurrentUser", "onCreate: $currentUserLogin")
+
         showImg()
         hitMainCategoryApi()
 
@@ -95,31 +106,52 @@ class HomeActivity : AppCompatActivity() {
         val locationRequest = LocationRequest().setInterval(2000).setFastestInterval(2000)
             .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
         //viewModel
+//        countViewModel = ViewModelProvider(this, ItemCountViewModelFactory(cartResult()))[ItemCountViewModel::class.java]
         countViewModel = ViewModelProvider(this)[ItemCountViewModel::class.java]
 
         getTrendingItem()
 
-        countViewModel.itemTrendingLiveData.observe(this){
-            for(item in it){
-                tempName.add(item.name)
-                tempAmount.add(item.Price)
-                tempImg.add(item.img)
+//        countViewModel.itemTrendingLiveData.observe(this) {
+//            for (item in it) {
+//                tempName.add(item.productName)
+//                tempAmount.add(Integer.parseInt(item.priceShow))
+//                tempImg.add(item.productImg)
+//                hitPostCartTrending(
+//                    item.productName,
+//                    Integer.parseInt(item.priceShow),
+//                    item.productImg
+//                )
+//            }
+//            binding.tvCartCount.text = tempName.size.toString()
+//        }
+
+        countViewModel.itemLiveCart.observe(this){
+            Log.d("checkYrCart", "onCreate: ${it}")
+            for (item in it) {
+                tempName.add(item.productName)
+                tempAmount.add(Integer.parseInt(item.priceShow))
+                tempImg.add(item.productImg)
+
+//                hitPostCartTrending(
+//                    item.productName,
+//                    Integer.parseInt(item.priceShow),
+//                    item.productImg
+//                )
 
             }
-//            Log.d("goblin", "onCreate: new Array  $tempName")
-//            intentName.addAll(tempName)
-//            Log.d("goblin", "now IntentName $intentName")
-            binding.tvCartCount.text = tempName.size.toString()
+            Log.d("checkYrCart", "size check: ${it.size}")
+            intentItemTrending.addAll(it)
+            binding.tvCartCount.text = it.size.toString()
         }
         //cart
         binding.llCart.setOnClickListener {
-
             val intent = Intent(this, CartActivity::class.java)
-            intent.putExtra("nameArray", tempName)
-            intent.putExtra("amountArray", tempAmount)
-            intent.putExtra("imgArray", tempImg)
-            Log.d("goblin", "onCreate Cart Selected:$intentName $intentAmount $intentImg ")
-            Log.d("goblin", "onCreate Cart Selected:$tempName $tempAmount $tempImg ")
+//            intent.putExtra("nameArray", tempName)
+//            intent.putExtra("amountArray", tempAmount)
+//            intent.putExtra("imgArray", tempImg)
+//            intent.putExtra("tempCurrentUser", currentUserLogin)
+            Log.d("rainWeight", "home: $intentItemTrending")
+            intent.putExtra("cartTrendingKey",intentItemTrending)
             startActivity(intent)
         }
 
@@ -205,9 +237,7 @@ class HomeActivity : AppCompatActivity() {
         appBar = binding.appBar
         drawerLayout = binding.mainDrawable
         rvTrending = binding.rvTrending
-//      simpleCategories = binding.simpleView
         bottomNavHome = binding.bottomNavigation
-
     }
 
     private fun bottomNav() {
@@ -249,14 +279,22 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun tendingItem(data: trendingResponceModel?) {
-        val arrayList = ArrayList<cardItemModel>()
+        val arrayList = ArrayList<CategoryImg>()
         for (i in 0 until data!!.subCategoryImg.size) {
             val dumy = data.subCategoryImg[i]
-            Log.d("instantDelete", "tendingItem: ${dumy.productImg}")
+            Log.d("instantDelete", "tendingItem: ${Gson().toJson(data)}")
             arrayList.add(
-                cardItemModel(
-                    dumy.id, dumy.productImg, dumy.productName,
-                    Integer.parseInt(dumy.discountedPrice), Integer.parseInt(dumy.priceShow)
+//                cardItemModel(
+//                    dumy.id, dumy.productImg, dumy.productName,
+//                    Integer.parseInt(dumy.discountedPrice), Integer.parseInt(dumy.priceShow)
+//                )
+                CategoryImg(
+                    dumy.productImg,
+                    dumy.productName,
+                    1,
+                    dumy.id,
+                    dumy.discountedPrice,
+                    dumy.priceShow
                 )
             )
         }
@@ -266,8 +304,9 @@ class HomeActivity : AppCompatActivity() {
                 LinearLayoutManager.HORIZONTAL,
                 false
             )
-            val arrayAdapter = adapterTrending(arrayList, applicationContext, countViewModel)
+            val arrayAdapter = adapterTrending(data.subCategoryImg, applicationContext, countViewModel)
             rvTrending.adapter = arrayAdapter
+            binding.shimmerViewContainer?.hideShimmer()
         }
     }
 
@@ -333,13 +372,20 @@ class HomeActivity : AppCompatActivity() {
             Log.d("instantDelete", "getView: ${dumy.categoryImg}")
             arrayList.add(
 
-                CategoryImg(dumy.categoryImg, dumy.categoryName, dumy.categoryStatus, dumy.id)
+                CategoryImg(
+                    dumy.categoryImg,
+                    dumy.categoryName,
+                    dumy.categoryStatus,
+                    dumy.id,
+                    dumy.discountPrice,
+                    dumy.price
+                )
             )
         }
 
         GlobalScope.launch(Dispatchers.Main) {
 
-            val adapter = adapterCategoryHome(applicationContext, arrayList)
+            val adapter = adapterCategoryHome(intentItemTrending,applicationContext, arrayList, currentUserLogin)
             simpleCategories.adapter = adapter
         }
 
@@ -421,16 +467,18 @@ class HomeActivity : AppCompatActivity() {
                         dumy.categoryImg,
                         dumy.categoryName,
                         dumy.categoryStatus,
-                        dumy.id
+                        dumy.id,
+                        "888",
+                        "989"
                     )
                 )
             } else {
-                Log.d("rawt", "populatingData:${dumy.categoryStatus}  ")
+                Log.d("rawt", "populatingData:${data.categoryImg}  ")
             }
         }
 
         runOnUiThread {
-            val adapter = adapterCategoryHome(this, arrayData)
+            val adapter = adapterCategoryHome(intentItemTrending,this, arrayData, currentUserLogin)
             binding.rvCategoryHome!!.adapter = adapter
         }
     }
@@ -455,6 +503,7 @@ class HomeActivity : AppCompatActivity() {
                 )
             }
         }
+        updateTotal(currentUserLogin)
     }
 
     private fun setUpLocationListener() {
@@ -470,13 +519,6 @@ class HomeActivity : AppCompatActivity() {
                 Manifest.permission.ACCESS_COARSE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED
         ) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return
         }
         fusedLocationProviderClient.requestLocationUpdates(
@@ -485,8 +527,7 @@ class HomeActivity : AppCompatActivity() {
                 override fun onLocationResult(locationResult: LocationResult) {
                     super.onLocationResult(locationResult)
                     for (location in locationResult.locations) {
-//                        latTextView.text = location.latitude.toString()
-//                        lngTextView.text = location.longitude.toString()
+
                         Log.d("kk", "onLocationResult:${location.latitude} ${location.longitude} ")
 
                         val geoCoder = Geocoder(this@HomeActivity, Locale.getDefault())
@@ -537,5 +578,35 @@ class HomeActivity : AppCompatActivity() {
         startActivity(Intent(this, LoginActivity::class.java))
         finish()
         super.onBackPressed()
+    }
+
+    private fun updateTotal(action: String) {
+
+        var reto = RetrofitHelper.getClient().create(AviInterface::class.java)
+        GlobalScope.launch(Dispatchers.Main) {
+            val call = reto.getCartDetail(action)
+            if (call.isSuccessful) {
+                binding.tvCartCount.text = call.body()!!.categoryImg.size.toString()
+            } else
+                Toasty.getToasty(applicationContext, "${call.errorBody()}")
+        }
+    }
+
+    private fun hitPostCartTrending(name: String, price: Int, img: String) {
+
+        val currentUser = RequestBody.create(MediaType.parse("text/plain"), currentUserLogin)
+        val itemNo = RequestBody.create(MediaType.parse("text/plain"), price.toString())
+        val cartItem = RequestBody.create(MediaType.parse("text/plain"), name)
+        val cartPrice = RequestBody.create(MediaType.parse("text/plain"), price.toString())
+        val itemImgUrl = RequestBody.create(MediaType.parse("text/plain"), img)
+
+        val retro = RetrofitHelper.getClient().create(AviInterface::class.java)
+        GlobalScope.launch(Dispatchers.Main) {
+            val call = retro.postCartDetail(currentUser, cartItem, itemNo, cartPrice, itemImgUrl)
+            if (call.isSuccessful) {
+                Toasty.getToasty(applicationContext, call.body()!!.message)
+            } else
+                Toasty.getToasty(applicationContext, "${call.errorBody()!!}")
+        }
     }
 }

@@ -1,107 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data>
+<data>
 
-    </data>
+</data>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:orientation="horizontal"
+    android:weightSum="3"
+    android:background="@drawable/border_red">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/border_layout"
-        android:padding="4dp"
-        android:layout_margin="4dp">
+        android:layout_height="match_parent"
+        android:layout_weight="1">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivItemDelivered"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:src="@drawable/order" />
+
+        <TextView
+            android:id="@+id/tvItemNameDelived"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="2">
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:text="Chakki Atta 10 kg"
+            android:textStyle="bold" />
+    </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Order Status"
-                android:layout_weight="1"
-                android:layout_gravity="center" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
 
-            <TextView
-                android:id="@+id/tvOrderQuantity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:text="Order Total(1 Item)" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-
-            <TextView
-                android:id="@+id/tvDeliverdDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Delivered,20 Feb"
-                android:layout_weight="1"
-                android:layout_gravity="center" />
-
-            <TextView
-                android:id="@+id/tvDeliverdAmount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Rs 289.00"
-                android:layout_weight="1"
-                android:layout_gravity="center" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_centerInParent="true"
+            app:cardCornerRadius="10dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/pink"
+                android:padding="4dp">
+
 
                 <ImageView
-                    android:id="@+id/ivItemDelivered"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/order"
-                    android:layout_gravity="center" />
+                    android:id="@+id/btnSub"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/minus"
+                    android:text="-"
+                    app:tint="@color/white" />
 
                 <TextView
-                    android:id="@+id/tvItemNameDelived"
+                    android:id="@+id/tvItemQuantity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Chakki Atta 10 kg" />
-            </LinearLayout>
-        </LinearLayout>
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="3dp"
+                    android:text="0"
+                    android:textSize="15sp"
+                    app:tint="@color/white" />
 
-        <LinearLayout
+                <ImageView
+                    android:id="@+id/btnAdd"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/add"
+                    android:text="+"
+                    app:tint="@color/white" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tvDeliverdAmount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2">
-
-<!--            <Button-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="View Details"-->
-<!--                android:layout_weight="1"-->
-<!--                android:layout_margin="20dp"-->
-<!--                android:layout_gravity="center" />-->
-
-<!--            <Button-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Need Help"-->
-<!--                android:layout_margin="20dp"-->
-<!--                android:layout_weight="1"-->
-<!--                android:layout_gravity="center" />-->
-        </LinearLayout>
-    </LinearLayout>
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Rs 289.00"
+            android:textColor="@color/black" />
+    </RelativeLayout>
+</LinearLayout>
 </layout>
+

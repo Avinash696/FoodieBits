@@ -15,6 +15,7 @@
 
     <application
         android:allowBackup="true"
+        android:name=".Application.application"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/icon"
@@ -27,17 +28,24 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name="com.example.test.CustomFilterActivity"
-            android:exported="true" >
+            android:name=".user.ui.activity.MainPageActivity"
+            android:exported="true"
+            android:theme="@style/MyCustomHomeScene">
 
         </activity>
-<!--        <activity-->
-<!--            android:name=".WindowWebActivity"-->
-<!--            android:exported="true"></activity>-->
-<!--        <activity-->
-<!--            android:name=".JustTestItActivity"-->
-<!--            android:exported="true"-->
-<!--            android:parentActivityName=".ui.activity.HomeActivity"></activity>-->
+        <activity
+            android:name="com.example.test.ApiHitTestActivity"
+            android:exported="true"/>
+        <!-- <activity -->
+        <!-- android:name=".CustomFilterActivity" -->
+        <!-- android:exported="true"></activity> -->
+        <!-- <activity -->
+        <!-- android:name=".WindowWebActivity" -->
+        <!-- android:exported="true"></activity> -->
+        <!-- <activity -->
+        <!-- android:name=".JustTestItActivity" -->
+        <!-- android:exported="true" -->
+        <!-- android:parentActivityName=".ui.activity.HomeActivity"></activity> -->
         <activity
             android:name=".ui.activity.AddDeliveryAddressActivity"
             android:exported="true"
@@ -69,13 +77,11 @@
         <activity
             android:name=".ui.activity.AddProductFormActivity"
             android:exported="false"
-
-            android:parentActivityName=".ui.activity.AllItemSubAdminActivity" />
-<!--        <activity-->
-<!--            android:name=".ui.activity.AddProductFormActivity"-->
-<!--            android:exported="false"-->
-<!--            android:launchMode="singleTask"-->
-<!--            android:parentActivityName=".ui.activity.AllItemSubAdminActivity" />-->
+            android:parentActivityName=".ui.activity.AllItemSubAdminActivity" /> <!-- <activity -->
+        <!-- android:name=".ui.activity.AddProductFormActivity" -->
+        <!-- android:exported="false" -->
+        <!-- android:launchMode="singleTask" -->
+        <!-- android:parentActivityName=".ui.activity.AllItemSubAdminActivity" /> -->
         <activity
             android:name=".ui.activity.AllItemSubAdminActivity"
             android:exported="false"
@@ -99,7 +105,6 @@
         <activity
             android:name=".ui.activity.CartActivity"
             android:exported="false" />
-
         <activity
             android:name=".ui.activity.BottomBannerActivity"
             android:exported="false" />
@@ -158,17 +163,15 @@
         <activity
             android:name=".ui.activity.HomeActivity"
             android:exported="true"
-            android:theme="@style/MyCustomHomeScene">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/MyCustomHomeScene"/>
         <activity
             android:name=".LoginActivity"
             android:exported="true"
             android:theme="@style/MyAdminCustom">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

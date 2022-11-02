@@ -1,45 +1,64 @@
 package com.example.zepto.viewModel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.zepto.model.SubCategoryImgX
 import com.example.zepto.model.cardItemModel
+import com.example.zepto.model.cartCommonModel
 
 class DetailViewModel : ViewModel() {
-//    var countMutableLiveData = MutableLiveData<Int>()
-//    var arrayNameDetail = MutableLiveData<ArrayList<String>>()
-//    var arrayAmountDetail = MutableLiveData<ArrayList<Int>>()
-//    var arrayImageDetail = MutableLiveData<ArrayList<Int>>()
-//    var count: Int = 0
+//    private var arrayCategory  = MutableLiveData<ArrayList<cardItemModel>>()
 //
-//    fun itemCountInc() {
-//        count++
-//    }
+//    val arrayCategoryLiveData  :LiveData<ArrayList<cardItemModel>>
+//    get() = arrayCategory
 //
-//    fun itemCountDec() {
-//        count--
-//    }
-//
-//    fun setArrayData() {}
-//    //called in adapterSubList
-//    fun setCount() {
-//        countMutableLiveData.value = count
-//    }
-//
-//    fun updatingCount(){
-//        count = countMutableLiveData.value!!
+//    //test
+//    var arrayCat = ArrayList<cardItemModel>()
+//    fun updateCat(item:cardItemModel){
+//        arrayCat.clear()
+//        arrayCat.add(item)
+//        arrayCategory.postValue(arrayCat)
 //    }
 
-    private var arrayCategory  = MutableLiveData<ArrayList<cardItemModel>>()
+    private var arrayCategory = ArrayList<cardItemModel>()
+    private val arrayCategoryLiveData = MutableLiveData<ArrayList<cardItemModel>>()
+    var arrayCatData: LiveData<ArrayList<cardItemModel>> = arrayCategoryLiveData
 
-    val arrayCategoryLiveData  :LiveData<ArrayList<cardItemModel>>
-    get() = arrayCategory
+    fun setCatItem(item: cardItemModel) {
+        arrayCategory.add(item)
+        arrayCategoryLiveData.postValue(arrayCategory)
+    }
 
-    //test
-    var arrayCat = ArrayList<cardItemModel>()
-    fun updateCat(item:cardItemModel){
-        arrayCat.clear()
-        arrayCat.add(item)
-        arrayCategory.postValue(arrayCat)
+    private var arrayTrending = ArrayList<SubCategoryImgX>()
+    private val arrayTrendingLiveData = MutableLiveData<ArrayList<SubCategoryImgX>>()
+    var arrayTrendingData: LiveData<ArrayList<SubCategoryImgX>> = arrayTrendingLiveData
+
+    fun setTrending(data: ArrayList<SubCategoryImgX>) {
+        arrayTrending.addAll(data)
+        arrayTrendingLiveData.postValue(data)
+    }
+
+    //combine both
+    private val arrayCombine = ArrayList<cartCommonModel>()
+    private val arrayMutableLiveData = MutableLiveData<ArrayList<cartCommonModel>>()
+    val arrayLiveCommonData: LiveData<ArrayList<cartCommonModel>> = arrayMutableLiveData
+    fun combineBoth() {
+        for (i in arrayCategory) {
+            arrayCombine.add(cartCommonModel(i.id, i.img, i.name, i.itemCount, i.Price))
+        }
+
+        for (j in arrayTrending)
+            arrayCombine.add(
+                cartCommonModel(
+                    j.id,
+                    j.productImg,
+                    j.productName,
+                    Integer.parseInt(j.productQty),
+                    Integer.parseInt(j.priceShow)
+                )
+            )
+        arrayMutableLiveData.postValue(arrayCombine)
     }
 }

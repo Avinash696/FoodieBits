@@ -2,8 +2,10 @@ package com.example.zepto.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import com.example.zepto.Repositary.Repositary
 
-class CartViewModel : ViewModel() {
+//class CartViewModel(val repositary: Repositary) : ViewModel() {
+class CartViewModel() : ViewModel() {
 
      val  cartName  = ArrayList<String>()
      val  cartAmount  = ArrayList<Int>()

@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.zepto.R
 import com.example.zepto.databinding.RowCategoriesAdminBinding
 import com.example.zepto.model.CategoryImg
+import com.example.zepto.model.SubCategoryImgX
 import com.example.zepto.model.cardItemWithoutId
 import com.example.zepto.ui.activity.DetailActivity
 import com.example.zepto.ui.activity.FaqsActivity
@@ -22,8 +23,10 @@ import com.example.zepto.ui.activity.SubListSubAdminActivity
 import com.squareup.picasso.Picasso
 
 class adapterCategoryHome(
+    private val intentItemTrending:ArrayList<SubCategoryImgX>,
     private val context: Context,
-    private val arraydata: ArrayList<CategoryImg>
+    private val arraydata: ArrayList<CategoryImg>,
+    private val tempCurrentUser:String
 ) :
     BaseAdapter() {
 
@@ -64,12 +67,15 @@ class adapterCategoryHome(
 //        else {
 //            myView.visibility = View.GONE
 //        }
-
+        Log.d("myCustomTrendingItem", "getView:$intentItemTrending ")
         //temp icon click screen forward move
         myView.setOnClickListener {
             Toast.makeText(context, data.id, Toast.LENGTH_SHORT).show()
             val intent = Intent(context, DetailActivity::class.java)
             intent.putExtra("categoryIdFlowKey", data.id)
+            intent.putExtra("currentUserLogin", tempCurrentUser)
+            intent.putExtra("trendingItemArrayKey",intentItemTrending)
+            Log.d("mobiTestLog", "HomeAdapter: $intentItemTrending ${intentItemTrending?.size}")
             context.startActivity(intent)
         }
         return myView

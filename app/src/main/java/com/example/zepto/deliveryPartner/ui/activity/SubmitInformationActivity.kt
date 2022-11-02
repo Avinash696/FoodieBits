@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import com.example.test.FileUtil
-import com.example.test.aviInterface
+import com.example.test.AviInterface
 import com.example.zepto.R
 import com.example.zepto.databinding.ActivitySubmitInformationBinding
 import com.example.zepto.db.RetrofitHelper
@@ -48,7 +48,7 @@ class SubmitInformationActivity : AppCompatActivity() {
     private var filePathAdhar: File? = null
     private lateinit var stVechile: String
     private lateinit var binding: ActivitySubmitInformationBinding
-    val retro = RetrofitHelper.getClient().create(aviInterface::class.java)
+    val retro = RetrofitHelper.getClient().create(AviInterface::class.java)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_submit_information)

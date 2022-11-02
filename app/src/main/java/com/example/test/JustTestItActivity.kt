@@ -43,7 +43,6 @@ class JustTestItActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 
         filePath = FileUtil.from(this, data!!.data)
-        Log.d("Reqmaina", "onActivityResult:${data.data} ")
         val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, data.data)
         ivImgFormUpTEst.setImageBitmap(bitmap)
 
@@ -68,7 +67,7 @@ class JustTestItActivity : AppCompatActivity() {
         val addProductDescription = RequestBody.create(MediaType.parse("text/plain"), "bbb")
 
 
-        val repo = RetrofitHelper.getClient().create(aviInterface::class.java)
+        val repo = RetrofitHelper.getClient().create(AviInterface::class.java)
         GlobalScope.launch(Dispatchers.IO) {
             val call = repo.postMainSubProduct(
                 addProductImg,

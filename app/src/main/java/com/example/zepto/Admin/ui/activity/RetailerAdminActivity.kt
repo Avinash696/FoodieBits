@@ -33,7 +33,6 @@ class RetailerAdminActivity : AppCompatActivity() {
         val titleImg = intent.getStringExtra("adminImg")!!
 
         val customCreatedUrl = "http://56testing.club/imgFolder/uploads/wlAdmin/$titleImg"
-        Log.d("adminTitleCheck", "onCreate: $customCreatedUrl")
         binding.appBar.title = title
         //action
         Picasso.get().load(customCreatedUrl).into(binding.ivTitleLogoRetailer)
@@ -51,12 +50,10 @@ class RetailerAdminActivity : AppCompatActivity() {
                 }
                 R.id.menu_SubadminAddUser -> {
                     changeFragment(AddUserTestFragment())
-                    Log.d("myAdmin", "clicked Add User")
                     binding.dlAdminHome.close()
                     return@setNavigationItemSelectedListener true
                 }
                 R.id.menu_SubadminCategories -> {
-                    Log.d("myAdmin", "clicked Cat")
                     changeFragment(CategroiesFragment())
                     binding.dlAdminHome.close()
                     return@setNavigationItemSelectedListener true

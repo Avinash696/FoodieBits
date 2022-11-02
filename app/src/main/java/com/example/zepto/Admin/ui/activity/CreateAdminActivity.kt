@@ -9,7 +9,7 @@ import android.view.View
 import android.widget.*
 import androidx.databinding.DataBindingUtil
 import com.example.test.FileUtil
-import com.example.test.aviInterface
+import com.example.test.AviInterface
 import com.example.zepto.R
 import com.example.zepto.databinding.ActivityCreateAdminBinding
 import com.example.zepto.db.RetrofitHelper
@@ -45,8 +45,6 @@ class CreateAdminActivity : AppCompatActivity() {
         val intentTitle = intent
          titleLoginUser = intentTitle.getStringExtra("adminTitleCheck")!!
 
-        Log.d("curentUSer", "onCreate Adin : $titleLoginUser")
-
         //action bar
         supportActionBar!!.title = "Create WlAdmin"
         supportActionBar!!.setBackgroundDrawable(resources.getDrawable(R.color.blue))
@@ -72,8 +70,6 @@ class CreateAdminActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == 100 && (data != null)) {
             filePath = FileUtil.from(this, data.data)
-
-            Log.d("newAct", "onActivityResult:$filePath ")
 
             val uri = data.data
             val bitmap =
@@ -113,11 +109,8 @@ class CreateAdminActivity : AppCompatActivity() {
     }
 
     private fun createUser() {
-        Log.d("url", "dialogCreateUser above:$filePath ")
         val requestBody = RequestBody.create(MediaType.parse("image/*"), filePath!!)
         val parts = MultipartBody.Part.createFormData("imgFile", filePath!!.name, requestBody)
-        Log.d("rawat", "dialogCreateUser: $parts")
-        Log.d("url", "dialogCreateUser below:$filePath  ${parts.body()}")
         val tempName =
             RequestBody.create(
                 MediaType.parse("text/plain"),
@@ -177,12 +170,9 @@ class CreateAdminActivity : AppCompatActivity() {
                 titleLoginUser
             )
 
-        Log.d("customid", "dialogCreateUser: $id")
-
         //hit api now
-        val client = RetrofitHelper.getClient().create(aviInterface::class.java)
-        Log.d("postdialog", "createUser: $tempId $tempRole $tempName $tempPassword $tempEmail $tempMobileNo $tempAddress " +
-                "$tempAdhar $tempPanCard $tempShopReg")
+        val client = RetrofitHelper.getClient().create(AviInterface::class.java)
+
         GlobalScope.launch {
             val call = client.createRetailer(
                 tempId,
@@ -198,12 +188,9 @@ class CreateAdminActivity : AppCompatActivity() {
                 parts,
                 tempWhoCreated
             )
-            Log.d("rawat", "dialogCreateUser: ")
             if (call.isSuccessful) {
-                Log.d("postdialog", "dialogCreateUser: Success ${call.body()!!.message}")
                 makeToast(true)
             } else {
-                Log.d("postdialog", "dialogCreateUser: Error  ${call.body()!!.error}")
                 makeToast(false)
             }
         }

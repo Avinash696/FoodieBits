@@ -15,7 +15,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.test.FileUtil
-import com.example.test.aviInterface
+import com.example.test.AviInterface
 import com.example.zepto.R
 import com.example.zepto.adapter.profileAddAddressAdapter
 import com.example.zepto.constant.constants.choiceInsertProfileFlag
@@ -168,7 +168,7 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun getSavedAddress() {
-        val repo = RetrofitHelper.getClient().create(aviInterface::class.java)
+        val repo = RetrofitHelper.getClient().create(AviInterface::class.java)
         GlobalScope.launch {
             val call = repo.getUserAddress()
             if (call.isSuccessful)

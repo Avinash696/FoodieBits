@@ -37,7 +37,8 @@
                         android:id="@+id/ivCateItemPic"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:layout_gravity="center" />
+                        android:layout_gravity="center"
+                        android:src="@drawable/add"/>
 
                     <TextView
                         android:id="@+id/tvCateItemName"

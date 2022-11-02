@@ -10,7 +10,7 @@ import android.view.View
 import android.widget.*
 import androidx.databinding.DataBindingUtil
 import com.example.test.FileUtil
-import com.example.test.aviInterface
+import com.example.test.AviInterface
 import com.example.zepto.R
 import com.example.zepto.adapter.adapterSubListSubAdmin
 
@@ -40,7 +40,7 @@ class SubListSubAdminActivity : AppCompatActivity() {
     private lateinit var dialog: Dialog
     var arrayList = ArrayList<cardItemModel>()
     private lateinit var adapter: adapterSubListSubAdmin
-    private val repo = RetrofitHelper.getClient().create(aviInterface::class.java)
+    private val repo = RetrofitHelper.getClient().create(AviInterface::class.java)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

@@ -84,7 +84,7 @@ class aviActivity : AppCompatActivity() {
         val someData =
             RequestBody.create(MediaType.parse("text/plain"), binding.editTextTags.text.toString())
         Log.d("somedata", "hit:$someData $parts")
-        val retrofit = RetrofitHelper.getClient().create(aviInterface::class.java)
+        val retrofit = RetrofitHelper.getClient().create(AviInterface::class.java)
 
         GlobalScope.launch(Dispatchers.Main) {
             val call = retrofit.uploadUrImg(someData, parts)

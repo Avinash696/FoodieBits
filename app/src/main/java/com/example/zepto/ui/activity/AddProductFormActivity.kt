@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.databinding.DataBindingUtil
 import com.example.test.FileUtil
-import com.example.test.aviInterface
+import com.example.test.AviInterface
 import com.example.zepto.R
 import com.example.zepto.databinding.ActivityAddProductFormBinding
 import com.example.zepto.db.RetrofitHelper
@@ -112,7 +112,7 @@ class AddProductFormActivity : AppCompatActivity() {
         )
 
 
-        val repo = RetrofitHelper.getClient().create(aviInterface::class.java)
+        val repo = RetrofitHelper.getClient().create(AviInterface::class.java)
         GlobalScope.launch(Dispatchers.IO) {
             val call = repo.postMainSubProduct(
                 parts,

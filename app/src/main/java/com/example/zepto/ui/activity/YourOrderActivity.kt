@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import com.example.test.aviInterface
+import com.example.test.AviInterface
 import com.example.zepto.R
 import com.example.zepto.databinding.ActivityYourOrderBinding
 import com.example.zepto.db.RetrofitHelper
@@ -70,7 +70,7 @@ class YourOrderActivity : AppCompatActivity() {
 
         val item = ResponseBody.create(MediaType.parse("text/plain"),"biscuit$rand")
         val type = ResponseBody.create(MediaType.parse("text/plain"),"COD$rand")
-        val retro = RetrofitHelper.getClient().create(aviInterface::class.java)
+        val retro = RetrofitHelper.getClient().create(AviInterface::class.java)
         GlobalScope.launch {
             val call = retro.postOrderedPlaced(item,type)
             if(call.isSuccessful)

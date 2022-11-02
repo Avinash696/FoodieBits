@@ -9,7 +9,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
-import com.example.test.aviInterface
+import com.example.test.AviInterface
 import com.example.zepto.R
 import com.example.zepto.databinding.OrderHistoryBinding
 import com.example.zepto.databinding.RowCategoriesAdminBinding
@@ -100,7 +100,7 @@ class recyclerAdapterCategories(
     @RequiresApi(Build.VERSION_CODES.M)
     fun updateStatus(data :CategoryImg, counter:Int){
         Log.d("fewSecond", "updateStatus: ${data.id}  $counter")
-        val client = RetrofitHelper.getClient().create(aviInterface::class.java)
+        val client = RetrofitHelper.getClient().create(AviInterface::class.java)
         val status = RequestBody.create(MediaType.parse("text/plain"), counter.toString())
         val id = RequestBody.create(MediaType.parse("text/plain"), data.id)
         GlobalScope.launch(Dispatchers.IO) {

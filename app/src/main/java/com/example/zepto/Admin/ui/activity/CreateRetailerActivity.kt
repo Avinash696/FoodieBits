@@ -8,7 +8,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.example.test.FileUtil
-import com.example.test.aviInterface
+import com.example.test.AviInterface
 import com.example.zepto.R
 import com.example.zepto.databinding.ActivityCreateRetailerBinding
 import com.example.zepto.db.RetrofitHelper
@@ -133,7 +133,7 @@ class CreateRetailerActivity : AppCompatActivity() {
         Log.d("customid", "dialogCreateRtailer: $id")
 
         //hit api now
-        val client = RetrofitHelper.getClient().create(aviInterface::class.java)
+        val client = RetrofitHelper.getClient().create(AviInterface::class.java)
         Log.d("postdialog", "createRtailer: $tempId $tempRole $tempName $tempPassword $tempEmail $tempMobileNo $tempAddress " +
                 "$tempAdhar $tempPanCard $tempShopReg")
         GlobalScope.launch {

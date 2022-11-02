@@ -54,13 +54,13 @@ class adapterDashboard(
 
         //set data
         name.text =data.name
-        discount.text =data.discountPrice.toString()
+        discount.text =data.itemCount.toString()
         itemPic.setImageResource(data.img)
 //        Picasso.get().load("http://56testing.club//imgFolder/uploads/admins/${data.img}").into(itemPic)
         //temp icon click screen forward move
         myView.setOnClickListener {
 //            val intent = Intent(context, SingleTrendingActivity::class.java)
-//            Log.d("ttt", "onBindViewHolder:${data.Price} ${data.discount}  ${data.discountPrice}")
+//            Log.d("ttt", "onBindViewHolder:${data.Price} ${data.discount}  ${data.itemCount}")
 //            context.startActivity(intent)
             Toast.makeText(context, "$name", Toast.LENGTH_SHORT).show()
         }
