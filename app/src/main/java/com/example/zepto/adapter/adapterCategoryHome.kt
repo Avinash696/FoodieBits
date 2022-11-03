@@ -67,10 +67,10 @@ class adapterCategoryHome(
 //        else {
 //            myView.visibility = View.GONE
 //        }
-        Log.d("myCustomTrendingItem", "getView:$intentItemTrending ")
         //temp icon click screen forward move
         myView.setOnClickListener {
             Toast.makeText(context, data.id, Toast.LENGTH_SHORT).show()
+            Log.d("myCustomTrendingItem", "getView:$intentItemTrending ")
             val intent = Intent(context, DetailActivity::class.java)
             intent.putExtra("categoryIdFlowKey", data.id)
             intent.putExtra("currentUserLogin", tempCurrentUser)

@@ -39,66 +39,49 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var bottomNavHome: BottomNavigationView
     private lateinit var detailViewModel: DetailViewModel
     var categoryIdFlowKey: Int = 0
-    var tempCatArrayIntent = ArrayList<cardItemModel>()
-
-    //intent send data 3 var
-    var intentName: ArrayList<String> = ArrayList<String>()
-    var intentAmount: ArrayList<Int> = ArrayList<Int>()
-    var intentImg: ArrayList<String> = ArrayList<String>()
-    var detailItem = ArrayList<cardItemModel>()
+    var categoryItem = ArrayList<cardItemModel>()
     var trendingItem = ArrayList<SubCategoryImgX>()
-    val commonCart =ArrayList<cartCommonModel>()
+    val commonCart = ArrayList<cartCommonModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_detail)
-//        changeFragment(SecondFragment(detailViewModel))
-//        changeFragment(MapsFragment(detailViewModel))
         detailViewModel = ViewModelProvider(this)[DetailViewModel::class.java]
-        // count update
-//        detailViewModel.arrayCategoryLiveData.observe(this) {
-//            tempCatArrayIntent.addAll(it)
-//
-//            for (item in it) {
-////                detailItem.add(item)
-//                intentName.add(item.name)
-//                intentAmount.add(item.Price)
-//                intentImg.add(item.img)
-//                hitPostCartTrending(item.name, item.Price, item.img)
-//                updateTotal(currentUserLogin)
-//            }
-//        }
 
         val receiveIntent = intent
-//        val arrayTrendIntent = receiveIntent.getStringArrayExtra("trendingItemArrayKey")
-        val arrayTrendIntent = receiveIntent.getParcelableArrayListExtra<SubCategoryImgX>("trendingItemArrayKey")
+        val arrayTrendIntent =
+            receiveIntent.getParcelableArrayListExtra<SubCategoryImgX>("trendingItemArrayKey")
 
-        if(arrayTrendIntent != null )
-        detailViewModel.setTrending(arrayTrendIntent)
+        if (arrayTrendIntent != null)
+            detailViewModel.setTrending(arrayTrendIntent)
 
-        detailViewModel.arrayCatData.observe(this){
-            Log.d("foodieType", "cart: $it  ${it.size}")
-            detailItem.addAll(it)
+        detailViewModel.arrayCatData.observe(this) {
+            Log.d("foodieType", "category: ${it}  $arrayTrendIntent")
+//            detailViewModel.combineBoth(it, arrayTrendIntent!!)
+            setArrayVar(it)
         }
-        detailViewModel.arrayTrendingData.observe(this){
-            Log.d("foodieType", "trending:   $it")
-            trendingItem.addAll(it)
-        }
+        Log.d("foodieType", "onCreate: CatCheck $categoryItem ${detailViewModel.arrayCategory}")
+        trendingItem.addAll(arrayTrendIntent!!)
 
-        if(detailItem != null && trendingItem != null){
-            for (item in detailItem)
-//            commonCart.add(cartCommonModel(item.id,item.img,item.name,item.itemCount,item.Price))
-                Log.d("mobiTestLog", "detailItem  $detailItem")
+        if (categoryItem != null && trendingItem != null) {
+            Log.d("gfkjd", "both cart  check $categoryItem $arrayTrendIntent")
 
-            for (i in trendingItem)
+            for (i in trendingItem) {
                 Log.d("mobiTestLog", "trending: $trendingItem")
-//                commonCart.add(cartCommonModel(i.id,i.productImg,i.productName,Integer.parseInt(i.productQty),Integer.parseInt(i.priceShow)))
+                commonCart.add(
+                    cartCommonModel(
+                        i.id,
+                        i.productImg,
+                        i.productName,
+                        Integer.parseInt(i.productQty),
+                        Integer.parseInt(i.priceShow)
+                    )
+                )
+            }
         }
-
         //common data
-        detailViewModel.combineBoth()
-        detailViewModel.arrayLiveCommonData.observe(this){
-                commonCart.addAll(it)
+        detailViewModel.arrayLiveCommonData.observe(this) {
+            commonCart.addAll(it)
             binding.tvCartCountDetail.text = commonCart.size.toString()
         }
 
@@ -125,11 +108,27 @@ class DetailActivity : AppCompatActivity() {
 //            intent.putExtra("amountArray", intentAmount)
 //            intent.putExtra("imgArray", intentImg)
 //            intent.putExtra("tempCurrentUser", currentUserLogin)
-//            intent.putExtra("ArrayDataCat", detailItem)
-            Log.d("gfkjd", "detail: ${commonCart}")
-            intent.putExtra("commonCartKey",commonCart)
+//            intent.putExtra("ArrayDataCat", categoryItem)
+            Log.d("gfkjd", "detail: $commonCart")
+            intent.putExtra("commonCartKey", commonCart)
             startActivity(intent)
         }
+    }
+
+    private fun setArrayVar(it:ArrayList<cardItemModel>) {
+        categoryItem.clear()
+        categoryItem.addAll(it)
+        Log.d("gfkjd", "setArrayVar: $categoryItem")
+        for (item in categoryItem)
+            commonCart.add(
+                cartCommonModel(
+                    item.id,
+                    item.img,
+                    item.name,
+                    item.itemCount,
+                    item.Price
+                )
+            )
     }
 
     private fun changeFragment(fragment: Fragment) {
@@ -189,7 +188,6 @@ class DetailActivity : AppCompatActivity() {
             if (call.isSuccessful)
 //                subCategoryItem(call.body())
                 changeFragment(FiirstFragment(detailViewModel, call.body()))
-
             else
                 Log.d("detailActivityTEst", "hitGetSubCategory: ${call.errorBody()}")
         }
@@ -243,17 +241,17 @@ class DetailActivity : AppCompatActivity() {
                 Toasty.getToasty(applicationContext, "${call.errorBody()!!}")
         }
     }
-    private fun updateTotal(action :String){
+
+    private fun updateTotal(action: String) {
 
         var reto = RetrofitHelper.getClient().create(AviInterface::class.java)
         GlobalScope.launch(Dispatchers.Main) {
             val call = reto.getCartDetail(action)
-            if(call.isSuccessful) {
+            if (call.isSuccessful) {
                 Log.d("actionNew", "action: $action ${call.body()}")
 //                binding.tvCartCountDetail.text = call.body()!!.categoryImg.size.toString()
-            }
-            else
-                Toasty.getToasty(applicationContext,"${call.errorBody()}")
+            } else
+                Toasty.getToasty(applicationContext, "${call.errorBody()}")
         }
     }
 }

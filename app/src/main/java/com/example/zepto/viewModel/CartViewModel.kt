@@ -16,4 +16,7 @@ class CartViewModel() : ViewModel() {
         cartAmount.addAll(amountItem)
         cartImage.addAll(imageItem)
     }
+
+    // any data come update
+//    val cartItem = ArrayList<>
 }

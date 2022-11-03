@@ -5,9 +5,9 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimary">#673AB7</item>
 <!--        <item name="colorPrimary">#3949AB</item>-->
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimaryVariant">#AA85EC</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -40,8 +40,11 @@
         <!-- Customize your theme here. -->
     </style>
     <style name="MyCustomHomeScene" parent="Theme.AppCompat.NoActionBar">
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+<!--        <item name="colorPrimary">@color/purple_500</item>-->
+<!--        <item name="colorPrimaryVariant">@color/purple_700</item>-->
+        <item name="colorPrimary">#673AB7</item>
+        <!--        <item name="colorPrimary">#3949AB</item>-->
+        <item name="colorPrimaryVariant">#AA85EC</item>
         <!-- Status bar color. -->
     </style>
     <style name="full_screen_dialog">

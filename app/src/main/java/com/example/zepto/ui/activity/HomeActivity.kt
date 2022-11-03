@@ -127,19 +127,20 @@ class HomeActivity : AppCompatActivity() {
 
         countViewModel.itemLiveCart.observe(this){
             Log.d("checkYrCart", "onCreate: ${it}")
-            for (item in it) {
-                tempName.add(item.productName)
-                tempAmount.add(Integer.parseInt(item.priceShow))
-                tempImg.add(item.productImg)
-
-//                hitPostCartTrending(
-//                    item.productName,
-//                    Integer.parseInt(item.priceShow),
-//                    item.productImg
-//                )
-
-            }
-            Log.d("checkYrCart", "size check: ${it.size}")
+////            for (item in it) {
+////                tempName.add(item.productName)
+////                tempAmount.add(Integer.parseInt(item.priceShow))
+////                tempImg.add(item.productImg)
+////
+//////                hitPostCartTrending(
+//////                    item.productName,
+//////                    Integer.parseInt(item.priceShow),
+//////                    item.productImg
+//////                )
+////
+////            }
+//            Log.d("checkYrCart", "size check: ${it.size}")
+            intentItemTrending.clear()
             intentItemTrending.addAll(it)
             binding.tvCartCount.text = it.size.toString()
         }

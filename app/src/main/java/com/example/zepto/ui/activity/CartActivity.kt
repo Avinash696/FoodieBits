@@ -18,9 +18,6 @@ import com.example.zepto.viewModel.CartViewModel
 class CartActivity : AppCompatActivity() {
     lateinit var intentTrending: Intent
     lateinit var intentCategory: Intent
-//    private lateinit var nameArray: ArrayList<String>
-//    private lateinit var amountArray: ArrayList<Int>
-//    private lateinit var imageArray: ArrayList<String>
 
     private lateinit var cardViewModel: CartViewModel
     private lateinit var binding: ActivityCartBinding
@@ -35,13 +32,15 @@ class CartActivity : AppCompatActivity() {
         //current user intent
         val currentUserIntent = intent
         val urCartCurrentUser = currentUserIntent.getStringExtra("tempCurrentUser")
-        val commonCartData = currentUserIntent.getParcelableArrayListExtra<cartCommonModel>("commonCartKey")
+        val commonCartData =
+            currentUserIntent.getParcelableArrayListExtra<cartCommonModel>("commonCartKey")
         Log.d("gfkjd", "Cart $commonCartData  ${commonCartData?.size}")
         populatingIntentData(commonCartData)
 //        intentDataReceive()
         intentTrending = intent
 //        val user = intentTrending.getParcelableExtra<SubCategoryImgX>("cartTrendingKey")
         val user = intentTrending.getParcelableArrayListExtra<SubCategoryImgX>("cartTrendingKey")
+
         Log.d("rainWeight", "cart: $user")
         //cart data
 //        nameArray = intentTrending.getStringArrayListExtra("nameArray")!!
@@ -50,9 +49,9 @@ class CartActivity : AppCompatActivity() {
 //        cardViewModel.setArray(nameArray, amountArray, imageArray)
 
         //api hit data post
-        for(cart in cardViewModel.cartAmount)
+        for (cart in cardViewModel.cartAmount)
             Log.d("cartCheck", "onCreate: $cart")
-//        insertIntoCart(urCartCurrentUser.toString())                                                                  // input field needed
+//        insertIntoCart(urCartCurrentUser.toString())                                // input field needed
 
 
         //send to payment
@@ -60,23 +59,23 @@ class CartActivity : AppCompatActivity() {
             //why u want to add that ordered product and who will see
             val intent = Intent(this, YourOrderActivity::class.java)
 
-//            intent.putExtra("nameArray", nameArray)
-//            intent.putExtra("amountArray", amountArray)
-//            intent.putExtra("imgArray", imageArray)
-            Log.d("cartArrSend", "onCreate: ${cardViewModel.cartName}  ${cardViewModel.cartAmount} ${cardViewModel.cartImage}")
+            Log.d(
+                "cartArrSend",
+                "onCreate: ${cardViewModel.cartName}  ${cardViewModel.cartAmount} ${cardViewModel.cartImage}"
+            )
             startActivity(intent)
         }
     }
 
     private fun totalAmount(body: cardResponceModel?) {
-        for(i in 0 until body!!.categoryImg.size){
-            totalApiAmount += Integer.parseInt(body!!.categoryImg[i].cartPrice)
+        for (i in 0 until body!!.categoryImg.size) {
+            totalApiAmount += Integer.parseInt(body.categoryImg[i].cartPrice)
         }
         binding.tvTotalAmount.text = totalApiAmount.toString()
     }
 
 
-//    private fun populatingIntentData(body: cardResponceModel?) {
+    //    private fun populatingIntentData(body: cardResponceModel?) {
     private fun populatingIntentData(body: ArrayList<cartCommonModel>?) {
 
         binding.rvOrderedList.layoutManager = LinearLayoutManager(
@@ -84,7 +83,7 @@ class CartActivity : AppCompatActivity() {
             LinearLayoutManager.VERTICAL,
             false
         )
-        val arrayAdapter = adapterOrderList(body ,this)
+        val arrayAdapter = adapterOrderList(body, this)
         binding.rvOrderedList.adapter = arrayAdapter
     }
 //    private fun insertIntoCart(action :String){

@@ -16,7 +16,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="60dp"
         android:layout_weight="1">
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -32,6 +32,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="10dp"
+            android:textSize="15sp"
             android:text="Chakki Atta 10 kg"
             android:textStyle="bold" />
     </LinearLayout>
@@ -43,7 +44,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
 
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:layout_centerInParent="true"
             app:cardCornerRadius="10dp">
 
@@ -99,7 +100,8 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
             android:layout_weight="1"
             android:gravity="center"
             android:text="Rs 289.00"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="20sp" />
     </RelativeLayout>
 </LinearLayout>
 </layout>
