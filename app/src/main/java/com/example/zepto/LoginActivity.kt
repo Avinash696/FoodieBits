@@ -6,7 +6,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.example.test.aviInterface
+import com.example.test.AviInterface
 import com.example.zepto.Admin.ui.activity.AdminHomeActivity
 import com.example.zepto.Admin.ui.activity.RetailerAdminActivity
 import com.example.zepto.databinding.ActivityLoginBinding
@@ -41,7 +41,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun authenticate() {
-        val client = RetrofitHelper.getClient().create(aviInterface::class.java)
+        val client = RetrofitHelper.getClient().create(AviInterface::class.java)
         GlobalScope.launch(Dispatchers.Main) {
             val call = client.authenticateAdmin()
             if (call.isSuccessful) {
@@ -79,8 +79,9 @@ class LoginActivity : AppCompatActivity() {
             }
             (stName == "avi") && (stPass == "avi") || result == "home" -> {
                 val intent = Intent(this, HomeActivity::class.java)
-                intent.putExtra("retailerTitle",id)
-                intent.putExtra("adminImg",imgPath)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                intent.putExtra("homeName",stName)
+//                intent.putExtra("adminImg",imgPath)
                 startActivity(intent)
             }
             (stName == "delivery") && (stPass == "delivery") || result == "delivery" -> {
@@ -93,5 +94,10 @@ class LoginActivity : AppCompatActivity() {
 //                Toast.makeText(this, "plz check ur id and pass ", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    override fun onBackPressed() {
+        finish()
+        super.onBackPressed()
     }
 }

@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.databinding.DataBindingUtil
 import com.example.test.FileUtil
-import com.example.test.aviInterface
+import com.example.test.AviInterface
 import com.example.zepto.R
 import com.example.zepto.databinding.ActivityAddProductFormBinding
 import com.example.zepto.db.RetrofitHelper
@@ -18,6 +18,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
@@ -28,7 +29,8 @@ class AddProductFormActivity : AppCompatActivity() {
     private var filePath: File? = null
     private val PICK_IMAGE = 155
     lateinit var id_form: String
-//    lateinit var name_form: String
+
+    //    lateinit var name_form: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -69,15 +71,15 @@ class AddProductFormActivity : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        filePath = FileUtil.from(this, data!!.data)
-        Log.d("Reqmaina", "onActivityResult:${data.data} ")
-        val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, data.data)
-        binding.ivImgFormUp.setImageBitmap(bitmap)
-
+        if (requestCode == PICK_IMAGE && resultCode == RESULT_OK && data != null) {
+            filePath = FileUtil.from(this, data!!.data)
+            val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, data.data)
+            binding.ivImgFormUp.setImageBitmap(bitmap)
+        }
         super.onActivityResult(requestCode, resultCode, data)
     }
 
-    private fun postMainProduct( id_form:String) {
+    private fun postMainProduct(id_form: String) {
         val filePath = filePath
         Log.d("Reqmaina", "postMainProduct: $filePath")
         val subCategoryId = 1278
@@ -86,32 +88,35 @@ class AddProductFormActivity : AppCompatActivity() {
         val rand = Random()
 
         Log.d("flowListWala", "postMainProduct: ${rand.nextInt(1000)}")
-        val requestBody = RequestBody.create(MediaType.parse("image/*"), filePath!!)
+        val requestBody = RequestBody.create("image/*".toMediaTypeOrNull(), filePath!!)
         val parts = MultipartBody.Part.createFormData("addProductImg", filePath.name, requestBody)
 
         val mainSubCategoryId =
-            RequestBody.create(MediaType.parse("text/plain"), id_form.toString())
+            RequestBody.create("text/plain".toMediaTypeOrNull(), id_form.toString())
         val subProductId =
-            RequestBody.create(MediaType.parse("text/plain"), rand.nextInt(1000).toString())
+            RequestBody.create("text/plain".toMediaTypeOrNull(), rand.nextInt(1000).toString())
         val subProductName =
-            RequestBody.create(MediaType.parse("text/plain"), binding.etProductName.text.toString())
+            RequestBody.create(
+                "text/plain".toMediaTypeOrNull(),
+                binding.etProductName.text.toString()
+            )
         val subProductStatus =
-            RequestBody.create(MediaType.parse("text/plain"), addProductStatus.toString())
+            RequestBody.create("text/plain".toMediaTypeOrNull(), addProductStatus.toString())
         val addProductQuantity = RequestBody.create(
-            MediaType.parse("text/plain"),
+            "text/plain".toMediaTypeOrNull(),
             binding.etproductQuantity.text.toString()
         )
         val addProductPrice = RequestBody.create(
-            MediaType.parse("text/plain"),
+            "text/plain".toMediaTypeOrNull(),
             binding.etproductPrice.text.toString()
         )
         val addProductDescription = RequestBody.create(
-            MediaType.parse("text/plain"),
+            "text/plain".toMediaTypeOrNull(),
             binding.etproductDescription.text.toString()
         )
 
 
-        val repo = RetrofitHelper.getClient().create(aviInterface::class.java)
+        val repo = RetrofitHelper.getClient().create(AviInterface::class.java)
         GlobalScope.launch(Dispatchers.IO) {
             val call = repo.postMainSubProduct(
                 parts,

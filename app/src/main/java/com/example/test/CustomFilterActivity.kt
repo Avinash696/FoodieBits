@@ -1,6 +1,9 @@
 package com.example.test
 
 import android.os.Bundle
+import android.util.Log
+import android.widget.Button
+import android.widget.EditText
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,6 +14,8 @@ import com.example.zepto.R
 class CustomFilterActivity : AppCompatActivity() {
     lateinit var rv: RecyclerView
     lateinit var sv: SearchView
+    lateinit var etSecond :EditText
+    lateinit var btnSecond :Button
     lateinit var  arrayAdapter:adapterCustomRv
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,7 +23,10 @@ class CustomFilterActivity : AppCompatActivity() {
 
         rv = findViewById(R.id.rvFilter)
         sv = findViewById(R.id.svFilter)
+        etSecond = findViewById(R.id.etSecondFilter)
+        btnSecond = findViewById(R.id.btnSecond)
         fillarrayList()
+        val etString = etSecond.text.toString()
 
 
         sv.setOnQueryTextListener(object :SearchView.OnQueryTextListener{
@@ -27,10 +35,17 @@ class CustomFilterActivity : AppCompatActivity() {
             }
 
             override fun onQueryTextChange(inputText: String?): Boolean {
+                Log.d("rawat", "onCreate: Inside Search $inputText")
                 arrayAdapter.filter.filter(inputText)
                 return false
             }
         })
+        //second Filter
+        btnSecond.setOnClickListener {
+            Log.d("rawat", "onCreate: Clicked ---${etSecond.text.trim().toString().lowercase()}")
+            arrayAdapter.filter.filter(etSecond.text.trim().toString().lowercase())
+            arrayAdapter.notifyDataSetChanged()
+        }
     }
 
     private fun fillarrayList() {

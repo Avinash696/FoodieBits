@@ -11,17 +11,21 @@ import com.example.zepto.viewModel.DetailViewModel
 import com.example.zepto.R
 import com.example.zepto.model.cardItemModel
 import com.example.zepto.model.cardItemWithoutId
+import com.example.zepto.module.Toasty
 import com.example.zepto.ui.activity.SingleTrendingActivity
 import com.squareup.picasso.Picasso
 
 class adapterSubListCategories(
     private val context: Context,
-    private val arraydata: ArrayList<cardItemModel>
+    private val arraydata: ArrayList<cardItemModel>,
+    private val detailViewModel: DetailViewModel
 ) :
     BaseAdapter() {
     var cartName: ArrayList<String> = ArrayList()
     var cartAmount: ArrayList<Int> = ArrayList()
     var cartImage: ArrayList<Int> = ArrayList()
+
+        var cartItem :ArrayList<cardItemModel> = ArrayList()
     override fun getCount(): Int {
         return arraydata.size
     }
@@ -42,7 +46,7 @@ class adapterSubListCategories(
         if (myView == null) {
             val inflate =
                 context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            myView =  inflate.inflate(R.layout.row_sublist,viewGroup,false)
+            myView = inflate.inflate(R.layout.row_sublist, viewGroup, false)
         }
         //fields assign
         val name = myView!!.findViewById<TextView>(R.id.tvItemDetailName)
@@ -53,35 +57,38 @@ class adapterSubListCategories(
         val data = arraydata[position]
 
         //set data
-        name.text =data.name
-        discount.text =data.discountPrice.toString()
+        name.text = data.name
+        discount.text = data.itemCount.toString()
         Log.d("tiger", "getView: $data")
         Picasso.get().load(data.img).into(itemPic)
 
         //temp icon click screen forward move
         myView.setOnClickListener {
-            val intent = Intent(context, SingleTrendingActivity::class.java)
-            intent.putExtra("amountKey", data.Price)
-            intent.putExtra("nameKey", data.name)
-            intent.putExtra("imgKey", data.img)
-            //testing onclick itemView
-            intent.putExtra("nameArray", cartName)
-            intent.putExtra("amountArray", cartAmount)
-            intent.putExtra("imageArray", cartImage)
+//            val intent = Intent(context, SingleTrendingActivity::class.java)
+//            intent.putExtra("amountKey", data.Price)
+//            intent.putExtra("nameKey", data.name)
+//            intent.putExtra("imgKey", data.img)
+//            //testing onclick itemView
+//            intent.putExtra("nameArray", cartName)
+//            intent.putExtra("amountArray", cartAmount)
+//            intent.putExtra("imageArray", cartImage)
+//
+//            //count send
+//            context.startActivity(intent)
 
-            //count send
-            context.startActivity(intent)
         }
 
         btnAdd.setOnClickListener {
             //data send also
-
-            Log.d("nameArr", "onBindViewHolder:${data.img}")
-            Toast.makeText(context, "Item Added" + data.img, Toast.LENGTH_SHORT).show()
-
-            cartName.add(data.name)
-            cartAmount.add(data.Price)
+                Toasty.getToasty(context,"added")
+//            detailViewModel.updateCat(data)
+//            Log.d("cartCheck", "getView: ${detailViewModel.arrayCategoryLiveData.value}")
+//            Log.d("nameArr", "onBindViewHolder:${data.img}")
+//            Toast.makeText(context, "Item Added" + data.img, Toast.LENGTH_SHORT).show()
+//            cartName.add(data.name)
+//            cartAmount.add(data.Price)
 //            cartImage.add(data.img)
+            detailViewModel.setCatItem(data)
         }
         return myView
     }

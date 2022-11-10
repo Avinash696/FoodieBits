@@ -15,7 +15,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.test.FileUtil
-import com.example.test.aviInterface
+import com.example.test.AviInterface
 import com.example.zepto.Admin.ui.activity.AdminHomeActivity
 import com.example.zepto.adapter.adapterTrendingAdmin
 import com.example.zepto.databinding.FragmentTrendingBinding
@@ -26,6 +26,7 @@ import com.google.gson.Gson
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
@@ -44,7 +45,7 @@ class TrendingFragment : Fragment() {
     private var param2: String? = null
     private var filePath: File? = null
     val PICK_IMAGE = 777
-    val repo = RetrofitHelper.getClient().create(aviInterface::class.java)
+    val repo = RetrofitHelper.getClient().create(AviInterface::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,7 +76,7 @@ class TrendingFragment : Fragment() {
              img = dialog.findViewById(R.id.ivTrendingImage)
             val name = dialog.findViewById<EditText>(R.id.etTrendingName)
             val price = dialog.findViewById<EditText>(R.id.etTrendingPrice)
-            val discountPrice = dialog.findViewById<EditText>(R.id.etTrendingDiscount)
+            val itemCount = dialog.findViewById<EditText>(R.id.etTrendingDiscount)
             val qty = dialog.findViewById<EditText>(R.id.etTrendingQunatity)
             val btnSubmit = dialog.findViewById<Button>(R.id.btSubmitTrending)
             //img picker
@@ -90,7 +91,7 @@ class TrendingFragment : Fragment() {
                     postMainTrending(
                         name.text.toString(),
                         qty.text.toString(),
-                        discountPrice.text.toString(),
+                        itemCount.text.toString(),
                         price.text.toString()
                     )
                     dialog.dismiss()
@@ -173,13 +174,16 @@ class TrendingFragment : Fragment() {
         priceShowParm: String
     ) {
         val filePath = filePath
-        val requestBody = RequestBody.create(MediaType.parse("image/*"), filePath!!)
+        val requestBody = RequestBody.create("image/*".toMediaTypeOrNull(), filePath!!)
         val parts = MultipartBody.Part.createFormData("productImg", filePath.name, requestBody)
-        val idUser = RequestBody.create(MediaType.parse("text/plain"), currentUser)
-        val productName = RequestBody.create(MediaType.parse("text/plain"), productNameParm)
-        val productQty = RequestBody.create(MediaType.parse("text/plain"), productQtyParm)
-        val discountedPrice = RequestBody.create(MediaType.parse("text/plain"), discountedPriceParm)
-        val priceShow = RequestBody.create(MediaType.parse("text/plain"), priceShowParm)
+        val idUser = RequestBody.create("text/plain".toMediaTypeOrNull(), currentUser)
+        val productName = RequestBody.create("text/plain".toMediaTypeOrNull(), productNameParm)
+        val productQty = RequestBody.create("text/plain".toMediaTypeOrNull(), productQtyParm)
+        val discountedPrice = RequestBody.create(
+            "text/plain".toMediaTypeOrNull(),
+            discountedPriceParm
+        )
+        val priceShow = RequestBody.create("text/plain".toMediaTypeOrNull(), priceShowParm)
 //        Log.d("beforePost", "postMainCategory: ${parts.body()} $status $subCategoryName")
 
         GlobalScope.launch {

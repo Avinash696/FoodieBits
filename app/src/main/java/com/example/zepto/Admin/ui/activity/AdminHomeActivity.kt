@@ -14,6 +14,8 @@ import com.example.zepto.*
 import com.example.zepto.Admin.ui.retailerFragment.AddUserTestFragment
 import com.example.zepto.constant.constants
 import com.example.zepto.databinding.ActivityAdminHomeBinding
+import com.example.zepto.ui.fragment.BannerFragment
+import com.example.zepto.ui.fragment.BrandsFragment
 import com.example.zepto.ui.fragment.CoplainBoxFragment
 import com.example.zepto.ui.fragment.DashboardAdminFragment
 import com.google.android.material.navigation.NavigationView
@@ -55,6 +57,16 @@ class AdminHomeActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.menu_adminDashboard ->{
                     changeFragment(DashboardAdminFragment())
+                    return@setNavigationItemSelectedListener true
+                }
+                R.id.menu_adminBrands->{
+                    changeFragment(BrandsFragment())
+                    binding.dlAdminHome.close()
+                    return@setNavigationItemSelectedListener true
+                }
+                R.id.menu_adminBannerOffer->{
+                    changeFragment(BannerFragment())
+                    binding.dlAdminHome.close()
                     return@setNavigationItemSelectedListener true
                 }
                 R.id.menu_adminAddUser -> {
@@ -111,6 +123,14 @@ class AdminHomeActivity : AppCompatActivity() {
                     changeFragment(CoplainBoxFragment())
                     binding.dlAdminHome.close()
                     Log.d("myAdmin", "clicked Contact")
+                    return@setNavigationItemSelectedListener true
+                }
+                R.id.menu_adminLogout -> {
+//                    changeFragment(CoplainBoxFragment())
+//                    binding.dlAdminHome.close()
+//                    Log.d("myAdmin", "clicked Contact")
+                    startActivity(Intent(this,LoginActivity::class.java))
+                    finish()
                     return@setNavigationItemSelectedListener true
                 }
                 else -> {

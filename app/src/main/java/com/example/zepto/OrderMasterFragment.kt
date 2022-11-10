@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.test.aviInterface
+import com.example.test.AviInterface
 import com.example.zepto.adapter.adapterOrderMasterAdmin
 import com.example.zepto.db.RetrofitHelper
 import com.example.zepto.model.adminOrderMaster
@@ -77,7 +77,7 @@ class OrderMasterFragment : Fragment() {
         }
     }
     private fun getPlacedOrder(){
-        val retro = RetrofitHelper.getClient().create(aviInterface::class.java)
+        val retro = RetrofitHelper.getClient().create(AviInterface::class.java)
         GlobalScope.launch {
             val call = retro.getPlacedOrder()
             if(call.isSuccessful) {

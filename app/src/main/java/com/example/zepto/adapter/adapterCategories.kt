@@ -61,7 +61,7 @@ class adapterCategories(
         itemPic.setOnClickListener {
 //            context.startActivity(Intent(context, DetailActivity::class.java))
             val intent = Intent(context, SingleTrendingActivity::class.java)
-//            Log.d("catAdapter", "AdapterCate:${data.Price} ${data.discount}  ${data.discountPrice}")
+//            Log.d("catAdapter", "AdapterCate:${data.Price} ${data.discount}  ${data.itemCount}")
             intent.putExtra("amountKey",data.Price)
             intent.putExtra("nameKey",data.name)
             intent.putExtra("imgKey",data.img)

@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.GridView
 import androidx.fragment.app.Fragment
-import com.example.test.aviInterface
+import com.example.test.AviInterface
 import com.example.zepto.R
 import com.example.zepto.adapter.adapterDashboard
 import com.example.zepto.db.RetrofitHelper
@@ -144,7 +144,7 @@ class DashboardAdminFragment : Fragment() {
     }
 
     private fun getDashboardData() {
-        val retro = RetrofitHelper.getClient().create(aviInterface::class.java)
+        val retro = RetrofitHelper.getClient().create(AviInterface::class.java)
         GlobalScope.launch {
             val call = retro.getDashboard()
             if (call.isSuccessful)

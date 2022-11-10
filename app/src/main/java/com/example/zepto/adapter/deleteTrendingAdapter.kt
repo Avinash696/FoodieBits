@@ -36,7 +36,7 @@ class deleteTrendingAdapter(
         //onclick on item
         holder.itemView.setOnClickListener {
             val intent = Intent(context, SingleTrendingActivity::class.java)
-            Log.d("ttt", "onBindViewHolder:${data.Price} ${data.discountPrice}  ${data.discountPrice}")
+            Log.d("ttt", "onBindViewHolder:${data.Price} ${data.itemCount}  ${data.itemCount}")
             intent.putExtra("amountKey", data.Price)
             intent.putExtra("nameKey", data.name)
             intent.putExtra("imgKey", data.img)

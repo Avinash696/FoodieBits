@@ -7,21 +7,21 @@ open class cardItemFullModel(
     var myId: String,
     override val img: String,
     override var name: String,
-    override val discountPrice: Int,
-    val myDiscountPrice: String,
+    override val itemCount: Int,
+    val myitemCount: String,
     override var Price: Int,
-) :Serializable, cardItemModel( id ,img,name,discountPrice,Price) {
+) :Serializable, cardItemModel( id ,img,name,itemCount,Price) {
 }
 
 open class cardItemModel(open var id: String,
                          open val img: String,
                          open var name: String,
-                         open val discountPrice: Int,
+                         open val itemCount: Int,
                          open var Price: Int)
 open class cardItemWithoutId(
     open var id: Int,
     open val img: Int,
     open var name: String,
-    open val discountPrice: Int,
+    open val itemCount: Int,
     open var Price: Int
 )

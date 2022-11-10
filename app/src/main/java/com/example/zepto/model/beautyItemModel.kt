@@ -8,8 +8,8 @@ data class beautyItemModel(
     var discount: Int,
     override val img: Int,
     override var name: String,
-    override val discountPrice: Int,
+    override val itemCount: Int,
     override var Price: Int
 ) :
-    cardItemWithoutId(discount, img, name, discountPrice, Price),Serializable {
+    cardItemWithoutId(discount, img, name, itemCount, Price),Serializable {
 }

@@ -49,7 +49,7 @@ class adapterItemSubAdmin(
 
         //set data
         name.text = data.name
-        discount.text = data.discountPrice.toString()
+        discount.text = data.itemCount.toString()
         Picasso.get()
             .load(data.img)
             .into(itemPic)

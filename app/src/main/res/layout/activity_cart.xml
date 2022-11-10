@@ -7,47 +7,363 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@color/blue_grey"
         tools:context=".ui.activity.CartActivity">
 
-        <ScrollView
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/abTopCart"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
+
+            <Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/back_arrow"
+                    app:tint="@color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="Your Order"
+                    android:textColor="@color/white" />
+            </Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvLocationCart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/abTopCart"
+            android:background="@color/white"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="5dp"
+            app:cardUseCompatPadding="true">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#F1F8E9"
-                tools:context=".ui.activity.OrderListActivity">
+                android:layout_height="wrap_content">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvOrderedList"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                <ImageView
+                    android:id="@+id/ivLoationIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/location_layout"
+                    app:tint="@color/orange" />
 
-                <LinearLayout
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toLeftOf="@+id/tvChangeLocationCart"
+                    android:layout_toRightOf="@+id/ivLoationIcon"
+                    android:text="Sector 56 ,Gurgon Location near More Market 112322"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tvChangeLocationCart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:text="Change"
+                    android:textColor="@color/red" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <RelativeLayout
+            android:id="@+id/rvMidCart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/llBottomPayCart"
+            android:layout_below="@+id/cvLocationCart"
+            android:layout_marginTop="7dp"
+            app:cardBackgroundColor="@color/white">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/rvOrderedList"
-                    android:weightSum="2">
+                    android:background="@color/blue_grey">
 
-                    <TextView
-                        android:id="@+id/tvTotalAmount"
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cvOrderedList"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="tvTotalAmount" />
+                        android:layout_height="wrap_content"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="6dp"
+                        app:cardUseCompatPadding="true">
 
-                    <Button
-                        android:id="@+id/btPayAmount"
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvOrderedList"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </androidx.cardview.widget.CardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cvUseCoupons"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="btPay" />
-                </LinearLayout>
-            </RelativeLayout>
-        </ScrollView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/cvOrderedList"
+                        android:layout_marginTop="7dp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="5dp"
+                        app:cardUseCompatPadding="true">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:id="@+id/ivOfferIcon"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_margin="2dp"
+                                android:src="@drawable/offer_icon"
+                                app:tint="@color/blue" />
+
+                            <TextView
+                                android:id="@+id/tvUseCouponHeader"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_toRightOf="@+id/ivOfferIcon"
+                                android:text="Use Coupons"
+                                android:textColor="@color/black" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tvUseCouponHeader"
+                                android:layout_marginTop="3dp"
+                                android:layout_toRightOf="@+id/ivOfferIcon"
+                                android:text="@string/textofflinePay"
+                                android:textColor="@color/brown" />
+                        </RelativeLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cvBillSummary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/cvUseCoupons"
+                        android:layout_marginTop="7dp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="5dp"
+                        app:cardUseCompatPadding="true">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:id="@+id/ivBillIcon"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_margin="2dp"
+                                android:src="@drawable/bill_icon"
+                                app:tint="@color/blue" />
+
+                            <TextView
+                                android:id="@+id/tvUseBillHeader"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_toRightOf="@+id/ivBillIcon"
+                                android:text="Bill Summary"
+                                android:textColor="@color/black" />
+
+                            <LinearLayout
+                                android:id="@+id/llItemTotalCart"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tvUseBillHeader"
+                                android:layout_toRightOf="@+id/ivBillIcon"
+                                android:weightSum="2">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+                                    android:layout_weight="1"
+                                    android:text="Item Total"
+                                    android:textColor="@color/brown" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_weight="1"
+                                    android:gravity="end"
+                                    android:text="Rs 851.00"
+                                    android:textColor="@color/brown" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/llRestaurantChageCart"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/llItemTotalCart"
+                                android:layout_toRightOf="@+id/ivBillIcon"
+                                android:weightSum="2">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+                                    android:layout_weight="1"
+                                    android:text="Restaurant Delivery Charge "
+                                    android:textColor="@color/brown" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_weight="1"
+                                    android:gravity="end"
+                                    android:text="Rs 42.87"
+                                    android:textColor="@color/brown" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/llGovTaxes"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/llRestaurantChageCart"
+                                android:layout_toRightOf="@+id/ivBillIcon"
+                                android:weightSum="2">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+                                    android:layout_weight="1"
+                                    android:text="Govt. taxes"
+                                    android:textColor="@color/brown" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_weight="1"
+                                    android:gravity="end"
+                                    android:text="Rs 44.69"
+                                    android:textColor="@color/brown" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/llGovTaxes"
+                                android:layout_marginTop="10dp"
+                                android:layout_toRightOf="@+id/ivBillIcon"
+                                android:weightSum="2">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+                                    android:layout_weight="1"
+                                    android:text="Grand Total"
+                                    android:textColor="@color/brown"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_weight="1"
+                                    android:gravity="end"
+                                    android:text="Rs 938.55"
+                                    android:textColor="@color/brown" />
+                            </LinearLayout>
+                        </RelativeLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cvContactlessDelivery"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/cvBillSummary"
+                        android:layout_marginTop="7dp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="5dp"
+                        app:cardUseCompatPadding="true">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="3dp">
+
+                            <TextView
+                                android:id="@+id/tvContactlessHeader"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="Contactless Delivery"
+                                android:textColor="@color/black"
+                                android:textStyle="bold" />
+
+                            <CheckBox
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:background="@drawable/border_layout"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/tvContactlessDescCart"
+                                android:layout_below="@+id/tvContactlessHeader"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="4dp"
+                                android:text="@string/contactless"
+                                android:textColor="@color/brown" />
+                        </RelativeLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </RelativeLayout>
+            </ScrollView>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/llBottomPayCart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/tvTotalAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Cash on Delivery "
+                android:textColor="@color/black" />
+
+            <Button
+                android:id="@+id/btPayAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_weight="1"
+                android:backgroundTint="@color/pinkish_red"
+                android:text="btPay" />
+
+        </LinearLayout>
+    </RelativeLayout>
 </layout>

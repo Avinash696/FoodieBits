@@ -9,7 +9,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
-import com.example.test.aviInterface
+import com.example.test.AviInterface
 import com.example.zepto.R
 import com.example.zepto.databinding.OrderHistoryBinding
 import com.example.zepto.databinding.RowCategoriesAdminBinding
@@ -25,6 +25,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody
 
 class recyclerAdapterCategories(
@@ -34,7 +35,7 @@ class recyclerAdapterCategories(
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     lateinit var binding: RowCategoriesAdminBinding
-    var counter: Int = 0
+//    var counter: Int = 0
 
     class CustomViewHolder(binding: RowCategoriesAdminBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -52,10 +53,10 @@ class recyclerAdapterCategories(
 
         if (data.categoryStatus == 1) {
             binding.btCardMainCategoryActive.setBackgroundColor(context.getColor(R.color.green))
-
-        } else {
+            binding.btCardMainCategoryActive.text = "Activate"
+        } else if(data.categoryStatus == 0) {
             binding.btCardMainCategoryActive.setBackgroundColor(context.getColor(R.color.red))
-
+            binding.btCardMainCategoryActive.text = "Deactivate"
         }
 
         //status +date
@@ -70,16 +71,17 @@ class recyclerAdapterCategories(
 //        onclick on item
         binding.btCardMainCategoryActive.setOnClickListener {
              if (data.categoryStatus == 1) {
-                counter = 0
-                updateStatus(data,counter)
-                 binding.btCardMainCategoryActive.setBackgroundColor(context.getColor(R.color.red))
-                 binding.btCardMainCategoryActive.text = "Deactivate"
+//                counter = 0
+                updateStatus(data,0)
+//                 binding.btCardMainCategoryActive.setBackgroundColor(context.getColor(R.color.red))
+//                 binding.btCardMainCategoryActive.text = "Deactivate"
             } else {
-                 counter=  1
-                 updateStatus(data,counter)
-                 binding.btCardMainCategoryActive.setBackgroundColor(context.getColor(R.color.green))
-                 binding.btCardMainCategoryActive.text = "Activate"
+//                 counter=  1
+                 updateStatus(data,1)
+//                 binding.btCardMainCategoryActive.setBackgroundColor(context.getColor(R.color.green))
+//                 binding.btCardMainCategoryActive.text = "Activate"
             }
+            notifyItemChanged(position)
         }
 
         //item  with id will added
@@ -99,9 +101,9 @@ class recyclerAdapterCategories(
     @RequiresApi(Build.VERSION_CODES.M)
     fun updateStatus(data :CategoryImg, counter:Int){
         Log.d("fewSecond", "updateStatus: ${data.id}  $counter")
-        val client = RetrofitHelper.getClient().create(aviInterface::class.java)
-        val status = RequestBody.create(MediaType.parse("text/plain"), counter.toString())
-        val id = RequestBody.create(MediaType.parse("text/plain"), data.id)
+        val client = RetrofitHelper.getClient().create(AviInterface::class.java)
+        val status = RequestBody.create("text/plain".toMediaTypeOrNull(), counter.toString())
+        val id = RequestBody.create("text/plain".toMediaTypeOrNull(), data.id)
         GlobalScope.launch(Dispatchers.IO) {
             val call = client.updateMainStatusCategory(id, status)
             if (call.isSuccessful) {

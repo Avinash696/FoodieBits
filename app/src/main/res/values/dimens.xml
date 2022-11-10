@@ -4,4 +4,5 @@
     <dimen name="order_status">20dp</dimen>
     <dimen name="card_trending_admin">5dp</dimen>
     <dimen name="addUserTextSize">18sp</dimen>
+    <dimen name="buy_button_height">14</dimen>
 </resources>

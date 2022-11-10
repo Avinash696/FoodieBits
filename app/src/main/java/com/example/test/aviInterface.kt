@@ -8,7 +8,7 @@ import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.http.*
 
-interface aviInterface {
+interface AviInterface {
 
     @Multipart
     @POST("imgFolder/imgup.php?apicall=uploadpic")
@@ -84,7 +84,7 @@ interface aviInterface {
     ): Response<mainCategoryPostModel>
 
     @GET("imgFolder/mainSubCategory.php")
-    suspend fun getMainSubCategoryFiltered(@Query("mainSubCategoryAdd") id:Int):Response<mainSubCategoryModel>
+    suspend fun getMainSubCategoryFiltered(@Query("mainSubCategoryAdd") id: Int): Response<mainSubCategoryModel>
 
 
     //Sub Product
@@ -105,7 +105,7 @@ interface aviInterface {
     ): Response<mainCategoryPostModel>
 
     @GET("imgFolder/mainSubProduct.php")
-    suspend fun getMainProductFiltered(@Query("mainSubProductAdd") id:Int):Response<mainSubProductResponceModel>
+    suspend fun getMainProductFiltered(@Query("mainSubProductAdd") id: Int): Response<mainSubProductResponceModel>
 
     //trending
     @GET("imgFolder/mainTrending.php?mainTrending=getMainTrending")
@@ -177,6 +177,26 @@ interface aviInterface {
     )
             : Response<statusMainCategoryModel>
 
+    //cart iTem
+    @GET("imgFolder/cart.php")
+    suspend fun getCartDetail(@Query("cartAdd") action: String): Response<cardResponceModel>
+
+    @Multipart
+    @POST("imgFolder/cart.php?cartAdd=postCartItem")
+    suspend fun postCartDetail(
+        @Part("currentUser") currentUser: RequestBody,
+        @Part("itemNo") itemNo: RequestBody,
+        @Part("cartItem") cartItem: RequestBody,
+        @Part("cartPrice") cartPrice:RequestBody,
+        @Part("itemImgUrl") itemImgUrl:RequestBody,
+        ): Response<mainCategoryPostModel>
+
+    @Multipart
+    @POST
+    suspend fun updateCartQuantity(
+        @Part("updateId") updateId:RequestBody,
+        @Part("quantity") quantity:RequestBody
+    ):Response<mainCategoryPostModel>
 }
 
 data class ImageUpload(val error: Boolean?, val message: String?)

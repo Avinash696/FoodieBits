@@ -13,6 +13,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
@@ -41,8 +42,8 @@ class JustTestItActivity : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+
         filePath = FileUtil.from(this, data!!.data)
-        Log.d("Reqmaina", "onActivityResult:${data.data} ")
         val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, data.data)
         ivImgFormUpTEst.setImageBitmap(bitmap)
 
@@ -55,19 +56,19 @@ class JustTestItActivity : AppCompatActivity() {
 //        val subCategoryId = 1278
 //        val addProductId = 1278
 //        val addProductStatus = 1
-        val requestBody = RequestBody.create(MediaType.parse("image/*"), filePath!!)
+        val requestBody = RequestBody.create("image/*".toMediaTypeOrNull(), filePath!!)
         val addProductImg =
             MultipartBody.Part.createFormData("addProductImg", filePath.name, requestBody)
-        val addProductName = RequestBody.create(MediaType.parse("text/plain"), "Product Name")
-        val subCategoryId = RequestBody.create(MediaType.parse("text/plain"), "1279")
-        val addProductId = RequestBody.create(MediaType.parse("text/plain"), "aa")
-        val addProductStatus = RequestBody.create(MediaType.parse("text/plain"), "1")
-        val addProductQuantity = RequestBody.create(MediaType.parse("text/plain"), "21")
-        val addProductPrice = RequestBody.create(MediaType.parse("text/plain"), "32")
-        val addProductDescription = RequestBody.create(MediaType.parse("text/plain"), "bbb")
+        val addProductName = RequestBody.create("text/plain".toMediaTypeOrNull(), "Product Name")
+        val subCategoryId = RequestBody.create("text/plain".toMediaTypeOrNull(), "1279")
+        val addProductId = RequestBody.create("text/plain".toMediaTypeOrNull(), "aa")
+        val addProductStatus = RequestBody.create("text/plain".toMediaTypeOrNull(), "1")
+        val addProductQuantity = RequestBody.create("text/plain".toMediaTypeOrNull(), "21")
+        val addProductPrice = RequestBody.create("text/plain".toMediaTypeOrNull(), "32")
+        val addProductDescription = RequestBody.create("text/plain".toMediaTypeOrNull(), "bbb")
 
 
-        val repo = RetrofitHelper.getClient().create(aviInterface::class.java)
+        val repo = RetrofitHelper.getClient().create(AviInterface::class.java)
         GlobalScope.launch(Dispatchers.IO) {
             val call = repo.postMainSubProduct(
                 addProductImg,

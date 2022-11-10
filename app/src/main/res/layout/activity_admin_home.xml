@@ -17,8 +17,7 @@
             android:id="@+id/dlAdminHome"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".Admin.ui.activity.AdminHomeActivity"
-            tools:openDrawer="">
+            tools:context=".Admin.ui.activity.AdminHomeActivity">
 
             <RelativeLayout
                 android:layout_width="match_parent"

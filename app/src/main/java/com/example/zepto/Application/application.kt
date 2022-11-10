@@ -1,19 +1,22 @@
 package com.example.zepto.Application
 
 import android.app.Application
-import android.content.Context
-import com.example.test.aviInterface
+import com.example.test.AviInterface
+import com.example.zepto.Repositary.Repositary
+import com.example.zepto.database.CartDatabase
 import com.example.zepto.db.RetrofitHelper
-import retrofit2.Retrofit
 
-class applicationTest :Application() {
-    lateinit var   client :aviInterface
+class application : Application() {
+    lateinit var repositary: Repositary
     override fun onCreate() {
         initilizer()
         super.onCreate()
     }
 
     private fun initilizer() {
-         client = RetrofitHelper.getClient().create(aviInterface::class.java)
+            val cartService = RetrofitHelper.getClient().create(AviInterface::class.java)
+            val commonDatabase = CartDatabase.getDatabase(applicationContext)
+            repositary = Repositary(cartService, commonDatabase)
+
     }
 }

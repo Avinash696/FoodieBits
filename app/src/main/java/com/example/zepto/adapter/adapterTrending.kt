@@ -1,30 +1,38 @@
 package com.example.zepto.adapter
 
 import android.content.Context
-import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.test.AviInterface
+import com.example.zepto.database.cartResult
 import com.example.zepto.databinding.CardviewItemBinding
-import com.example.zepto.model.cardItemModel
-import com.example.zepto.module.cartItemLib
-import com.example.zepto.ui.activity.SingleTrendingActivity
+import com.example.zepto.db.RetrofitHelper
+import com.example.zepto.model.SubCategoryImgX
+import com.example.zepto.module.Toasty
 import com.example.zepto.viewModel.ItemCountViewModel
 import com.squareup.picasso.Picasso
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody
 
 class adapterTrending(
-    private val arrayData: ArrayList<cardItemModel>,
+    private val arrayData: List<SubCategoryImgX>,
     private val context: Context,
     private var countViewModel: ItemCountViewModel
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     lateinit var binding: CardviewItemBinding
-   private var cartName: ArrayList<String> = ArrayList()
-   private var cartAmount: ArrayList<Int> = ArrayList()
-   private var cartImage: ArrayList<String> = ArrayList()
+    private var cartName: ArrayList<String> = ArrayList()
+    private var cartAmount: ArrayList<Int> = ArrayList()
+    private var cartImage: ArrayList<String> = ArrayList()
+    private lateinit var cartItem: SubCategoryImgX ;
+    private var count = 1
 
     class CustomViewHolder(binding: CardviewItemBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -35,40 +43,37 @@ class adapterTrending(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val data = arrayData[position]
-        binding.tvItemName.text = data.name
-        Picasso.get().load(data.img).into(binding.ivItemPic)
-//        binding.ivItemPic.setImageResource(data.img)
-        //onclick on item
-        holder.itemView.setOnClickListener {
-            val intent = Intent(context, SingleTrendingActivity::class.java)
-//            Log.d("ttt", "onBindViewHolder:${data.Price} ${data.discount}  ${data.discountPrice}")
-            intent.putExtra("amountKey", data.Price)
-            intent.putExtra("nameKey", data.name)
-            intent.putExtra("imgKey", data.img)
-            //testing onclick itemView
-            intent.putExtra("nameArray", cartName)
-            intent.putExtra("amountArray", cartAmount)
-            intent.putExtra("imageArray", cartImage)
-            context.startActivity(intent)
-//            context.startActivity(Intent(context,SingleTrendingActivity::class.java))
-        }
 
+        binding.tvItemName.text = data.productName
+        binding.tvItemFakeCost.text = data.discountedPrice
+        binding.tvItemDiscountedCost.text = data.priceShow
+        Picasso.get().load(data.productImg).into(binding.ivItemPic)
+        holder.itemView.setOnClickListener {
+            Toast.makeText(context, data.productName, Toast.LENGTH_SHORT).show()
+        }
         //add item
         binding.ivAddBtn.setOnClickListener {
-            Log.d("nameArra", "onBindViewHolder:${data.img}")
-            Toast.makeText(context, "Item Added" + data.img, Toast.LENGTH_SHORT).show()
-
-            cartName.add(data.name)
-            cartAmount.add(data.Price)
-            cartImage.add(data.img)
-
-//            Log.d("justdd", "onBindViewHolder:${countViewMode.count} ")
-            Log.d("amountCheckModule", "onBindViewHolder:${cartName}  $cartAmount $cartImage")
-            cartItemLib(cartName,cartAmount,cartImage)
+//                countViewModel.setTrendingItem(data)
+//                  countViewModel.setCartItem(data)
+//                countViewModel.setCartItem(data)
+            countViewModel.setCartItem(data)
         }
     }
 
     override fun getItemCount(): Int {
         return arrayData.size
+    }
+
+    private fun updateCartQuantity(userIdItem: Int, quantityItem: Int) {
+        val updateId = RequestBody.create("text".toMediaTypeOrNull(), userIdItem.toString())
+        val quantity = RequestBody.create("text".toMediaTypeOrNull(), quantityItem.toString())
+        val reto = RetrofitHelper.getClient().create(AviInterface::class.java)
+        CoroutineScope(Dispatchers.IO).launch {
+            val call = reto.updateCartQuantity(updateId, quantity)
+            if (call.isSuccessful)
+                Toasty.getToasty(context, "${call.body()!!.message}")
+            else
+                Toasty.getToasty(context, "${call.errorBody()}")
+        }
     }
 }

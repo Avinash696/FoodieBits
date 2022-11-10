@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import com.example.test.FileUtil
-import com.example.test.aviInterface
+import com.example.test.AviInterface
 import com.example.zepto.R
 import com.example.zepto.databinding.ActivitySubmitInformationBinding
 import com.example.zepto.db.RetrofitHelper
@@ -24,6 +24,7 @@ import com.google.android.material.internal.ContextUtils.getActivity
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
@@ -48,7 +49,7 @@ class SubmitInformationActivity : AppCompatActivity() {
     private var filePathAdhar: File? = null
     private lateinit var stVechile: String
     private lateinit var binding: ActivitySubmitInformationBinding
-    val retro = RetrofitHelper.getClient().create(aviInterface::class.java)
+    val retro = RetrofitHelper.getClient().create(AviInterface::class.java)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_submit_information)
@@ -121,25 +122,25 @@ class SubmitInformationActivity : AppCompatActivity() {
     ) {
         Log.d("tempCheck", "postDeliveryData: $vechileType $vechileNo $vechileLincense $userName $userEmail $panCard" +
                 " $adharCard $emergencyNo $emergencyName $bankName $accountNo $ifscCode $branchName $filePathAdhar $filePathPan")
-        val requestBodyAdhar = RequestBody.create(MediaType.parse("image/*"), filePathAdhar!!)
+        val requestBodyAdhar = RequestBody.create("image/*".toMediaTypeOrNull(), filePathAdhar!!)
         val partsAdhar = MultipartBody.Part.createFormData("fileAdhar", filePathAdhar!!.name, requestBodyAdhar)
 
-        val requestBodyPan = RequestBody.create(MediaType.parse("image/*"),filePathPan)
+        val requestBodyPan = RequestBody.create("image/*".toMediaTypeOrNull(), filePathPan!!)
         val partsPan = MultipartBody.Part.createFormData("filePan", filePathAdhar!!.name, requestBodyPan)
 
-        val vechileType = RequestBody.create(MediaType.parse("text/plain"),vechileType)
-        val vechileNo = RequestBody.create(MediaType.parse("text/plain"),vechileNo)
-        val vechileLincense = RequestBody.create(MediaType.parse("text/plain"),vechileLincense)
-        val userName = RequestBody.create(MediaType.parse("text/plain"),userName)
-        val userEmail = RequestBody.create(MediaType.parse("text/plain"),userEmail)
-        val panCard = RequestBody.create(MediaType.parse("text/plain"),panCard)
-        val adharCard = RequestBody.create(MediaType.parse("text/plain"),adharCard)
-        val emergencyNo = RequestBody.create(MediaType.parse("text/plain"),emergencyNo)
-        val emergencyName = RequestBody.create(MediaType.parse("text/plain"),emergencyName)
-        val bankName = RequestBody.create(MediaType.parse("text/plain"),bankName)
-        val accountNo = RequestBody.create(MediaType.parse("text/plain"),accountNo)
-        val branchName = RequestBody.create(MediaType.parse("text/plain"),branchName)
-        val ifscCode = RequestBody.create(MediaType.parse("text/plain"),ifscCode )
+        val vechileType = RequestBody.create("text/plain".toMediaTypeOrNull(), vechileType)
+        val vechileNo = RequestBody.create("text/plain".toMediaTypeOrNull(), vechileNo)
+        val vechileLincense = RequestBody.create("text/plain".toMediaTypeOrNull(), vechileLincense)
+        val userName = RequestBody.create("text/plain".toMediaTypeOrNull(), userName)
+        val userEmail = RequestBody.create("text/plain".toMediaTypeOrNull(), userEmail)
+        val panCard = RequestBody.create("text/plain".toMediaTypeOrNull(), panCard)
+        val adharCard = RequestBody.create("text/plain".toMediaTypeOrNull(), adharCard)
+        val emergencyNo = RequestBody.create("text/plain".toMediaTypeOrNull(), emergencyNo)
+        val emergencyName = RequestBody.create("text/plain".toMediaTypeOrNull(), emergencyName)
+        val bankName = RequestBody.create("text/plain".toMediaTypeOrNull(), bankName)
+        val accountNo = RequestBody.create("text/plain".toMediaTypeOrNull(), accountNo)
+        val branchName = RequestBody.create("text/plain".toMediaTypeOrNull(), branchName)
+        val ifscCode = RequestBody.create("text/plain".toMediaTypeOrNull(), ifscCode)
 
         
         GlobalScope.launch {

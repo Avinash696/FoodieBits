@@ -6,65 +6,82 @@
 
     </data>
 
-    <RelativeLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".CategroiesFragment"
-        android:orientation="vertical"
-        android:background="#8AB9DF">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:orientation="horizontal"
-            android:id="@+id/llTopTitle">
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:text="Id"-->
-<!--                android:layout_weight="1"-->
-<!--                android:paddingStart="10dp"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textSize="20sp"-->
-<!--                android:fontFamily="@font/robotobold"/>-->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="Item Detail"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:layout_weight="1"
-                android:layout_marginStart="10dp"
-                android:fontFamily="@font/robotobold"/>
+        android:layout_height="wrap_content"
+        android:id="@+id/refreshCatAdmin">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="Operation"
-                android:layout_marginStart="40dp"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:layout_weight="1"
-                android:fontFamily="@font/robotobold"/>
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/add"
-                android:id="@+id/ivAddCategoriesAdmin"
-                android:layout_weight="1"
-                android:layout_gravity="end"/>
-        </LinearLayout>
-
-        <SearchView
-            android:id="@+id/svCategory"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/llTopTitle"
-            android:queryHint="Search Here"
-            android:shadowColor="@color/black" />
-        <androidx.recyclerview.widget.RecyclerView
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/rvCategoriesAdmin"
-            android:layout_below="@+id/svCategory"/>
-    </RelativeLayout>
+            android:background="#8AB9DF"
+            android:orientation="vertical"
+            tools:context=".CategroiesFragment">
+            <ProgressBar
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/category_progressbar"
+                android:indeterminateDrawable="@drawable/custom_progress_bar"
+                />
+            <LinearLayout
+                android:id="@+id/llTopTitle"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:orientation="horizontal">
+                <!--            <TextView-->
+                <!--                android:layout_width="wrap_content"-->
+                <!--                android:layout_height="match_parent"-->
+                <!--                android:text="Id"-->
+                <!--                android:layout_weight="1"-->
+                <!--                android:paddingStart="10dp"-->
+                <!--                android:textColor="@color/black"-->
+                <!--                android:textSize="20sp"-->
+                <!--                android:fontFamily="@font/robotobold"/>-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/robotobold"
+                    android:text="Item Detail"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="40dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/robotobold"
+                    android:text="Operation"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:id="@+id/ivAddCategoriesAdmin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_weight="1"
+                    android:src="@drawable/add" />
+            </LinearLayout>
+
+            <SearchView
+                android:id="@+id/svCategory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/llTopTitle"
+                android:queryHint="Search Here"
+                android:shadowColor="@color/black" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCategoriesAdmin"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/svCategory" />
+        </RelativeLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>

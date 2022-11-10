@@ -23,6 +23,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
@@ -78,13 +79,16 @@ class aviActivity : AppCompatActivity() {
     private fun hit() {
         Log.d(TAG, "hit: $filePath")
 
-        val requestBody = RequestBody.create(MediaType.parse("image/*"), filePath!!)
+        val requestBody = RequestBody.create("image/*".toMediaTypeOrNull(), filePath!!)
         val parts = MultipartBody.Part.createFormData("pic", filePath!!.name, requestBody)
 
         val someData =
-            RequestBody.create(MediaType.parse("text/plain"), binding.editTextTags.text.toString())
+            RequestBody.create(
+                "text/plain".toMediaTypeOrNull(),
+                binding.editTextTags.text.toString()
+            )
         Log.d("somedata", "hit:$someData $parts")
-        val retrofit = RetrofitHelper.getClient().create(aviInterface::class.java)
+        val retrofit = RetrofitHelper.getClient().create(AviInterface::class.java)
 
         GlobalScope.launch(Dispatchers.Main) {
             val call = retrofit.uploadUrImg(someData, parts)

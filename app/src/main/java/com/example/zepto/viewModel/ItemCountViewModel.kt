@@ -1,32 +1,37 @@
 package com.example.zepto.viewModel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.zepto.model.cardItemModel
+import com.example.zepto.database.CartDatabase
+import com.example.zepto.database.cartResult
+import com.example.zepto.model.SubCategoryImgX
 
-class  ItemCountViewModel : ViewModel() {
-    var countMutableLiveData = MutableLiveData<Int>(0)
-    var arrayName = MutableLiveData<ArrayList<String>>()
-    var amountName = MutableLiveData<ArrayList<Int>>()
-    var imageName = MutableLiveData<ArrayList<String>>()
-    var arrayData = MutableLiveData<ArrayList<cardItemModel>>()
-    var count: Int = 0
+//class ItemCountViewModel(private val cartDatabase : CartDatabase) : ViewModel() {
+class ItemCountViewModel() : ViewModel() {
+
+    private var itemArrayData = MutableLiveData<ArrayList<SubCategoryImgX>>()
+    val itemTrendingLiveData: LiveData<ArrayList<SubCategoryImgX>>
+        get() = itemArrayData
+    private val arrayTrending = ArrayList<SubCategoryImgX>()
 
 
-    fun itemCountInc() {
-        count++
+    fun setTrendingItem(item: SubCategoryImgX) {
+        arrayTrending.clear()
+        arrayTrending.add(item)
+        itemArrayData.postValue(arrayTrending)
     }
 
-    fun itemCountDec() {
-        count--
-    }
+    private val arrayCart = ArrayList<SubCategoryImgX>()
+    private var itemArrayCart = MutableLiveData<ArrayList<SubCategoryImgX>>()
+    val itemLiveCart: LiveData<ArrayList<SubCategoryImgX>>
+        get() = itemArrayCart
 
-    fun setArrayData() {}
 
-    fun setCount() {
-        countMutableLiveData.value = count
-    }
-    fun setCounter (){
-        count = countMutableLiveData.value!!
+    fun setCartItem(item: SubCategoryImgX){
+        //yaha pe array bano
+        arrayCart.add(item)
+        itemArrayCart.postValue(arrayCart)
+//        cartDatabase.getFromDatabase().addCartItem(itemArray)
     }
 }

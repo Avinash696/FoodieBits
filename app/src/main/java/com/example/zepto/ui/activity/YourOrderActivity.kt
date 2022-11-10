@@ -6,33 +6,35 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import com.example.test.aviInterface
+import com.example.test.AviInterface
 import com.example.zepto.R
 import com.example.zepto.databinding.ActivityYourOrderBinding
 import com.example.zepto.db.RetrofitHelper
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.ResponseBody
 import kotlin.random.Random
 
 class YourOrderActivity : AppCompatActivity() {
     private lateinit var binding: ActivityYourOrderBinding
     private var count: Int = 0
+    lateinit var intentOrder:Intent
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_your_order)
 
         //intent get data
-        val intent = intent
-        val nameIntent = intent.getStringExtra("nameKey")
-        val countIntent = intent.getIntExtra("itemCountKey", 0)
-        val amountIntent = intent.getIntExtra("amountKey", 0)
-        Log.d("yourOrder", "onCreate: $nameIntent $countIntent $amountIntent")
-        if (nameIntent != null) {
-            setIntentData(nameIntent, countIntent, amountIntent)
-        }
-        Log.d("sunday", "onCreate: $nameIntent  $countIntent $amountIntent")
+         intentOrder = intent
+
+      val  nameArray = intentOrder.getStringArrayListExtra("nameArray")!!
+      val  amountArray = intentOrder.getIntegerArrayListExtra("amountArray")!!
+      val  imageArray = intentOrder.getStringArrayListExtra("imgArray")
+
+        Log.d("yourOrder", "onCreate: $nameArray $amountArray $imageArray")
+
+
         binding.btPlaceOrder.setOnClickListener {
             postPaymentSlip()
             startActivity(Intent(this, YourOrderStatusActivity::class.java))
@@ -67,9 +69,9 @@ class YourOrderActivity : AppCompatActivity() {
     private fun postPaymentSlip(){
         val rand = (0..1000).random()
 
-        val item = ResponseBody.create(MediaType.parse("text/plain"),"biscuit$rand")
-        val type = ResponseBody.create(MediaType.parse("text/plain"),"COD$rand")
-        val retro = RetrofitHelper.getClient().create(aviInterface::class.java)
+        val item = ResponseBody.create("text/plain".toMediaTypeOrNull(), "biscuit$rand")
+        val type = ResponseBody.create("text/plain".toMediaTypeOrNull(), "COD$rand")
+        val retro = RetrofitHelper.getClient().create(AviInterface::class.java)
         GlobalScope.launch {
             val call = retro.postOrderedPlaced(item,type)
             if(call.isSuccessful)
