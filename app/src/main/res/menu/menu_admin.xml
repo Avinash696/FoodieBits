@@ -2,46 +2,55 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/menu_adminDashboard"
-        android:title="Dashboard"
-        android:icon="@drawable/dashboard"/>
+        android:icon="@drawable/dashboard"
+        android:title="Dashboard" />
     <item
         android:id="@+id/menu_adminAddUser"
-        android:title="Add User"
-        android:icon="@drawable/profile"/>
+        android:icon="@drawable/profile"
+        android:title="Add User" />
     <item
         android:id="@+id/menu_adminCategories"
-        android:title="Categories"
-        android:icon="@drawable/categories"/>
+        android:icon="@drawable/categories"
+        android:title="Categories" />
     <item
         android:id="@+id/menu_adminCreateUser"
-        android:title="Create Wl Admin"
-        android:icon="@drawable/categories"/>
+        android:icon="@drawable/categories"
+        android:title="Create Wl Admin" />
     <item
         android:id="@+id/menu_adminCreateRetailer"
-        android:title="Create Retailer"
-        android:icon="@drawable/categories"/>
+        android:icon="@drawable/categories"
+        android:title="Create Retailer" />
     <item
         android:id="@+id/menu_adminTrending"
-        android:title="Trending"
-        android:icon="@drawable/trending"/>
+        android:icon="@drawable/trending"
+        android:title="Trending" />
+    <item
+        android:id="@+id/menu_adminBrands"
+        android:icon="@drawable/star"
+        android:title="Brands"
+        android:iconTint="@color/green_bp"/>
+    <item
+        android:id="@+id/menu_adminBannerOffer"
+        android:icon="@drawable/star"
+        android:title="Banner" />
     <item
         android:id="@+id/menu_adminOrderMaster"
-        android:title="Order Master"
-        android:icon="@drawable/order"/>
+        android:icon="@drawable/order"
+        android:title="Order Master" />
     <item
         android:id="@+id/menu_adminUserMaster"
-        android:title="User Master"
-        android:icon="@drawable/order"/>
+        android:icon="@drawable/order"
+        android:title="User Master" />
     <item
         android:id="@+id/menu_adminContact"
-        android:title="Contact"
-        android:icon="@drawable/phone"/>
+        android:icon="@drawable/phone"
+        android:title="Contact" />
     <item
         android:id="@+id/menu_adminComplainBox"
-        android:title="Complain Box"
-        android:icon="@drawable/complain"/>
+        android:icon="@drawable/complain"
+        android:title="Complain Box" />
     <item
         android:id="@+id/menu_adminLogout"
-        android:title="Logout"
-        android:icon="@drawable/admin1"/>
+        android:icon="@drawable/admin1"
+        android:title="Logout" />
 </menu>

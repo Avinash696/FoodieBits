@@ -18,6 +18,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
@@ -87,27 +88,30 @@ class AddProductFormActivity : AppCompatActivity() {
         val rand = Random()
 
         Log.d("flowListWala", "postMainProduct: ${rand.nextInt(1000)}")
-        val requestBody = RequestBody.create(MediaType.parse("image/*"), filePath!!)
+        val requestBody = RequestBody.create("image/*".toMediaTypeOrNull(), filePath!!)
         val parts = MultipartBody.Part.createFormData("addProductImg", filePath.name, requestBody)
 
         val mainSubCategoryId =
-            RequestBody.create(MediaType.parse("text/plain"), id_form.toString())
+            RequestBody.create("text/plain".toMediaTypeOrNull(), id_form.toString())
         val subProductId =
-            RequestBody.create(MediaType.parse("text/plain"), rand.nextInt(1000).toString())
+            RequestBody.create("text/plain".toMediaTypeOrNull(), rand.nextInt(1000).toString())
         val subProductName =
-            RequestBody.create(MediaType.parse("text/plain"), binding.etProductName.text.toString())
+            RequestBody.create(
+                "text/plain".toMediaTypeOrNull(),
+                binding.etProductName.text.toString()
+            )
         val subProductStatus =
-            RequestBody.create(MediaType.parse("text/plain"), addProductStatus.toString())
+            RequestBody.create("text/plain".toMediaTypeOrNull(), addProductStatus.toString())
         val addProductQuantity = RequestBody.create(
-            MediaType.parse("text/plain"),
+            "text/plain".toMediaTypeOrNull(),
             binding.etproductQuantity.text.toString()
         )
         val addProductPrice = RequestBody.create(
-            MediaType.parse("text/plain"),
+            "text/plain".toMediaTypeOrNull(),
             binding.etproductPrice.text.toString()
         )
         val addProductDescription = RequestBody.create(
-            MediaType.parse("text/plain"),
+            "text/plain".toMediaTypeOrNull(),
             binding.etproductDescription.text.toString()
         )
 

@@ -22,6 +22,7 @@ import com.google.android.gms.location.LocationServices
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody
 import java.util.*
 
@@ -143,11 +144,14 @@ class AddDeliveryAddressActivity : AppCompatActivity() {
     private fun postSavedAddress() {
 
         val name =
-            RequestBody.create(MediaType.parse("text/plain"), binding.etNameProfile.text.toString())
+            RequestBody.create(
+                "text/plain".toMediaTypeOrNull(),
+                binding.etNameProfile.text.toString()
+            )
         val phoneNo =
-            RequestBody.create(MediaType.parse("text/plain"), binding.etPhoneNo.text.toString())
+            RequestBody.create("text/plain".toMediaTypeOrNull(), binding.etPhoneNo.text.toString())
         val houseNo = RequestBody.create(
-            MediaType.parse("text/plain"),
+            "text/plain".toMediaTypeOrNull(),
             binding.etHouseNoFirst.text.toString()
         )
 
@@ -157,7 +161,7 @@ class AddDeliveryAddressActivity : AppCompatActivity() {
 
 
 
-        val owner = RequestBody.create(MediaType.parse("text/plain"), "avi")
+        val owner = RequestBody.create("text/plain".toMediaTypeOrNull(), "avi")
 
         Log.d(
             "samos", "postSavedAddress: ${binding.etNameProfile.text} " +
@@ -176,12 +180,15 @@ class AddDeliveryAddressActivity : AppCompatActivity() {
 
     private fun postUpdateStatus() {
         val name =
-            RequestBody.create(MediaType.parse("text/plain"), binding.etNameProfile.text.toString())
+            RequestBody.create(
+                "text/plain".toMediaTypeOrNull(),
+                binding.etNameProfile.text.toString()
+            )
         val houseNo = RequestBody.create(
-            MediaType.parse("text/plain"),
+            "text/plain".toMediaTypeOrNull(),
             binding.etHouseNoFirst.text.toString()
         )
-        val id = RequestBody.create(MediaType.parse("text/plain"), "237")
+        val id = RequestBody.create("text/plain".toMediaTypeOrNull(), "237")
 
         Log.d(
             "samos", "postSavedAddress: ${binding.etNameProfile.text} " +

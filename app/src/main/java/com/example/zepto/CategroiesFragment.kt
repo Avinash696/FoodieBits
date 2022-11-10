@@ -24,6 +24,7 @@ import com.example.zepto.model.mainCategoryModel
 import com.example.zepto.module.Toasty
 import kotlinx.coroutines.*
 import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
@@ -153,11 +154,11 @@ class  CategroiesFragment : Fragment() {
     private fun postMainCategory(id: String, name: String) {
         val filePath = filePath
         Log.d("mine_id ", "postMainCategory: $id")
-        val requestBody = RequestBody.create(MediaType.parse("image/*"), filePath!!)
+        val requestBody = RequestBody.create("image/*".toMediaTypeOrNull(), filePath!!)
         val parts = MultipartBody.Part.createFormData("categoryImg", filePath.name, requestBody)
-        val id = RequestBody.create(MediaType.parse("text/plain"), id)
-        val name = RequestBody.create(MediaType.parse("text/plain"), name)
-        val status = RequestBody.create(MediaType.parse("text/plain"), categoryStatus.toString())
+        val id = RequestBody.create("text/plain".toMediaTypeOrNull(), id)
+        val name = RequestBody.create("text/plain".toMediaTypeOrNull(), name)
+        val status = RequestBody.create("text/plain".toMediaTypeOrNull(), categoryStatus.toString())
 
         GlobalScope.launch {
             val call = repo.postMainCategory(id, parts, name, status)

@@ -26,6 +26,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
@@ -151,15 +152,15 @@ class SubListSubAdminActivity : AppCompatActivity() {
         Log.d("fileDataRepo", "postMainSubCategory: ")
         val filePath = filePath
         val statusTemp = "1"
-        val requestBody = RequestBody.create(MediaType.parse("image/*"), filePath!!)
+        val requestBody = RequestBody.create("image/*".toMediaTypeOrNull(), filePath!!)
         val parts = MultipartBody.Part.createFormData("subCategoryImg", filePath.name, requestBody)
 
-        val categoryId = RequestBody.create(MediaType.parse("text/plain"), subCatIdKey)
-        val subCategoryName = RequestBody.create(MediaType.parse("text/plain"), name)
-        val status = RequestBody.create(MediaType.parse("text/plain"), statusTemp)
+        val categoryId = RequestBody.create("text/plain".toMediaTypeOrNull(), subCatIdKey)
+        val subCategoryName = RequestBody.create("text/plain".toMediaTypeOrNull(), name)
+        val status = RequestBody.create("text/plain".toMediaTypeOrNull(), statusTemp)
         Log.d(
             "beforePost",
-            "postMainCategory: ${parts.body()} $status $subCategoryName $subCatIdKey"
+            "postMainCategory: ${parts.body} $status $subCategoryName $subCatIdKey"
         )
 
         GlobalScope.launch(Dispatchers.IO) {

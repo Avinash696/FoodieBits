@@ -13,6 +13,7 @@ import com.example.zepto.db.RetrofitHelper
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.ResponseBody
 import kotlin.random.Random
 
@@ -68,8 +69,8 @@ class YourOrderActivity : AppCompatActivity() {
     private fun postPaymentSlip(){
         val rand = (0..1000).random()
 
-        val item = ResponseBody.create(MediaType.parse("text/plain"),"biscuit$rand")
-        val type = ResponseBody.create(MediaType.parse("text/plain"),"COD$rand")
+        val item = ResponseBody.create("text/plain".toMediaTypeOrNull(), "biscuit$rand")
+        val type = ResponseBody.create("text/plain".toMediaTypeOrNull(), "COD$rand")
         val retro = RetrofitHelper.getClient().create(AviInterface::class.java)
         GlobalScope.launch {
             val call = retro.postOrderedPlaced(item,type)

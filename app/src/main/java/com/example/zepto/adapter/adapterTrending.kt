@@ -17,6 +17,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody
 
 class adapterTrending(
@@ -64,8 +65,8 @@ class adapterTrending(
     }
 
     private fun updateCartQuantity(userIdItem: Int, quantityItem: Int) {
-        val updateId = RequestBody.create(MediaType.parse("text"), userIdItem.toString())
-        val quantity = RequestBody.create(MediaType.parse("text"), quantityItem.toString())
+        val updateId = RequestBody.create("text".toMediaTypeOrNull(), userIdItem.toString())
+        val quantity = RequestBody.create("text".toMediaTypeOrNull(), quantityItem.toString())
         val reto = RetrofitHelper.getClient().create(AviInterface::class.java)
         CoroutineScope(Dispatchers.IO).launch {
             val call = reto.updateCartQuantity(updateId, quantity)

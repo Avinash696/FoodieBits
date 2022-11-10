@@ -64,17 +64,18 @@ class adapterSubListCategories(
 
         //temp icon click screen forward move
         myView.setOnClickListener {
-            val intent = Intent(context, SingleTrendingActivity::class.java)
-            intent.putExtra("amountKey", data.Price)
-            intent.putExtra("nameKey", data.name)
-            intent.putExtra("imgKey", data.img)
-            //testing onclick itemView
-            intent.putExtra("nameArray", cartName)
-            intent.putExtra("amountArray", cartAmount)
-            intent.putExtra("imageArray", cartImage)
+//            val intent = Intent(context, SingleTrendingActivity::class.java)
+//            intent.putExtra("amountKey", data.Price)
+//            intent.putExtra("nameKey", data.name)
+//            intent.putExtra("imgKey", data.img)
+//            //testing onclick itemView
+//            intent.putExtra("nameArray", cartName)
+//            intent.putExtra("amountArray", cartAmount)
+//            intent.putExtra("imageArray", cartImage)
+//
+//            //count send
+//            context.startActivity(intent)
 
-            //count send
-            context.startActivity(intent)
         }
 
         btnAdd.setOnClickListener {

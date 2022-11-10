@@ -26,6 +26,7 @@ import com.google.gson.Gson
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
@@ -173,13 +174,16 @@ class TrendingFragment : Fragment() {
         priceShowParm: String
     ) {
         val filePath = filePath
-        val requestBody = RequestBody.create(MediaType.parse("image/*"), filePath!!)
+        val requestBody = RequestBody.create("image/*".toMediaTypeOrNull(), filePath!!)
         val parts = MultipartBody.Part.createFormData("productImg", filePath.name, requestBody)
-        val idUser = RequestBody.create(MediaType.parse("text/plain"), currentUser)
-        val productName = RequestBody.create(MediaType.parse("text/plain"), productNameParm)
-        val productQty = RequestBody.create(MediaType.parse("text/plain"), productQtyParm)
-        val discountedPrice = RequestBody.create(MediaType.parse("text/plain"), discountedPriceParm)
-        val priceShow = RequestBody.create(MediaType.parse("text/plain"), priceShowParm)
+        val idUser = RequestBody.create("text/plain".toMediaTypeOrNull(), currentUser)
+        val productName = RequestBody.create("text/plain".toMediaTypeOrNull(), productNameParm)
+        val productQty = RequestBody.create("text/plain".toMediaTypeOrNull(), productQtyParm)
+        val discountedPrice = RequestBody.create(
+            "text/plain".toMediaTypeOrNull(),
+            discountedPriceParm
+        )
+        val priceShow = RequestBody.create("text/plain".toMediaTypeOrNull(), priceShowParm)
 //        Log.d("beforePost", "postMainCategory: ${parts.body()} $status $subCategoryName")
 
         GlobalScope.launch {

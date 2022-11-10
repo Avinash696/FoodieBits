@@ -12,4 +12,17 @@
     <string name="required_for_this_app">667</string>
     <string name="enable_now">668</string>
     <string name="label_name">Full Name (Required)*</string>
+    <string name="title_activity_maps">MapsActivity</string>
+
+    <!-- Checkout activity -->
+    <string name="title_activity_checkout">CheckoutActivity</string>
+    <string name="checkout_item_description">Description</string>
+    <string name="googlepay_status_unavailable" translatable="false">Unfortunately, Google Pay is
+        not available on this phone.
+    </string>
+    <string name="payments_show_name" translatable="false">Successfully received payment data for
+        %s!
+    </string>
+    <string name="textofflinePay">Coupons Codes are not supported on Cash on Delivery ,to use code Switch to online payment</string>
+    <string name="contactless">Deliveries are known as contactless when no physical contact occurs between the delivery person and recipient. This delivery method became necessary during the COVID 19 health crisis for packages that did not fit into letterboxes.</string>
 </resources>

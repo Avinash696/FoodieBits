@@ -15,6 +15,7 @@ import com.example.zepto.db.RetrofitHelper
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
@@ -67,53 +68,53 @@ class CreateRetailerActivity : AppCompatActivity() {
     }
     private fun createRtailer() {
         Log.d("url", "dialogCreateRtailer above:$filePath ")
-        val requestBody = RequestBody.create(MediaType.parse("image/*"), filePath!!)
+        val requestBody = RequestBody.create("image/*".toMediaTypeOrNull(), filePath!!)
         val parts = MultipartBody.Part.createFormData("imgFile", filePath!!.name, requestBody)
         Log.d("rawat", "dialogCreateRtailer: $parts")
-        Log.d("url", "dialogCreateRtailer below:$filePath  ${parts.body()}")
+        Log.d("url", "dialogCreateRtailer below:$filePath  ${parts.body}")
         val tempName =
             RequestBody.create(
-                MediaType.parse("text/plain"),
+                "text/plain".toMediaTypeOrNull(),
                 binding.etNameAddRtailerDialogRetailer.text.toString()
             )
         val tempRole =
             RequestBody.create(
-                MediaType.parse("text/plain"),
+                "text/plain".toMediaTypeOrNull(),
                 titleLoginUser
             )
         val tempPassword =
             RequestBody.create(
-                MediaType.parse("text/plain"),
+                "text/plain".toMediaTypeOrNull(),
                 binding.etPassAddRtailerDialogRetailer.text.toString()
             )
         val tempEmail =
             RequestBody.create(
-                MediaType.parse("text/plain"),
+                "text/plain".toMediaTypeOrNull(),
                 binding.etEmailAddRtailerDialogRetailer.text.toString()
             )
         val tempMobileNo =
             RequestBody.create(
-                MediaType.parse("text/plain"),
+                "text/plain".toMediaTypeOrNull(),
                 binding.etMobileAddRtailerDialogRetailer.text.toString()
             )
         val tempAddress =
             RequestBody.create(
-                MediaType.parse("text/plain"),
+                "text/plain".toMediaTypeOrNull(),
                 binding.etAddressAddRtailerDialogRetailer.text.toString()
             )
         val tempAdhar =
             RequestBody.create(
-                MediaType.parse("text/plain"),
+                "text/plain".toMediaTypeOrNull(),
                 binding.etAdharAddRtailerDialogRetailer.text.toString()
             )
         val tempPanCard =
             RequestBody.create(
-                MediaType.parse("text/plain"),
+                "text/plain".toMediaTypeOrNull(),
                 binding.etPanAddRtailerDialogRetailer.text.toString()
             )
         val tempShopReg =
             RequestBody.create(
-                MediaType.parse("text/plain"),
+                "text/plain".toMediaTypeOrNull(),
                 binding.etShopAddRtailerDialogRetailer.text.toString()
             )
         //generic id
@@ -121,12 +122,12 @@ class CreateRetailerActivity : AppCompatActivity() {
         val id = "$tempRole$rnds$tempName"
         val tempId =
             RequestBody.create(
-                MediaType.parse("text/plain"),
+                "text/plain".toMediaTypeOrNull(),
                 id
             )
         val tempWhoCreated =
             RequestBody.create(
-                MediaType.parse("text/plain"),
+                "text/plain".toMediaTypeOrNull(),
                 titleLoginUser
             )
 

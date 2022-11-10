@@ -47,6 +47,10 @@
         <item name="colorPrimaryVariant">#AA85EC</item>
         <!-- Status bar color. -->
     </style>
+    <style name="serachViewTextColor">
+        <item name="android:editTextColor" >#C2185B</item>
+        <item name="android:textColorHint">#512DA8</item>
+    </style>
     <style name="full_screen_dialog">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

@@ -151,7 +151,7 @@
     <color name="expand_list_color">#b7b7b7</color>
     <color name="grey_hex_8f">#8f8f8f</color>
     <color name="notification_color">#000000</color>
-    <color name="orange">#000000</color>
+    <color name="orange">#FDA172</color>
     <color name="border">#000000</color>
     <color name="white_transparent_80">#000000</color>
     <color name="colorEventTime">#000000</color>
@@ -219,4 +219,6 @@
     <color name="new_btn_color">#1482AC</color>
     <color name="colorFab">#2196F3</color>
     <color name="back_blue_create">#8AD0F3</color>
+    <color name="light_grey">#D3D3D3</color>
+    <color name="blue_grey">#98AFC7</color>
 </resources>

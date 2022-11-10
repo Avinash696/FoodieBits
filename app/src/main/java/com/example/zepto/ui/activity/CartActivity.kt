@@ -65,6 +65,10 @@ class CartActivity : AppCompatActivity() {
             )
             startActivity(intent)
         }
+        //change location  to profile and (use location manager there only)
+        binding.cvLocationCart.setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
     }
 
     private fun totalAmount(body: cardResponceModel?) {

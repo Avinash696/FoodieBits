@@ -15,6 +15,7 @@ class DetailViewModel : ViewModel() {
     var arrayCatData: LiveData<ArrayList<cardItemModel>> = arrayCategoryLiveData
 
     fun setCatItem(item: cardItemModel) {
+        arrayCategory.clear()
         arrayCategory.add(item)
         arrayCategoryLiveData.postValue(arrayCategory)
     }

@@ -28,6 +28,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody
 import retrofit2.Response
 import retrofit2.http.Part
@@ -41,7 +42,7 @@ class DetailActivity : AppCompatActivity() {
     var categoryIdFlowKey: Int = 0
     var categoryItem = ArrayList<cardItemModel>()
     var trendingItem = ArrayList<SubCategoryImgX>()
-    val commonCart = ArrayList<cartCommonModel>()
+    private val commonCart = ArrayList<cartCommonModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -226,11 +227,11 @@ class DetailActivity : AppCompatActivity() {
 
     private fun hitPostCartTrending(name: String, price: Int, img: String) {
 
-        val currentUser = RequestBody.create(MediaType.parse("text/plain"), currentUserLogin)
-        val itemNo = RequestBody.create(MediaType.parse("text/plain"), price.toString())
-        val cartItem = RequestBody.create(MediaType.parse("text/plain"), name)
-        val cartPrice = RequestBody.create(MediaType.parse("text/plain"), price.toString())
-        val itemImgUrl = RequestBody.create(MediaType.parse("text/plain"), img)
+        val currentUser = RequestBody.create("text/plain".toMediaTypeOrNull(), currentUserLogin)
+        val itemNo = RequestBody.create("text/plain".toMediaTypeOrNull(), price.toString())
+        val cartItem = RequestBody.create("text/plain".toMediaTypeOrNull(), name)
+        val cartPrice = RequestBody.create("text/plain".toMediaTypeOrNull(), price.toString())
+        val itemImgUrl = RequestBody.create("text/plain".toMediaTypeOrNull(), img)
 
         val retro = RetrofitHelper.getClient().create(AviInterface::class.java)
         GlobalScope.launch(Dispatchers.Main) {

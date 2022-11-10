@@ -25,6 +25,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody
 
 class recyclerAdapterCategories(
@@ -101,8 +102,8 @@ class recyclerAdapterCategories(
     fun updateStatus(data :CategoryImg, counter:Int){
         Log.d("fewSecond", "updateStatus: ${data.id}  $counter")
         val client = RetrofitHelper.getClient().create(AviInterface::class.java)
-        val status = RequestBody.create(MediaType.parse("text/plain"), counter.toString())
-        val id = RequestBody.create(MediaType.parse("text/plain"), data.id)
+        val status = RequestBody.create("text/plain".toMediaTypeOrNull(), counter.toString())
+        val id = RequestBody.create("text/plain".toMediaTypeOrNull(), data.id)
         GlobalScope.launch(Dispatchers.IO) {
             val call = client.updateMainStatusCategory(id, status)
             if (call.isSuccessful) {

@@ -36,7 +36,7 @@ class adapterOrderList(
 
         binding.tvItemNameDelived.text = data!!.name
 //        binding.tvItemQuantity.text = count.toString()
-        binding.tvDeliverdAmount.text = "₹" + (data.Price)
+        binding.tvDeliverdAmount.text = (data.Price).toString()
         binding.tvItemQuantity.text = "1"
         Picasso.get().load((data.img).trim())
             .resize(30, 30)
@@ -45,35 +45,20 @@ class adapterOrderList(
             .into(binding.ivItemDelivered)
 
         binding.btnAdd.setOnClickListener {
-//            count += 1
-            binding.tvDeliverdAmount.text =
-                "₹" + (Integer.parseInt(data.Price.toString()) * ((Integer.parseInt(binding.tvItemQuantity.text.toString())) + 1))
-            binding.tvItemQuantity.text = binding.tvItemQuantity.text.toString()
-//            Toasty.getToasty(context,"Add Clicked" )
+            //                                                position count  amount
             Log.d(
                 "adapterOrder",
-                "onBindViewHolder:$position ${binding.tvItemQuantity.text.toString()} ${
-                    (data.Price) * ((Integer.parseInt(
-                        binding.tvItemQuantity.text.toString()
-                    )) + 1)
-                } "
+//                "onBindViewHolder: $position  ${binding.tvItemQuantity.text} ${data.Price}"
+                "onBindViewHolder: $position  ${Integer.parseInt(holder.itemView.findViewById<TextView>(R.id.tvItemQuantity).text.toString()) +1 } ${data.Price}"
             )
-
+//          binding.tvItemQuantity.text =  (Integer.parseInt(binding.tvItemQuantity.text.toString()) +1 ).toString()
+            holder.itemView.findViewById<TextView>(R.id.tvItemQuantity).text =  (Integer.parseInt(binding.tvItemQuantity.text.toString()) +1 ).toString()
         }
-        binding.btnSub.setOnClickListener {
-//            count -= 1
-            binding.tvDeliverdAmount.text =
-                "₹" + (Integer.parseInt(data.Price.toString()) * ((Integer.parseInt(binding.tvItemQuantity.text.toString())) - 1))
-            binding.tvItemQuantity.text = binding.tvItemQuantity.text.toString()
-            Toasty.getToasty(context, "Sub Clicked")
+        binding.tvDeliverdAmount.setOnClickListener {
+            Log.d(
+                "adapterOrder",
+                "Amount : ${Integer.parseInt(binding.tvDeliverdAmount.text.toString()) * (Integer.parseInt(binding.tvItemQuantity.text.toString()) +1 )}")
         }
-
-//
-//        holder.itemView.findViewById<ImageView>(R.id.btnAdd).setOnClickListener {
-//            Log.d("adapterOrder", "onBindViewHolder:$position $count ${(data.Price)*count} ")
-//            count += 1
-//            holder.itemView.findViewById<TextView>(R.id.tvItemQuantity).text = "₹" + (Integer.parseInt(data.Price.toString())* count)
-//        }
     }
 
     override fun getItemCount(): Int {
